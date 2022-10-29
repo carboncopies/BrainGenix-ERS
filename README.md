@@ -73,29 +73,29 @@
     "SystemTime" - Unix epoch as reported by the system.
     
   ## Model Variables
-    "ModelPosX" - X Position of the model
-    "ModelPosY" - Y Position of the model
-    "ModelPosZ" - Z Position of the model
-    "ModelRotX" - X Rotation of the model
-    "ModelRotY" - Y Rotation of the model
-    "ModelRotZ" - Z Rotation of the model
-    "ModelScaleX" - X Scale of the model
-    "ModelScaleY" - Y Scale of the model
-    "ModelScaleZ" - Z Scale of the model
-    "ModelEnabled" - Enable/Disable rendering of the model
+    "PosX" - X Position of the model
+    "PosY" - Y Position of the model
+    "PosZ" - Z Position of the model
+    "RotX" - X Rotation of the model
+    "RotY" - Y Rotation of the model
+    "RotZ" - Z Rotation of the model
+    "ScaleX" - X Scale of the model
+    "ScaleY" - Y Scale of the model
+    "ScaleZ" - Z Scale of the model
+    "Enabled" - Enable/Disable rendering of the model
 
   ## Point Light Variables
-    "PointLightPosX" - X Position of the light
-    "PointLightPosY" - Y Position of the light
-    "PointLightPosZ" - Z Position of the light
-    "PointLightColorR" - Red component of Color(from scale of 0 to 1)
-    "PointLightColorG" - Green component of color (from scale of 0 to 1)
-    "PointLightColorB" - Blue component of color (from scale of 0 to 1)
-    "PointLightIntensity" - brighness of the light (float)
-    "PointLightMaxDistance" - maximum distance of the light after which the scene will not be affected (float)
-    "PointLightRolloffConstant" - Constant component of light rolloff (float)
-    "PointLightRolloffLinear" - Linear component of light rolloff (float)
-    "PointLightRolloffQuadratic" - Quadratic component of light rolloff (float)
+    "PosX" - X Position of the light
+    "PosY" - Y Position of the light
+    "PosZ" - Z Position of the light
+    "ColorR" - Red component of Color(from scale of 0 to 1)
+    "ColorG" - Green component of color (from scale of 0 to 1)
+    "ColorB" - Blue component of color (from scale of 0 to 1)
+    "Intensity" - brighness of the light (float)
+    "MaxDistance" - maximum distance of the light after which the scene will not be affected (float)
+    "RolloffConstant" - Constant component of light rolloff (float)
+    "RolloffLinear" - Linear component of light rolloff (float)
+    "RolloffQuadratic" - Quadratic component of light rolloff (float)
     
   ## Directional Light Variables
     "DirectionalLightPosX" - X Position of the light
@@ -111,19 +111,19 @@
     "DirectionalLightColorB" - Blue component of color (from scale of 0 to 1)
 
   ## Spot Light Variables
-    "SpotLightPosX" - X Position of the light
-    "SpotLightPosY" - Y Position of the light
-    "SpotLightPosZ" - Z Position of the light
-    "SpotLightRotX" - X Rotation of the light
-    "SpotLightRotY" - Y Rotation of the light
-    "SpotLightRotZ" - Z Rotation of the light
-    "SpotLightColorR" - Red component of color (from scale of 0 to 1)
-    "SpotLightColorG" - Green component of color (from scale of 0 to 1)
-    "SpotLightColorB" - Blue component of color (from scale of 0 to 1)
-    "SpotLightIntensity" - brighness of the light (float)
-    "SpotLightMaxDistance" - maximum distance of the light after which the scene will not be affected (float)
-    "SpotLightCutoff" - Angle of area affected in degrees (float)
-    "SpotlightRolloff" - Rolloff angle in degrees (float)
+    "PosX" - X Position of the light
+    "PosY" - Y Position of the light
+    "PosZ" - Z Position of the light
+    "RotX" - X Rotation of the light
+    "RotY" - Y Rotation of the light
+    "RotZ" - Z Rotation of the light
+    "ColorR" - Red component of color (from scale of 0 to 1)
+    "ColorG" - Green component of color (from scale of 0 to 1)
+    "ColorB" - Blue component of color (from scale of 0 to 1)
+    "Intensity" - brighness of the light (float)
+    "MaxDistance" - maximum distance of the light after which the scene will not be affected (float)
+    "Cutoff" - Angle of area affected in degrees (float)
+    "Rolloff" - Rolloff angle in degrees (float)
 
   ## Camera Variables
     "PosX" - X Position of the camera

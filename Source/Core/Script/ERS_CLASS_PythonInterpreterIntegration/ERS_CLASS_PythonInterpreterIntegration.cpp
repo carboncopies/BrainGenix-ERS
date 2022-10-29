@@ -44,17 +44,17 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     SetSystemInfoData(&ModelModule);
 
     // Set System Parameters
-    ModelModule.attr("ModelPosX") = Model->ModelPosition.x;
-    ModelModule.attr("ModelPosY") = Model->ModelPosition.y;
-    ModelModule.attr("ModelPosZ") = Model->ModelPosition.z;
-    ModelModule.attr("ModelRotX") = Model->ModelRotation.x;
-    ModelModule.attr("ModelRotY") = Model->ModelRotation.y;
-    ModelModule.attr("ModelRotZ") = Model->ModelRotation.z;
-    ModelModule.attr("ModelScaleX") = Model->ModelScale.x;
-    ModelModule.attr("ModelScaleY") = Model->ModelScale.y;
-    ModelModule.attr("ModelScaleZ") = Model->ModelScale.z;
+    ModelModule.attr("PosX") = Model->ModelPosition.x;
+    ModelModule.attr("PosY") = Model->ModelPosition.y;
+    ModelModule.attr("PosZ") = Model->ModelPosition.z;
+    ModelModule.attr("RotX") = Model->ModelRotation.x;
+    ModelModule.attr("RotY") = Model->ModelRotation.y;
+    ModelModule.attr("RotZ") = Model->ModelRotation.z;
+    ModelModule.attr("ScaleX") = Model->ModelScale.x;
+    ModelModule.attr("ScaleY") = Model->ModelScale.y;
+    ModelModule.attr("ScaleZ") = Model->ModelScale.z;
 
-    ModelModule.attr("ModelEnabled") = Model->Enabled;
+    ModelModule.attr("Enabled") = Model->Enabled;
 
 
     // Get Local Dict
@@ -130,27 +130,27 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     bool Successful = true;
 
     try {
-        ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
-        ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
-        ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
+        ModelPosX = ModelModule.attr("PosX").cast<double>();
+        ModelPosY = ModelModule.attr("PosY").cast<double>();
+        ModelPosZ = ModelModule.attr("PosZ").cast<double>();
         Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Position CAST_ERROR");
         Successful = false;
     }
     try {
-        ModelRotX = ModelModule.attr("ModelRotX").cast<double>();
-        ModelRotY = ModelModule.attr("ModelRotY").cast<double>();
-        ModelRotZ = ModelModule.attr("ModelRotZ").cast<double>();
+        ModelRotX = ModelModule.attr("RotX").cast<double>();
+        ModelRotY = ModelModule.attr("RotY").cast<double>();
+        ModelRotZ = ModelModule.attr("RotZ").cast<double>();
         Model->SetRotation(glm::vec3(ModelRotX, ModelRotY, ModelRotZ));
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Rotation CAST_ERROR");
         Successful = false;
     }
     try {
-        ModelScaleX = ModelModule.attr("ModelScaleX").cast<double>();
-        ModelScaleY = ModelModule.attr("ModelScaleY").cast<double>();
-        ModelScaleZ = ModelModule.attr("ModelScaleZ").cast<double>();
+        ModelScaleX = ModelModule.attr("ScaleX").cast<double>();
+        ModelScaleY = ModelModule.attr("ScaleY").cast<double>();
+        ModelScaleZ = ModelModule.attr("ScaleZ").cast<double>();
         Model->SetScale(glm::vec3(ModelScaleX, ModelScaleY, ModelScaleZ));
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Scale CAST_ERROR");
@@ -158,7 +158,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     }
 
     try {
-        Model->Enabled = ModelModule.attr("ModelEnabled").cast<bool>(); 
+        Model->Enabled = ModelModule.attr("Enabled").cast<bool>(); 
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Enable CAST_ERROR");
         Successful = false;
@@ -318,16 +318,16 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     SetSystemInfoData(&PointLightModule);
 
     // Set System Parameters
-    PointLightModule.attr("PointLightPosX") = PointLight->Pos.x;
-    PointLightModule.attr("PointLightPosY") = PointLight->Pos.y;
-    PointLightModule.attr("PointLightPosZ") = PointLight->Pos.z;
+    PointLightModule.attr("PosX") = PointLight->Pos.x;
+    PointLightModule.attr("PosY") = PointLight->Pos.y;
+    PointLightModule.attr("PosZ") = PointLight->Pos.z;
 
-    PointLightModule.attr("PointLightColorR") = PointLight->Color.r;
-    PointLightModule.attr("PointLightColorG") = PointLight->Color.g;
-    PointLightModule.attr("PointLightColorB") = PointLight->Color.b;
+    PointLightModule.attr("ColorR") = PointLight->Color.r;
+    PointLightModule.attr("ColorG") = PointLight->Color.g;
+    PointLightModule.attr("ColorB") = PointLight->Color.b;
     
-    PointLightModule.attr("PointLightIntensity") = PointLight->Intensity;
-    PointLightModule.attr("PointLightMaxDistance") = PointLight->MaxDistance;
+    PointLightModule.attr("Intensity") = PointLight->Intensity;
+    PointLightModule.attr("MaxDistance") = PointLight->MaxDistance;
     
 
     // Get Local Dict
@@ -401,31 +401,31 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     float ColorR, ColorG, ColorB;
 
     try {
-        PointLightPosX = PointLightModule.attr("PointLightPosX").cast<double>();
-        PointLightPosY = PointLightModule.attr("PointLightPosY").cast<double>();
-        PointLightPosZ = PointLightModule.attr("PointLightPosZ").cast<double>();
+        PointLightPosX = PointLightModule.attr("PosX").cast<double>();
+        PointLightPosY = PointLightModule.attr("PosY").cast<double>();
+        PointLightPosZ = PointLightModule.attr("PosZ").cast<double>();
         PointLight->Pos = glm::vec3(PointLightPosX, PointLightPosY, PointLightPosZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Position CAST_ERROR");
     }
 
     try {
-        ColorR = PointLightModule.attr("PointLightColorR").cast<double>();
-        ColorG = PointLightModule.attr("PointLightColorG").cast<double>();
-        ColorB = PointLightModule.attr("PointLightColorB").cast<double>();
+        ColorR = PointLightModule.attr("ColorR").cast<double>();
+        ColorG = PointLightModule.attr("ColorG").cast<double>();
+        ColorB = PointLightModule.attr("ColorB").cast<double>();
         PointLight->Color = glm::vec3(ColorR, ColorG, ColorB);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Color CAST_ERROR");
     }
 
     try {
-        PointLight->Intensity = PointLightModule.attr("PointLightIntensity").cast<float>();
+        PointLight->Intensity = PointLightModule.attr("Intensity").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Intensity CAST_ERROR");
     }
 
     try {
-        PointLight->Intensity = PointLightModule.attr("PointLightMaxDistance").cast<float>();
+        PointLight->Intensity = PointLightModule.attr("Distance").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight MaxDistance CAST_ERROR");
     }
@@ -446,20 +446,20 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     SetSystemInfoData(&DirectionalLightModule);
 
     // Set System Parameters
-    DirectionalLightModule.attr("DirectionalLightPosX") = DirectionalLight->Pos.x;
-    DirectionalLightModule.attr("DirectionalLightPosY") = DirectionalLight->Pos.y;
-    DirectionalLightModule.attr("DirectionalLightPosZ") = DirectionalLight->Pos.z;
+    DirectionalLightModule.attr("PosX") = DirectionalLight->Pos.x;
+    DirectionalLightModule.attr("PosY") = DirectionalLight->Pos.y;
+    DirectionalLightModule.attr("PosZ") = DirectionalLight->Pos.z;
 
-    DirectionalLightModule.attr("DirectionalLightRotX") = DirectionalLight->Rot.x;
-    DirectionalLightModule.attr("DirectionalLightRotY") = DirectionalLight->Rot.y;
-    DirectionalLightModule.attr("DirectionalLightRotZ") = DirectionalLight->Rot.z;
+    DirectionalLightModule.attr("RotX") = DirectionalLight->Rot.x;
+    DirectionalLightModule.attr("RotY") = DirectionalLight->Rot.y;
+    DirectionalLightModule.attr("RotZ") = DirectionalLight->Rot.z;
 
-    DirectionalLightModule.attr("DirectionalLightColorR") = DirectionalLight->Color.r;
-    DirectionalLightModule.attr("DirectionalLightColorG") = DirectionalLight->Color.g;
-    DirectionalLightModule.attr("DirectionalLightColorB") = DirectionalLight->Color.b;
+    DirectionalLightModule.attr("ColorR") = DirectionalLight->Color.r;
+    DirectionalLightModule.attr("ColorG") = DirectionalLight->Color.g;
+    DirectionalLightModule.attr("ColorB") = DirectionalLight->Color.b;
 
-    DirectionalLightModule.attr("DirectionalLightIntensity") = DirectionalLight->Intensity;    
-    DirectionalLightModule.attr("DirectionalLightMaxDistance") = DirectionalLight->MaxDistance;   
+    DirectionalLightModule.attr("Intensity") = DirectionalLight->Intensity;    
+    DirectionalLightModule.attr("Distance") = DirectionalLight->MaxDistance;   
 
     // Get Local Dict
     pybind11::dict Locals = DirectionalLightModule.attr("__dict__");
@@ -533,27 +533,27 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     float ColorR, ColorG, ColorB;
 
     try {
-        DirectionalLightPosX = DirectionalLightModule.attr("DirectionalLightPosX").cast<double>();
-        DirectionalLightPosY = DirectionalLightModule.attr("DirectionalLightPosY").cast<double>();
-        DirectionalLightPosZ = DirectionalLightModule.attr("DirectionalLightPosZ").cast<double>();
+        DirectionalLightPosX = DirectionalLightModule.attr("PosX").cast<double>();
+        DirectionalLightPosY = DirectionalLightModule.attr("PosY").cast<double>();
+        DirectionalLightPosZ = DirectionalLightModule.attr("PosZ").cast<double>();
         DirectionalLight->Pos = glm::vec3(DirectionalLightPosX, DirectionalLightPosY, DirectionalLightPosZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("DirectionalLight Position CAST_ERROR");
     }
 
     try {
-        DirectionalLightRotX = DirectionalLightModule.attr("DirectionalLightRotX").cast<double>();
-        DirectionalLightRotY = DirectionalLightModule.attr("DirectionalLightRotY").cast<double>();
-        DirectionalLightRotZ = DirectionalLightModule.attr("DirectionalLightRotZ").cast<double>();
+        DirectionalLightRotX = DirectionalLightModule.attr("RotX").cast<double>();
+        DirectionalLightRotY = DirectionalLightModule.attr("RotY").cast<double>();
+        DirectionalLightRotZ = DirectionalLightModule.attr("RotZ").cast<double>();
         DirectionalLight->Rot = glm::vec3(DirectionalLightRotX, DirectionalLightRotY, DirectionalLightRotZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("DirectionalLight Rotation CAST_ERROR");
     }
 
     try {
-        ColorR = DirectionalLightModule.attr("DirectionalLightColorR").cast<double>();
-        ColorG = DirectionalLightModule.attr("DirectionalLightColorG").cast<double>();
-        ColorB = DirectionalLightModule.attr("DirectionalLightColorB").cast<double>();
+        ColorR = DirectionalLightModule.attr("ColorR").cast<double>();
+        ColorG = DirectionalLightModule.attr("ColorG").cast<double>();
+        ColorB = DirectionalLightModule.attr("ColorB").cast<double>();
         DirectionalLight->Color = glm::vec3(ColorR, ColorG, ColorB);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("DirectionalLight Color CAST_ERROR");
@@ -561,13 +561,13 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
 
 
     try {
-        DirectionalLight->Intensity = DirectionalLightModule.attr("DirectionalLightIntensity").cast<float>();
+        DirectionalLight->Intensity = DirectionalLightModule.attr("Intensity").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("DirectionalLight Intensity CAST_ERROR");
     }
 
     try {
-        DirectionalLight->Intensity = DirectionalLightModule.attr("DirectionalLightMaxDistance").cast<float>();
+        DirectionalLight->Intensity = DirectionalLightModule.attr("Distance").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("DirectionalLight MaxDistance CAST_ERROR");
     }
@@ -588,23 +588,23 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     SetSystemInfoData(&SpotLightModule);
 
     // Set System Parameters
-    SpotLightModule.attr("SpotLightPosX") = SpotLight->Pos.x;
-    SpotLightModule.attr("SpotLightPosY") = SpotLight->Pos.y;
-    SpotLightModule.attr("SpotLightPosZ") = SpotLight->Pos.z;
+    SpotLightModule.attr("PosX") = SpotLight->Pos.x;
+    SpotLightModule.attr("PosY") = SpotLight->Pos.y;
+    SpotLightModule.attr("PosZ") = SpotLight->Pos.z;
 
-    SpotLightModule.attr("SpotLightRotX") = SpotLight->Rot.x;
-    SpotLightModule.attr("SpotLightRotY") = SpotLight->Rot.y;
-    SpotLightModule.attr("SpotLightRotZ") = SpotLight->Rot.z;
+    SpotLightModule.attr("RotX") = SpotLight->Rot.x;
+    SpotLightModule.attr("RotY") = SpotLight->Rot.y;
+    SpotLightModule.attr("RotZ") = SpotLight->Rot.z;
 
-    SpotLightModule.attr("SpotLightColorR") = SpotLight->Color.r;
-    SpotLightModule.attr("SpotLightColorG") = SpotLight->Color.g;
-    SpotLightModule.attr("SpotLightColorB") = SpotLight->Color.b;
+    SpotLightModule.attr("ColorR") = SpotLight->Color.r;
+    SpotLightModule.attr("ColorG") = SpotLight->Color.g;
+    SpotLightModule.attr("ColorB") = SpotLight->Color.b;
     
-    SpotLightModule.attr("SpotLightIntensity") = SpotLight->Intensity;
-    SpotLightModule.attr("SpotLightMaxDistance") = SpotLight->MaxDistance;
+    SpotLightModule.attr("Intensity") = SpotLight->Intensity;
+    SpotLightModule.attr("Distance") = SpotLight->MaxDistance;
     
-    SpotLightModule.attr("SpotLightCutoff") = SpotLight->CutOff;
-    SpotLightModule.attr("SpotLightRolloff") = SpotLight->Rolloff;
+    SpotLightModule.attr("Cutoff") = SpotLight->CutOff;
+    SpotLightModule.attr("Rolloff") = SpotLight->Rolloff;
  
 
     // Get Local Dict
@@ -679,41 +679,41 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     float ColorR, ColorG, ColorB;
 
     try {
-        SpotLightPosX = SpotLightModule.attr("SpotLightPosX").cast<double>();
-        SpotLightPosY = SpotLightModule.attr("SpotLightPosY").cast<double>();
-        SpotLightPosZ = SpotLightModule.attr("SpotLightPosZ").cast<double>();
+        SpotLightPosX = SpotLightModule.attr("PosX").cast<double>();
+        SpotLightPosY = SpotLightModule.attr("PosY").cast<double>();
+        SpotLightPosZ = SpotLightModule.attr("PosZ").cast<double>();
         SpotLight->Pos = glm::vec3(SpotLightPosX, SpotLightPosY, SpotLightPosZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Position CAST_ERROR");
     }
 
     try {
-        SpotLightRotX = SpotLightModule.attr("SpotLightRotX").cast<double>();
-        SpotLightRotY = SpotLightModule.attr("SpotLightRotY").cast<double>();
-        SpotLightRotZ = SpotLightModule.attr("SpotLightRotZ").cast<double>();
+        SpotLightRotX = SpotLightModule.attr("RotX").cast<double>();
+        SpotLightRotY = SpotLightModule.attr("RotY").cast<double>();
+        SpotLightRotZ = SpotLightModule.attr("RotZ").cast<double>();
         SpotLight->Rot = glm::vec3(SpotLightRotX, SpotLightRotY, SpotLightRotZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Rotation CAST_ERROR");
     }
 
     try {
-        ColorR = SpotLightModule.attr("SpotLightColorR").cast<double>();
-        ColorG = SpotLightModule.attr("SpotLightColorG").cast<double>();
-        ColorB = SpotLightModule.attr("SpotLightColorB").cast<double>();
+        ColorR = SpotLightModule.attr("ColorR").cast<double>();
+        ColorG = SpotLightModule.attr("ColorG").cast<double>();
+        ColorB = SpotLightModule.attr("ColorB").cast<double>();
         SpotLight->Color = glm::vec3(ColorR, ColorG, ColorB);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Color CAST_ERROR");
     }
 
     try {
-        SpotLight->Intensity = SpotLightModule.attr("SpotLightIntensity").cast<float>();
+        SpotLight->Intensity = SpotLightModule.attr("Intensity").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Intensity CAST_ERROR");
     }
 
 
     try {
-        SpotLight->Rolloff = SpotLightModule.attr("SpotLightRolloff").cast<float>();
+        SpotLight->MaxDistance = SpotLightModule.attr("Distance").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Rolloff CAST_ERROR");
     }
@@ -721,8 +721,8 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
 
 
     try {
-        SpotLight->CutOff = SpotLightModule.attr("SpotLightCutoff").cast<float>();
-        SpotLight->Rolloff = SpotLightModule.attr("SpotLightRolloff").cast<float>();
+        SpotLight->CutOff = SpotLightModule.attr("Cutoff").cast<float>();
+        SpotLight->Rolloff = SpotLightModule.attr("Rolloff").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Cutoff CAST_ERROR");
     }
