@@ -30,14 +30,14 @@ struct ERS_STRUCT_SceneCamera {
     std::string       UserDefinedName_;                /**<Name that appears in the editor's scene tree*/
 
     // Internal Camera State Information
-    float FOV_               = 70.0f;  /**<Field of view in degrees*/
-    bool EnforceAspectRatio_ = false;  /**<Manually Override the aspect ratio with a set one*/
-    float AspectRatio_       = 1.25f;  /**<Internal variable used to setup the projection matrix*/
+    float FOV_               = 70.0f; /**<Field of view in degrees*/
+    bool EnforceAspectRatio_ = false; /**<Manually Override the aspect ratio with a set one*/
+    float AspectRatio_       = 1.25f; /**<Internal variable used to setup the projection matrix*/
     
     glm::vec3 Pos_; /**<Position of the camera object*/
     glm::vec3 Rot_; /**<Rotation of the camera object*/
 
     // Asset Streaming Settings
-    int StreamingPriority_ = 1;                 /**< Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)*/
+    int StreamingPriority_ = 1; /**< Higher this is, the more the system will try and load assets for this camera. Should be in range (1-10)*/
 
 };
