@@ -1,6 +1,6 @@
 SceneName: Untitled Scene
 SceneFormatVersion: 6
-ActiveCameraIndex: -1
+ActiveCameraIndex: 0
 Models:
   0:
     AssetName: storage_RC.fbx
@@ -5622,4 +5622,20 @@ SpotLights:
     AttachedScripts:
       {}
 SceneCameras:
-  {}
+  0:
+    AssetName: New Camera
+    AssetType: SceneCamera
+    PosX: 0
+    PosY: 0
+    PosZ: 0
+    RotX: 0
+    RotY: 0
+    RotZ: 0
+    NearClip: 0.00999999978
+    FarClip: 100
+    FOV: 70
+    EnforceAspectRatio: false
+    AspectRatio: 1.25
+    StreamingPriority: 1
+    AttachedScripts:
+      0: 0

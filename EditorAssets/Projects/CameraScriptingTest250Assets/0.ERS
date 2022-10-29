@@ -6,7 +6,7 @@
 1:
   AssetType: Undefined
   AssetCreationDate: 1970-01-01-00-00-01
-  AssetModificationDate: 2022-09-28-18-07-28
+  AssetModificationDate: 2022-10-29-01-19-23
   AssetFileName: ""
 2:
   AssetType: Placeholder
@@ -271,7 +271,7 @@
 1744105170:
   AssetType: Undefined
   AssetCreationDate: 1970-01-01-00-00-01
-  AssetModificationDate: 2022-09-28-18-07-29
+  AssetModificationDate: 2022-10-29-01-19-24
   AssetFileName: ""
 1292312979:
   AssetType: Undefined
@@ -1083,3 +1083,8 @@
   AssetCreationDate: 2022-08-05-21-31-30
   AssetModificationDate: 2022-08-05-21-31-30
   AssetFileName: barstool_RC.fbx
+2022322060:
+  AssetType: Script
+  AssetCreationDate: 1970-01-01-00-00-01
+  AssetModificationDate: 2022-10-29-01-19-23
+  AssetFileName: ""
