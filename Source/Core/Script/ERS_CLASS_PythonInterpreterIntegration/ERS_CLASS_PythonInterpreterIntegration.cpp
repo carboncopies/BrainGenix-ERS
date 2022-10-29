@@ -194,6 +194,11 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     CameraModule.attr("RotY") = Camera->Rot_.y;
     CameraModule.attr("RotZ") = Camera->Rot_.z;
 
+    CameraModule.attr("FOV") = Camera->FOV_;
+    CameraModule.attr("Priority") = Camera->StreamingPriority_;
+    CameraModule.attr("IsActive") = Camera->;
+    
+    
 
 
     // Get Local Dict
