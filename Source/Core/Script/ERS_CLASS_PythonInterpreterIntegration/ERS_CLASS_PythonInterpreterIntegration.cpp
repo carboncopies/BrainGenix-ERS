@@ -34,6 +34,8 @@ ERS_CLASS_PythonInterpreterIntegration::~ERS_CLASS_PythonInterpreterIntegration(
 
 }
 
+
+
 bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model, std::vector<std::string>* ErrorMessageString) {
 
 
@@ -174,6 +176,126 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     
 
 }
+
+
+
+bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::string ScriptSource, ERS_STRUCT_SceneCamera* Camera, std::vector<std::string>* ErrorMessageString) {
+
+
+    // Inport The Camera Module, Set System Info
+    pybind11::module CameraModule = pybind11::module_::import("Camera");
+    SetSystemInfoData(&CameraModule);
+
+    // Set System Parameters
+    CameraModule.attr("PosX") = Camera->Pos_.x;
+    CameraModule.attr("PosY") = Camera->Pos_.y;
+    CameraModule.attr("PosZ") = Camera->Pos_.z;
+    CameraModule.attr("RotX") = Camera->Rot_.x;
+    CameraModule.attr("RotY") = Camera->Rot_.y;
+    CameraModule.attr("RotZ") = Camera->Rot_.z;
+
+
+
+    // Get Local Dict
+    pybind11::dict Locals = CameraModule.attr("__dict__");
+
+    // If No Message String Vec Provided, Run All At Once, Else Run Line By Line
+    if (ErrorMessageString == nullptr) {
+        try {
+            pybind11::exec(ScriptSource, pybind11::globals(), Locals);
+        } catch (pybind11::value_error const&) {
+            return false;
+        } catch (pybind11::key_error const&) {
+            return false;
+        } catch (pybind11::reference_cast_error const&) {
+            return false;
+        } catch (pybind11::attribute_error const&) {
+            return false;
+        } catch (pybind11::import_error const&) {
+            return false;
+        } catch (pybind11::buffer_error const&) {
+            return false;
+        } catch (pybind11::index_error const&) {
+            return false;
+        } catch (pybind11::type_error const&) {
+            return false;
+        } catch (pybind11::cast_error const&) {
+            return false;
+        } catch (pybind11::error_already_set &Exception) {
+            return false;
+        }
+
+    } else {
+        ErrorMessageString->erase(ErrorMessageString->begin(), ErrorMessageString->end());
+        std::string Line;
+        std::stringstream StringStream(ScriptSource);
+        unsigned long i = 0;
+
+        while (getline(StringStream, Line, '\n')) {
+            
+            i++;
+            try {
+                pybind11::exec(Line, pybind11::globals(), Locals);
+            } catch (pybind11::value_error const&) {
+                ErrorHandle(ErrorMessageString, i, "ValueError");
+            } catch (pybind11::key_error const&) {
+                ErrorHandle(ErrorMessageString, i, "KeyError");
+            } catch (pybind11::reference_cast_error const&) {
+                ErrorHandle(ErrorMessageString, i, "ReferenceCastError");
+            } catch (pybind11::attribute_error const&) {
+                ErrorHandle(ErrorMessageString, i, "AttributeError");
+            } catch (pybind11::import_error const&) {
+                ErrorHandle(ErrorMessageString, i, "ImportError");
+            } catch (pybind11::buffer_error const&) {
+                ErrorHandle(ErrorMessageString, i, "BufferError");
+            } catch (pybind11::index_error const&) {
+                ErrorHandle(ErrorMessageString, i, "IndexError");
+            } catch (pybind11::type_error const&) {
+                ErrorHandle(ErrorMessageString, i, "TypeError");
+            } catch (pybind11::cast_error const&) {
+                ErrorHandle(ErrorMessageString, i, "CastError");
+            } catch (pybind11::error_already_set &Exception) {
+                ErrorHandle(ErrorMessageString, i, Exception.what());
+            }
+
+        }
+
+    }
+
+    // Write Back Camera Data
+    double CameraPosX, CameraPosY, CameraPosZ;
+    double CameraRotX, CameraRotY, CameraRotZ;
+    // bool Successful = true;
+
+    try {
+        CameraPosX = CameraModule.attr("PosX").cast<double>();
+        CameraPosY = CameraModule.attr("PosY").cast<double>();
+        CameraPosZ = CameraModule.attr("PosZ").cast<double>();
+        Camera->Pos_ = glm::vec3(CameraPosX, CameraPosY, CameraPosZ);
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("Camera Position CAST_ERROR");
+        // Successful = false;
+    }
+    try {
+        CameraRotX = CameraModule.attr("RotX").cast<double>();
+        CameraRotY = CameraModule.attr("RotY").cast<double>();
+        CameraRotZ = CameraModule.attr("RotZ").cast<double>();
+        Camera->Rot_ = glm::vec3(CameraRotX, CameraRotY, CameraRotZ);
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("Camera Rotation CAST_ERROR");
+        // Successful = false;
+    }
+
+
+
+
+    // Return Status
+    return true;
+    
+
+}
+
+
 
 bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* PointLight, std::vector<std::string>* ErrorMessageString) {
 
@@ -620,7 +742,7 @@ void ERS_CLASS_PythonInterpreterIntegration::SetSystemInfoData(pybind11::module*
     Locals->attr("GameTime") = pybind11::float_(RunTime_);
 
     auto Clock = std::chrono::system_clock::now();
-    double UnixEpoch = std::chrono::duration_cast<std::chrono::seconds>(Clock.time_since_epoch()).count();
+    long double UnixEpoch = std::chrono::duration_cast<std::chrono::seconds>(Clock.time_since_epoch()).count();
     Locals->attr("SystemTime") = UnixEpoch;
 
 }

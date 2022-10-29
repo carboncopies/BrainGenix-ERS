@@ -13,6 +13,7 @@ add_library(ERS_CLASS_PythonInterpreterIntegration
             "PyBind11PointLightClass.cpp"
             "PyBind11DirectionalLightClass.cpp"
             "PyBind11SpotLightClass.cpp"
+            "PyBind11SceneCameraClass.cpp"
             
 
             # Add Header Files (.h)
@@ -22,6 +23,7 @@ add_library(ERS_CLASS_PythonInterpreterIntegration
             "PyBind11PointLightClass.h"
             "PyBind11DirectionalLightClass.h"
             "PyBind11SpotLightClass.h"
+            "PyBind11SceneCameraClass.h"
             
             ${BACKWARD_ENABLE}
             )
@@ -37,6 +39,7 @@ target_link_libraries(ERS_CLASS_PythonInterpreterIntegration
 
     ERS_STRUCT_Model
     ERS_STRUCT_Light
+    ERS_STRUCT_SceneCamera
 
     )
 

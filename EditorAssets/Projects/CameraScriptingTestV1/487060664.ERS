@@ -1,0 +1,6 @@
+import math
+
+PosX = math.cos(GameTime)
+
+RotX = GameTime*25
+

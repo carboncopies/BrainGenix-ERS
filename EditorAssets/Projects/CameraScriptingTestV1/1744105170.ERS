@@ -1,0 +1,63 @@
+SceneName: Untitled Scene
+SceneFormatVersion: 6
+ActiveCameraIndex: 0
+Models:
+  0:
+    AssetName: storage_RC.fbx
+    AssetType: Model
+    AssetID: 1339095228
+    AssetPositionX: 0
+    AssetPositionY: 0.200000003
+    AssetPositionZ: 0
+    AssetRotationX: 0
+    AssetRotationY: 0
+    AssetRotationZ: 0
+    AssetScaleX: 0.100000001
+    AssetScaleY: 0.100000001
+    AssetScaleZ: 0.100000001
+    ModelMinLOD: -1
+    ModelMaxLOD: 10
+    CastDynamicShadows: true
+    CastStaticShadows: true
+    ReceiveShadows: true
+    TreatMissingTexturesAsTransparent: false
+    ShaderOverrideIndex: -1
+    AttachedScripts:
+      {}
+DirectionalLights:
+  {}
+PointLights:
+  0:
+    AssetName: New Point Light
+    AssetType: PointLight
+    ColorRed: 1
+    ColorGreen: 1
+    ColorBlue: 1
+    PosX: 0.5
+    PosY: 0.400000036
+    PosZ: -0.200000003
+    Intensity: 1
+    MaxDistance: 20
+    CastShadows: true
+    AttachedScripts:
+      {}
+SpotLights:
+  {}
+SceneCameras:
+  0:
+    AssetName: New Camera
+    AssetType: SceneCamera
+    PosX: 0.300000012
+    PosY: 0.800000012
+    PosZ: 0.5
+    RotX: 2207.83325
+    RotY: 316.950012
+    RotZ: 74
+    NearClip: 0.00999999978
+    FarClip: 100
+    FOV: 70
+    EnforceAspectRatio: false
+    AspectRatio: 1.25
+    StreamingPriority: 1
+    AttachedScripts:
+      0: 0

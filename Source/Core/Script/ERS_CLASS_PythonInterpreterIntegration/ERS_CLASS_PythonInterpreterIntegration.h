@@ -25,7 +25,9 @@
 #include <ERS_STRUCT_PointLight.h>
 #include <ERS_STRUCT_DirectionalLight.h>
 #include <ERS_STRUCT_SpotLight.h>
+#include <ERS_STRUCT_SceneCamera.h>
 
+#include <PyBind11SceneCameraClass.h>
 #include <PyBind11ModelClass.h>
 #include <PyBind11SystemInfo.h>
 #include <PyBind11PointLightClass.h>
@@ -97,6 +99,11 @@ public:
      */
     bool ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model, std::vector<std::string>* ErrorMessageString = nullptr);
 
+    /**
+     * @brief Runs a script attached to a model object
+     * 
+     */
+    bool ExecuteSceneCameraScript(std::string ScriptSource, ERS_STRUCT_SceneCamera* Camera, std::vector<std::string>* ErrorMessageString = nullptr);
 
     /**
      * @brief Runs a script attached to a point light
