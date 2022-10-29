@@ -265,11 +265,10 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     }
 
     // Write Back Camera Data
-    double CameraPosX, CameraPosY, CameraPosZ;
-    double CameraRotX, CameraRotY, CameraRotZ;
     // bool Successful = true;
 
     try {
+        double CameraPosX, CameraPosY, CameraPosZ;
         CameraPosX = CameraModule.attr("PosX").cast<double>();
         CameraPosY = CameraModule.attr("PosY").cast<double>();
         CameraPosZ = CameraModule.attr("PosZ").cast<double>();
@@ -279,6 +278,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
         // Successful = false;
     }
     try {
+        double CameraRotX, CameraRotY, CameraRotZ;
         CameraRotX = CameraModule.attr("RotX").cast<double>();
         CameraRotY = CameraModule.attr("RotY").cast<double>();
         CameraRotZ = CameraModule.attr("RotZ").cast<double>();
