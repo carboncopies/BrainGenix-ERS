@@ -588,23 +588,23 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     SetSystemInfoData(&SpotLightModule);
 
     // Set System Parameters
-    SpotLightModule.attr("SpotLightPosX") = SpotLight->Pos.x;
-    SpotLightModule.attr("SpotLightPosY") = SpotLight->Pos.y;
-    SpotLightModule.attr("SpotLightPosZ") = SpotLight->Pos.z;
+    SpotLightModule.attr("PosX") = SpotLight->Pos.x;
+    SpotLightModule.attr("PosY") = SpotLight->Pos.y;
+    SpotLightModule.attr("PosZ") = SpotLight->Pos.z;
 
-    SpotLightModule.attr("SpotLightRotX") = SpotLight->Rot.x;
-    SpotLightModule.attr("SpotLightRotY") = SpotLight->Rot.y;
-    SpotLightModule.attr("SpotLightRotZ") = SpotLight->Rot.z;
+    SpotLightModule.attr("RotX") = SpotLight->Rot.x;
+    SpotLightModule.attr("RotY") = SpotLight->Rot.y;
+    SpotLightModule.attr("RotZ") = SpotLight->Rot.z;
 
-    SpotLightModule.attr("SpotLightColorR") = SpotLight->Color.r;
-    SpotLightModule.attr("SpotLightColorG") = SpotLight->Color.g;
-    SpotLightModule.attr("SpotLightColorB") = SpotLight->Color.b;
+    SpotLightModule.attr("ColorR") = SpotLight->Color.r;
+    SpotLightModule.attr("ColorG") = SpotLight->Color.g;
+    SpotLightModule.attr("ColorB") = SpotLight->Color.b;
     
-    SpotLightModule.attr("SpotLightIntensity") = SpotLight->Intensity;
-    SpotLightModule.attr("SpotLightMaxDistance") = SpotLight->MaxDistance;
+    SpotLightModule.attr("Intensity") = SpotLight->Intensity;
+    SpotLightModule.attr("Distance") = SpotLight->MaxDistance;
     
-    SpotLightModule.attr("SpotLightCutoff") = SpotLight->CutOff;
-    SpotLightModule.attr("SpotLightRolloff") = SpotLight->Rolloff;
+    SpotLightModule.attr("Cutoff") = SpotLight->CutOff;
+    SpotLightModule.attr("Rolloff") = SpotLight->Rolloff;
  
 
     // Get Local Dict
