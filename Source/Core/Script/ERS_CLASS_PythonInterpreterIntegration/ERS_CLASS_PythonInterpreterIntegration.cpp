@@ -289,6 +289,25 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     }
 
 
+    try {
+        float FOV;
+        FOV = CameraModule.attr("FOV").cast<float>();
+        Camera->FOV_ = FOV;
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("Camera FOV CAST_ERROR");
+    }
+
+
+
+    try {
+        float Priority;
+        Priority = CameraModule.attr("Priority").cast<float>();
+        Camera->StreamingPriority_ = Priority;
+    } catch (pybind11::cast_error const&) {
+        ErrorMessageString->push_back("Camera Asset Streaming Priority CAST_ERROR");
+    }
+
+
 
 
     // Return Status
