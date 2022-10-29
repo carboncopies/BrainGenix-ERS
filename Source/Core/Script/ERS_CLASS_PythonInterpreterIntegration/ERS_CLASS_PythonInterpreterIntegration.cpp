@@ -318,16 +318,16 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     SetSystemInfoData(&PointLightModule);
 
     // Set System Parameters
-    PointLightModule.attr("PointLightPosX") = PointLight->Pos.x;
-    PointLightModule.attr("PointLightPosY") = PointLight->Pos.y;
-    PointLightModule.attr("PointLightPosZ") = PointLight->Pos.z;
+    PointLightModule.attr("PosX") = PointLight->Pos.x;
+    PointLightModule.attr("PosY") = PointLight->Pos.y;
+    PointLightModule.attr("PosZ") = PointLight->Pos.z;
 
-    PointLightModule.attr("PointLightColorR") = PointLight->Color.r;
-    PointLightModule.attr("PointLightColorG") = PointLight->Color.g;
-    PointLightModule.attr("PointLightColorB") = PointLight->Color.b;
+    PointLightModule.attr("ColorR") = PointLight->Color.r;
+    PointLightModule.attr("ColorG") = PointLight->Color.g;
+    PointLightModule.attr("ColorB") = PointLight->Color.b;
     
-    PointLightModule.attr("PointLightIntensity") = PointLight->Intensity;
-    PointLightModule.attr("PointLightMaxDistance") = PointLight->MaxDistance;
+    PointLightModule.attr("Intensity") = PointLight->Intensity;
+    PointLightModule.attr("MaxDistance") = PointLight->MaxDistance;
     
 
     // Get Local Dict
@@ -401,31 +401,31 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecutePointLightScript(std::string
     float ColorR, ColorG, ColorB;
 
     try {
-        PointLightPosX = PointLightModule.attr("PointLightPosX").cast<double>();
-        PointLightPosY = PointLightModule.attr("PointLightPosY").cast<double>();
-        PointLightPosZ = PointLightModule.attr("PointLightPosZ").cast<double>();
+        PointLightPosX = PointLightModule.attr("PosX").cast<double>();
+        PointLightPosY = PointLightModule.attr("PosY").cast<double>();
+        PointLightPosZ = PointLightModule.attr("PosZ").cast<double>();
         PointLight->Pos = glm::vec3(PointLightPosX, PointLightPosY, PointLightPosZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Position CAST_ERROR");
     }
 
     try {
-        ColorR = PointLightModule.attr("PointLightColorR").cast<double>();
-        ColorG = PointLightModule.attr("PointLightColorG").cast<double>();
-        ColorB = PointLightModule.attr("PointLightColorB").cast<double>();
+        ColorR = PointLightModule.attr("ColorR").cast<double>();
+        ColorG = PointLightModule.attr("ColorG").cast<double>();
+        ColorB = PointLightModule.attr("ColorB").cast<double>();
         PointLight->Color = glm::vec3(ColorR, ColorG, ColorB);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Color CAST_ERROR");
     }
 
     try {
-        PointLight->Intensity = PointLightModule.attr("PointLightIntensity").cast<float>();
+        PointLight->Intensity = PointLightModule.attr("Intensity").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight Intensity CAST_ERROR");
     }
 
     try {
-        PointLight->Intensity = PointLightModule.attr("PointLightMaxDistance").cast<float>();
+        PointLight->Intensity = PointLightModule.attr("Distance").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("PointLight MaxDistance CAST_ERROR");
     }
