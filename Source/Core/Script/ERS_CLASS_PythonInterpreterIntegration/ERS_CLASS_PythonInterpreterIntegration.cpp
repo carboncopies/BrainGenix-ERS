@@ -446,20 +446,20 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     SetSystemInfoData(&DirectionalLightModule);
 
     // Set System Parameters
-    DirectionalLightModule.attr("DirectionalLightPosX") = DirectionalLight->Pos.x;
-    DirectionalLightModule.attr("DirectionalLightPosY") = DirectionalLight->Pos.y;
-    DirectionalLightModule.attr("DirectionalLightPosZ") = DirectionalLight->Pos.z;
+    DirectionalLightModule.attr("PosX") = DirectionalLight->Pos.x;
+    DirectionalLightModule.attr("PosY") = DirectionalLight->Pos.y;
+    DirectionalLightModule.attr("PosZ") = DirectionalLight->Pos.z;
 
-    DirectionalLightModule.attr("DirectionalLightRotX") = DirectionalLight->Rot.x;
-    DirectionalLightModule.attr("DirectionalLightRotY") = DirectionalLight->Rot.y;
-    DirectionalLightModule.attr("DirectionalLightRotZ") = DirectionalLight->Rot.z;
+    DirectionalLightModule.attr("RotX") = DirectionalLight->Rot.x;
+    DirectionalLightModule.attr("RotY") = DirectionalLight->Rot.y;
+    DirectionalLightModule.attr("RotZ") = DirectionalLight->Rot.z;
 
-    DirectionalLightModule.attr("DirectionalLightColorR") = DirectionalLight->Color.r;
-    DirectionalLightModule.attr("DirectionalLightColorG") = DirectionalLight->Color.g;
-    DirectionalLightModule.attr("DirectionalLightColorB") = DirectionalLight->Color.b;
+    DirectionalLightModule.attr("ColorR") = DirectionalLight->Color.r;
+    DirectionalLightModule.attr("ColorG") = DirectionalLight->Color.g;
+    DirectionalLightModule.attr("ColorB") = DirectionalLight->Color.b;
 
-    DirectionalLightModule.attr("DirectionalLightIntensity") = DirectionalLight->Intensity;    
-    DirectionalLightModule.attr("DirectionalLightMaxDistance") = DirectionalLight->MaxDistance;   
+    DirectionalLightModule.attr("Intensity") = DirectionalLight->Intensity;    
+    DirectionalLightModule.attr("Distance") = DirectionalLight->MaxDistance;   
 
     // Get Local Dict
     pybind11::dict Locals = DirectionalLightModule.attr("__dict__");
@@ -533,27 +533,27 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
     float ColorR, ColorG, ColorB;
 
     try {
-        DirectionalLightPosX = DirectionalLightModule.attr("DirectionalLightPosX").cast<double>();
-        DirectionalLightPosY = DirectionalLightModule.attr("DirectionalLightPosY").cast<double>();
-        DirectionalLightPosZ = DirectionalLightModule.attr("DirectionalLightPosZ").cast<double>();
+        DirectionalLightPosX = DirectionalLightModule.attr("PosX").cast<double>();
+        DirectionalLightPosY = DirectionalLightModule.attr("PosY").cast<double>();
+        DirectionalLightPosZ = DirectionalLightModule.attr("PosZ").cast<double>();
         DirectionalLight->Pos = glm::vec3(DirectionalLightPosX, DirectionalLightPosY, DirectionalLightPosZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("DirectionalLight Position CAST_ERROR");
     }
 
     try {
-        DirectionalLightRotX = DirectionalLightModule.attr("DirectionalLightRotX").cast<double>();
-        DirectionalLightRotY = DirectionalLightModule.attr("DirectionalLightRotY").cast<double>();
-        DirectionalLightRotZ = DirectionalLightModule.attr("DirectionalLightRotZ").cast<double>();
+        DirectionalLightRotX = DirectionalLightModule.attr("RotX").cast<double>();
+        DirectionalLightRotY = DirectionalLightModule.attr("RotY").cast<double>();
+        DirectionalLightRotZ = DirectionalLightModule.attr("RotZ").cast<double>();
         DirectionalLight->Rot = glm::vec3(DirectionalLightRotX, DirectionalLightRotY, DirectionalLightRotZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("DirectionalLight Rotation CAST_ERROR");
     }
 
     try {
-        ColorR = DirectionalLightModule.attr("DirectionalLightColorR").cast<double>();
-        ColorG = DirectionalLightModule.attr("DirectionalLightColorG").cast<double>();
-        ColorB = DirectionalLightModule.attr("DirectionalLightColorB").cast<double>();
+        ColorR = DirectionalLightModule.attr("ColorR").cast<double>();
+        ColorG = DirectionalLightModule.attr("ColorG").cast<double>();
+        ColorB = DirectionalLightModule.attr("ColorB").cast<double>();
         DirectionalLight->Color = glm::vec3(ColorR, ColorG, ColorB);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("DirectionalLight Color CAST_ERROR");
@@ -561,13 +561,13 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteDirectionalLightScript(std::
 
 
     try {
-        DirectionalLight->Intensity = DirectionalLightModule.attr("DirectionalLightIntensity").cast<float>();
+        DirectionalLight->Intensity = DirectionalLightModule.attr("Intensity").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("DirectionalLight Intensity CAST_ERROR");
     }
 
     try {
-        DirectionalLight->Intensity = DirectionalLightModule.attr("DirectionalLightMaxDistance").cast<float>();
+        DirectionalLight->Intensity = DirectionalLightModule.attr("Distance").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("DirectionalLight MaxDistance CAST_ERROR");
     }
