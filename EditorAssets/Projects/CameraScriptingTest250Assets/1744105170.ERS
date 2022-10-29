@@ -5625,15 +5625,15 @@ SceneCameras:
   0:
     AssetName: New Camera
     AssetType: SceneCamera
-    PosX: 0
+    PosX: -6.93811941
     PosY: 0
-    PosZ: 0
-    RotX: 0
-    RotY: 0
+    PosZ: -0.928709447
+    RotX: 5857.21973
+    RotY: -2342.88794
     RotZ: 0
     NearClip: 0.00999999978
     FarClip: 100
-    FOV: 70
+    FOV: 95.7799911
     EnforceAspectRatio: false
     AspectRatio: 1.25
     StreamingPriority: 1
