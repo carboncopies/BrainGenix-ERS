@@ -24,10 +24,10 @@
 struct ERS_STRUCT_SceneCamera {
 
     // Camea Configuration Information
-    float NearClip_          = 0.01f;  /**<Closest distance before geometry is culled.*/
-    float FarClip_           = 100.0f; /**<Farthest distance before geometry is called*/
-    std::vector<long> AttachedScriptIndexes_; /**<Indices of scripts that are attached to this camera*/
-    std::string UserDefinedName_; /**<Name that appears in the editor's scene tree*/
+    float             NearClip_              = 0.01f;  /**<Closest distance before geometry is culled.*/
+    float             FarClip_               = 100.0f; /**<Farthest distance before geometry is called*/
+    std::vector<long> AttachedScriptIndexes_;          /**<Indices of scripts that are attached to this camera*/
+    std::string       UserDefinedName_;                /**<Name that appears in the editor's scene tree*/
 
     // Internal Camera State Information
     float FOV_               = 70.0f;  /**<Field of view in degrees*/
