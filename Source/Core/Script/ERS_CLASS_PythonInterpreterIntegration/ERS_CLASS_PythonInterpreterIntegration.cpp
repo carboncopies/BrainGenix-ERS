@@ -305,8 +305,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     }
 
 
-
-
     // Return Status
     return true;
     
