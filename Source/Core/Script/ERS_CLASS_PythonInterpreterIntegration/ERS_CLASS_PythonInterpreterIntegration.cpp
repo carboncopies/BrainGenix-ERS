@@ -679,41 +679,41 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
     float ColorR, ColorG, ColorB;
 
     try {
-        SpotLightPosX = SpotLightModule.attr("SpotLightPosX").cast<double>();
-        SpotLightPosY = SpotLightModule.attr("SpotLightPosY").cast<double>();
-        SpotLightPosZ = SpotLightModule.attr("SpotLightPosZ").cast<double>();
+        SpotLightPosX = SpotLightModule.attr("PosX").cast<double>();
+        SpotLightPosY = SpotLightModule.attr("PosY").cast<double>();
+        SpotLightPosZ = SpotLightModule.attr("PosZ").cast<double>();
         SpotLight->Pos = glm::vec3(SpotLightPosX, SpotLightPosY, SpotLightPosZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Position CAST_ERROR");
     }
 
     try {
-        SpotLightRotX = SpotLightModule.attr("SpotLightRotX").cast<double>();
-        SpotLightRotY = SpotLightModule.attr("SpotLightRotY").cast<double>();
-        SpotLightRotZ = SpotLightModule.attr("SpotLightRotZ").cast<double>();
+        SpotLightRotX = SpotLightModule.attr("RotX").cast<double>();
+        SpotLightRotY = SpotLightModule.attr("RotY").cast<double>();
+        SpotLightRotZ = SpotLightModule.attr("RotZ").cast<double>();
         SpotLight->Rot = glm::vec3(SpotLightRotX, SpotLightRotY, SpotLightRotZ);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Rotation CAST_ERROR");
     }
 
     try {
-        ColorR = SpotLightModule.attr("SpotLightColorR").cast<double>();
-        ColorG = SpotLightModule.attr("SpotLightColorG").cast<double>();
-        ColorB = SpotLightModule.attr("SpotLightColorB").cast<double>();
+        ColorR = SpotLightModule.attr("ColorR").cast<double>();
+        ColorG = SpotLightModule.attr("ColorG").cast<double>();
+        ColorB = SpotLightModule.attr("ColorB").cast<double>();
         SpotLight->Color = glm::vec3(ColorR, ColorG, ColorB);
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Color CAST_ERROR");
     }
 
     try {
-        SpotLight->Intensity = SpotLightModule.attr("SpotLightIntensity").cast<float>();
+        SpotLight->Intensity = SpotLightModule.attr("Intensity").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Intensity CAST_ERROR");
     }
 
 
     try {
-        SpotLight->Rolloff = SpotLightModule.attr("SpotLightRolloff").cast<float>();
+        SpotLight->MaxDistance = SpotLightModule.attr("Distance").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Rolloff CAST_ERROR");
     }
@@ -721,8 +721,8 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSpotLightScript(std::string 
 
 
     try {
-        SpotLight->CutOff = SpotLightModule.attr("SpotLightCutoff").cast<float>();
-        SpotLight->Rolloff = SpotLightModule.attr("SpotLightRolloff").cast<float>();
+        SpotLight->CutOff = SpotLightModule.attr("Cutoff").cast<float>();
+        SpotLight->Rolloff = SpotLightModule.attr("Rolloff").cast<float>();
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("SpotLight Cutoff CAST_ERROR");
     }
