@@ -124,3 +124,15 @@
     "SpotLightMaxDistance" - maximum distance of the light after which the scene will not be affected (float)
     "SpotLightCutoff" - Angle of area affected in degrees (float)
     "SpotlightRolloff" - Rolloff angle in degrees (float)
+
+  ## Camera Variables
+    "PosX" - X Position of the camera
+    "PosY" - Y Position of the camera
+    "PosZ" - Z Position of the camera
+    "RotX" - X Rotation of the camera
+    "RotY" - Y Rotation of the camera
+    "RotZ" - Z Rotation of the camera
+    "ScaleX" - X Scale of the camera
+    "ScaleY" - Y Scale of the camera
+    "ScaleZ" - Z Scale of the camera
+    
