@@ -44,17 +44,17 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     SetSystemInfoData(&ModelModule);
 
     // Set System Parameters
-    ModelModule.attr("ModelPosX") = Model->ModelPosition.x;
-    ModelModule.attr("ModelPosY") = Model->ModelPosition.y;
-    ModelModule.attr("ModelPosZ") = Model->ModelPosition.z;
-    ModelModule.attr("ModelRotX") = Model->ModelRotation.x;
-    ModelModule.attr("ModelRotY") = Model->ModelRotation.y;
-    ModelModule.attr("ModelRotZ") = Model->ModelRotation.z;
-    ModelModule.attr("ModelScaleX") = Model->ModelScale.x;
-    ModelModule.attr("ModelScaleY") = Model->ModelScale.y;
-    ModelModule.attr("ModelScaleZ") = Model->ModelScale.z;
+    ModelModule.attr("PosX") = Model->ModelPosition.x;
+    ModelModule.attr("PosY") = Model->ModelPosition.y;
+    ModelModule.attr("PosZ") = Model->ModelPosition.z;
+    ModelModule.attr("RotX") = Model->ModelRotation.x;
+    ModelModule.attr("RotY") = Model->ModelRotation.y;
+    ModelModule.attr("RotZ") = Model->ModelRotation.z;
+    ModelModule.attr("ScaleX") = Model->ModelScale.x;
+    ModelModule.attr("ScaleY") = Model->ModelScale.y;
+    ModelModule.attr("ScaleZ") = Model->ModelScale.z;
 
-    ModelModule.attr("ModelEnabled") = Model->Enabled;
+    ModelModule.attr("Enabled") = Model->Enabled;
 
 
     // Get Local Dict
@@ -130,27 +130,27 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     bool Successful = true;
 
     try {
-        ModelPosX = ModelModule.attr("ModelPosX").cast<double>();
-        ModelPosY = ModelModule.attr("ModelPosY").cast<double>();
-        ModelPosZ = ModelModule.attr("ModelPosZ").cast<double>();
+        ModelPosX = ModelModule.attr("PosX").cast<double>();
+        ModelPosY = ModelModule.attr("PosY").cast<double>();
+        ModelPosZ = ModelModule.attr("PosZ").cast<double>();
         Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Position CAST_ERROR");
         Successful = false;
     }
     try {
-        ModelRotX = ModelModule.attr("ModelRotX").cast<double>();
-        ModelRotY = ModelModule.attr("ModelRotY").cast<double>();
-        ModelRotZ = ModelModule.attr("ModelRotZ").cast<double>();
+        ModelRotX = ModelModule.attr("RotX").cast<double>();
+        ModelRotY = ModelModule.attr("RotY").cast<double>();
+        ModelRotZ = ModelModule.attr("RotZ").cast<double>();
         Model->SetRotation(glm::vec3(ModelRotX, ModelRotY, ModelRotZ));
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Rotation CAST_ERROR");
         Successful = false;
     }
     try {
-        ModelScaleX = ModelModule.attr("ModelScaleX").cast<double>();
-        ModelScaleY = ModelModule.attr("ModelScaleY").cast<double>();
-        ModelScaleZ = ModelModule.attr("ModelScaleZ").cast<double>();
+        ModelScaleX = ModelModule.attr("ScaleX").cast<double>();
+        ModelScaleY = ModelModule.attr("ScaleY").cast<double>();
+        ModelScaleZ = ModelModule.attr("ScaleZ").cast<double>();
         Model->SetScale(glm::vec3(ModelScaleX, ModelScaleY, ModelScaleZ));
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Scale CAST_ERROR");
@@ -158,7 +158,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     }
 
     try {
-        Model->Enabled = ModelModule.attr("ModelEnabled").cast<bool>(); 
+        Model->Enabled = ModelModule.attr("Enabled").cast<bool>(); 
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Model Enable CAST_ERROR");
         Successful = false;
