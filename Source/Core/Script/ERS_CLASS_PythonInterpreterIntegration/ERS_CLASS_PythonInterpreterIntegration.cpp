@@ -288,7 +288,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
         // Successful = false;
     }
 
-
     try {
         float FOV;
         FOV = CameraModule.attr("FOV").cast<float>();
@@ -296,8 +295,6 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     } catch (pybind11::cast_error const&) {
         ErrorMessageString->push_back("Camera FOV CAST_ERROR");
     }
-
-
 
     try {
         float Priority;
