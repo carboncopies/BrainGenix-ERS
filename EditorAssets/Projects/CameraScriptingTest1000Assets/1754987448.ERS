@@ -1,0 +1,12 @@
+import math
+
+PosX = math.sin(GameTime/10)*7
+PosZ = math.cos(GameTime/10)*7
+
+RotX = GameTime*25
+RotY = -GameTime*10
+
+FOV = (60*math.sin(GameTime/5)) + 80
+
+
+
