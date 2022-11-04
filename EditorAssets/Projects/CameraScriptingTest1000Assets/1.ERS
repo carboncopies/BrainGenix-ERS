@@ -1,12 +1,12 @@
-ProjectName: ERS Test Project
+ProjectName: Camera API Test (1000 Models)
 ProjectDescription: Test development scene for EGSC.
 ProjectVersion: 1.0.0
 ProjectCreationDate: 0000-00-00 00-00-00
-ProjectModificationDate: 2022-10-29 01-08-40
+ProjectModificationDate: 2022-11-04 06-52-51
 ProjectCreator: BrainGenix-ERS Development Team
 ProjectLicense: AGPL-V3.0 Or Higher
 IsLicenseProprietary: false
-PlayOnLoad: false
+PlayOnLoad: true
 SceneIDs:
   0: 1744105170
 DefaultScene: 0
@@ -121,5 +121,5 @@ ShaderPrograms:
     TessEvalID: -1
 Scripts:
   0:
-    Name: CameraControl
-    AssetID: 758121930
+    Name: Untitled Script
+    AssetID: 1754987448

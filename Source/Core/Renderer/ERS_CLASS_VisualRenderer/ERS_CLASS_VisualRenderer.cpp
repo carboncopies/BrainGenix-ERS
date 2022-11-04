@@ -316,6 +316,32 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
     ImGui::SetWindowSize(ImVec2(600, 400), ImGuiCond_FirstUseEver);
 
 
+
+
+
+
+    // Check For Orphaned Scripts
+    for (unsigned int i = 0; i < Scene->Models.size(); i++) {
+        ERS_STRUCT_Model* Model = Scene->Models[i].get();
+        std::vector<long> NewIndexes;
+
+        for (unsigned int x = 0; x < Model->AttachedScriptIndexes_.size(); x++) {
+        
+            long ScriptIndex = Model->AttachedScriptIndexes_[x];
+        
+            if (ScriptIndex > -1 && ScriptIndex < ProjectUtils_->ProjectManager_->Project_.Scripts.size()) {
+                NewIndexes.push_back(ScriptIndex);
+            }
+
+        }
+
+        Model->AttachedScriptIndexes_ = NewIndexes;
+
+    }
+
+
+
+
     // Check If Window Visible
     if (Visible) {
 
