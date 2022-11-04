@@ -23,7 +23,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   1:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -45,7 +45,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   2:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -67,7 +67,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   3:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -89,7 +89,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   4:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -111,7 +111,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   5:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -133,7 +133,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   6:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -155,7 +155,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   7:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -177,7 +177,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   8:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -199,7 +199,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   9:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -221,7 +221,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   10:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -243,7 +243,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   11:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -265,7 +265,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   12:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -287,7 +287,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   13:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -309,7 +309,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   14:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -331,7 +331,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   15:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -353,7 +353,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   16:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -375,7 +375,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   17:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -397,7 +397,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   18:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -419,7 +419,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   19:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -441,7 +441,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   20:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -463,7 +463,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   21:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -485,7 +485,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   22:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -507,7 +507,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   23:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -529,7 +529,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   24:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -551,7 +551,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   25:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -573,7 +573,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   26:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -595,7 +595,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   27:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -617,7 +617,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   28:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -639,7 +639,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   29:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -661,7 +661,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   30:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -683,7 +683,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   31:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -705,7 +705,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   32:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -727,7 +727,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   33:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -749,7 +749,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   34:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -771,7 +771,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   35:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -793,7 +793,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   36:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -815,7 +815,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   37:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -837,7 +837,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   38:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -859,7 +859,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   39:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -881,7 +881,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   40:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -903,7 +903,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   41:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -925,7 +925,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   42:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -947,7 +947,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   43:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -969,7 +969,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   44:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -991,7 +991,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   45:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1013,7 +1013,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   46:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1035,7 +1035,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   47:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1057,7 +1057,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   48:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1079,7 +1079,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   49:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1101,7 +1101,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   50:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1123,7 +1123,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   51:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1145,7 +1145,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   52:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1167,7 +1167,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   53:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1189,7 +1189,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   54:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1211,7 +1211,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   55:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1233,7 +1233,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   56:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1255,7 +1255,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   57:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1277,7 +1277,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   58:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1299,7 +1299,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   59:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1321,7 +1321,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   60:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1343,7 +1343,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   61:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1365,7 +1365,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   62:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1387,7 +1387,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   63:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1409,7 +1409,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   64:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1431,7 +1431,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   65:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1453,7 +1453,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   66:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1475,7 +1475,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   67:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1497,7 +1497,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   68:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1519,7 +1519,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   69:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1541,7 +1541,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   70:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1563,7 +1563,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   71:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1585,7 +1585,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   72:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1607,7 +1607,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   73:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1629,7 +1629,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   74:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1651,7 +1651,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   75:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1673,7 +1673,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   76:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1695,7 +1695,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   77:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1717,7 +1717,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   78:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1739,7 +1739,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   79:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1761,7 +1761,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   80:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1783,7 +1783,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   81:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1805,7 +1805,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   82:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1827,7 +1827,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   83:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1849,7 +1849,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   84:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1871,7 +1871,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   85:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1893,7 +1893,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   86:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1915,7 +1915,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   87:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1937,7 +1937,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   88:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1959,7 +1959,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   89:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -1981,7 +1981,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   90:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2003,7 +2003,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   91:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2025,7 +2025,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   92:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2047,7 +2047,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   93:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2069,7 +2069,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   94:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2091,7 +2091,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   95:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2113,7 +2113,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   96:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2135,7 +2135,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   97:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2157,7 +2157,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   98:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2179,7 +2179,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   99:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2201,7 +2201,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   100:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2223,7 +2223,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   101:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2245,7 +2245,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   102:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2267,7 +2267,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   103:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2289,7 +2289,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   104:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2311,7 +2311,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   105:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2333,7 +2333,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   106:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2355,7 +2355,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   107:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2377,7 +2377,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   108:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2399,7 +2399,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   109:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2421,7 +2421,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   110:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2443,7 +2443,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   111:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2465,7 +2465,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   112:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2487,7 +2487,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   113:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2509,7 +2509,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   114:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2531,7 +2531,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   115:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2553,7 +2553,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   116:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2575,7 +2575,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   117:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2597,7 +2597,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   118:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2619,7 +2619,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   119:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2641,7 +2641,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   120:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2663,7 +2663,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   121:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2685,7 +2685,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   122:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2707,7 +2707,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   123:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2729,7 +2729,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   124:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2751,7 +2751,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   125:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2773,7 +2773,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   126:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2795,7 +2795,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   127:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2817,7 +2817,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   128:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2839,7 +2839,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   129:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2861,7 +2861,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   130:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2883,7 +2883,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   131:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2905,7 +2905,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   132:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2927,7 +2927,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   133:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2949,7 +2949,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   134:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2971,7 +2971,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   135:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -2993,7 +2993,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   136:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3015,7 +3015,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   137:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3037,7 +3037,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   138:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3059,7 +3059,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   139:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3081,7 +3081,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   140:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3103,7 +3103,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   141:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3125,7 +3125,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   142:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3147,7 +3147,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   143:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3169,7 +3169,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   144:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3191,7 +3191,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   145:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3213,7 +3213,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   146:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3235,7 +3235,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   147:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3257,7 +3257,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   148:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3279,7 +3279,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   149:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3301,7 +3301,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   150:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3323,7 +3323,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   151:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3345,7 +3345,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   152:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3367,7 +3367,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   153:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3389,7 +3389,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   154:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3411,7 +3411,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   155:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3433,7 +3433,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   156:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3455,7 +3455,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   157:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3477,7 +3477,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   158:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3499,7 +3499,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   159:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3521,7 +3521,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   160:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3543,7 +3543,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   161:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3565,7 +3565,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   162:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3587,7 +3587,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   163:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3609,7 +3609,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   164:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3631,7 +3631,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   165:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3653,7 +3653,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   166:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3675,7 +3675,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   167:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3697,7 +3697,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   168:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3719,7 +3719,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   169:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3741,7 +3741,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   170:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3763,7 +3763,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   171:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3785,7 +3785,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   172:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3807,7 +3807,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   173:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3829,7 +3829,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   174:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3851,7 +3851,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   175:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3873,7 +3873,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   176:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3895,7 +3895,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   177:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3917,7 +3917,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   178:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3939,7 +3939,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   179:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3961,7 +3961,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   180:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -3983,7 +3983,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   181:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4005,7 +4005,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   182:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4027,7 +4027,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   183:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4049,7 +4049,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   184:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4071,7 +4071,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   185:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4093,7 +4093,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   186:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4115,7 +4115,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   187:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4137,7 +4137,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   188:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4159,7 +4159,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   189:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4181,7 +4181,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   190:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4203,7 +4203,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   191:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4225,7 +4225,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   192:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4247,7 +4247,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   193:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4269,7 +4269,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   194:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4291,7 +4291,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   195:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4313,7 +4313,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   196:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4335,7 +4335,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   197:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4357,7 +4357,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   198:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4379,7 +4379,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   199:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4401,7 +4401,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   200:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4423,7 +4423,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   201:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4445,7 +4445,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   202:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4467,7 +4467,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   203:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4489,7 +4489,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   204:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4511,7 +4511,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   205:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4533,7 +4533,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   206:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4555,7 +4555,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   207:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4577,7 +4577,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   208:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4599,7 +4599,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   209:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4621,7 +4621,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   210:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4643,7 +4643,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   211:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4665,7 +4665,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   212:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4687,7 +4687,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   213:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4709,7 +4709,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   214:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4731,7 +4731,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   215:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4753,7 +4753,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   216:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4775,7 +4775,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   217:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4797,7 +4797,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   218:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4819,7 +4819,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   219:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4841,7 +4841,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   220:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4863,7 +4863,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   221:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4885,7 +4885,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   222:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4907,7 +4907,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   223:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4929,7 +4929,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   224:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4951,7 +4951,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   225:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4973,7 +4973,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   226:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -4995,7 +4995,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   227:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5017,7 +5017,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   228:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5039,7 +5039,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   229:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5061,7 +5061,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   230:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5083,7 +5083,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   231:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5105,7 +5105,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   232:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5127,7 +5127,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   233:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5149,7 +5149,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   234:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5171,7 +5171,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   235:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5193,7 +5193,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   236:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5215,7 +5215,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   237:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5237,7 +5237,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   238:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5259,7 +5259,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   239:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5281,7 +5281,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   240:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5303,7 +5303,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   241:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5325,7 +5325,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   242:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5347,7 +5347,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   243:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5369,7 +5369,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   244:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5391,7 +5391,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   245:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5413,7 +5413,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   246:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5435,7 +5435,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   247:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5457,7 +5457,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   248:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5479,7 +5479,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
   249:
     AssetName: storage_RC.fbx
     AssetType: Model
@@ -5501,7 +5501,7 @@ Models:
     TreatMissingTexturesAsTransparent: false
     ShaderOverrideIndex: -1
     AttachedScripts:
-      0: 0
+      {}
 DirectionalLights:
   {}
 PointLights:
@@ -5625,15 +5625,15 @@ SceneCameras:
   0:
     AssetName: New Camera
     AssetType: SceneCamera
-    PosX: -6.93811941
+    PosX: -3.6999507
     PosY: 0
-    PosZ: -0.928709447
-    RotX: 5857.21973
-    RotY: -2342.88794
+    PosZ: -5.94225264
+    RotX: 2495.42163
+    RotY: -998.16864
     RotZ: 0
     NearClip: 0.00999999978
     FarClip: 100
-    FOV: 95.7799911
+    FOV: 133.843369
     EnforceAspectRatio: false
     AspectRatio: 1.25
     StreamingPriority: 1

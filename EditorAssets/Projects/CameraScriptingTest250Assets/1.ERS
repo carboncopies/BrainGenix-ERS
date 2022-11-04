@@ -1,12 +1,12 @@
-ProjectName: ERS Test Project
-ProjectDescription: Test development scene for EGSC.
+ProjectName: Camera Scripting API Test (250 Models)
+ProjectDescription: This is a test project used to validate the camera's scripting API.
 ProjectVersion: 1.0.0
 ProjectCreationDate: 0000-00-00 00-00-00
-ProjectModificationDate: 2022-10-29 02-07-48
+ProjectModificationDate: 2022-11-04 06-44-19
 ProjectCreator: BrainGenix-ERS Development Team
 ProjectLicense: AGPL-V3.0 Or Higher
 IsLicenseProprietary: false
-PlayOnLoad: false
+PlayOnLoad: true
 SceneIDs:
   0: 1744105170
 DefaultScene: 0
@@ -122,4 +122,4 @@ ShaderPrograms:
 Scripts:
   0:
     Name: Untitled Script
-    AssetID: 2022322060
+    AssetID: 2112322259
