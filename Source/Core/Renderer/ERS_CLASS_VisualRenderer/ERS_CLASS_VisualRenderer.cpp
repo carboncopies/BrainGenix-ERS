@@ -330,7 +330,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             long ScriptIndex = Model->AttachedScriptIndexes_[x];
         
             if (ScriptIndex > -1 && ScriptIndex < ProjectUtils_->ProjectManager_->Project_.Scripts.size()) {
-                NewIndexes.push_back(ScriptIndex)
+                NewIndexes.push_back(ScriptIndex);
             }
 
         }
