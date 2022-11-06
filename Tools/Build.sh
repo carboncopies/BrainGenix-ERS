@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Get Into Root Repo Dir
 echo "[ERS BUILD HELPER] - Entering Root Repo Directory"
 cd ..
