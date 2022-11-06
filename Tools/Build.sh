@@ -3,6 +3,12 @@ echo "[ERS BUILD HELPER] - Entering Root Repo Directory"
 cd ..
 
 
+# Configure Build Type
+BuildType = "Debug"
+if (($S >= 2))
+    BuildType = $2
+fi
+
 # Delete Binary If Exists 
 echo "[ERS BUILD HELPER] - Checking If Binary Exists"
 if [ -f "Binaries/BrainGenix-ERS" ]
@@ -37,7 +43,7 @@ fi
 
 # Build Files
 echo "[ERS BUILD HELPER] - Building, Please Wait. This may take some time"
-cmake --build . --target BrainGenix-ERS -j $1
+cmake --build . --target BrainGenix-ERS -j $1 --config BuildType 
 
 
 # Run Program
