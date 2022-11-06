@@ -6,6 +6,7 @@ cd ..
 # Configure Build Type
 BuildType = "Debug"
 if (($S >= 2))
+then
     BuildType = $2
 fi
 
