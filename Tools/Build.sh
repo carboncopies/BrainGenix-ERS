@@ -6,10 +6,10 @@ cd ..
 
 
 # Configure Build Type
-BuildType = "Debug"
+BuildType="Debug"
 if (($# >= 2))
 then
-    BuildType = $2
+    BuildType=$2
     echo "[ERS BUILD HELPER] - Building in user-specified $BuildType mode."
 else
     echo "[ERS BUILD HELPER] - Did not get specified build configuration, building in $BuildType mode."
