@@ -26,6 +26,7 @@ else
 fi
 
 
+
 # Check If Configuration Needs To Be Run
 echo "[ERS BUILD HELPER] - Checking If Build Directory Already Exists"
 if [ -d "Build" ]
@@ -44,6 +45,10 @@ else
     # Make Only BrainGenix-ERS
     echo "[ERS BUILD HELPER] - Configuring Build Files"
     cmake .. -D CMAKE_BUILD_TYPE=$BuildType
+
+    # Set Config Var
+    echo "[ERS BUILD HELPER] - Saving Build Type Configuration Of $BuildType"
+    echo "$BuildType" > "BuildType"
 fi
 
 
