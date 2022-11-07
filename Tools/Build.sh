@@ -43,14 +43,13 @@ else
 
     # Make Only BrainGenix-ERS
     echo "[ERS BUILD HELPER] - Configuring Build Files"
-    cmake ..
+    cmake .. -D CMAKE_BUILD_TYPE=$BuildType
 fi
 
 
 # Build Files
 echo "[ERS BUILD HELPER] - Building, Please Wait. This may take some time"
-cmake -S . -D CMAKE_BUILD_TYPE=Release
-cmake --build . --target BrainGenix-ERS --parallel $1 --config $BuildType
+cmake --build . --target BrainGenix-ERS --parallel $1
 
 
 # Run Program
