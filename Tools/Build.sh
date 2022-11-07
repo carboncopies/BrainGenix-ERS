@@ -25,6 +25,14 @@ else
     echo "[ERS BUILD HELPER] - No Binaries To Clean"
 fi
 
+# Check If Build Type Correct
+if grep -q $BuildType "Build/BuildType"
+then
+    echo "[ERS BUILD HELPER] - Detected Matching Build Type"
+else
+    echo "[ERS BUILD HELPER] - Build Type Mismatch, Cleaning First"
+    rm -rf Build/
+fi
 
 
 # Check If Configuration Needs To Be Run
