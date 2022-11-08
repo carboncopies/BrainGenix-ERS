@@ -103,6 +103,7 @@ set( Boost_LIBRARY_DIR ${INSTALL_DEPENDENCIES_DIR}/lib )
 
 message(STATUS "Set Boost Include Directory To '${Boost_INCLUDE_DIR}'")
 message(STATUS "Set Boost Library Directory To '${Boost_LIBRARY_DIR}'")
+message(STATUS ${Boost_LIBRARIES})
 
 
 # set(BOOST_LIBS_TO_BUILD
