@@ -21,6 +21,7 @@
 #include <cppfs/FileIterator.h>
 #include <cppfs/FileVisitor.h>
 #include <cppfs/FunctionalFileVisitor.h>
+#include <cppfs/FileWatcher.h>
 #include <cppfs/Tree.h>
 #include <cppfs/AbstractFileSystem.h>
 #include <cppfs/AbstractFileHandleBackend.h>
@@ -76,6 +77,11 @@ FileHandle & FileHandle::operator=(FileHandle && fileHandle)
     return *this;
 }
 
+AbstractFileSystem * FileHandle::fs() const
+{
+    return m_backend ? m_backend->fs() : nullptr;
+}
+
 std::string FileHandle::path() const
 {
     return m_backend ? m_backend->path() : "";
@@ -118,13 +124,13 @@ std::vector<std::string> FileHandle::listFiles() const
 
 void FileHandle::traverse(VisitFunc funcFileEntry)
 {
-    FunctionalFileVisitor visitor(funcFileEntry);
+    FunctionalFileVisitor visitor(std::move(funcFileEntry));
     traverse(visitor);
 }
 
 void FileHandle::traverse(VisitFunc funcFile, VisitFunc funcDirectory)
 {
-    FunctionalFileVisitor visitor(funcFile, funcDirectory);
+    FunctionalFileVisitor visitor(std::move(funcFile), std::move(funcDirectory));
     traverse(visitor);
 }
 
@@ -424,10 +430,16 @@ void FileHandle::copyDirectoryRec(FileHandle & dstDir)
     }
 }
 
-void FileHandle::removeDirectoryRec()
+void FileHandle::removeDirectoryRec(bool followSymlinks)
 {
     // Check directory
     if (!isDirectory()) {
+        return;
+    }
+
+    // Check symlink
+    if (isSymbolicLink() && !followSymlinks) {
+        remove();
         return;
     }
 
@@ -438,7 +450,10 @@ void FileHandle::removeDirectoryRec()
 
         if (fh.isDirectory())
         {
-            fh.removeDirectoryRec();
+            if (fh.isSymbolicLink() && !followSymlinks)
+                fh.remove();
+            else
+                fh.removeDirectoryRec(followSymlinks);
         }
 
         else if (fh.isFile())
@@ -448,7 +463,10 @@ void FileHandle::removeDirectoryRec()
     }
 
     // Remove directory
-    removeDirectory();
+    if (isSymbolicLink())
+        remove();
+    else
+        removeDirectory();
 }
 
 bool FileHandle::copy(FileHandle & dest)
@@ -577,6 +595,16 @@ bool FileHandle::remove()
 
     // Update file information
     return true;
+}
+
+FileWatcher FileHandle::watch(unsigned int events, RecursiveMode recursive)
+{
+    // Create file system watcher
+    FileWatcher watcher(fs());
+    watcher.add(*this, events, recursive);
+
+    // Return watcher
+    return std::move(watcher);
 }
 
 std::unique_ptr<std::istream> FileHandle::createInputStream(std::ios_base::openmode mode) const

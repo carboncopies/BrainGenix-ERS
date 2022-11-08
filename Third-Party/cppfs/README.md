@@ -4,10 +4,11 @@
 
 *cppfs* is a cross-platform C++ library that provides an object-oriented abstraction for working with files and the file system. 
 
-![GitHub release](https://img.shields.io/github/release/cginternals/cppfs.svg)
+![GitHub release](https://img.shields.io/github/release/cginternals/cppfs.svg) 
 [![Travis](https://img.shields.io/travis/cginternals/cppfs/master.svg?style=flat&logo=travis)](https://travis-ci.org/cginternals/cppfs)
 [![Appveyor](https://img.shields.io/appveyor/ci/scheibel/cppfs/master.svg?style=flat&logo=appveyor)](https://ci.appveyor.com/project/scheibel/cppfs/branch/master)
 [![Tokei](https://tokei.rs/b1/github/cginternals/cppfs)](https://github.com/Aaronepower/tokei)
+[![Tokei](https://tokei.rs/b1/github/cginternals/cppfs?category=comments)](https://github.com/Aaronepower/tokei)
 
 *cppfs* can be used not only to access the local file system, but for remote and virtual file systems as well.
 By specializing the virtual backend interface, *cppfs* can be easily extended to support additional
@@ -37,13 +38,13 @@ The following backends are currently implemented:
  * [File trees and diffs](#file-trees-and-diffs)
 
 
-## Build Instructions
+# Build Instructions
 
 Please follow our [CMake project setup guide](https://github.com/cginternals/cmake-init/wiki/Setup-Guide)
 to setup and build *cppfs*.
 
 
-## Basic Examples
+# Basic Examples
 
 Opening files and checking for existence and type:
 
@@ -109,7 +110,7 @@ void lstDir(const std::string & path)
 ```
 
 
-## Features
+# Features
 
 ### Paths and URLs
 
