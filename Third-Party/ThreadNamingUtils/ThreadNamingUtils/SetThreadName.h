@@ -20,4 +20,9 @@ void SetThreadName(const char* ThreadName);
 void SetThreadName(std::string ThreadName);
 void SetThreadName(const char* ThreadName);
 
+#else // Unsupported platform
+
+void SetThreadName(std::string ThreadName);
+void SetThreadName(const char* ThreadName);
+
 #endif

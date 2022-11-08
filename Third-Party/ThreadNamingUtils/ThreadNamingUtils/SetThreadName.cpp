@@ -22,4 +22,11 @@ void SetThreadName(const char* ThreadName) {
     prctl(PR_SET_NAME,ThreadName,0,0,0);
 }
 
+#else // Otherwise On Unsupported Platform
+
+void SetThreadName(std::string ThreadName) {
+}
+void SetThreadName(const char* ThreadName) {
+}
+
 #endif
