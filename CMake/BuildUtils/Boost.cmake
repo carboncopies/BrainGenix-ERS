@@ -60,7 +60,6 @@ elseif(${BUILD_SHARED_LIBS} MATCHES ON)
 endif()
 
 set(INSTALL_DEPENDENCIES_DIR ${BIN_DIR}/ThirdParty/Boost)
-message(STATUS "Set Boost Include Directory To '${Boost_INCLUDE_DIR}'")
 
 ExternalProject_Add(Boost
   BUILD_IN_SOURCE 1
@@ -81,6 +80,9 @@ else()
 endif()
 
 set( Boost_LIBRARY_DIR ${INSTALL_DEPENDENCIES_DIR}/lib )
+
+
+message(STATUS "Set Boost Include Directory To '${Boost_INCLUDE_DIR}'")
 
 
 # set(BOOST_LIBS_TO_BUILD
