@@ -64,6 +64,26 @@ ExternalProject_Add(Boost
   SOURCE_DIR ${LIB_DIR}/boost
 #   URL ${Boost_url}
 #   URL_MD5 ${Boost_md5}
+
+
+    # Show Output To Terminal
+    LOG_DOWNLOAD TRUE
+    LOG_UPDATE TRUE
+    LOG_PATCH TRUE
+    LOG_CONFIGURE TRUE
+    LOG_BUILD TRUE
+    LOG_INSTALL TRUE
+    LOG_TEST TRUE
+    LOG_MERGED_STDOUTERR TRUE
+
+    USES_TERMINAL_DOWNLOAD TRUE
+    USES_TERMINAL_UPDATE TRUE
+    USES_TERMINAL_PATCH TRUE
+    USES_TERMINAL_CONFIGURE TRUE
+    USES_TERMINAL_BUILD TRUE
+    USES_TERMINAL_INSTALL TRUE
+    USES_TERMINAL_TEST TRUE
+
   UPDATE_COMMAND ""
   CONFIGURE_COMMAND ${Boost_Bootstrap_Command} --prefix=${INSTALL_DEPENDENCIES_DIR}/lib
   BUILD_COMMAND ${Boost_b2_Command} install -j8 --prefix=${INSTALL_DEPENDENCIES_DIR} --with-thread --with-filesystem --with-system --with-date_time --with-program_options  --with-atomic  address-model=${Boost_address_model} link=static,shared ${boost_toolset}
