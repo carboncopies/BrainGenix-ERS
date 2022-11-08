@@ -9,7 +9,6 @@ cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 cmake_policy(SET CMP0120 NEW) # Modifed by ERS Team
 cmake_policy(SET CMP0037 NEW) # Modifed by ERS Team
-set(CMAKE_POLICY_DEFAULT_CMP0037 NEW) # Modifed by ERS Team
 
 
 
@@ -71,11 +70,11 @@ string(TOUPPER ${META_PROJECT_ID} META_PROJECT_ID)
 
 # Project options
 option(BUILD_SHARED_LIBS               "Build shared instead of static libraries."              ON)
-option(OPTION_SELF_CONTAINED           "Create a self-contained install with all dependencies." OFF)
-option(OPTION_BUILD_TESTS              "Build tests."                                           ON)
+option(OPTION_SELF_CONTAINED           "Create a self-contained install with all dependencies." ON)
+option(OPTION_BUILD_TESTS              "Build tests."                                           OFF)
 option(OPTION_BUILD_DOCS               "Build documentation."                                   OFF)
 option(OPTION_BUILD_EXAMPLES           "Build examples."                                        OFF)
-option(OPTION_BUILD_SSH_BACKEND        "Build SSH backend"                                      OFF)
+option(OPTION_BUILD_SSH_BACKEND        "Build SSH backend"                                      ON)
 option(OPTION_FORCE_SYSTEM_DIR_INSTALL "Force system dir install"                               OFF)
 
 
