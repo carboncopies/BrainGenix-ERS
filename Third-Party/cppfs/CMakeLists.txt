@@ -9,7 +9,7 @@ cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 cmake_policy(SET CMP0120 NEW) # Modifed by ERS Team
 cmake_policy(SET CMP0037 NEW) # Modifed by ERS Team
-set(CMAKE_POLICY_DEFAULT_CMP0077 NEW) # Modifed by ERS Team
+set(CMAKE_POLICY_DEFAULT_CMP0037 NEW) # Modifed by ERS Team
 
 
 
