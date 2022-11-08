@@ -42,3 +42,5 @@ Binaries.tar.gz
 *.exe
 *.out
 *.app
+Third-Party/.DS_Store
+.DS_Store
