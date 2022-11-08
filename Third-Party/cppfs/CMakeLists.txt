@@ -6,6 +6,12 @@
 # CMake version
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
+
+cmake_policy(SET CMP0120 NEW) # Modifed by ERS Team
+
+
+
+
 # Include cmake modules
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
@@ -28,7 +34,6 @@ set_policy(CMP0054 NEW) # ENABLE CMP0054: Only interpret if() arguments as varia
 set_policy(CMP0042 NEW) # ENABLE CMP0042: MACOSX_RPATH is enabled by default.
 set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all target types.
 
-cmake_policy(SET CMP0120 NEW) # Modifed by ERS Team
 
 #
 # Project description and (meta) information
