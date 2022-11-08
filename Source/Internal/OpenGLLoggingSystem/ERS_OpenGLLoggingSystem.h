@@ -53,7 +53,7 @@ public:
     bool LogSeverityHigh_ =             true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
     bool LogSeverityMedium_ =           true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
     bool LogSeverityLow_ =              true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
-    bool LogSeverityNotification_ =    false; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
+    bool LogSeverityNotification_ =     true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
 
     bool LogTypeError_ =                true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/
     bool LogTypeDeprecatedBehavior_ =   true; /**<Parameter Passed To Message Callback System Controlling Log Verbosity*/

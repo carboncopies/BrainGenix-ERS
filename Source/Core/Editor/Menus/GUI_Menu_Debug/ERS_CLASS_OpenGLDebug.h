@@ -33,7 +33,7 @@ private:
     ERS_STRUCT_SystemUtils*                  SystemUtils_ = nullptr;   /**<SystemUtils Instance, Used To Get Systems From Other Classes*/
     std::unique_ptr<ERS_OpenGLLoggingSystem> ERS_OpenGLLoggingSystem_; /**<Logging System Used To Get OpenGL Callback Data*/
 
-    bool DebugEnabled_ = false; /**<Used To Toggle On Or Off The Associated GL_DEBUG_OUTPUT Enum*/
+    bool DebugEnabled_ = true; /**<Used To Toggle On Or Off The Associated GL_DEBUG_OUTPUT Enum*/
 
 
 public:

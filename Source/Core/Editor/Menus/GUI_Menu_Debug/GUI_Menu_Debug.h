@@ -39,7 +39,7 @@ private:
     std::unique_ptr<ERS_CLASS_OpenGLDebug> ERS_CLASS_OpenGLDebug_;           /**<Class used to draw the opengl debug menu into the main debug menu*/
 
     bool ShowImGuiDemoWindow_ = false; /**<Show/hide ImGui DemoWindow*/
-    bool DebugMenuEnabled_ = false; /**Enable/Disable Debug Menu*/
+    bool DebugMenuEnabled_ = true; /**Enable/Disable Debug Menu*/
 
 
 public:
