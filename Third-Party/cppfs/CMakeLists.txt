@@ -28,6 +28,7 @@ set_policy(CMP0054 NEW) # ENABLE CMP0054: Only interpret if() arguments as varia
 set_policy(CMP0042 NEW) # ENABLE CMP0042: MACOSX_RPATH is enabled by default.
 set_policy(CMP0063 NEW) # ENABLE CMP0063: Honor visibility properties for all target types.
 
+set_policy(CMP0120 NEW) # modified by ERS Team
 
 #
 # Project description and (meta) information
