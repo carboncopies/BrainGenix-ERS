@@ -17,8 +17,7 @@
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_opengl3.h>
 
-#include <cppfs/fs.h>
-#include <cppfs/FileHandle.h>
+#include <boost/filesystem.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_LoggingSystem.h>
