@@ -22,7 +22,7 @@ GUI_Window_ShaderEditor::GUI_Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemU
 
 
     // Set Default Shader Text
-    NewShaderVertexText_ = "#version 420 core\n"
+    NewShaderVertexText_ = "#version 410 core\n"
     "layout (location = 0) in vec3 aPos;\n"
     "layout (location = 1) in vec3 aNormal;\n"
     "layout (location = 2) in vec2 aTexCoords;\n"
@@ -49,7 +49,7 @@ GUI_Window_ShaderEditor::GUI_Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemU
     "    gl_Position = projection * view * model * vec4(aPos, 1.0);\n"
     "}\n";
 
-    NewshaderFragmentText_ = "#version 420 core\n"
+    NewshaderFragmentText_ = "#version 410 core\n"
     "out vec4 FragColor;\n"
     "\n"
     "in vec2 TexCoords;\n"
