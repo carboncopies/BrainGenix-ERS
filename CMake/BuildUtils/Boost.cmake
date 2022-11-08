@@ -9,8 +9,7 @@ include(ExternalProject)
 
 ERSBuildLogger(${Green} "Configuring Boost Library")
 
-set(OGS_BOOST_URL "http://sourceforge.net/projects/boost/files/boost/1.58.0/boost_1_58_0.tar.bz2/download")
-set(OGS_BOOST_MD5 "b8839650e61e9c1c0a89f371dd475546")
+set(BOOST_URL "http://sourceforge.net/projects/boost/files/boost/1.58.0/boost_1_58_0.tar.bz2/download")
 set(BOOST_LIBS_TO_BUILD
 	# chrono
 	# context
@@ -94,8 +93,7 @@ include(ProcessorCount)
 ProcessorCount(N)
 
 ExternalProject_Add(boost
-	URL ${OGS_BOOST_URL}
-	URL_MD5 ${OGS_BOOST_MD5}
+	URL ${BOOST_URL}
 	UPDATE_COMMAND "${BOOST_UPDATE_COMMAND}"
 	CONFIGURE_COMMAND ""
 	BUILD_COMMAND ./b2 ${BOOST_LIBS_TO_BUILD_CMD} -j ${N} ${NUM_PROCESSORS} toolset=${BOOST_TOOLSET} link=static stage ${BOOST_CONFIG_OPTIONS}
@@ -103,7 +101,7 @@ ExternalProject_Add(boost
 	INSTALL_COMMAND ""
 )
 ExternalProject_Get_Property( boost binary_dir )
-set(boost_BINARY_DIR ${binary_dir} CACHE PATH "" FORCE)
+set(boost_BINARY_DIR ${BIN_DIR} CACHE PATH "" FORCE)
 
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Boost Library")
