@@ -1,4 +1,7 @@
 
+cmake_policy(SET CMP0037 NEW) # Modifed by ERS Team
+
+
 # Set policy if policy is available
 function(set_policy POL VAL)
 
