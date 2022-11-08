@@ -100,7 +100,7 @@ ExternalProject_Add(boost
 	INSTALL_COMMAND ""
 )
 ExternalProject_Get_Property( boost binary_dir )
-set(boost_BINARY_DIR ${BIN_DIR} CACHE PATH "" FORCE)
+# set(boost_BINARY_DIR ${BIN_DIR} CACHE PATH "" FORCE)
 
 message(STATUS ${Boost_LIBRARIES})
 include_directories(${Boost_INCLUDE_DIRS})
