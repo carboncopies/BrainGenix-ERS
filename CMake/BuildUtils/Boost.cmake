@@ -2,6 +2,11 @@
 # Builds Library For ERS #
 ##########################
 
+
+include(ExternalProject)
+
+
+
 ERSBuildLogger(${Green} "Configuring Boost Library")
 
 set(OGS_BOOST_URL "http://sourceforge.net/projects/boost/files/boost/1.58.0/boost_1_58_0.tar.bz2/download")
