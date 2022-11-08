@@ -8,6 +8,7 @@ Build-Tools/
 Source/Shaders/SPIR-V/
 .vs/
 .vscode/
+.DS_Store
 Binaries.tar.gz
 
 # Prerequisites
