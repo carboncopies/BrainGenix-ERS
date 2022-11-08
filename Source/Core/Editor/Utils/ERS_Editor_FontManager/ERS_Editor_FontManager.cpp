@@ -34,7 +34,7 @@ void ERS_CLASS_FontManager::IndexFonts() {
     Logger_->Log(std::string(std::string("Indexing Fonts In Dir: ") + std::string(FontsDirectoryPath_)).c_str(), 4);
 
 
-    for (const auto &Entry : std::filesystem::recursive_directory_iterator(std::string(FontsDirectoryPath_))) {
+    for (const auto &Entry : ghc::filesystem::recursive_directory_iterator(std::string(FontsDirectoryPath_))) {
 
         std::string FilePath{Entry.path().u8string()};
         if ((EndsWith(FilePath, ".ttf")) || (EndsWith(FilePath, ".otf"))) {
