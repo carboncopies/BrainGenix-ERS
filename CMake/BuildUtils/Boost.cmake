@@ -60,8 +60,9 @@ endif()
 set(INSTALL_DEPENDENCIES_DIR ${BIN_DIR}/ThirdParty/Boost)
 
 ExternalProject_Add(Boost
-  BUILD_IN_SOURCE 1
-  SOURCE_DIR ${LIB_DIR}/boost
+    BUILD_IN_SOURCE 1
+    SOURCE_DIR ${LIB_DIR}/boost
+#     BINARY_DIR ${BIN_DIR}/boost
 #   URL ${Boost_url}
 #   URL_MD5 ${Boost_md5}
 
@@ -84,10 +85,10 @@ ExternalProject_Add(Boost
     USES_TERMINAL_INSTALL TRUE
     USES_TERMINAL_TEST TRUE
 
-  UPDATE_COMMAND ""
-  CONFIGURE_COMMAND ${Boost_Bootstrap_Command} --prefix=${INSTALL_DEPENDENCIES_DIR}/lib
-  BUILD_COMMAND ${Boost_b2_Command} install -j8 --prefix=${INSTALL_DEPENDENCIES_DIR} --with-thread --with-filesystem --with-system --with-date_time --with-program_options  --with-atomic  address-model=${Boost_address_model} link=static,shared ${boost_toolset}
-  INSTALL_COMMAND ""
+    UPDATE_COMMAND ""
+    CONFIGURE_COMMAND ${Boost_Bootstrap_Command} --prefix=${INSTALL_DEPENDENCIES_DIR}/lib
+    BUILD_COMMAND ${Boost_b2_Command} install -j8 --prefix=${INSTALL_DEPENDENCIES_DIR} --with-thread --with-filesystem --with-system --with-date_time --with-program_options  --with-atomic  address-model=${Boost_address_model} link=static,shared ${boost_toolset}
+    INSTALL_COMMAND ""
 )
 
 if( WIN32 )
