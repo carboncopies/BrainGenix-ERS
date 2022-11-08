@@ -5,9 +5,13 @@ project(
 	VERSION "0.4.0"
 	LANGUAGES CXX
 	)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Set Configuration Options
 option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace information or not" ON)
+
+
 
 
 # Set Dirs
@@ -54,7 +58,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/FreeImage.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Assimp.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
+#include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/OZZ-Animation.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/MeshOptimizer.cmake)
