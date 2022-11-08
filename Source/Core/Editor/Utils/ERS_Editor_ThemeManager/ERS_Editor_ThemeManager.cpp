@@ -56,7 +56,7 @@ void ERS_CLASS_ThemeManager::LoadThemes() {
     ThemeFiles_ = *new std::vector<YAML::Node>;
 
     // Create List Of Files
-    for (const auto &Entry : std::filesystem::directory_iterator(std::string(ThemePath_))) {
+    for (const auto &Entry : ghc::filesystem::directory_iterator(std::string(ThemePath_))) {
 
         // Get File Path        
         std::string FilePath{Entry.path().u8string()};

@@ -8,13 +8,15 @@
 // Standard Libraries (BG convention: use <> instead of "")
 #include <vector>
 #include <iostream>
-#include <filesystem>
 #include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
 #include <imgui.h>
+
+#include <ghc/filesystem.hpp>
+
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_LoggingSystem.h>
