@@ -10,6 +10,7 @@ add_library(learnopengl
             "model.h"
             "shader.h"
             "mesh.h"
+            "empty.cpp"
 
             ${BACKWARD_ENABLE}
 )
