@@ -226,10 +226,5 @@ target_link_libraries(${PROJECT_NAME}
   )
 
 
-
-# Set Configuration Based On Platform
-if (WIN32 OR APPLE)
-  configure_file("${SRC_DIR}/Config-Windows.yaml" "${BIN_DIR}/Config.yaml" COPYONLY)
-else()
-  configure_file("${SRC_DIR}/Config-Linux.yaml" "${BIN_DIR}/Config.yaml" COPYONLY)
-endif()
+# Run Configuration On EditorAssetBundle
+include(${CMAKE_SCRIPTS_DIR}/EditorAssetBundle/EditorAssetBundle.cmake)
