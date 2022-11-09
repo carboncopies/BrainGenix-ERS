@@ -48,4 +48,5 @@ target_link_libraries(${PROJECT_NAME}
 
 # COPY FILES TO BINARY DIR
 file(COPY "${SRC_DIR}/Shaders/" DESTINATION "${BIN_DIR}/")
-file(COPY "${SRC_DIR}/Resources/Container.png" DESTINATION "${BIN_DIR}/")
+file(COPY "${SRC_DIR}/Resources/container2.png" DESTINATION "${BIN_DIR}/")
+file(COPY "${SRC_DIR}/Resources/container2_specular.png" DESTINATION "${BIN_DIR}/")
