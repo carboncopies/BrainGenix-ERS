@@ -11,27 +11,24 @@ namespace Module {
 
 
 
-bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
+std::string GetExecutablePath() {
 
-    // Attempt Load
-    try {
-        Configuration = YAML::LoadFile("Config.yaml");
-        return true;
-    } catch (YAML::BadFile&) {
-        std::cout<<"Failed to Load File 'Config.yaml' Is ERS Being Run In The Right Working Directory?"<<std::endl;
+    char* Path = NULL;
+    int Length, DirectoryNameLength;
+    Length = wai_getExecutablePath(NULL, 0, &DirectoryNameLength);
 
-        std::cout<<"\n";
-        std::cout<<"-- Current Working Directory's Files --"<<std::endl;
-        for (const auto & entry : ghc::filesystem::directory_iterator(".")) {
-            std::cout << entry.path() << " ";
-        }
-        std::cout<<"\n\n";
-
-        std::cout<<"Fatal Error - Exiting!\n";
-        return false;
-    }
-
+    return std::string(Path);
 }
+
+
+std::string GetExecutableDirectory() {
+    char* Path = NULL;
+    int Length, DirectoryNameLength;
+    Length = wai_getModulePath(NULL, 0, &DirectoryNameLength);
+
+    return std::string(Path);
+}
+
 
 
 
