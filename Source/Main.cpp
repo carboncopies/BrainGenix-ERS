@@ -14,7 +14,6 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <Tracy.hpp>
 
-#include <yaml-cpp/yaml.h>
 
 #include <glad/glad.h>
 
@@ -72,7 +71,7 @@ int main(int NumArguments, char** ArguemntValues) {
     SystemUtils->SystemShouldRun_ = std::make_unique<bool>(true);
 
     // Load Local System Configuration File
-    SystemUtils->LocalSystemConfiguration_ = std::make_unique<YAML::Node>(YAML::LoadFile("Config.yaml"));
+    SystemUtils->LocalSystemConfiguration_ = 
 
     // Instantiate Logging Subsystem
     SystemUtils->Logger_ = std::make_unique<ERS_LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());

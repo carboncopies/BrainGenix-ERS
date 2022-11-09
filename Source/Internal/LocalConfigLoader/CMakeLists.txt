@@ -1,0 +1,27 @@
+########################################################################
+# This file is part of the BrainGenix-ERS Environment Rendering System #
+########################################################################
+
+
+# Create Library (Name Should Be Parent Dir Name)
+add_library(ERS_LocalConfigLoader
+
+            # Add Source Files (.cpp)
+            "ERS_LocalConfigLoader.cpp"
+
+            # Add Header Files (.h)
+            "ERS_LocalConfigLoader.h"
+            
+            ${BACKWARD_ENABLE}
+            )
+
+# Link 3rd Party Libs
+target_link_libraries(ERS_LocalConfigLoader
+    yaml-cpp
+    )
+
+# Link Internal Libs
+target_link_libraries(ERS_LocalConfigLoader
+    )
+
+target_include_directories(ERS_LocalConfigLoader PUBLIC ./)
