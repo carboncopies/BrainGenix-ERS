@@ -87,10 +87,10 @@ cmake --build . --target BrainGenix-ERS --parallel $1
 # Run Program
 cd ../Binaries
 echo "[ERS BUILD HELPER] - Checking If Binary Exists"
-if [ -f "BrainGenix-ERS" ]
+if [ -f "BrainGenix-ERS.app" ]
 then
     echo "[ERS BUILD HELPER] - Running Program"
-    ./BrainGenix-ERS
+    open BrainGenix-ERS.app
 else
     echo "[ERS BUILD HELPER] - Build Failed! Exiting"
 fi

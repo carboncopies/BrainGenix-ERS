@@ -24,7 +24,7 @@ then
     ./BrainGenix-ERS
 elif ${Machine} == "Mac"
 then
-    bash BrainGenix-ERS
+    open BrainGenix-ERS.app
 else
     echo "Unknown Platform, Cannot Run Executable"
 fi

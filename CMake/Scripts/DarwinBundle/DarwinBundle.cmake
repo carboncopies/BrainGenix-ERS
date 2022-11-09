@@ -5,7 +5,7 @@
 ERSBuildLogger(${Cyan} "Configuring Darwin Bundle System")
 
 # Configure Variables For Use In Bundle
-set(DEVELOPMENT_LANGUAGE "CPP")
+set(DEVELOPMENT_LANGUAGE "en")
 set(EXECUTABLE_NAME ${PROJECT_NAME})
 set(MACOS_ICON_PATH "${CMAKE_CURRENTSOURCE_DIR}/EditorAssets/Icons/ProgramIcon/Icon.svg")
 set(PRODUCT_BUNDLE_IDENTIFIER "ProductBundleIdentifer")
