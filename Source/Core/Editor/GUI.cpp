@@ -36,7 +36,7 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, Cu
 
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(Window, true);
-    ImGui_ImplOpenGL3_Init("#version 440 core");
+    ImGui_ImplOpenGL3_Init("#version 410 core");
 
     // Setup WindowManager Class
     WindowManager_ = std::make_unique<ERS_CLASS_WindowManager>(SystemUtils_);
@@ -120,6 +120,8 @@ void GUISystem::DeferredFrameUpdate() {
 
 
 void GUISystem::UpdateFrame() {
+
+
 
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

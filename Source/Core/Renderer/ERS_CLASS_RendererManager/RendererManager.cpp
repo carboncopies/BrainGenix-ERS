@@ -195,6 +195,7 @@ void RendererManager::InitializeGLFW() {
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
 
+
     // Log Any Issues
     ReportOpenGLErrors();
 
@@ -218,7 +219,6 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
     // Update Scene
     ProjectUtils_->ModelLoader_->ProcessNewModels(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get());
-
     // Update IO
     glfwGetWindowSize(Window_, &WindowWidth_, &WindowHeight_);
     glfwPollEvents();
@@ -245,7 +245,6 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     glClear(GL_COLOR_BUFFER_BIT);
     GuiSystem_->UpdateFrame();
     
-
     // Update Window Stuff
     glfwSwapBuffers(Window_);
 
