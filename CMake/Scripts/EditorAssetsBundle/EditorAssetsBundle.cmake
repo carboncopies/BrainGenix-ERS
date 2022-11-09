@@ -19,7 +19,7 @@ message(STATUS "Set Editor Resources Path To '${EDITOR_RESOURCES_DIR}'")
 
 # Configure Variables
 message(STATUS "Configuring Config.yaml.in")
-message(STATUS "")
+message(STATUS "--------------------")
 set(DEFAULT_PROJECT_DIRECTORY "EditorAssets/Projects/DefaultProject/")
 message(STATUS "Set DEFAULT_PROJECT_DIRECTORY to '${DEFAULT_PROJECT_DIRECTORY}'")
 set(IS_LINUX "True")
@@ -27,13 +27,13 @@ if (WIN32 OR APPLE)
     set(IS_LINUX "False")
 endif()
 message(STATUS "Set IS_LINUX to '${IS_LINUX}'")
-message(STATUS "")
+message(STATUS "--------------------")
 
 
 
 # Set Config
 message(STATUS "Generating Configuration File")
-configure_File(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/Config.yaml.in ${BIN_DIR}/Config.yaml)
+configure_File(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/Config.yaml.in ${DEFAULT_PROJECT_DIRECTORY}/Config.yaml)
 
 
 # Copy Regular Files To Output Directory
