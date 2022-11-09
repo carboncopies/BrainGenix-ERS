@@ -17,8 +17,7 @@ add_library(ERS_GetExecutablePath
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_GetExecutablePath
-    yaml-cpp
-    ghc_filesystem
+    whereami
     )
 
 # Link Internal Libs
