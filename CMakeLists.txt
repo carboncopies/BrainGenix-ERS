@@ -190,7 +190,6 @@ endif()
 target_link_libraries(${PROJECT_NAME}
 
   # Third Party Libs
-  yaml-cpp
   glad
   glfw
   TracyClient
@@ -201,6 +200,7 @@ target_link_libraries(${PROJECT_NAME}
   ERS_GPURequest
   ERS_LoggingSystem
   ERS_ModelImporter
+  ERS_LocalConfigLoader
 
 
   ERS_HardwareInformation
