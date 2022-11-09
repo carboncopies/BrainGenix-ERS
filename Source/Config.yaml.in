@@ -13,7 +13,7 @@ MaxFramesInFlight: 2
 
 # System Settings
 ShowEditorDebugMenu: True
-IsLinux: False
+IsLinux: ${IS_LINUX}
 
 # Database Loading Settings #
 UseDatabaseLoading: False
@@ -24,7 +24,7 @@ DatabaseName: "" # FIX ME
 DatabasePassword: "" # FIX ME
 
 # File Loading Params
-DefaultProjectDirectory: "EditorAssets/Projects/DefaultProject/" # NOTE: PATH MUST END WITH A "/"
+DefaultProjectDirectory: "${DEFAULT_PROJECT_DIRECTORY}" # NOTE: PATH MUST END WITH A "/"
 
 # Memory Settings
 OverrideRAM: False

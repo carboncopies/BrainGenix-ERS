@@ -23,5 +23,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     MACOSX_BUNDLE_INFO_PLIST ${CMAKE_SCRIPTS_DIR}/DarwinBundle/Info.plist.in
 )
 
+set(EXECUTABLE_TYPE "OSX_Bundle")
+
 
 ERSBuildLogger(${BoldCyan} "Finished Configuring Darwin Bundle System")
