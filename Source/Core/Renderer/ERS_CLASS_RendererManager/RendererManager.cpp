@@ -55,7 +55,7 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
 
     GuiSystem_ = std::make_shared<GUISystem>(SystemUtils_, Window_, Cursors3D_.get(), ProjectUtils_->SceneManager_.get(), ProjectUtils_, VisualRenderer_.get(), HIDUtils_);
 
-    // VisualRenderer_->CreateViewport();
+    VisualRenderer_->CreateViewport();
     VisualRenderer_->IsEditorMode_ = !ProjectUtils_->ProjectManager_->Project_.StartPlayingOnLoad;
 
 }
@@ -150,7 +150,7 @@ void RendererManager::InitializeGLFW() {
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
+    //glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
 
     // Read Out Width, Height
     SystemUtils_->Logger_->Log("Read Configuration File For 'WindowWidth' Parameter", 1);
@@ -195,7 +195,6 @@ void RendererManager::InitializeGLFW() {
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
 
-
     // Log Any Issues
     ReportOpenGLErrors();
 
@@ -219,6 +218,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
 
     // Update Scene
     ProjectUtils_->ModelLoader_->ProcessNewModels(ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get());
+
     // Update IO
     glfwGetWindowSize(Window_, &WindowWidth_, &WindowHeight_);
     glfwPollEvents();
@@ -245,6 +245,7 @@ void RendererManager::UpdateLoop(float DeltaTime) {
     glClear(GL_COLOR_BUFFER_BIT);
     GuiSystem_->UpdateFrame();
     
+
     // Update Window Stuff
     glfwSwapBuffers(Window_);
 
