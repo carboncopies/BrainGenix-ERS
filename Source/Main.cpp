@@ -72,7 +72,9 @@ int main(int NumArguments, char** ArguemntValues) {
     SystemUtils->SystemShouldRun_ = std::make_unique<bool>(true);
 
     // Load Local System Configuration File
-    bool Status = BrainGenix::ERS::Module::LoadLocalConfiguration("Config.yaml", SystemUtils->LocalSystemConfiguration_);
+    YAML::Node Config;
+    bool Status = BrainGenix::ERS::Module::LoadLocalConfiguration("Config.yaml", Config);
+    SystemUtils->LocalSystemConfiguration_ = std::make_unique<YAML::Node>(Config);
     if (!Status) {
         return -1;
     }

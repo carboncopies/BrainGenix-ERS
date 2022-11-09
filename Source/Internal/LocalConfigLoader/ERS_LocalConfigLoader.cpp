@@ -15,7 +15,7 @@ bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
 
     // Attempt Load
     try {
-        Configuration = std::make_unique<YAML::Node>(YAML::LoadFile("Config.yaml"));
+        Configuration = YAML::LoadFile("Config.yaml");
         return true;
     } catch (YAML::BadFile&) {
         std::cout<<"Failed to Load File 'Config.yaml' Is ERS Being Run In The Right Working Directory?"<<std::endl;
