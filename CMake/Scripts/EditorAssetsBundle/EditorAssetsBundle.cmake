@@ -33,7 +33,7 @@ message(STATUS "--------------------")
 
 # Set Config
 message(STATUS "Generating Configuration File")
-configure_File(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/Config.yaml.in ${DEFAULT_PROJECT_DIRECTORY}/Config.yaml)
+configure_File(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/Config.yaml.in ${EDITOR_RESOURCES_DIR}/Config.yaml)
 
 
 # Copy Regular Files To Output Directory
