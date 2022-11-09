@@ -17,7 +17,7 @@ add_library(ERS_GetExecutablePath
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_GetExecutablePath
-    whereami
+    WhereAmI
     )
 
 # Link Internal Libs

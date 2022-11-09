@@ -3,6 +3,6 @@
 ##########################
 
 ERSBuildLogger(${Green} "Configuring WhereAmI Library")
-add_subdirectory(${LIB_DIR}/whereami)
-disable_target_warnings(wherami)
+add_subdirectory(${LIB_DIR}/WhereAmI)
+disable_target_warnings(WhereAmI)
 ERSBuildLogger(${BoldGreen} "Finished Configuring WhereAmI Library")
