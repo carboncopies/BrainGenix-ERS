@@ -18,8 +18,8 @@ message(STATUS "Set Editor Resources Path To '${EDITOR_RESOURCES_DIR}'")
 
 
 # Configure Variables
-message(STATUS "Configuring Config.yaml")
-message(STATUS "--------------------")
+message(STATUS "Configuring Config.yaml.in")
+message(STATUS "")
 set(DEFAULT_PROJECT_DIRECTORY "EditorAssets/Projects/DefaultProject/")
 message(STATUS "Set DEFAULT_PROJECT_DIRECTORY to '${DEFAULT_PROJECT_DIRECTORY}'")
 set(IS_LINUX "True")
@@ -27,7 +27,7 @@ if (WIN32 OR APPLE)
     set(IS_LINUX "False")
 endif()
 message(STATUS "Set IS_LINUX to '${IS_LINUX}'")
-message(STATUS "--------------------")
+message(STATUS "")
 
 
 
