@@ -1,3 +1,4 @@
+#define STB_IMAGE_IMPLEMENTATION
 
 
 #include <glad/glad.h>
@@ -12,6 +13,8 @@
 #include "camera.h"
 
 #include <iostream>
+
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
