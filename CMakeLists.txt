@@ -103,6 +103,9 @@ add_subdirectory(${SRC_DIR}/Internal/ModelImporter)
 message(STATUS "Configured Internal Library 'ModelImporter'")
 add_subdirectory(${SRC_DIR}/Internal/LocalConfigLoader)
 message(STATUS "Configured Internal Library 'LocalConfigLoader'")
+add_subdirectory(${SRC_DIR}/Internal/GetExecutablePath)
+message(STATUS "Configured Internal Library 'GetExecutablePath'")
+
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 
@@ -202,6 +205,7 @@ target_link_libraries(${PROJECT_NAME}
   ERS_ModelImporter
   ERS_LocalConfigLoader
 
+  ERS_GetExecutablePath
 
   ERS_HardwareInformation
   ERS_CLASS_PythonInterpreterIntegration

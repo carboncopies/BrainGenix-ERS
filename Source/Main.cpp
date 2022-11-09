@@ -50,6 +50,9 @@
 #include <ERS_CLASS_PythonInterpreterIntegration.h>
 
 
+#include <ERS_GetExecutablePath.h>
+
+
 //
 //-----------------------------------------------------------------------------------------------------
 //
