@@ -12,6 +12,7 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
+#include <ghc/filesystem.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
 
