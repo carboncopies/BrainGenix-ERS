@@ -178,8 +178,8 @@ int main()
 
     // load textures (we now use a utility function to keep the code more organized)
     // -----------------------------------------------------------------------------
-    unsigned int diffuseMap = loadTexture(FileSystem::getPath("container2.png").c_str());
-    unsigned int specularMap = loadTexture(FileSystem::getPath("container2_specular.png").c_str());
+    unsigned int diffuseMap = loadTexture("container2.png");
+    unsigned int specularMap = loadTexture("container2_specular.png");
 
     // shader configuration
     // --------------------
