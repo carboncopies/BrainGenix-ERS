@@ -34,7 +34,6 @@ include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/STB.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Assimp.cmake)
 
-add_subdirectory(Source/learnopengl)
 
 # Add Main.cpp
 add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp)
@@ -43,9 +42,6 @@ target_link_libraries(${PROJECT_NAME}
   # Third Party Libs
   glad
   glfw
-
-  # Internal lib
-  learnopengl
 
   )
 
