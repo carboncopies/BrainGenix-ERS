@@ -2,10 +2,10 @@
 add_library(WhereAmI
 
             # Add Source Files (.cpp)
-            "whereami.cpp"
+            "src/whereami.c"
 
             # Add Header Files (.h)
-            "whereami.h"
+            "src/whereami.h"
             
             ${BACKWARD_ENABLE}
             )

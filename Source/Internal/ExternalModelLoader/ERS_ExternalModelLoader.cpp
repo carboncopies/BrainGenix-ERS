@@ -627,6 +627,6 @@ bool ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_ModelWrite
 }
 
 
-}
-}
-}
+} // Close Namespace: Module
+} // Close Namespace: ERS
+} // Close Namespace: BrainGenix

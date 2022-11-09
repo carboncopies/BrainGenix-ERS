@@ -35,6 +35,6 @@ bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
 
 
 
-}
-}
-}
+} // Close Namespace: Module
+} // Close Namespace: ERS
+} // Close Namespace: BrainGenix
