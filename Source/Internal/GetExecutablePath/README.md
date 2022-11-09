@@ -1,5 +1,5 @@
-# ERS Internal Library: ArgumentParser
+# ERS Internal Library: GetExecutablePath
 
 ## Description
 
-The ArgumentParser library is responsible for reading, parsing and interpreting command line arguments passed into the program. For example, when opening a project, a command line argument is passed to the new instance of ERS via the CLI. This module reads those, parses them, and delivers that information to the relevant subsystems.
+The GetExecutablePath Library just returns the absolute path where the executable is sitting. This will allow us to identfy what the working directory for a macos bundle should be and find the resources needed to load the system.
