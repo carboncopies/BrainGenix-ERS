@@ -227,4 +227,4 @@ target_link_libraries(${PROJECT_NAME}
 
 
 # Run Configuration On EditorAssetBundle
-include(${CMAKE_SCRIPTS_DIR}/EditorAssetBundle/EditorAssetBundle.cmake)
+include(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/EditorAssetsBundle.cmake)
