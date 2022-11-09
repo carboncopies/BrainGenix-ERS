@@ -32,7 +32,14 @@ message(STATUS "--------------------")
 
 
 # Set Config
-message(STATUS "Configuring File")
+message(STATUS "Generating Configuration File")
 configure_File(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/Config.yaml.in ${BIN_DIR}/Config.yaml)
+
+
+# Copy Regular Files To Output Directory
+message(STATUS "Copying Editor Resources")
+file(COPY "${CMAKE_ASSETS_DIR}/" DESTINATION "${EDITOR_RESOURCES_DIR}/EditorAssets")
+file(COPY "${CMAKE_ASSETS_DIR}/DefaultLayout/imgui.ini" DESTINATION "${EDITOR_RESOURCES_DIR}")
+
 
 ERSBuildLogger(${BoldCyan} "Finished Configuring Editor Resources")
