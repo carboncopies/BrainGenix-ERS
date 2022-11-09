@@ -8,7 +8,7 @@ ERSBuildLogger(${Cyan} "Configuring Editor Resources")
 # Identify Resources Dir
 message(STATUS "Detecting Build Type")
 set(EDITOR_RESOURCES_DIR "${BIN_DIR}")
-if (EXECUTABLE_TYPE == "OSX_Bundle")
+if (EXECUTABLE_TYPE STREQUAL "OSX_Bundle")
     set(EDITOR_RESOURCES_DIR "${BIN_DIR}/${PROJECT_NAME}.app/Contents/MacOS")
     message(STATUS "Set Build Type To OSX Bundle")
 else()
