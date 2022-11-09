@@ -169,8 +169,23 @@ add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ProjectWriter)
 ERSBuildLogger(${BoldGreen} "Finished Configuring Core Subsystems")
 
 
-# Add Main.cpp
-add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${LIB_DIR}/tracy/TracyClient.cpp ${BACKWARD_ENABLE})
+# Configure Sources
+set(MAIN_SOURCES
+  ${SRC_DIR}/Main.cpp
+  ${LIB_DIR}/tracy/TracyClient.cpp
+  ${BACKWARD_ENABLE}
+)
+
+
+# Create Main Executable
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+  ERSBuildLogger(${Blue} "Detected Platform To Be Darwin, Building Bundle")
+  include(${CMAKE_SCRIPTS_DIR}/DarwinBundle/DarwinBundle.cmake)
+else()
+  ERSBuildLogger(${Blue} "Platform Not Darwin, Building Regular Binary")
+  include(${CMAKE_SCRIPTS_DIR}/LinuxBundle/LinuxBundle.cmake)
+endif()
+
 target_link_libraries(${PROJECT_NAME}
 
   # Third Party Libs
