@@ -31,6 +31,7 @@
 #include <ERS_HardwareInformation.h>
 #include <ERS_ArgumentParser.h>
 #include <ERS_ModelImporter.h>
+#include <ERS_LocalConfigLoader.h>
 
 #include <ERS_SceneManager.h>
 
@@ -71,7 +72,7 @@ int main(int NumArguments, char** ArguemntValues) {
     SystemUtils->SystemShouldRun_ = std::make_unique<bool>(true);
 
     // Load Local System Configuration File
-    SystemUtils->LocalSystemConfiguration_ = 
+    SystemUtils->LocalSystemConfiguration_ = LocalConfigLoader("Config.yaml");
 
     // Instantiate Logging Subsystem
     SystemUtils->Logger_ = std::make_unique<ERS_LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());
