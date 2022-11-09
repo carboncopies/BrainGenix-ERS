@@ -52,7 +52,7 @@ else
     # Now, Get the CMake Binaries Tar File From Rel Page
     echo "[Build Helper] - Downloading CMake Binaries From Release Page"
     curl --location --remote-header-name --remote-name https://github.com/Kitware/CMake/releases/download/v3.24.3/cmake-3.24.3-macos10.10-universal.tar.gz
-    
+
     # Extract The Binaries Tar, Rename
     echo "[ERS BUILD HELPER] - Done, Extracting Binaries From Tar File"
     tar -xzf cmake-3.24.3-macos10.10-universal.tar.gz
