@@ -72,7 +72,10 @@ int main(int NumArguments, char** ArguemntValues) {
     SystemUtils->SystemShouldRun_ = std::make_unique<bool>(true);
 
     // Load Local System Configuration File
-    SystemUtils->LocalSystemConfiguration_ = LocalConfigLoader("Config.yaml");
+    bool Status = BrainGenix::ERS::Module::LoadLocalConfiguration("Config.yaml", SystemUtils->LocalSystemConfiguration_);
+    if (!Status) {
+        return -1;
+    }
 
     // Instantiate Logging Subsystem
     SystemUtils->Logger_ = std::make_unique<ERS_LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());
