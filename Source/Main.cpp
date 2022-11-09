@@ -76,7 +76,7 @@ int main(int NumArguments, char** ArguemntValues) {
     bool Status = BrainGenix::ERS::Module::LoadLocalConfiguration("Config.yaml", Config);
     SystemUtils->LocalSystemConfiguration_ = std::make_unique<YAML::Node>(Config);
     if (!Status) {
-        return -1;
+        return 65535;
     }
 
     // Instantiate Logging Subsystem
