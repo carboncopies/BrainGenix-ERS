@@ -24,12 +24,18 @@ namespace ERS {
 namespace Module {
 
 /**
- * @brief Load the configuration from disk
+ * @brief Returns the full absolute path of the executable
  * 
  */
-bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration);
+std::string GetExecutablePath();
+
+/**
+ * @brief Returns the full absolute path of the directory containing the executable
+ * 
+ */
+std::string GetExecutableDirectory();
 
 
-}
-}
-}
+} // Close Namespace: Module
+} // Close Namespace: ERS
+} // Close Namespace: BrainGenix
