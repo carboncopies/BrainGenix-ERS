@@ -18,7 +18,7 @@ std::string GetExecutablePath() {
     Length = wai_getExecutablePath(Path, 0, &DirectoryNameLength);
     
     if (Path == NULL) {
-        return "";
+        return "Unable To Get Binary Path";
     }
 
     return std::string(Path);
@@ -31,7 +31,7 @@ std::string GetExecutableDirectory() {
     Length = wai_getModulePath(Path, 0, &DirectoryNameLength);
 
     if (Path == NULL) {
-        return "";
+        return "Unable To Get Binary Path";
     }
 
     return std::string(Path);
