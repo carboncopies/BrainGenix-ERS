@@ -38,8 +38,9 @@ bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
         std::cout<<Output;
 
         // Dump Error To File For Reading Even If No Console Is Present
-        
-
+        std::ofstream FileStream("Log.txt");
+        FileStream << Output;
+        FileStream.close();
 
         return false;
     }
