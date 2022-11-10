@@ -21,6 +21,10 @@ bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
         std::cout<<"Failed to Load File 'Config.yaml' Is ERS Being Run In The Right Working Directory?"<<std::endl;
 
         std::cout<<"\n";
+        std::cout<<"Current Executable Path Is: '"<<GetExecutablePath()<<"'"<<std::endl;
+        std::cout<<"Current Executable Directory Is: '"<<GetExecutablePath()<<"'"<<std::endl;
+        std::cout<<"\n";
+        
         std::cout<<"-- Current Working Directory's Files --"<<std::endl;
         for (const auto & entry : ghc::filesystem::directory_iterator(".")) {
             std::cout << entry.path() << " ";

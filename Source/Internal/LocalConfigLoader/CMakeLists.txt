@@ -23,6 +23,7 @@ target_link_libraries(ERS_LocalConfigLoader
 
 # Link Internal Libs
 target_link_libraries(ERS_LocalConfigLoader
+    ERS_GetExecutablePath
     )
 
 target_include_directories(ERS_LocalConfigLoader PUBLIC ./)

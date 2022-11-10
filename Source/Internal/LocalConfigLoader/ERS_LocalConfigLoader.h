@@ -15,8 +15,7 @@
 #include <ghc/filesystem.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
-
-
+#include <ERS_GetExecutablePath.h>
 
 
 namespace BrainGenix {
