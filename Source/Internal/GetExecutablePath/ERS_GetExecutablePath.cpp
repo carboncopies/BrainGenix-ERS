@@ -16,6 +16,10 @@ std::string GetExecutablePath() {
     char* Path = NULL;
     int Length, DirectoryNameLength;
     Length = wai_getExecutablePath(Path, 0, &DirectoryNameLength);
+    
+    if (Path == NULL) {
+        return "";
+    }
 
     return std::string(Path);
 }
@@ -25,6 +29,10 @@ std::string GetExecutableDirectory() {
     char* Path = NULL;
     int Length, DirectoryNameLength;
     Length = wai_getModulePath(Path, 0, &DirectoryNameLength);
+
+    if (Path == NULL) {
+        return "";
+    }
 
     return std::string(Path);
 }
