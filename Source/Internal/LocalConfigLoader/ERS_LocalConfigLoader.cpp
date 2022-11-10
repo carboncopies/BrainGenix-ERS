@@ -18,22 +18,29 @@ bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
         Configuration = YAML::LoadFile("Config.yaml");
         return true;
     } catch (YAML::BadFile&) {
-        std::cout<<"Failed to Load File 'Config.yaml' Is ERS Being Run In The Right Working Directory?"<<std::endl;
 
-        std::cout<<"\n";
-        std::cout<<"Current Executable Path Is: '"<<GetExecutablePath()<<"'"<<std::endl;
-        std::cout<<"Current Executable Directory Is: '"<<GetExecutablePath()<<"'"<<std::endl;
-        std::cout<<"Current Directory Is: '"<<ghc::filesystem::current_path()<<"'"<<std::endl;
-        
-        std::cout<<"\n";
-
-        std::cout<<"-- Current Working Directory's Files --"<<std::endl;
+        // Build Error Message
+        std::string Output;
+        Output += "Failed to Load File 'Config.yaml' Is ERS Being Run In The Right Working Directory?\n";
+        Output += "\n";
+        Output += "Current Executable Path Is: '" + GetExecutablePath() + "'";
+        Output += "Current Executable Directory Is: '" + GetExecutablePath() + "'";
+        Output += "Current Directory Is: '" + std::string(ghc::filesystem::current_path()) + "'\n";
+        Output += "\n";
+        Output += "-- Current Working Directory's Files --\n";
         for (const auto & entry : ghc::filesystem::directory_iterator(".")) {
             std::cout << entry.path() << " ";
         }
-        std::cout<<"\n-- End Of File List --\n";
+        Output += "\n-- End Of File List --\n";
+        Output += "Fatal Error - Exiting!\n";
 
-        std::cout<<"Fatal Error - Exiting!\n";
+        // Dump Error To Console
+        std::cout<<Output;
+
+        // Dump Error To File For Reading Even If No Console Is Present
+        
+
+
         return false;
     }
 
