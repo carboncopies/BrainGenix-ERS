@@ -23,6 +23,8 @@ bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
         std::cout<<"\n";
         std::cout<<"Current Executable Path Is: '"<<GetExecutablePath()<<"'"<<std::endl;
         std::cout<<"Current Executable Directory Is: '"<<GetExecutablePath()<<"'"<<std::endl;
+        std::cout<<"Current Directory Is: '"<<ghc::filesystem::current_path()<<"'"<<std::endl;
+        
         std::cout<<"\n";
 
         std::cout<<"-- Current Working Directory's Files --"<<std::endl;
