@@ -9,6 +9,7 @@
 #include <chrono>
 #include <iostream>
 #include <fstream>
+#include <sys/stat.h>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
