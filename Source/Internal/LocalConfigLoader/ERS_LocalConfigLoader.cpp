@@ -19,6 +19,9 @@ bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
         return true;
     } catch (YAML::BadFile&) {
 
+        // Try And Change Into Executable Path And See There - Otherwise Give Up
+        
+
         // Build Error Message
         std::string Output;
         Output += "Failed to Load File 'Config.yaml' Is ERS Being Run In The Right Working Directory?\n";
