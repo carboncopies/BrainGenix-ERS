@@ -15,7 +15,7 @@ std::string GetExecutablePath() {
 
     char* Path = NULL;
     int Length, DirectoryNameLength;
-    Length = wai_getExecutablePath(NULL, 0, &DirectoryNameLength);
+    Length = wai_getExecutablePath(Path, 0, &DirectoryNameLength);
 
     return std::string(Path);
 }
@@ -24,7 +24,7 @@ std::string GetExecutablePath() {
 std::string GetExecutableDirectory() {
     char* Path = NULL;
     int Length, DirectoryNameLength;
-    Length = wai_getModulePath(NULL, 0, &DirectoryNameLength);
+    Length = wai_getModulePath(Path, 0, &DirectoryNameLength);
 
     return std::string(Path);
 }
