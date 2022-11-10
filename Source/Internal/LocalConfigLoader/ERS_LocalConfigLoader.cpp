@@ -22,8 +22,8 @@ bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
         // Try And Change Into Executable Path And See There - Otherwise Give Up
         try {
             std::string ValidExecuatblePath = GetExecutableDirectory();
-            if (ValidExecuatblePath == "" || ValidExecuatblePath == "") {
-                throw YAML::BadFile;
+            if (ValidExecuatblePath == "" || ValidExecuatblePath == "Unable To Get Binary Path") {
+                throw YAML::BadFile();
             }
             chdir(ValidExecuatblePath.c_str());
             Configuration = YAML::LoadFile("Config.yaml");
