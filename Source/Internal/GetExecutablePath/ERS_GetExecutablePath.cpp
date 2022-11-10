@@ -15,15 +15,25 @@ namespace Module {
 
 std::string GetExecutablePath() {
 
-    char* Path = NULL;
-    int Length, DirectoryNameLength;
-    Length = wai_getExecutablePath(Path, 0, &DirectoryNameLength);
-    
-    if (Path == NULL) {
-        return "Unable To Get Binary Path";
-    }
+    #ifdef __APPLE__
+        char buf [PATH_MAX];
+        uint32_t bufsize = PATH_MAX;
+        if(!_NSGetExecutablePath(buf, &bufsize))
+            puts(buf);
+        return std::string(buf);
+    #else
 
-    return std::string(Path);
+        char* Path = NULL;
+        int Length, DirectoryNameLength;
+        Length = wai_getExecutablePath(Path, 0, &DirectoryNameLength);
+        
+
+        if (Path == NULL) {
+            return "Unable To Get Binary Path";
+        }
+
+        return std::string(Path);
+    #endif
 }
 
 
