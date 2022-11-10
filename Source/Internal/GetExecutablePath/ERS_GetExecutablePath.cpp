@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_LocalConfigLoader.h>
+#include <ERS_GetExecutablePath.h>
 
 
 namespace BrainGenix {
