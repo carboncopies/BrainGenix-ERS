@@ -9,6 +9,11 @@
 #include <chrono>
 #include <iostream>
 
+#ifdef __APPLE__
+    #include <mach-o/dyld.h>
+    #include <limits.h>
+#endif
+
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <whereami.h>
 
