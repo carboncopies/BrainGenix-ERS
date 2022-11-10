@@ -8,7 +8,7 @@ ExternalProject_Add(PlatformFolders
 
     # Specify Directory Configuration Options
     SOURCE_DIR ${LIB_DIR}/PlatformFolders
-    # BINARY_DIR ${BIN_DIR}/ThirdParty/Lucifer
+    BINARY_DIR ${BIN_DIR}
     
     # # Show Output To Terminal
     # LOG_DOWNLOAD TRUE
@@ -36,6 +36,6 @@ ExternalProject_Add(PlatformFolders
 )
 
 
-find_package(platform_folders REQUIRED)
+# find_package(platform_folders REQUIRED)
 # disable_target_warnings(PlatformFolders)
 ERSBuildLogger(${BoldGreen} "Finished Configuring PlatformFolders Library")

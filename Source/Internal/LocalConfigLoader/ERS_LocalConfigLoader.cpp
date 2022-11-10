@@ -49,7 +49,7 @@ bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
 
             // If OSX - Change Dir To Log Dump Folder
 #if __APPLE__
-            chdir("~/Library/Logs");
+            chdir(sago::getConfigHome());
             mkdir("com.Carboncopies.BrainGenix.ERS", 0777);
             chdir("com.Carboncopies.BrainGenix.ERS");
 #endif
