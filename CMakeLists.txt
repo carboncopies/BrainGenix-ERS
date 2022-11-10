@@ -64,6 +64,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/OZZ-Animation.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/MeshOptimizer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Filesystem.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/WhereAmI.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/PlatformFolders.cmake)
 
 
 
