@@ -21,7 +21,11 @@ bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
 
         // Try And Change Into Executable Path And See There - Otherwise Give Up
         try {
-            chdir("/Users/labuser/Documents/BrainGenix-ERS/Binaries/");
+            std::string ValidExecuatblePath = GetExecutableDirectory();
+            if (ValidExecuatblePath == "" || ValidExecuatblePath == "") {
+                throw YAML::BadFile;
+            }
+            chdir(ValidExecuatblePath.c_str());
             Configuration = YAML::LoadFile("Config.yaml");
         } catch (YAML::BadFile&) {
 
