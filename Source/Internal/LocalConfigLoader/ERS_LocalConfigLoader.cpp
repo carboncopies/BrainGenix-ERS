@@ -25,7 +25,7 @@ bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
         for (const auto & entry : ghc::filesystem::directory_iterator(".")) {
             std::cout << entry.path() << " ";
         }
-        std::cout<<"\n\n";
+        std::cout<<"-- End Of File List --\n";
 
         std::cout<<"Fatal Error - Exiting!\n";
         return false;
