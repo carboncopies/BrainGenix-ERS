@@ -17,7 +17,7 @@ bool TryWorkingPath(std::string Path) {
 
     // Check If Good
     try {
-        YAML::LoadFile("Config.yaml")
+        YAML::LoadFile("Config.yaml");
         return true;
     } catch {YAML::BadFile&} {
         return false;
