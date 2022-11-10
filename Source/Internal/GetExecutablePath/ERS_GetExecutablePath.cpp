@@ -38,15 +38,25 @@ std::string GetExecutablePath() {
 
 
 std::string GetExecutableDirectory() {
-    char* Path = NULL;
-    int Length, DirectoryNameLength;
-    Length = wai_getModulePath(Path, 0, &DirectoryNameLength);
+    #ifdef __APPLE__
+        char buf [PATH_MAX];
+        uint32_t bufsize = PATH_MAX;
+        if(!_NSGetExecutablePath(buf, &bufsize))
+            puts(buf);
+        return std::string(buf).substr(0, std::string(buf).find_last_of("/"));
+    #else
 
-    if (Path == NULL) {
-        return "Unable To Get Binary Path";
-    }
+        char* Path = NULL;
+        int Length, DirectoryNameLength;
+        Length = wai_getModulePath(Path, 0, &DirectoryNameLength);
+        
 
-    return std::string(Path);
+        if (Path == NULL) {
+            return "Unable To Get Binary Path";
+        }
+
+        return std::string(Path);
+    #endif
 }
 
 
