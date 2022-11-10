@@ -10,8 +10,8 @@ add_library(WhereAmI
             ${BACKWARD_ENABLE}
             )
 
-set_source_files_properties("src/whereami.c" PROPERTIES LANGUAGE C)
-set_source_files_properties("src/whereami.h" PROPERTIES LANGUAGE C)
+set_source_files_properties("src/whereami.c" PROPERTIES LANGUAGE CXX)
+set_source_files_properties("src/whereami.h" PROPERTIES LANGUAGE CXX)
 # set_property(TARGET WhereAmI PROPERTY CXX_STANDARD 17)
 
 # Link 3rd Party Libs
