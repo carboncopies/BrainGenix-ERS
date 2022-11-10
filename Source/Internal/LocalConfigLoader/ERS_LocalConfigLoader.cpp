@@ -22,7 +22,7 @@ bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
         // Try And Change Into Executable Path And See There - Otherwise Give Up
         try {
             chdir("/Users/labuser/Documents/BrainGenix-ERS/Binaries/");
-
+            Configuration = YAML::LoadFile("Config.yaml");
         } catch (YAML::BadFile&) {
 
             // Build Error Message
@@ -42,6 +42,14 @@ bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
 
             // Dump Error To Console
             std::cout<<Output;
+
+            // If OSX - Change Dir To Log Dump Folder
+#if __APPLE__
+            chdir("~/Library/Logs");
+            mkdir("com.Carboncopies.BrainGenix.ERS");
+            chdir("com.Carboncopies.BrainGenix.ERS");
+#endif
+
 
             // Dump Error To File For Reading Even If No Console Is Present
             std::ofstream FileStream("Log.txt");
