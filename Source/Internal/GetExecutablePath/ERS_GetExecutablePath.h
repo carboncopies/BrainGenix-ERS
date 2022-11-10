@@ -8,6 +8,7 @@
 #include <thread>
 #include <chrono>
 #include <iostream>
+#include <unistd.h>
 
 #ifdef __APPLE__
     #include <mach-o/dyld.h>
