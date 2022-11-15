@@ -34,6 +34,8 @@
 
 ## Mac:
   
+  - NOTE: You must have a version of OSX that is greater than 10.15.0 as the <filesystem> header is broken on earlier versions of the OS.
+  
   - Install one of the following:
     - [Ubuntu](https://ubuntu.com/download)
     - [Debian](https://www.debian.org/distrib/)

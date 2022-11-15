@@ -8,7 +8,6 @@
 #include <assert.h>
 #include <chrono>
 #include <ctime>
-#include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <mutex>
@@ -22,6 +21,8 @@
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
+
+#include <ghc/filesystem.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_AssetIndexInputOutputManager.h>

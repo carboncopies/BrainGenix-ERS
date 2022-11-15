@@ -14,7 +14,6 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <Tracy.hpp>
 
-#include <yaml-cpp/yaml.h>
 
 #include <glad/glad.h>
 
@@ -32,6 +31,8 @@
 #include <ERS_HardwareInformation.h>
 #include <ERS_ArgumentParser.h>
 #include <ERS_ModelImporter.h>
+#include <ERS_LocalConfigLoader.h>
+
 
 #include <ERS_SceneManager.h>
 
@@ -50,6 +51,9 @@
 #include <ERS_CLASS_PythonInterpreterIntegration.h>
 
 
+#include <ERS_GetExecutablePath.h>
+
+
 //
 //-----------------------------------------------------------------------------------------------------
 //
@@ -64,15 +68,20 @@
 
 
 
-
 int main(int NumArguments, char** ArguemntValues) {
+
 
     // Initialize System Vars
     std::unique_ptr<ERS_STRUCT_SystemUtils> SystemUtils = std::make_unique<ERS_STRUCT_SystemUtils>();
     SystemUtils->SystemShouldRun_ = std::make_unique<bool>(true);
 
     // Load Local System Configuration File
-    SystemUtils->LocalSystemConfiguration_ = std::make_unique<YAML::Node>(YAML::LoadFile("Config.yaml"));
+    YAML::Node Config;
+    bool Status = BrainGenix::ERS::Module::LoadLocalConfiguration("Config.yaml", Config);
+    SystemUtils->LocalSystemConfiguration_ = std::make_unique<YAML::Node>(Config);
+    if (!Status) {
+        return 65535;
+    }
 
     // Instantiate Logging Subsystem
     SystemUtils->Logger_ = std::make_unique<ERS_LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());

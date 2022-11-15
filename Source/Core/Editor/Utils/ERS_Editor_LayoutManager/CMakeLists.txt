@@ -20,6 +20,7 @@ set_property(TARGET ERS_Editor_LayoutManager PROPERTY CXX_STANDARD 17)
 target_link_libraries(ERS_Editor_LayoutManager
     yaml-cpp
     IMGUI
+    ghc_filesystem
     )
 
 # Link Internal Libs

@@ -3,9 +3,6 @@
 //======================================================================//
 
 #include <ERS_Editor_LayoutManager.h>
-#include <filesystem>
-#include <imgui.h>
-#include <fstream>
 
 ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_LoggingSystem* Logger, const char* LayoutDirectory) {
 
@@ -25,7 +22,7 @@ ERS_CLASS_LayoutManager::~ERS_CLASS_LayoutManager() {
 void ERS_CLASS_LayoutManager::LoadLayouts() {
 
     // Create List Of Files
-    for (const auto& Entry : std::filesystem::directory_iterator(std::string(LayoutDirectory_))) {
+    for (const auto& Entry : ghc::filesystem::directory_iterator(std::string(LayoutDirectory_))) {
 
         // Get File Path
         std::string FilePath{ Entry.path().u8string() };

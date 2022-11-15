@@ -8,7 +8,6 @@
 // Standard Libraries (BG convention: use <> instead of "")
 #include <vector>
 #include <iostream>
-#include <filesystem>
 #include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
@@ -17,6 +16,9 @@
 #include <imgui.h>
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_opengl3.h>
+
+#include <ghc/filesystem.hpp>
+
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_LoggingSystem.h>

@@ -242,7 +242,7 @@ void ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterData &Data)
 
             // Check Against Filesystem
             std::replace(Data.ModelOriginDirectoryPath.begin(), Data.ModelOriginDirectoryPath.end(), '\\', '/');
-            for (const auto &Entry : std::filesystem::recursive_directory_iterator(Data.ModelOriginDirectoryPath.substr(0, Data.ModelOriginDirectoryPath.find_last_of("/")))) {
+            for (const auto &Entry : ghc::filesystem::recursive_directory_iterator(Data.ModelOriginDirectoryPath.substr(0, Data.ModelOriginDirectoryPath.find_last_of("/")))) {
 
                 std::string FilePath{Entry.path().u8string()};
                 std::replace(FilePath.begin(), FilePath.end(), '\\', '/');
@@ -627,6 +627,6 @@ bool ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_ModelWrite
 }
 
 
-}
-}
-}
+} // Close Namespace: Module
+} // Close Namespace: ERS
+} // Close Namespace: BrainGenix

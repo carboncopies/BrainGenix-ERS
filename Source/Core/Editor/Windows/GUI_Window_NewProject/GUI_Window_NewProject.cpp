@@ -46,9 +46,9 @@ void GUI_Window_NewProject::Draw() {
                 // check for bugs and edge-cases
 
                 std::string DefualtProjectPath = "EditorAssets/Projects/NewProject/";
-                std::string CurrentExecutablePath = std::filesystem::current_path().u8string();
+                std::string CurrentExecutablePath = ghc::filesystem::current_path().u8string();
 
-                for (const auto &Entry : std::filesystem::recursive_directory_iterator(DefualtProjectPath)) {
+                for (const auto &Entry : ghc::filesystem::recursive_directory_iterator(DefualtProjectPath)) {
 
                     // Get The Current Absolute Path To File, As Well As It's Filename
                     std::string PathRelativeName{Entry.path().u8string()};
@@ -56,7 +56,7 @@ void GUI_Window_NewProject::Draw() {
                     std::string FileName = PathRelativeName.substr(PathRelativeName.find_last_of("/"), sizeof(PathRelativeName));
 
                     SystemUtils_->Logger_->Log(std::string("Copying File '") + File + "' To New Project Directory", 4);
-                    std::filesystem::copy_file(File, Path + FileName);
+                    ghc::filesystem::copy_file(File, Path + FileName);
 
                 }
 

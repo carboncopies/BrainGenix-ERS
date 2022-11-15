@@ -8,7 +8,6 @@
 // Standard Libraries (BG convention: use <> instead of "")
 #include <memory>
 #include <iostream>
-#include <filesystem>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -16,6 +15,9 @@
 #include <imgui.h>
 
 #include <ImGuiFileDialog.h>
+
+#include <ghc/filesystem.hpp>
+
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>

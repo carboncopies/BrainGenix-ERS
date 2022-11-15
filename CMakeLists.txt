@@ -5,9 +5,13 @@ project(
 	VERSION "0.4.0"
 	LANGUAGES CXX
 	)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Set Configuration Options
 option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace information or not" ON)
+
+
 
 
 # Set Dirs
@@ -54,17 +58,21 @@ include(${CMAKE_BUILD_UTILS_DIR}/FreeImage.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Assimp.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
+#include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/OZZ-Animation.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/MeshOptimizer.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/Filesystem.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/WhereAmI.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/PlatformFolders.cmake)
+
 
 
 # Add LIBRARY INTERFACE SUBDIRECTORIES
 ERSBuildLogger(${Green} "Configuring Library Interfaces")
 
 add_subdirectory(${SRC_DIR}/Interface/Library/MeshOptimizerInterface)
-message("-- Configured MeshOptimizer Interface")
+message(STATUS "Configured MeshOptimizer Interface")
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Library Interfaces")
 
@@ -79,21 +87,25 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Structure Interfaces")
 ERSBuildLogger(${Green} "Configuring Internal Libraries")
 
 add_subdirectory(${SRC_DIR}/Internal/LoggingSystem)
-message("-- Configured Internal Library 'LoggingSystem'")
+message(STATUS "Configured Internal Library 'LoggingSystem'")
 add_subdirectory(${SRC_DIR}/Internal/OpenGLLoggingSystem)
-message("-- Configured Internal Library 'OpenGLLoggingSystem'")
+message(STATUS "Configured Internal Library 'OpenGLLoggingSystem'")
 add_subdirectory(${SRC_DIR}/Internal/ArgumentParser)
-message("-- Configured Internal Library 'ArgumentParser'")
+message(STATUS "Configured Internal Library 'ArgumentParser'")
 add_subdirectory(${SRC_DIR}/Internal/GPURequest)
-message("-- Configured Internal Library 'GPURequest'")
+message(STATUS "Configured Internal Library 'GPURequest'")
 add_subdirectory(${SRC_DIR}/Internal/HardwareInformation)
-message("-- Configured Internal Library 'HardwareInformation'")
+message(STATUS "Configured Internal Library 'HardwareInformation'")
 add_subdirectory(${SRC_DIR}/Internal/InputOutputSubsystem)
-message("-- Configured Internal Library 'InputOutputSubsystem'")
+message(STATUS "Configured Internal Library 'InputOutputSubsystem'")
 add_subdirectory(${SRC_DIR}/Internal/ExternalModelLoader)
-message("-- Configured Internal Library 'ExternalModelLoader'")
+message(STATUS "Configured Internal Library 'ExternalModelLoader'")
 add_subdirectory(${SRC_DIR}/Internal/ModelImporter)
-message("-- Configured Internal Library 'ModelImporter'")
+message(STATUS "Configured Internal Library 'ModelImporter'")
+add_subdirectory(${SRC_DIR}/Internal/LocalConfigLoader)
+message(STATUS "Configured Internal Library 'LocalConfigLoader'")
+add_subdirectory(${SRC_DIR}/Internal/GetExecutablePath)
+message(STATUS "Configured Internal Library 'GetExecutablePath'")
 
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
@@ -162,12 +174,26 @@ add_subdirectory(${SRC_DIR}/Core/Writers/ERS_ProjectWriter)
 ERSBuildLogger(${BoldGreen} "Finished Configuring Core Subsystems")
 
 
-# Add Main.cpp
-add_executable(${PROJECT_NAME} ${SRC_DIR}/Main.cpp ${LIB_DIR}/tracy/TracyClient.cpp ${BACKWARD_ENABLE})
+# Configure Sources
+set(MAIN_SOURCES
+  ${SRC_DIR}/Main.cpp
+  ${LIB_DIR}/tracy/TracyClient.cpp
+  ${BACKWARD_ENABLE}
+)
+
+
+# Create Main Executable
+if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+  ERSBuildLogger(${Blue} "Detected Platform To Be Darwin, Building Bundle")
+  include(${CMAKE_SCRIPTS_DIR}/DarwinBundle/DarwinBundle.cmake)
+else()
+  ERSBuildLogger(${Blue} "Platform Not Darwin, Building Regular Binary")
+  include(${CMAKE_SCRIPTS_DIR}/LinuxBundle/LinuxBundle.cmake)
+endif()
+
 target_link_libraries(${PROJECT_NAME}
 
   # Third Party Libs
-  yaml-cpp
   glad
   glfw
   TracyClient
@@ -178,7 +204,9 @@ target_link_libraries(${PROJECT_NAME}
   ERS_GPURequest
   ERS_LoggingSystem
   ERS_ModelImporter
+  ERS_LocalConfigLoader
 
+  ERS_GetExecutablePath
 
   ERS_HardwareInformation
   ERS_CLASS_PythonInterpreterIntegration
@@ -203,13 +231,6 @@ target_link_libraries(${PROJECT_NAME}
   Renderer
   )
 
-# COPY FILES TO BINARY DIR
-file(COPY "${CMAKE_ASSETS_DIR}/" DESTINATION "${BIN_DIR}/EditorAssets")
-file(COPY "${CMAKE_ASSETS_DIR}/DefaultLayout/imgui.ini" DESTINATION "${BIN_DIR}")
 
-# Set Configuration Based On Platform
-if (WIN32 OR APPLE)
-  configure_file("${SRC_DIR}/Config-Windows.yaml" "${BIN_DIR}/Config.yaml" COPYONLY)
-else()
-  configure_file("${SRC_DIR}/Config-Linux.yaml" "${BIN_DIR}/Config.yaml" COPYONLY)
-endif()
+# Run Configuration On EditorAssetBundle
+include(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/EditorAssetsBundle.cmake)

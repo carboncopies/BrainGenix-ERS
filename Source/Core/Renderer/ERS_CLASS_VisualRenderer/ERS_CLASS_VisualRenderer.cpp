@@ -58,6 +58,8 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
 
+    
+
     // Apply Scene Camera Transforms
     ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
     if (!IsEditorMode_ && Scene->ActiveSceneCameraIndex != -1) {
@@ -88,6 +90,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
         DeleteViewport(ViewportsToClose);
     }
 
+    
 
 
     // Generate Shadows
@@ -102,6 +105,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     CaptureIndex_ = -1;
     FrameNumber_++;
 
+    
 
 
     RunTime_ = glfwGetTime() - GameStartTime_;
@@ -121,6 +125,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     }
 
 
+    
 
 
 
@@ -152,6 +157,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 
+    
 
 
     // RUN SCRIPTS WHEN NOT IN EDITOR MODE
@@ -281,6 +287,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
     // Reset Selected Script
     SelectedScript_ = -1;
+
+    
 
 
 

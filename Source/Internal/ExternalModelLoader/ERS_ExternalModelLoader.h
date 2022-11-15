@@ -19,7 +19,6 @@
 #include <future>
 #include <thread>
 #include <chrono>
-#include <filesystem>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glm/glm.hpp>
@@ -34,6 +33,9 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 #include <assimp/Exceptional.h>
+
+#include <ghc/filesystem.hpp>
+
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_Mesh.h>
@@ -190,6 +192,6 @@ public:
 };
 
 
-}
-}
-}
+} // Close Namespace: Module
+} // Close Namespace: ERS
+} // Close Namespace: BrainGenix

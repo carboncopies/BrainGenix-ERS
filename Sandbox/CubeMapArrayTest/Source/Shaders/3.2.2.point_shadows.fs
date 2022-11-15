@@ -1,7 +1,7 @@
  
 
 
-#version 420 core
+#version 410 core
 out vec4 FragColor;
 
 in VS_OUT {

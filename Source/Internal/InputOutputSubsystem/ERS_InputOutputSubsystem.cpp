@@ -166,7 +166,7 @@ void ERS_InputOutputSubsystem::IndexUsedAssetIDs() {
     // Get List Of Files At Path
     try {
       for (const auto &Entry :
-           std::filesystem::directory_iterator(std::string(AssetPath_))) {
+           ghc::filesystem::directory_iterator(std::string(AssetPath_))) {
 
         // Get File Path, Convert Backslashes Into Forwardslashes
         std::string FilePath{Entry.path().u8string()};
@@ -227,7 +227,7 @@ void ERS_InputOutputSubsystem::IndexUsedAssetIDs() {
               9);
         }
       }
-    } catch (std::filesystem::filesystem_error&) {
+    } catch (ghc::filesystem::filesystem_error&) {
       Logger_->Log("Error Indexing Assets, Local File Loading Enabled But "
                    "Asset Directory Does Not Exist",
                    9);

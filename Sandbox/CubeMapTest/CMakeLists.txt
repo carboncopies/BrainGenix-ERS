@@ -6,6 +6,9 @@ project(
 	LANGUAGES CXX
 	)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # Set Configuration Options
 option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace information or not" ON)
 
