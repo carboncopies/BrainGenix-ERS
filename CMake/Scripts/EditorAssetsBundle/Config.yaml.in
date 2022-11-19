@@ -6,7 +6,6 @@ WindowTitle: "BrainGenix-ERS"
 
 
 # Renderer Settings #
-RenderHeight: 600
 EnableValidationLayers: True
 MaxFramesInFlight: 2
 
