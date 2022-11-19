@@ -78,9 +78,7 @@ ERS_LoggingSystem::~ERS_LoggingSystem() {
 }
 
 void ERS_LoggingSystem::WriteLineToFile(std::string Line) {
-    if (EnableLogFile_) {
-        FileStream_ << Line;
-    }
+    FileStream_ << Line;
 }
 
 void ERS_LoggingSystem::Log(std::string LogMessage, int LogLevel, bool Enable) {
@@ -165,9 +163,14 @@ void ERS_LoggingSystem::LogItem(const char* LogItem, int LogLevel) {
             } else {
                 std::cout << Output;
             }
-        };
+        }
 
-    };
+        // Log To File
+        if (EnableLogFile_) {
+            WriteLineToFile(Output);
+        }
+
+    }
 
 }
 
