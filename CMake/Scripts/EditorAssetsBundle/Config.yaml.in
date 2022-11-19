@@ -4,11 +4,6 @@ WindowWidth: 1920
 WindowHeight: 1080
 WindowTitle: "BrainGenix-ERS"
 
-
-# Renderer Settings #
-EnableValidationLayers: True
-MaxFramesInFlight: 2
-
 # System Settings
 ShowEditorDebugMenu: True
 IsLinux: ${IS_LINUX}
