@@ -36,6 +36,20 @@ ERS_LoggingSystem::ERS_LoggingSystem(YAML::Node SystemConfiguration) {
 
     }
 
+
+    // Get File Logging Configuration
+    if (SystemConfiguration["EnableLogFile"]) {
+        EnableLogFile_ = SystemConfiguration["EnableLogFile"].as<bool>();
+    }
+
+    if (SystemConfiguration["LogFilePathPrefix"]) {
+        LogFilePathPrefix_ = SystemConfiguration["LogFilePathPrefix"].as<std::string>();
+    }
+
+
+
+
+
     // Print Log Key
     if (PrintLogOutput) {
         std::cout << "[ Level] [               Time] [Message]\n";

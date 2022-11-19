@@ -15,6 +15,7 @@
 #include <array>
 #include <memory>
 #include <mutex>
+#include <fstream>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -38,6 +39,11 @@ private:
     bool ReplaceLevelWithText = false;
     bool UseTextLogLevel_ = false;
     int MinimumLogLevel = 5;
+
+    bool EnableLogFile_            = true; /**Enables or disables saving logs to a file locally*/
+    std::string LogFilePathPrefix_ = "";   /**Path prefix for log file, is relative to the working directory ers is run with*/
+    std::ofstream FileStream_;             /**Filestream used to write the log to disk, if not enabled this will never be touched at runtime*/
+
 
     int LogLevelTargetWidth = 6;
     int LogTimeTargetWidth = 19;
