@@ -6,6 +6,7 @@ WindowTitle: "BrainGenix-ERS"
 
 # System Settings
 ShowEditorDebugMenu: True
+LogFilePathPrefix: Log  # Note that ERS will add the date/time and extension to this
 
 # Database Loading Settings #
 UseDatabaseLoading: False
