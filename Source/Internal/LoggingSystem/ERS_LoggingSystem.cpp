@@ -68,12 +68,13 @@ ERS_LoggingSystem::ERS_LoggingSystem(YAML::Node SystemConfiguration) {
 
 ERS_LoggingSystem::~ERS_LoggingSystem() {
 
+    Log("System Logger Destructor Called, Logger Shutting Down", 6);
+    
     // Shutdown File Stream
     if (EnableLogFile_) {
         FileStream_.close();
     }
 
-    Log("System Logger Destructor Called, Logger Shutting Down", 6);
 
 }
 
