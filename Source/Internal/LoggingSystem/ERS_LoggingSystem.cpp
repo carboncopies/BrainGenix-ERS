@@ -61,12 +61,19 @@ ERS_LoggingSystem::ERS_LoggingSystem(YAML::Node SystemConfiguration) {
 
 ERS_LoggingSystem::~ERS_LoggingSystem() {
 
+    // Shutdown File Stream
+    if (EnableLogFile_) {
+        FileStream_.close();
+    }
+
     Log("System Logger Destructor Called, Logger Shutting Down", 6);
 
 }
 
 void ERS_LoggingSystem::WriteLineToFile(std::string Line) {
-    FileStream_ << Line;
+    if (EnableLogFile_) {
+        FileStream_ << Line;
+    }
 }
 
 void ERS_LoggingSystem::Log(std::string LogMessage, int LogLevel, bool Enable) {
