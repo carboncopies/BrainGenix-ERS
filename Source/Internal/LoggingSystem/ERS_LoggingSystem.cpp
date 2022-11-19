@@ -65,6 +65,9 @@ ERS_LoggingSystem::~ERS_LoggingSystem() {
 
 }
 
+void ERS_LoggingSystem::WriteLineToFile(std::string Line) {
+    FileStream_ << Line;
+}
 
 void ERS_LoggingSystem::Log(std::string LogMessage, int LogLevel, bool Enable) {
 
