@@ -16,6 +16,7 @@
 #include <memory>
 #include <mutex>
 #include <fstream>
+#include <ctime>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>

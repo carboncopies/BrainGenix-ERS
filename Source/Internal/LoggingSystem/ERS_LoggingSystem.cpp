@@ -45,7 +45,14 @@ ERS_LoggingSystem::ERS_LoggingSystem(YAML::Node SystemConfiguration) {
         LogFilePathPrefix_ = SystemConfiguration["LogFilePathPrefix"].as<std::string>();
     }
 
-    std::string LogFilePath = LogFilePathPrefix_;
+
+    time_t CurrentTime;
+    time(&CurrentTime);
+    char TimeBuffer[sizeof "2011-10-08T07:07:09Z"];
+    strftime(TimeBuffer, sizeof TimeBuffer, "%Y-%m-%dT%H:%M:%SZ", gmtime(&CurrentTime));
+    std::string CurrentTime = std::string(TimeBuffer);
+
+    std::string LogFilePath = LogFilePathPrefix_ + TimeBuffer + ".txt";
     if (EnableLogFile_) {
         FileStream_.open(LogFilePath, std::ios_base::app);
     }
