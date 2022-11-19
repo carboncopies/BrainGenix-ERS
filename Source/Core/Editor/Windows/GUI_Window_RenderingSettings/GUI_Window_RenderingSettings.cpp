@@ -117,7 +117,7 @@ void GUI_Window_RenderingSettings::Draw() {
    
 
                 // Disallow Both To Be Checked At The Same Time
-                if (!SystemUtils_->IsLinux_) {
+#ifdef __linux__
                     if (UnlockChanged) {
                         if (SystemUtils_->FramerateManager_->UnlockFramerate_) {
                             SystemUtils_->FramerateManager_->SyncToMonitor_ = false;
@@ -131,7 +131,7 @@ void GUI_Window_RenderingSettings::Draw() {
                             SystemUtils_->FramerateManager_->UnlockFramerate_ = true;
                         }
                     }
-                } else {
+#else
                     if (UnlockChanged) {
                         if (SystemUtils_->FramerateManager_->UnlockFramerate_) {
                             SystemUtils_->FramerateManager_->SyncToMonitor_ = false;
@@ -141,7 +141,7 @@ void GUI_Window_RenderingSettings::Draw() {
                             SystemUtils_->FramerateManager_->UnlockFramerate_ = false;
                         }
                     }
-                }
+#endif
 
 
                 ImGui::Separator();
