@@ -6,7 +6,6 @@ WindowTitle: "BrainGenix-ERS"
 
 # System Settings
 ShowEditorDebugMenu: True
-IsLinux: ${IS_LINUX}
 
 # Database Loading Settings #
 UseDatabaseLoading: False
