@@ -99,14 +99,14 @@ void GUI_Window_RenderingSettings::Draw() {
                 ImGui::Separator();
 
                 // Framerate Cap (Linux Only, Windows Doesn't work for whatever reason)
-                if (SystemUtils_->IsLinux_) {
+#ifdef __linux__
 
                     int OldFrameRate = SystemUtils_->FramerateManager_->TargetFrameRate_;
                     ImGui::SliderInt("Target Framerate", &SystemUtils_->FramerateManager_->TargetFrameRate_, 10, 100);
                     if (OldFrameRate != SystemUtils_->FramerateManager_->TargetFrameRate_) {
                         SystemUtils_->FramerateManager_->SetTargetFramerate(SystemUtils_->FramerateManager_->TargetFrameRate_);
                     }
-                }
+#endif
 
                 // Unlock FPS
                 bool UnlockChanged = ImGui::Checkbox("Unlock Framerate", &SystemUtils_->FramerateManager_->UnlockFramerate_);
