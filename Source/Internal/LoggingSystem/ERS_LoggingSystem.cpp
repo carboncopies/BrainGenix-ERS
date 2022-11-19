@@ -37,17 +37,18 @@ ERS_LoggingSystem::ERS_LoggingSystem(YAML::Node SystemConfiguration) {
     }
 
 
-    // Get File Logging Configuration
+    // Get File Logging Configuration, Setup File Logging System
     if (SystemConfiguration["EnableLogFile"]) {
         EnableLogFile_ = SystemConfiguration["EnableLogFile"].as<bool>();
     }
-
     if (SystemConfiguration["LogFilePathPrefix"]) {
         LogFilePathPrefix_ = SystemConfiguration["LogFilePathPrefix"].as<std::string>();
     }
 
-
-
+    std::string LogFilePath = LogFilePathPrefix_;
+    if (EnableLogFile_) {
+        FileStream_.open(LogFilePath, std::ios_base::app);
+    }
 
 
     // Print Log Key
