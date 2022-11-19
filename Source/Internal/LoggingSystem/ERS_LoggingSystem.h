@@ -74,6 +74,12 @@ private:
      */
     void LogItem(const char* LogItem, int LogLevel=5);
 
+    /**
+     * @brief Writes a given line (including the '\n') to disk with the given file.
+     * 
+     * @param Line 
+     */
+    void WriteLineToFile(std::string Line);
 
 public:
 
