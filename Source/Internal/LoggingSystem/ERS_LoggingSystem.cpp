@@ -49,7 +49,7 @@ ERS_LoggingSystem::ERS_LoggingSystem(YAML::Node SystemConfiguration) {
     time_t CurrentTimeNumber;
     time(&CurrentTimeNumber);
     char TimeBuffer[sizeof "2011-10-08T07:07:09Z"];
-    strftime(TimeBuffer, sizeof TimeBuffer, "%Y-%m-%dT_%H-%M-%S", gmtime(&CurrentTimeNumber));
+    strftime(TimeBuffer, sizeof TimeBuffer, "%Y-%m-%d_%H-%M-%S", gmtime(&CurrentTimeNumber));
     std::string CurrentTime = std::string(TimeBuffer);
 
     std::string LogFilePath = LogFilePathPrefix_ + TimeBuffer + ".txt";
