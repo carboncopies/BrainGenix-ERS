@@ -50,7 +50,6 @@ struct ERS_STRUCT_SystemUtils {
     int RenderHeight_ = 0; /**<Height of the display being rendered to (if using a window, this is the size of the window)*/
     
 
-    bool IsLinux_ = true; /**<Boolean Value Set To True When Binary Is Compiled For Linux, False Otherwise*/
 
 
 };

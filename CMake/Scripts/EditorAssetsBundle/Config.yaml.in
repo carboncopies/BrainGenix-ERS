@@ -4,16 +4,8 @@ WindowWidth: 1920
 WindowHeight: 1080
 WindowTitle: "BrainGenix-ERS"
 
-
-# Renderer Settings #
-RenderWidth: 800
-RenderHeight: 600
-EnableValidationLayers: True
-MaxFramesInFlight: 2
-
 # System Settings
 ShowEditorDebugMenu: True
-IsLinux: ${IS_LINUX}
 
 # Database Loading Settings #
 UseDatabaseLoading: False
