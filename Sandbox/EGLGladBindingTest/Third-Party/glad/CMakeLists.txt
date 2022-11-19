@@ -1,1 +1,1 @@
-add_subdirectory(EGL_GLAD)
+add_subdirectory(Test2)
