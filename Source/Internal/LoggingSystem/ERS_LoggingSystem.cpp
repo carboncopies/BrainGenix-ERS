@@ -36,6 +36,28 @@ ERS_LoggingSystem::ERS_LoggingSystem(YAML::Node SystemConfiguration) {
 
     }
 
+
+    // Get File Logging Configuration, Setup File Logging System
+    if (SystemConfiguration["EnableLogFile"]) {
+        EnableLogFile_ = SystemConfiguration["EnableLogFile"].as<bool>();
+    }
+    if (SystemConfiguration["LogFilePathPrefix"]) {
+        LogFilePathPrefix_ = SystemConfiguration["LogFilePathPrefix"].as<std::string>();
+    }
+
+
+    time_t CurrentTimeNumber;
+    time(&CurrentTimeNumber);
+    char TimeBuffer[sizeof "2011-10-08T07:07:09Z"];
+    strftime(TimeBuffer, sizeof TimeBuffer, "%Y-%m-%d_%H-%M-%S", gmtime(&CurrentTimeNumber));
+    std::string CurrentTime = std::string(TimeBuffer);
+
+    std::string LogFilePath = LogFilePathPrefix_ + TimeBuffer + ".txt";
+    if (EnableLogFile_) {
+        FileStream_.open(LogFilePath, std::ios_base::app);
+    }
+
+
     // Print Log Key
     if (PrintLogOutput) {
         std::cout << "[ Level] [               Time] [Message]\n";
@@ -47,9 +69,18 @@ ERS_LoggingSystem::ERS_LoggingSystem(YAML::Node SystemConfiguration) {
 ERS_LoggingSystem::~ERS_LoggingSystem() {
 
     Log("System Logger Destructor Called, Logger Shutting Down", 6);
+    
+    // Shutdown File Stream
+    if (EnableLogFile_) {
+        FileStream_.close();
+    }
+
 
 }
 
+void ERS_LoggingSystem::WriteLineToFile(std::string Line) {
+    FileStream_ << Line;
+}
 
 void ERS_LoggingSystem::Log(std::string LogMessage, int LogLevel, bool Enable) {
 
@@ -133,9 +164,14 @@ void ERS_LoggingSystem::LogItem(const char* LogItem, int LogLevel) {
             } else {
                 std::cout << Output;
             }
-        };
+        }
 
-    };
+        // Log To File
+        if (EnableLogFile_) {
+            WriteLineToFile(Output);
+        }
+
+    }
 
 }
 

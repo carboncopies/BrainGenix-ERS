@@ -99,13 +99,6 @@ int main(int NumArguments, char** ArguemntValues) {
     SystemUtils->FramerateManager_ = std::make_unique<ERS_CLASS_FramerateManager>();
     SystemUtils->Logger_->Log("Initialized Framerate Manager", 4);
 
-    // Copy Config Params
-    try {
-        SystemUtils->Logger_->Log("Reading Configuration File For 'IsLinux'", 2);
-        SystemUtils->IsLinux_ = (*SystemUtils->LocalSystemConfiguration_.get())["IsLinux"].as<bool>();
-    } catch(YAML::BadSubscript&) {
-        SystemUtils->Logger_->Log("Error Reading Configuration File For 'IsLinux' Boolean Value, Defaulting To False", 9);
-    }
 
     // Startup IO Subsystem And Other Related Systems
     SystemUtils->ERS_IOSubsystem_ = std::make_unique<ERS_InputOutputSubsystem>(

@@ -15,6 +15,8 @@
 #include <array>
 #include <memory>
 #include <mutex>
+#include <fstream>
+#include <ctime>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -38,6 +40,11 @@ private:
     bool ReplaceLevelWithText = false;
     bool UseTextLogLevel_ = false;
     int MinimumLogLevel = 5;
+
+    bool EnableLogFile_            = true; /**Enables or disables saving logs to a file locally*/
+    std::string LogFilePathPrefix_ = "";   /**Path prefix for log file, is relative to the working directory ers is run with*/
+    std::ofstream FileStream_;             /**Filestream used to write the log to disk, if not enabled this will never be touched at runtime*/
+
 
     int LogLevelTargetWidth = 6;
     int LogTimeTargetWidth = 19;
@@ -68,6 +75,12 @@ private:
      */
     void LogItem(const char* LogItem, int LogLevel=5);
 
+    /**
+     * @brief Writes a given line (including the '\n') to disk with the given file.
+     * 
+     * @param Line 
+     */
+    void WriteLineToFile(std::string Line);
 
 public:
 

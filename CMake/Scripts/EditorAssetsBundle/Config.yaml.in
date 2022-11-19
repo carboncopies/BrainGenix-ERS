@@ -4,16 +4,10 @@ WindowWidth: 1920
 WindowHeight: 1080
 WindowTitle: "BrainGenix-ERS"
 
-
-# Renderer Settings #
-RenderWidth: 800
-RenderHeight: 600
-EnableValidationLayers: True
-MaxFramesInFlight: 2
-
 # System Settings
 ShowEditorDebugMenu: True
-IsLinux: ${IS_LINUX}
+EnableLogFile: True
+LogFilePathPrefix: Log  # Note that ERS will add the date/time and extension to this
 
 # Database Loading Settings #
 UseDatabaseLoading: False

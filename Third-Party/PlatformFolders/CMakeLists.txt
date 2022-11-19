@@ -18,6 +18,8 @@ if(PLATFORMFOLDERS_BUILD_SHARED_LIBS)
 	set(PLATFORMFOLDERS_TYPE SHARED)
 endif()
 
+cmake_policy(SET CMP0063 NEW) # Fix Warnings as we haven't used superbuilds yet
+
 add_library(platform_folders ${PLATFORMFOLDERS_TYPE}
 	sago/platform_folders.cpp
 )
