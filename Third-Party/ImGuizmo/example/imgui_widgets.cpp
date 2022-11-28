@@ -1,3 +1,6 @@
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-enum-enum-conversion"
+
 // dear imgui, v1.83
 // (widgets code)
 
@@ -8097,3 +8100,4 @@ void ImGui::TabItemLabelAndCloseButton(ImDrawList* draw_list, const ImRect& bb, 
 
 
 #endif // #ifndef IMGUI_DISABLE
+#pragma GCC diagnostic pop

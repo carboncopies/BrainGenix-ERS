@@ -1,3 +1,6 @@
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wvolatile"
+
 ///////////////////////////////////////////////////////////////////////////
 //
 // Copyright (c) 2002, Industrial Light & Magic, a division of Lucas
@@ -71,7 +74,7 @@ half::overflow ()
 
     for (int i = 0; i < 10; i++)	
 	f *= f;				// this will overflow before
-					// the for­loop terminates
+					// the forï¿½loop terminates
     return f;
 }
 
@@ -308,3 +311,5 @@ printBits (char c[35], float f)
 
     c[34] = 0;
 }
+
+#pragma GCC diagnostic pop

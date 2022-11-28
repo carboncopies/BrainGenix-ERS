@@ -1,3 +1,6 @@
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wvolatile"
+
 //-----------------------------------------------------------------------------
 //
 // ImageLib Sources
@@ -1152,3 +1155,5 @@ ILboolean ILAPIENTRY ilClampNTSC(void)
 
 	return IL_TRUE;
 }
+
+#pragma GCC diagnostic pop

@@ -1,3 +1,6 @@
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wvolatile"
+
 /// @ref core
 /// @file glm/detail/type_half.inl
 
@@ -242,3 +245,4 @@ namespace detail
 
 }//namespace detail
 }//namespace glm
+
