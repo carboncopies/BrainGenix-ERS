@@ -50,9 +50,9 @@ void GUI_Menu_Debug::Draw() {
 
 
             // Segfault Button
-            if (ImGui::MenuItem("ImGui Demo Window")) {
+            if (ImGui::MenuItem("Induce Segmentation Fault")) {
                 int* ThisWillCrash = nullptr;
-                *ThisWillCrash;
+                int Something = *ThisWillCrash;
             }
 
 
