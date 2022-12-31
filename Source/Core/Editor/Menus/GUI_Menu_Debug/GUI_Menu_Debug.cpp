@@ -53,7 +53,7 @@ void GUI_Menu_Debug::Draw() {
             if (ImGui::MenuItem("Induce Segmentation Fault")) {
                 int* ThisWillCrash = nullptr;
                 int Something = *ThisWillCrash;
-                Something;
+                Something++;
             }
 
 
