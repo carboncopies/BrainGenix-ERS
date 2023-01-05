@@ -3,6 +3,10 @@
 /// @ref core
 /// @file glm/detail/type_half.inl
 
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wvolatile"
+
 namespace glm{
 namespace detail
 {

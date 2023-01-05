@@ -1,6 +1,6 @@
-##########################
-# Builds Library For ERS #
-##########################
+##############################
+# Builds Library For PHFUtil #
+##############################
 
 ERSBuildLogger(${Green} "Configuring WhereAmI Library")
 add_subdirectory(${LIB_DIR}/whereami)
