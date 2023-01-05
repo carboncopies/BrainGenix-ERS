@@ -49,6 +49,14 @@ void GUI_Menu_Debug::Draw() {
             ImGui::MenuItem("Test Editor Window", "", &Windows_->GUI_Window_TestEditor_->Enabled_);
 
 
+            // Segfault Button
+            if (ImGui::MenuItem("Induce Segmentation Fault")) {
+                int* ThisWillCrash = nullptr;
+                int Something = *ThisWillCrash;
+                Something++;
+            }
+
+
 
             ImGui::Separator();
 
