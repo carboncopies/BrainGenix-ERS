@@ -5,14 +5,14 @@
 - [System Log](#system-log) (Shows log)
 - [Asset Explorer](#asset-explorer) (Shows list of available assets)
 - [Object Properties](#object-properties) (Enables user management of scene object properties)
-
 - [Script Editor](#script-editor) (Editor for scripts)
-- [Shder Editpr](#shader-editor) (Window for editing shader code (GLSL))
+- [Shder Editor](#shader-editor) (Window for editing shader code (GLSL))
 - [Color Theme Selector](#color-theme-selector) (Tool to pick color theme for the editor)
 - [System Fornt Selector](#system-font-selector) (Tool to select the font used by the editor)
 - [Editor Camera Settings](#editor-camera-settings) (Window to select editor camera settings)
 - [Rendering Settings](#rendering-settings) (Window to set rendering parameters)
 - [Asset Streaming Settings](#asset-streaming-settings) (Window to select the asset streaming settings)
+
 - [Game Controller Settings](#game-controller-settings) (Window to configure the game controller)
 - [Viewport Menu](#viewport-menu) (Viewport configuration settings)
 
@@ -96,8 +96,70 @@ Depending on the type of object selected, the window will display different prop
  #### Scripts
   - Show list of attached scripts to this object
   
-  
-  
+ 
+### Script Editor
+- Menu to control editing environment (file, edit, view, etc.)
+- Script Tools window to see output from script (errors, etc.)
+
+### Shader Editor
+- Mode menu to control type of shader being edited (vertex, fragment, compute, geometry, etc.)
+- Text editor to actually edit shader
+- Compiler log to show errors generated when using said shader
+
+### Color Theme Selector
+- Selection Menu To adjust the way the editor looks
+- Apply and reload buttons for applying the theme and reloading themes from disk
+- Close button
+
+### System Font Selector
+- Selection menu to pick the font for the editor
+- Font size slider to adjust font size
+- Apply and reload buttons
+
+### Editor Camera Settings
+- Viewport Selector (all viewports are independent of eachother)
+- Movement speed controls (min/max/current speed) (Note that using the scroll wheel can adjust movement speed)
+- Mouse Settings (constrain pitch at -90,90, Mouse sensitivity)
+- Location/Rotation Settings (can manually set position and rotation through text input boxes)
+- Camera Settings (Near/Far clip, FOV)
+
+### Rendering Settings
+- Wireframe mode (only draws outline of polygons)
+- Background color (sets the blank bkg color)
+- Framerate settings (adjust framerate target, unlock, sync to monitor, etc.)
+- Shadow Map settings (resoluton, updates, filter kernel siez, filtering mode, update mode)
+
+### Asset Streaming Settings
+- Ram/VRAM cutoff (max distance from camera/viewport after which the textures are at min lod)
+- Had quadratic scaling (use quadratic scaling to calc target texture lod)
+- Min LOD
+- Max LOD
+- Max Texture Resolution (pixels)
+- VRAM/RAM Budget (target usage in MiB of the system)
+- Ram/VRAM warning threshold (min amount of free mem before warning is shown)
+- Texture loading threads (number of threads to use for texture loading, is autodetected)
+- Texture streaming threads (number of threads to use for tex streaming, is autoset at 1)
+- Queue size limit (max size of the queue to load)
+- Prevent Duplicate Entry (prevent same model being added to queue twice)
+- Queue prioritization (allow inserting into the queue depending on priority)
+
+- Purge Ram/Vram/All (allow the user to force reload textures to various parts of the system)
+
+### Game Controller Settings
+- Seems to crash so don't use this for now i guess...
+
+### Viewport Menu
+- Controls menu (enable or disable text overlays for various stats, icons, etc.)
+- Shader Menu (Set global default shader (can be overridden with model's object specific shader property)
+- Grid parameters (set scale, line thickness, colors, etc.)
+- Add Menu (add lights, script, scene, camera, etc.)
+- Grid Snapping Menu (adjust grid snapping for translation, rotation and scale)
+- Run Menu (Allows the user to start or stop scripts/game (can be done with f5 and escape as well)
+- Bounding Box Menu (adjust bounding box parameters, depth test, wireframe, mode, etc.)
+- Note: Use "`" to toggle this menu on or off
+
+
+
   
   
   
