@@ -41,4 +41,54 @@
 
 ### Object Properties
 - Adjust physical parameters (Position, Rotation, Scale)
-- 
+
+Depending on the type of object selected, the window will display different properties:
+  #### Model Settings
+    - Casts Dynamic Shadows (Enable or disable casting of non-prebaked shadows)
+    - Casts Static Shadows (Enable or disable casting of prebaked shadows (doens't do anything yet; prebaked shadows dont exist yet))
+    - Receive Shadows (Allow or disallow the object to have shadows cast on it)
+    - Treat missing textures as transparent (useful for things with glass on them like clocks or windows, will fix broken textures caused on the glass)
+    - Render Model (show/hide this model)
+    
+    - Minimum LOD (set the lower limit on the level of detail for this model)
+    - Maximum LOD (Set the upper limit on the level of detail for this model)
+    
+    - Object specific shader (allows the user to set a different shader for this model only, picks from dropdown of shaders)
+ 
+  #### Point Light Settings
+    - Color picker (light color)
+    - Intensity (brightness)
+    - Maximum Distance this light will have an effect at
+    - Cast shadows (allow this light to cast shadows on objects)
+    
+  #### Spot Light Settings
+    - Color picker (light color)
+    - Intensity (brightness)
+    - Maximum Distance this light will have an effect at
+    - Cutoff Angle (set the outer angle of light attenuation)
+    - Rolloff Angle (set the inner angle for light attenuation)
+    - Cast shadows (allow this light to cast shadows on objects)
+ 
+  #### Directional Light Settings
+    - Color picker (light color)
+    - Intensity (brightness)
+    - Maximum Distance this light will have an effect at
+    - Cast shadows (allow this light to cast shadows on objects)
+  
+  #### Camera Settings
+    - Active Camera (determines what camera is the current active camera)
+    - FOV (Set field of view)
+    - Near Clip Plane (Set min distance for something to be visible)
+    - Far Clip Plane (Set max distance for something to be visible)
+    - Asset Streaming Priority (Set priority for this camera to get assets loaded)
+    - Enforce Aspect Ratio (forces the camera's aspect ratio to be used, will cause distortion or letterboxing)
+    
+ #### Scripts
+  - Show list of attached scripts to this object
+  
+  
+  
+  
+  
+  
+  
