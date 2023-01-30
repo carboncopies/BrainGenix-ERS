@@ -6,6 +6,16 @@
 - [Asset Explorer](#asset-explorer) (Shows list of available assets)
 - [Object Properties](#object-properties) (Enables user management of scene object properties)
 
+- [Script Editor](#script-editor) (Editor for scripts)
+- [Shder Editpr](#shader-editor) (Window for editing shader code (GLSL))
+- [Color Theme Selector](#color-theme-selector) (Tool to pick color theme for the editor)
+- [System Fornt Selector](#system-font-selector) (Tool to select the font used by the editor)
+- [Editor Camera Settings](#editor-camera-settings) (Window to select editor camera settings)
+- [Rendering Settings](#rendering-settings) (Window to set rendering parameters)
+- [Asset Streaming Settings](#asset-streaming-settings) (Window to select the asset streaming settings)
+- [Game Controller Settings](#game-controller-settings) (Window to configure the game controller)
+- [Viewport Menu](#viewport-menu) (Viewport configuration settings)
+
 ### Framerate Monitoring Tools
 - Framerate graph (automatically adjusts axes)
 - Framerate plot (simpler graph)
