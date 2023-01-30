@@ -4,7 +4,7 @@
 - [Scene Tree](#scene-tree) (Allows managing the scene and objects/lights)
 - [System Log](#system-log) (Shows log)
 - [Asset Explorer](#asset-explorer) (Shows list of available assets)
-- Object Properties (Enables user management of scene object properties)
+- [Object Properties](#object-properties) (Enables user management of scene object properties)
 
 ### Framerate Monitoring Tools
 - Framerate graph (automatically adjusts axes)
@@ -36,6 +36,9 @@
 - Script tab (shows scripts that can be attached to objects in the scene tree)
 - Raw assset IDs tab (shows asset ids in file system)
 - Tools tab
- - Refresh asset index
- - Repair asset index
+- Refresh asset index
+- Repair asset index
 
+### Object Properties
+- Adjust physical parameters (Position, Rotation, Scale)
+- 
