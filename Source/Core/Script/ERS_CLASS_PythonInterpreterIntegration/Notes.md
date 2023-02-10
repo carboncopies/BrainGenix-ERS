@@ -56,5 +56,22 @@ This section discusses replacing the python API with a c++ (like) API that has b
 ### Challenges
 Some of the challenges that would potentially be faced are listed below:
 
+- Selecting a scripting API
+ - There are a *lot* of scripting APIs, so finding the best one is challenging.
+ - Kind of a double-edged issue, as this also means there are a lot of options, so we could pick one that very closely matches our needs.
+- User base
+ - Since there are so many scirpting APIs, users will likely have to learn the language from scratch
+ - However, we can pick one that's super easy to pick up, mostly eliminating this issue.
+- Unknown variables
+ - Given that we have not yet selected one scripting API, the performance and limitations are as of yet unknown.
+ - We would need to be careful to pick a system that is going to meet our needs for performance.
+
+
 ### Benefits
 Some of the benefits are discussed below:
+- Ease of integration
+ - The language has been designed to be used as a scripting platform, so it's going to be pretty good at it's job (hopefully)
+ - No messing around with JITs or the Python interpreter.
+ - Hopefully easy to expose ERS functionality
+- Platform Consitency
+ - Since the code to compile/run or just run the scripts is included in the ERS codebase, the user should not have to install anything.
