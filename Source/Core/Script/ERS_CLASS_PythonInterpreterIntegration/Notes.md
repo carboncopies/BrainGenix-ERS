@@ -80,7 +80,7 @@ Some of the benefits are discussed below:
 
 
 # Analysis On Selected Approach
-Given the significant and non-trivial issues with the other two systems, it indicates that the preferred solution is a scripting language. Now, the challenge is to identify the best language to use for the job. Currently, that language seems to be Anglescript, as it has been designed to be used in real-time rendering applications.
+Given the significant and non-trivial issues with the other two systems, it indicates that the preferred solution is a scripting language. Now, the challenge is to identify the best language to use for the job. Currently, that language seems to be AngelScript, as it has been designed to be used in real-time rendering applications.
 
 
 According to it's website, the language has the following features:
@@ -159,7 +159,7 @@ Other scripting languages do have some of the same features, and their own benef
 
 In addition to that, the system seems to support multithreading well, which is very critical given the design goals of ERS (very heavily threaded, should scale well on servers with 256 cores, very minimal single-threaded performance requirements).
 
-In conclusion, I feel that the most efficent way forwards will be using AngleScript with ERS, and replacing the Python API in favor of this.
+In conclusion, I feel that the most efficent way forwards will be using AngelScript with ERS, and replacing the Python API in favor of this.
 
 
 # Plan
