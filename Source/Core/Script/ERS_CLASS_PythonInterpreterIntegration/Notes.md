@@ -7,10 +7,38 @@ Either way, the plan outlined here will only be complete when a fully-functional
 ## Extending Python API
 This section discusses rewriting the python integration to expand the ERS API and enable more functionality including scene modification and modifying assets not directly attached to the script.
 
-
 ### Challenges
 Some of the challenges that would potentially be faced are listed below:
 - Performance
  - Expanding the API could lead to issues where the entire scene needs to be iterated through for every script, (to allow the script to access other objects in the scene), creating performance issues for large scenes
  - This would be made worse by python's GIL which prevents true multithreading. The only foreseeable solution to this would be running multiple python interpreters, however the binding library pybind11 doesn't officially support this (to my knowledge)
- 
+- Installation Issues
+ - As it is already, many times the editor will crash or have issues with python binding if the user doesn't have the exactly right version of python or some slight configuration change.
+
+### Benefits
+Some of the benefits are discussed below:
+- Large talent pool
+ - Many people already know python, so the available number of people who could use it would be large
+ - Additionally, python is easy to learn so people could pick it up quickly
+- Less error-prone
+ - Since python is a higher-level language, users would be less-likely to make mistakes leading to time wasted debugging
+
+
+## Replacing Python with C++/JIT
+This section discusses replacing the python API with a C++ API and compiling the code with a Just In Time compiler (JIT).
+
+### Challenges
+Some of the challenges that would potentially be faced are listed below:
+
+### Benefits
+Some of the benefits are discussed below:
+
+
+## Replacing Python with C++/JIT
+This section discusses replacing the python API with a C++ API and compiling the code with a Just In Time compiler (JIT).
+
+### Challenges
+Some of the challenges that would potentially be faced are listed below:
+
+### Benefits
+Some of the benefits are discussed below:
