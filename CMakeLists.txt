@@ -31,7 +31,7 @@ if (USE_SUPERBUILD)
   project (SUPERBUILD NONE)
 
   # Add Superbuild Runner
-  include(${CMAKE_UTILS_DIR}/SuperBuild.cmake)
+  include(${CMAKE_UTILS_DIR}/SuperBuildMaster.cmake)
   return()
 else()
   project(
@@ -79,7 +79,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/OZZ-Animation.cmake)
+# include(${CMAKE_BUILD_UTILS_DIR}/OZZ-Animation.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/MeshOptimizer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Filesystem.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/WhereAmI.cmake)
