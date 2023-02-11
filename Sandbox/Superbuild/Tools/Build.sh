@@ -37,7 +37,7 @@ fi
 
 # Build Files
 echo "[ERS BUILD HELPER] - Building, Please Wait. This may take some time"
-cmake --build . --target Test-Project -j $1
+cmake --build . -j $1
 
 
 # Run Program
