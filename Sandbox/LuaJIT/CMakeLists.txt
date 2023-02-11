@@ -7,7 +7,7 @@ project(
 	)
 
 # Set Dirs
-set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
+set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
 
@@ -27,7 +27,7 @@ endfunction()
 
 # Add FreeImage Library (Not Header Only)
 add_subdirectory(${LIB_DIR}/LuaJIT)
-disable_target_warnings(LuaJIT)
+disable_target_warnings(luajit)
 
 # Add Main.cpp
 add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp" "${SRC_DIR}/Main.h" ${BACKWARD_ENABLE})
@@ -35,5 +35,5 @@ target_include_directories(${PROJECT_NAME} PRIVATE Source)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
 target_link_libraries(${PROJECT_NAME} PRIVATE
-  LuaJIT
+luajit
   )
