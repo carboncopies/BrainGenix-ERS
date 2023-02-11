@@ -25,9 +25,8 @@ function(disable_target_warnings target)
     )
 endfunction()
 
-# Add FreeImage Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/LuaJIT)
-disable_target_warnings(luajit)
+# Include LuaJIT
+include("${CMAKE_CURRENT_SOURCE_DIR}/LuaJIT")
 
 # Add Main.cpp
 add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp" "${SRC_DIR}/Main.h" ${BACKWARD_ENABLE})
