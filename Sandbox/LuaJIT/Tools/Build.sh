@@ -16,12 +16,12 @@ cd Build
 
 # Build
 echo "Building BrainGenix-ERS"
-cmake --build . --target BGImageTest -- -j 24
+cmake --build . --target LuaJIT-Test -- -j 24
 
 
 
 # Run Program
 echo "Running Program"
 cd ../Binaries
-./BGImageTest
+./LuaJIT-Test
 cd ..
