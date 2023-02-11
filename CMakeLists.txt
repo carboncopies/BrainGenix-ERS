@@ -9,14 +9,6 @@ option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace info
 # Set Non-User Changable Configuration Data (Used during build process )
 option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You probably don't want to change this one - used internally
 
-project(
-	"BrainGenix-ERS"
-	VERSION "0.4.0"
-	LANGUAGES CXX
-	)
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 
 # Set Dirs
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
@@ -26,9 +18,32 @@ set(CMAKE_UTIL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Utils")
 set(CMAKE_BUILD_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/BuildUtils")
 set(CMAKE_FIND_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/FindUtils")
 set(CMAKE_SCRIPTS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Scripts")
+set(CMAKE_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake")
 set(CMAKE_ASSETS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/EditorAssets")
 set(PROJECT_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+
+
+
+# Superbuild Configuration
+if (USE_SUPERBUILD)
+
+  project (SUPERBUILD NONE)
+
+  # Add Superbuild Runner
+  include(${CMAKE_UTILS_DIR}/SuperBuild.cmake)
+  return()
+else()
+  project(
+    "BrainGenix-ERS"
+    VERSION "0.4.0"
+    LANGUAGES CXX
+    )
+  set(CMAKE_CXX_STANDARD 20)
+  set(CMAKE_CXX_STANDARD_REQUIRED ON)
+endif()
+
+
 
 
 # Include Util CMake Scripts
