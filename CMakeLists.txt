@@ -1,5 +1,14 @@
 # Set CMAKE Version, Define Project
 cmake_minimum_required (VERSION 3.1...3.21)
+
+
+# Set Configuration Options
+option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace information or not" ON)
+
+
+# Set Non-User Changable Configuration Data (Used during build process )
+option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You probably don't want to change this one - used internally
+
 project(
 	"BrainGenix-ERS"
 	VERSION "0.4.0"
@@ -7,11 +16,6 @@ project(
 	)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# Set Configuration Options
-option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace information or not" ON)
-
-
 
 
 # Set Dirs
