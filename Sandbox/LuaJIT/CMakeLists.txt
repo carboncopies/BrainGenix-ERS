@@ -1,7 +1,7 @@
 # Set CMAKE Version, Define Project
 cmake_minimum_required (VERSION 3.1...3.21)
 project(
-	"BGImageTest"
+	"LuaJIT-Test"
 	VERSION "0.0.1"
 	LANGUAGES CXX
 	)
@@ -30,7 +30,7 @@ add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
 disable_target_warnings(FreeImage)
 
 # Add Main.cpp
-add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp" ${BACKWARD_ENABLE})
+add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp" "${SRC_DIR}/Main.h" ${BACKWARD_ENABLE})
 target_include_directories(${PROJECT_NAME} PRIVATE Source)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
