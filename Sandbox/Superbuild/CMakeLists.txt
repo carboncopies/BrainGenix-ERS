@@ -10,7 +10,7 @@ if (USE_SUPERBUILD)
   include (cmake/SuperBuild.cmake)
   return()                      # stop processing this file further
 else()
-  project (Test-Project)                # <-- YOUR PROJECT NAME HERE
+  project (Test-Project) # <-- YOUR PROJECT NAME HERE
 endif()
 
 #
