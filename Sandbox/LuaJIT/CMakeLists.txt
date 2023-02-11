@@ -26,8 +26,8 @@ function(disable_target_warnings target)
 endfunction()
 
 # Add FreeImage Library (Not Header Only)
-add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
-disable_target_warnings(FreeImage)
+add_subdirectory(${LIB_DIR}/LuaJIT)
+disable_target_warnings(LuaJIT)
 
 # Add Main.cpp
 add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp" "${SRC_DIR}/Main.h" ${BACKWARD_ENABLE})
@@ -35,8 +35,5 @@ target_include_directories(${PROJECT_NAME} PRIVATE Source)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
 target_link_libraries(${PROJECT_NAME} PRIVATE
-  FreeImage
+  LuaJIT
   )
-
-# Copy Images
-file(COPY "${SRC_DIR}/Assets/" DESTINATION "${BIN_DIR}/Assets")
