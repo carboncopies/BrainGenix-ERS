@@ -62,7 +62,7 @@ fi
 
 # Build Files
 echo "[ERS BUILD HELPER] - Building, Please Wait. This may take some time"
-cmake --build . --target BrainGenix-ERS --parallel $1
+cmake --build . --parallel $1
 
 
 # Run Program
