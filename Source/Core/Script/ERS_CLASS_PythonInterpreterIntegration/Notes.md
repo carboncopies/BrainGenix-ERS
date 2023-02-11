@@ -155,11 +155,15 @@ According to it's website, the language has the following features:
     - Well documented - Both the script language and library is fully documented. 
 
 ## Analysis on language/features
-Other scripting languages do have some of the same features, and their own benefits, however this language seems to be well-tested in industry and has extensive documentation. Additionally, it's syntax is so similar to C++ that the learning curve should be very small for existing C++/C developers.
+LuaJIT seems to be the best platform for this task. Given it's performance according to various benchmarks, it vastly exceeds that of AngelScript, and in addtion, it has a much larger userbase given that of the Lua Community.
+
+~~Other scripting languages do have some of the same features, and their own benefits, however this language seems to be well-tested in industry and has extensive documentation. Additionally, it's syntax is so similar to C++ that the learning curve should be very small for existing C++/C developers.
 
 In addition to that, the system seems to support multithreading well, which is very critical given the design goals of ERS (very heavily threaded, should scale well on servers with 256 cores, very minimal single-threaded performance requirements).
 
-In conclusion, I feel that the most efficent way forwards will be using AngelScript with ERS, and replacing the Python API in favor of this.
+In conclusion, I feel that the most efficent way forwards will be using AngelScript with ERS, and replacing the Python API in favor of this.~~
+
+
 
 
 # Plan
