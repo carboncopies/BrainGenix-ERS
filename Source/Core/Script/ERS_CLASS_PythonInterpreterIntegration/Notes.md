@@ -168,4 +168,13 @@ In conclusion, I feel that the most efficent way forwards will be using AngelScr
 
 # Plan
 
-To be filled out soon.
+The development plan is broken into the following sections:
+
+### 1. Sandbox Test
+Create a test sandbox with the LuaJIT system, allowing us to have a minimal working example with cmake.
+
+### 2. Remove Python System
+Remove the python scripting system, and all associated code to simplify everything.
+
+### 3. Integrate LuaJIT
+Create a new directory in the interface system, and create the associated system components to add the new scripting system.
