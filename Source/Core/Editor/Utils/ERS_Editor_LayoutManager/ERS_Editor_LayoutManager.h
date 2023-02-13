@@ -56,7 +56,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_LayoutManager(ERS_LoggingSystemnst char* LayoutDirectory = "EditorAssets/Layouts/");
+    ERS_CLASS_LayoutManager(ERS_LoggingSystem* Logger, const char* LayoutDirectory = "EditorAssets/Layouts/");
 
     /**
      * @brief Destroy the Layout Manager object
