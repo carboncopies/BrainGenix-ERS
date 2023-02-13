@@ -54,6 +54,10 @@ else()
   # add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
   # disable_target_warnings(FreeImage)
 
+  # find_package(FreeImage REQUIRED)
+  option(FreeImage_ROOT "Set the internal superbuild path for freeimage (install dir)" "")
+  include_directories(${FreeImage_ROOT}/include)
+
   # Add Main.cpp
   add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp" ${BACKWARD_ENABLE})
   target_include_directories(${PROJECT_NAME} PRIVATE Source)
