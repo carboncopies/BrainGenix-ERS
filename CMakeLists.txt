@@ -63,7 +63,8 @@ message(STATUS "Assimp Configuration File Directory: ${assimp_DIR}")
 find_package(assimp REQUIRED)
 
 message(STATUS "OZZ-Animation Configuration File Directory: ${ozz-animation_DIR}")
-find_library(ozz_animation names ozz_animation HINTS "${ozz-animation_DIR}")
+# find_library(ozz_animation REQUIRED names ozz_animation HINTS "${ozz-animation_DIR}")
+add_library(ozz_animation )
 
 # Include Util CMake Scripts
 include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
