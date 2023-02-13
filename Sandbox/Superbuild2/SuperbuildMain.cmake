@@ -11,7 +11,7 @@ set (EXTRA_CMAKE_ARGS)
 
 # Include Superbuilds
 # include(${CMAKE_UTILS_DIR}/SuperBuilds/Boost.cmake)
-include(Assimp.cmake)
+# include(Assimp.cmake)
 include(FreeImage.cmake)
 include(BGImageTest.cmake)
 

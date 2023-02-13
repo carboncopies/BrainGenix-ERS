@@ -1,13 +1,17 @@
 
 
-# Add To Dependencies
+# Configuration Parameters
 set(TARGET_NAME FreeImage)
+set(THIRD_PARTY_DIR ${LIB_DIR}/FreeImage/FreeImage)
+
+
+# Add To Dependencies
 list (APPEND DEPENDENCIES ThirdParty_${TARGET_NAME})
 
 # Create External Project
 ExternalProject_Add (ThirdParty_${TARGET_NAME}
 
-    SOURCE_DIR ${LIB_DIR}/${TARGET_NAME}
+    SOURCE_DIR ${THIRD_PARTY_DIR}
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}
 
     BINARY_DIR   = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Build
