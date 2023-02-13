@@ -17,7 +17,7 @@ add_library(ERS_STRUCT_ModelWriterData
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_STRUCT_ModelWriterData
-    assimp
+    assimp::assimp
     )
 
 # Link Internal Libs
