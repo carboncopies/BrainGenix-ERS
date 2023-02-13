@@ -10,12 +10,6 @@ set (EXTRA_CMAKE_ARGS)
 
 
 # Include Superbuilds
+include(SuperBuilds/Boost.cmake)
+include(SuperBuilds/ERS.cmake)
 
-# FIXME add to default target "all"?
-ExternalProject_Add (ERS
-  DEPENDS ${DEPENDENCIES}
-  SOURCE_DIR ${PROJECT_SOURCE_DIR}
-  CMAKE_ARGS -DUSE_SUPERBUILD=OFF ${EXTRA_CMAKE_ARGS}
-  INSTALL_COMMAND ""
-  # BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/blah
-  )
