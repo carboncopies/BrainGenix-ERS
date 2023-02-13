@@ -55,8 +55,8 @@ else()
   # disable_target_warnings(FreeImage)
 
   # find_package(FreeImage REQUIRED)
-  option(FreeImage_ROOT "Set the internal superbuild path for freeimage (install dir)" "")
-  include_directories(${FreeImage_ROOT}/include)
+  option(FreeImage_INCLUDE "Set the internal superbuild include path for freeimage (wherever header files are located)" "")
+  include_directories(${FreeImage_INCLUDE})
 
   # Add Main.cpp
   add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp" ${BACKWARD_ENABLE})
