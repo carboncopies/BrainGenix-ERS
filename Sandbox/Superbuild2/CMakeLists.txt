@@ -6,7 +6,8 @@ cmake_minimum_required (VERSION 3.1...3.21)
 
 
 # Set Non-User Changable Configuration Data (Used during build process )
-option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You probably don't want to change this one - used internally
+option(USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You probably don't want to change this one - used internally
+option(FreeImage_INCLUDE "Set the internal superbuild include path for freeimage (wherever header files are located)" "")
 
 
 # Set Dirs
@@ -55,7 +56,6 @@ else()
   # disable_target_warnings(FreeImage)
 
   # find_package(FreeImage REQUIRED)
-  option(FreeImage_INCLUDE "Set the internal superbuild include path for freeimage (wherever header files are located)" "")
   include_directories(${FreeImage_INCLUDE})
 
   # Add Main.cpp
