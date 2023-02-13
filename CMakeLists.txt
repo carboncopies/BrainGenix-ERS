@@ -64,7 +64,12 @@ find_package(assimp REQUIRED)
 
 message(STATUS "OZZ-Animation Configuration File Directory: ${ozz-animation_DIR}")
 # find_library(ozz_animation REQUIRED names ozz_animation HINTS "${ozz-animation_DIR}")
-add_library(ozz_animation )
+FILE(GLOB_RECURSE OZZAnimationIncludes ${ozz-animation_DIR}/include/*/*.h)
+FILE(GLOB_RECURSE OZZAnimationLibs ${ozz-animation_DIR}/Install/lib/*/*.so)
+message(STATUS ${OZZAnimationIncludes})
+add_library(ozz_animation ${OZZAnimationIncludes})
+target_link_libraries(ozz_animation ${OZZAnimationLibs})
+set_target_properties(ozz_animation PROPERTIES LINKER_LANGUAGE CXX)
 
 # Include Util CMake Scripts
 include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
