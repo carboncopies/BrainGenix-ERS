@@ -10,6 +10,6 @@ set (EXTRA_CMAKE_ARGS)
 
 
 # Include Superbuilds
-include(SuperBuilds/Boost.cmake)
-include(SuperBuilds/ERS.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/Boost.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/ERS.cmake)
 
