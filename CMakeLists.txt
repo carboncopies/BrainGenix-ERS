@@ -35,12 +35,14 @@ if (USE_SUPERBUILD)
   return()
 else()
 
-
   project(
       "BrainGenix-ERS"
       VERSION "0.4.0"
       LANGUAGES CXX
   )
+
+endif()
+
   set(CMAKE_CXX_STANDARD 20)
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -257,6 +259,3 @@ else()
   include(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/EditorAssetsBundle.cmake)
 
 
-
-
-endif()
