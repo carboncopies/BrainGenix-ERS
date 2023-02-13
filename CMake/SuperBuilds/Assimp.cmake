@@ -1,18 +1,27 @@
 # ERS Superbuild
 
 
+# Configuration Parameters
+set(TARGET_NAME Assimp)
+set(PROJECT_SOURCE_DIR ${LIB_DIR}/assimp)
+
+# Custom CMAKE For This Lib
+# End Custom CMAKE For This Lib
+
+
 # Add To Dependencies
-list (APPEND DEPENDENCIES ThirdParty_Assimp)
+list (APPEND DEPENDENCIES ThirdParty_${TARGET_NAME})
 
 # Create External Project
-ExternalProject_Add (ThirdParty_Assimp
+ExternalProject_Add (ThirdParty_${TARGET_NAME}
 
-    SOURCE_DIR ${LIB_DIR}/assimp
-    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/Assimp
+    SOURCE_DIR ${PROJECT_SOURCE_DIR}
+    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}
+    STAMP_DIR ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Stamp
 
-    BINARY_DIR   = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/Assimp/Build
-    INSTALL_DIR  = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/Assimp/Build
-    LOG_DIR      = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/Assimp/Logs
+    BINARY_DIR  = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Build
+    INSTALL_DIR = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Build
+    LOG_DIR     = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Logs
 
     INSTALL_COMMAND ""
 
@@ -21,7 +30,9 @@ ExternalProject_Add (ThirdParty_Assimp
                -DASSIMP_BUILD_SAMPLES:BOOL=OFF
                -DASSIMP_BUILD_TESTS:BOOL=OFF
 
+
 )
+
 
 # ExternalProject_Get_Property(ThirdParty_Assimp install_dir)
 # include_directories(${install_dir}/include)
