@@ -8,7 +8,7 @@ set (EXTRA_CMAKE_ARGS)
 # Use static linking to avoid issues with system-wide installations of Boost.
 list (APPEND DEPENDENCIES ep_boost)
 
-file(COPY "${PROJECT_SOURCE_DIR}/ThirdParty/boost" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Source/ep_boost")
+file(COPY "${PROJECT_SOURCE_DIR}/ThirdParty/boost/" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Source/ep_boost")
 ExternalProject_Add (ep_boost
   # URL http://sourceforge.net/projects/boost/files/boost/1.55.0/boost_1_55_0.tar.bz2/download
   # URL_MD5 d6eef4b4cacb2183f2bf265a5a03a354
