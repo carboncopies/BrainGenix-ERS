@@ -37,10 +37,11 @@ ExternalProject_Add (ThirdParty_${TARGET_NAME}
 )
 
 
+
 # ExternalProject_Get_Property(ThirdParty_Assimp install_dir)
 # include_directories(${install_dir}/include)
 
 
 list (APPEND EXTRA_CMAKE_ARGS
-  -DAssimp_DIR=${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Build/generated
+  -Dassimp_DIR=${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Build/generated
 )

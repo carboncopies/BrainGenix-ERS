@@ -8,7 +8,7 @@ option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace info
 
 # Set Non-User Changable Configuration Data (Used during build process )
 option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You probably don't want to change this one - used internally
-option (Assimp_DIR "Location Of Assimp Configuration File (Used In Superbuild Process)")
+option (assimp_DIR "Location Of Assimp Configuration File (Used In Superbuild Process)")
 
 # Set Dirs
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
@@ -49,10 +49,12 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-# Superbuild Configuration
+# # Superbuild Configuration
 message(STATUS "Superbuild Configuration:")
 
-message(STATUS "Assimp Configuration File Directory: ${Assimp_DIR}")
+message(STATUS "Assimp Configuration File Directory: ${assimp_DIR}")
+find_package(assimp REQUIRED)
+# list(APPEND CMAKE_PREFIX_PATH ${Assimp_DIR})
 
 
 
@@ -85,7 +87,6 @@ include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/FreeImage.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/STB.cmake)
 # include(${CMAKE_BUILD_UTILS_DIR}/Assimp.cmake)
-find_package(Assimp REQUIRED)
 include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
