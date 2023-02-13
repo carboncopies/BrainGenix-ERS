@@ -50,9 +50,9 @@ else()
       )
   endfunction()
 
-  # Add FreeImage Library (Not Header Only)
-  add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
-  disable_target_warnings(FreeImage)
+  # # Add FreeImage Library (Not Header Only)
+  # add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
+  # disable_target_warnings(FreeImage)
 
   # Add Main.cpp
   add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp" ${BACKWARD_ENABLE})
