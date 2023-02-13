@@ -5,12 +5,14 @@ option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON)
 
 if (USE_SUPERBUILD)
   project (SUPERBUILD NONE)
+  message("Performing Initial Superbuild To Create Third-Party Libs")
   # execute the superbuild (this script will be invoked again without the
   # USE_SUPERBUILD option this time)
   include (cmake/SuperBuild.cmake)
   return()                      # stop processing this file further
 else()
   project (Test-Project) # <-- YOUR PROJECT NAME HERE
+  message("Performing Second Pass Run To Build Project")
 endif()
 
 #

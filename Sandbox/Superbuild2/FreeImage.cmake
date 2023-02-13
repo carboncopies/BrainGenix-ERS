@@ -33,7 +33,7 @@ ExternalProject_Add (ThirdParty_${TARGET_NAME}
 )
 
 
-list (APPEND EXTRA_CMAKE_ARGS
-  -DFreeImage_ROOT=${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Build
-  -DFreeImage_INCLUDE=${PROJECT_SOURCE_DIR}/Source
-  -DFreeImage_NO_SYSTEM_PATHS=ON)
+# list (APPEND EXTRA_CMAKE_ARGS
+#   -DFreeImage_ROOT=${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Build
+#   -DFreeImage_INCLUDE=${PROJECT_SOURCE_DIR}/Source
+#   -DFreeImage_NO_SYSTEM_PATHS=ON)
