@@ -3,7 +3,7 @@
 
 # Configuration Parameters
 set(TARGET_NAME Assimp)
-set(PROJECT_SOURCE_DIR ${LIB_DIR}/assimp)
+set(LIB_SOURCE_DIR ${LIB_DIR}/assimp)
 
 # Custom CMAKE For This Lib
 # End Custom CMAKE For This Lib
@@ -12,10 +12,13 @@ set(PROJECT_SOURCE_DIR ${LIB_DIR}/assimp)
 # Add To Dependencies
 list (APPEND DEPENDENCIES ThirdParty_${TARGET_NAME})
 
+# Copy To Build Location
+# file(COPY "${PROJECT_SOURCE_DIR}/ThirdParty/boost/" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Source/ep_boost")
+
 # Create External Project
 ExternalProject_Add (ThirdParty_${TARGET_NAME}
 
-    SOURCE_DIR ${PROJECT_SOURCE_DIR}
+    SOURCE_DIR ${LIB_SOURCE_DIR}
     PREFIX ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}
     STAMP_DIR ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Stamp
 
