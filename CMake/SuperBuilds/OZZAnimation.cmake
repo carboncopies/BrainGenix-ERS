@@ -31,3 +31,8 @@ ExternalProject_Add (ThirdParty_${TARGET_NAME}
 )
 message(STATUS "Finished Configuring Library ${TARGET_NAME}")
 
+message(STATUS "Adding CMake Path Argument")
+list (APPEND EXTRA_CMAKE_ARGS
+  -Dozz-animation_DIR=${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Install
+message(STATUS "Added CMake Path Argument")
+)

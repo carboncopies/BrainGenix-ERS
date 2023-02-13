@@ -9,6 +9,8 @@ option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace info
 # Set Non-User Changable Configuration Data (Used during build process )
 option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You probably don't want to change this one - used internally
 option (assimp_DIR "Location Of Assimp Configuration File (Used In Superbuild Process)")
+option (ozz-animation_DIR "Location Of OZZAnimation Build (Used In Superbuild Process)")
+
 
 # Set Dirs
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
@@ -60,7 +62,8 @@ message(STATUS "Superbuild Configuration:")
 message(STATUS "Assimp Configuration File Directory: ${assimp_DIR}")
 find_package(assimp REQUIRED)
 
-
+message(STATUS "OZZ-Animation Configuration File Directory: ${ozz-animation_DIR}")
+find_package(ozz-animation REQUIRED)
 
 # Include Util CMake Scripts
 include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
@@ -91,7 +94,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/FreeImage.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/STB.cmake)
-# include(${CMAKE_BUILD_UTILS_DIR}/Assimp.cmake)
+
 include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
