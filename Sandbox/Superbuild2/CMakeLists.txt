@@ -7,7 +7,6 @@ cmake_minimum_required (VERSION 3.1...3.21)
 
 # Set Non-User Changable Configuration Data (Used during build process )
 option(USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You probably don't want to change this one - used internally
-option(FreeImage_INCLUDE "Set the internal superbuild include path for freeimage (wherever header files are located)" "")
 
 
 # Set Dirs
@@ -19,7 +18,8 @@ set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
 
 # Superbuild Configuration
 if (USE_SUPERBUILD)
-
+message("Performing Initial Superbuild To Create Third-Party Libs")
+  
   project (SUPERBUILD NONE)
 
   # Add Superbuild Runner
@@ -27,6 +27,7 @@ if (USE_SUPERBUILD)
   return()
 else()
 
+  message("Performing Second Pass Run To Build Project")
 
 
   project(
@@ -42,21 +43,24 @@ else()
   set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BIN_DIR})
   set(CMAKE_INSTALL_PREFIX ${BIN_DIR})
 
-  function(disable_target_warnings target)
-    target_compile_options(${target} PRIVATE
-      $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-        -w>
-      $<$<CXX_COMPILER_ID:MSVC>:
-        /w>
-      )
-  endfunction()
+  # function(disable_target_warnings target)
+  #   target_compile_options(${target} PRIVATE
+  #     $<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
+  #       -w>
+  #     $<$<CXX_COMPILER_ID:MSVC>:
+  #       /w>
+  #     )
+  # endfunction()
 
   # # Add FreeImage Library (Not Header Only)
   # add_subdirectory(${LIB_DIR}/FreeImage/FreeImage)
   # disable_target_warnings(FreeImage)
 
   # find_package(FreeImage REQUIRED)
-  include_directories(${FreeImage_INCLUDE})
+  # include_directories(${FreeImage_INCLUDE})
+
+  option(FreeImage_INCLUDE "Set the internal superbuild include path for freeimage (wherever header files are located)" "")
+  message("********************* ARGTEST ${FreeImage_INCLUDE}")
 
   # Add Main.cpp
   add_executable(${PROJECT_NAME} "${SRC_DIR}/Main.cpp" ${BACKWARD_ENABLE})

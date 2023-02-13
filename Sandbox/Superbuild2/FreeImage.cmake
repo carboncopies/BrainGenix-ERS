@@ -5,7 +5,7 @@ set(TARGET_NAME FreeImage)
 set(PROJECT_SOURCE_DIR ${LIB_DIR}/FreeImage/FreeImage)
 
 # Custom CMAKE For This Lib
-
+file(COPY "${PROJECT_SOURCE_DIR}/Source/" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Build")
 # End Custom CMAKE For This Lib
 
 
