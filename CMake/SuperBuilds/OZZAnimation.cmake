@@ -9,6 +9,7 @@ set(LIB_SOURCE_DIR ${LIB_DIR}/ozz-animation)
 list (APPEND DEPENDENCIES ThirdParty_${TARGET_NAME})
 
 # Create External Project
+message(STATUS "Configuring Library ${TARGET_NAME}")
 ExternalProject_Add (ThirdParty_${TARGET_NAME}
 
     SOURCE_DIR ${LIB_SOURCE_DIR}
@@ -29,7 +30,5 @@ ExternalProject_Add (ThirdParty_${TARGET_NAME}
 
 
 )
+message(STATUS "Finished Configuring Library ${TARGET_NAME}")
 
-list (APPEND EXTRA_CMAKE_ARGS
-  -Dassimp_DIR=${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Install/lib/cmake/assimp-5.2/
-)
