@@ -54,7 +54,6 @@ message(STATUS "Superbuild Configuration:")
 
 message(STATUS "Assimp Configuration File Directory: ${assimp_DIR}")
 find_package(assimp REQUIRED)
-# list(APPEND CMAKE_PREFIX_PATH ${Assimp_DIR})
 
 
 
