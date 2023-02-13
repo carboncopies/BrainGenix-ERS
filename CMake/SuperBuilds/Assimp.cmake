@@ -14,11 +14,11 @@ ExternalProject_Add (ThirdParty_${TARGET_NAME}
 
     SOURCE_DIR ${LIB_SOURCE_DIR}
     # PREFIX ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}
-
+    
     # STAMP_DIR   = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Stamp
-    BINARY_DIR  = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Build
-    INSTALL_DIR = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Install
-    LOG_DIR     = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Logs
+    # BINARY_DIR  = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Build
+    # INSTALL_DIR = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Install
+    # LOG_DIR     = ${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Logs
 
     # INSTALL_COMMAND ""
 
@@ -26,7 +26,7 @@ ExternalProject_Add (ThirdParty_${TARGET_NAME}
                -DASSIMP_BUILD_ZLIB:BOOL=ON
                -DASSIMP_BUILD_SAMPLES:BOOL=OFF
                -DASSIMP_BUILD_TESTS:BOOL=OFF
-               -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Install
+               -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/
 
 
 )
@@ -34,6 +34,6 @@ message(STATUS "Finished Configuring Library ${TARGET_NAME}")
 
 message(STATUS "Adding CMake Path Argument")
 list (APPEND EXTRA_CMAKE_ARGS
-  -Dassimp_DIR=${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Install/lib/cmake/assimp-5.2/
+  -Dassimp_DIR=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/lib/cmake/assimp-5.2/
 )
 message(STATUS "Added CMake Path Argument")
