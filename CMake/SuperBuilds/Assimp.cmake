@@ -41,6 +41,6 @@ ExternalProject_Add (ThirdParty_${TARGET_NAME}
 # include_directories(${install_dir}/include)
 
 
-# list (APPEND EXTRA_CMAKE_ARGS
-#   -DBOOST_ROOT=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Source/ep_boost
-#   -DBoost_NO_SYSTEM_PATHS=ON)
+list (APPEND EXTRA_CMAKE_ARGS
+  -DAssimp_DIR=${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Build/generated
+)

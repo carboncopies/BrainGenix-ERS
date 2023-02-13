@@ -8,7 +8,7 @@ option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace info
 
 # Set Non-User Changable Configuration Data (Used during build process )
 option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You probably don't want to change this one - used internally
-
+option (Assimp_DIR "Location Of Assimp Configuration File (Used In Superbuild Process)")
 
 # Set Dirs
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
