@@ -30,11 +30,6 @@ ExternalProject_Add (ThirdParty_${TARGET_NAME}
 
 )
 
-
-# ExternalProject_Get_Property(ThirdParty_Assimp install_dir)
-# include_directories(${install_dir}/include)
-
-
 list (APPEND EXTRA_CMAKE_ARGS
   -Dassimp_DIR=${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Install/lib/cmake/assimp-5.2/
 )
