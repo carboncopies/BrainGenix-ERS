@@ -35,5 +35,5 @@ message(STATUS "Finished Configuring Library ${TARGET_NAME}")
 message(STATUS "Adding CMake Path Argument")
 list (APPEND EXTRA_CMAKE_ARGS
   -Dassimp_DIR=${CMAKE_CURRENT_BINARY_DIR}/ThirdParty/${TARGET_NAME}/Install/lib/cmake/assimp-5.2/
-message(STATUS "Added CMake Path Argument")
 )
+message(STATUS "Added CMake Path Argument")
