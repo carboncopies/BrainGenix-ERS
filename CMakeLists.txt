@@ -11,7 +11,7 @@ option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You
 
 
 # Set Dirs
-set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
+set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
 set(CMAKE_UTIL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Utils")
@@ -59,6 +59,7 @@ message(STATUS "Superbuild Configuration:")
 
 include(${CMAKE_UTILS_DIR}/SuperBuilds/Assimp.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/ThreadNamingUtils.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/OZZAnimation.cmake)
 
 
 
