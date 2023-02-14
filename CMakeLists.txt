@@ -57,11 +57,10 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-# # Superbuild Configuration
+# Superbuild Configuration
 message(STATUS "Superbuild Configuration:")
 
-message(STATUS "Assimp Configuration Install Directory: ${assimp_DIR}")
-find_package(assimp REQUIRED)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/Assimp.cmake)
 
 message(STATUS "OZZ-Animation Install Directory: ${ozz-animation_DIR}")
 FILE(GLOB_RECURSE OZZAnimationIncludes ${ozz-animation_DIR}*/*.h)
