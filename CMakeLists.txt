@@ -10,6 +10,7 @@ option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace info
 option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You probably don't want to change this one - used internally
 option (assimp_DIR "Location Of Assimp Configuration File (Used In Superbuild Process)")
 option (ozz-animation_DIR "Location Of OZZAnimation Build (Used In Superbuild Process)")
+option (ThreadNamingUtils_DIR "Location Of ThreadNamingUtils Build (Used In Superbuild Process)")
 
 
 # Set Dirs
@@ -59,17 +60,26 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # # Superbuild Configuration
 message(STATUS "Superbuild Configuration:")
 
-message(STATUS "Assimp Configuration File Directory: ${assimp_DIR}")
+message(STATUS "Assimp Configuration Install Directory: ${assimp_DIR}")
 find_package(assimp REQUIRED)
 
-message(STATUS "OZZ-Animation Configuration File Directory: ${ozz-animation_DIR}")
-FILE(GLOB_RECURSE OZZAnimationIncludes ${ozz-animation_DIR}/include/*/*.h)
-FILE(GLOB_RECURSE OZZAnimationLibs ${ozz-animation_DIR}/Install/lib/*/*.so)
-message(STATUS ${OZZAnimationIncludes})
+message(STATUS "OZZ-Animation Install Directory: ${ozz-animation_DIR}")
+FILE(GLOB_RECURSE OZZAnimationIncludes ${ozz-animation_DIR}*/*.h)
+FILE(GLOB_RECURSE OZZAnimationLibs ${ozz-animation_DIR}*/*.so)
 add_library(ozz_animation ${OZZAnimationIncludes})
 target_link_libraries(ozz_animation ${OZZAnimationLibs})
 set_target_properties(ozz_animation PROPERTIES LINKER_LANGUAGE CXX)
+target_include_directories(ozz_animation PUBLIC ${OZZAnimationIncludes}/include)
 
+
+message(STATUS "ThreadNamingUtils Install Directory: ${ThreadNamingUtils_DIR}")
+FILE(GLOB_RECURSE Includes ${ThreadNamingUtils_DIR}*/*.h)
+FILE(GLOB_RECURSE Libs ${ThreadNamingUtils_DIR}*/*.a)
+message(STATUS ${Includes})
+add_library(ThreadNamingUtils ${Includes})
+target_link_libraries(ThreadNamingUtils ${Libs})
+set_target_properties(ThreadNamingUtils PROPERTIES LINKER_LANGUAGE CXX)
+target_include_directories(ThreadNamingUtils PUBLIC ${ThreadNamingUtils_DIR}/include)
 
 
 # Include Util CMake Scripts
