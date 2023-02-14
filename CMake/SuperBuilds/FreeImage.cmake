@@ -48,3 +48,13 @@ else()
     target_include_directories(FreeImage PUBLIC ${FreeImage_DIR}/include)
 
 endif()
+
+
+# FreeImage's CMakeLists Has Been Modified As Stated Below
+# ### ++ MODIFIED BY ERS TEAM FOR SUPERBUILDS ++ ###
+
+# FILE(GLOB Includes ${CMAKE_CURRENT_SOURCE_DIR}/Source/*.h)
+# install(TARGETS ${PROJECT_NAME})
+# install(FILES ${Includes} DESTINATION include)
+
+# ### ++ END MODIFICATIONS ++ ###
