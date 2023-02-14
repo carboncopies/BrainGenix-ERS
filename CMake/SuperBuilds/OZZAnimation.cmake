@@ -3,7 +3,7 @@
 
 # Configuration Parameters
 set(TARGET_NAME OZZ-Animation)
-set(LIB_SOURCE_DIR ${LIB_DIR}/ozz-animation)
+set(LIB_SOURCE_DIR ${LIB_DIR}/SuperBuild/ozz-animation)
 
 # Add To Dependencies
 list (APPEND DEPENDENCIES ThirdParty_${TARGET_NAME})
