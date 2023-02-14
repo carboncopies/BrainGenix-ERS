@@ -3,7 +3,7 @@
 
 # Configuration Parameters
 set(TARGET_NAME Assimp)
-set(LIB_SOURCE_DIR ${LIB_DIR}/assimp)
+set(LIB_SOURCE_DIR ${LIB_DIR}/SuperBuild/assimp)
 
 # Add To Dependencies
 list (APPEND DEPENDENCIES ThirdParty_${TARGET_NAME})
