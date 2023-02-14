@@ -109,10 +109,6 @@ include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/FreeImage.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/STB.cmake)
-
-include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
-#include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
-#include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/MeshOptimizer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Filesystem.cmake)
@@ -230,7 +226,6 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Core Subsystems")
 # Configure Sources
 set(MAIN_SOURCES
     ${SRC_DIR}/Main.cpp
-    ${LIB_DIR}/tracy/TracyClient.cpp
     ${BACKWARD_ENABLE}
 )
 
@@ -249,7 +244,6 @@ target_link_libraries(${PROJECT_NAME}
     # Third Party Libs
     glad
     glfw
-    TracyClient
     ozz_animation
     Lucifer
 
