@@ -3,7 +3,7 @@
 
 # Configuration Parameters
 set(TARGET_NAME ThreadNamingUtils)
-set(LIB_SOURCE_DIR ${LIB_DIR}/ThreadNamingUtils)
+set(LIB_SOURCE_DIR ${LIB_DIR}/SuperBuild/ThreadNamingUtils)
 
 # Add To Dependencies
 list (APPEND DEPENDENCIES ThirdParty_${TARGET_NAME})
