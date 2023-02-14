@@ -61,6 +61,7 @@ include(${CMAKE_UTILS_DIR}/SuperBuilds/Assimp.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/ThreadNamingUtils.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/OZZAnimation.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/MeshOptimizer.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/FreeImage.cmake)
 
 
 
@@ -94,9 +95,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiColorTextEdit.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/FreeImage.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
-# include(${CMAKE_BUILD_UTILS_DIR}/MeshOptimizer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Filesystem.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/WhereAmI.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PlatformFolders.cmake)

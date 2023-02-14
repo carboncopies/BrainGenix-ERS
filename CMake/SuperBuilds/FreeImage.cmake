@@ -2,8 +2,8 @@
 
 
 # Configuration Parameters
-set(TARGET_NAME MeshOptimizer)
-set(LIB_SOURCE_DIR ${LIB_DIR}/SuperBuild/meshoptimizer)
+set(TARGET_NAME FreeImage)
+set(LIB_SOURCE_DIR ${LIB_DIR}/SuperBuild/FreeImage/FreeImage)
 
 
 
@@ -28,7 +28,7 @@ if (USE_SUPERBUILD)
 
     message(STATUS "Adding CMake Path Argument")
     list (APPEND EXTRA_CMAKE_ARGS
-      -Dmeshoptimizer_DIR=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/  
+      -DFreeImage_DIR=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/  
     )
     message(STATUS "Added CMake Path Argument")
 
@@ -36,15 +36,15 @@ if (USE_SUPERBUILD)
 # Run second part of build, create target/find library we built in the above superbuild target
 else()
 
-    option (${meshoptimizer_DIR} "Location Of meshoptimizer Build (Used In Superbuild Process)")
+    option (${FreeImage_DIR} "Location Of meshoptimizer Build (Used In Superbuild Process)")
 
-    message(STATUS "MeshOptimizer Install Directory: ${meshoptimizer_DIR}")
-    FILE(GLOB_RECURSE Includes ${meshoptimizer_DIR}*/*.h)
-    FILE(GLOB_RECURSE Libs ${meshoptimizer_DIR}*/*.a)
+    message(STATUS "FreeImage Install Directory: ${FreeImage_DIR}")
+    FILE(GLOB_RECURSE Includes ${FreeImage_DIR}*/*.h)
+    FILE(GLOB_RECURSE Libs ${FreeImage_DIR}*/*.a)
     message(STATUS ${Includes})
-    add_library(meshoptimizer ${Includes})
-    target_link_libraries(meshoptimizer ${Libs})
-    set_target_properties(meshoptimizer PROPERTIES LINKER_LANGUAGE CXX)
-    target_include_directories(meshoptimizer PUBLIC ${meshoptimizer_DIR}/include)
+    add_library(FreeImage ${Includes})
+    target_link_libraries(FreeImage ${Libs})
+    set_target_properties(FreeImage PROPERTIES LINKER_LANGUAGE CXX)
+    target_include_directories(FreeImage PUBLIC ${FreeImage_DIR}/include)
 
 endif()
