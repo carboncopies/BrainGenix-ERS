@@ -24,5 +24,6 @@ target_include_directories(ThreadNamingUtils
     PRIVATE
         ${PROJECT_SOURCE_DIR}/ThreadNamingUtils
 )
-set_target_properties(ThreadNamingUtils PROPERTIES PUBLIC_HEADER ${LIB_HEADER_FILES})
+get_target_property(LIB_PUBLIC_HEADERS ThreadNamingUtils INTERFACE_SOURCES)
+set_target_properties(ThreadNamingUtils PROPERTIES PUBLIC_HEADER ${LIB_PUBLIC_HEADERS})
 install(TARGETS ThreadNamingUtils PUBLIC_HEADER)
