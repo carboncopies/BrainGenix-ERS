@@ -17,5 +17,6 @@ include(${CMAKE_UTILS_DIR}/SuperBuilds/OZZAnimation.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/ThreadNamingUtils.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/MeshOptimizer.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/FreeImage.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/YAMLCPP.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/ERS.cmake)
 
