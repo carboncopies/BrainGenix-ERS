@@ -63,6 +63,7 @@ include(${CMAKE_UTILS_DIR}/SuperBuilds/OZZAnimation.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/MeshOptimizer.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/FreeImage.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/YAMLCPP.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/Lucifer.cmake)
 
 
 
@@ -82,7 +83,7 @@ include(${CMAKE_SCRIPTS_DIR}/CompileTimeStamp/CompileTimeStamp.cmake)
 
 
 # Include Package Addition Scripts
-include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
+# include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Python.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
