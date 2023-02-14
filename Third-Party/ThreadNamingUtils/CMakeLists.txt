@@ -13,11 +13,8 @@ set(LIB_HEADER_FILES
 
 add_library(ThreadNamingUtils
 
-    "ThreadNamingUtils/SetThreadName.cpp"
-    "ThreadNamingUtils/GetThreadName.cpp"
-    
-    "ThreadNamingUtils/SetThreadName.h"
-    "ThreadNamingUtils/GetThreadName.h"
+    ${LIB_SOURCE_FILES}
+    ${LIB_HEADER_FILES}
 
 )
 
@@ -27,5 +24,5 @@ target_include_directories(ThreadNamingUtils
     PRIVATE
         ${PROJECT_SOURCE_DIR}/ThreadNamingUtils
 )
-set_target_properties(ThreadNamingUtils PROPERTIES PUBLIC_HEADER ${HEADERS})
+set_target_properties(ThreadNamingUtils PROPERTIES PUBLIC_HEADER ${LIB_HEADER_FILES})
 install(TARGETS ThreadNamingUtils PUBLIC_HEADER)
