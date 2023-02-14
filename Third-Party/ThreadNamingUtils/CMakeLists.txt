@@ -15,4 +15,5 @@ target_include_directories(ThreadNamingUtils
 
 
 set_target_properties(ThreadNamingUtils PROPERTIES PUBLIC_HEADER "ThreadNamingUtils/SetThreadName.h;ThreadNamingUtils/GetThreadName.h")
-install(TARGETS ThreadNamingUtils PUBLIC_HEADER)
+install(TARGETS ThreadNamingUtils PUBLIC_HEADER EXPORT ThreadNamingUtilsTargets)
+install(EXPORT ThreadNamingUtilsTargets FILE ThreadNamingUtilsTargets.cmake)
