@@ -19,7 +19,7 @@
 
 #include <FreeImage.h>
 
-#include <ThreadNamingUtils/SetThreadName.h>
+#include <SetThreadName.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_SystemUtils.h>

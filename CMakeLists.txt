@@ -69,7 +69,6 @@ FILE(GLOB_RECURSE OZZAnimationLibs ${ozz-animation_DIR}*/*.so)
 add_library(ozz_animation ${OZZAnimationIncludes})
 target_link_libraries(ozz_animation ${OZZAnimationLibs})
 set_target_properties(ozz_animation PROPERTIES LINKER_LANGUAGE CXX)
-target_include_directories(ozz_animation PUBLIC ${OZZAnimationIncludes}/include)
 
 
 message(STATUS "ThreadNamingUtils Install Directory: ${ThreadNamingUtils_DIR}")

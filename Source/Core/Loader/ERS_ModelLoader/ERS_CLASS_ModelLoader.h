@@ -33,7 +33,7 @@
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
 
-#include <ThreadNamingUtils/SetThreadName.h>
+#include <SetThreadName.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_STRUCT_Mesh.h>
