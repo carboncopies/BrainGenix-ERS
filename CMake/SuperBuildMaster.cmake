@@ -14,5 +14,6 @@ set (EXTRA_CMAKE_ARGS)
 
 include(${CMAKE_UTILS_DIR}/SuperBuilds/Assimp.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/OZZAnimation.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/ThreadNamingUtils.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/ERS.cmake)
 

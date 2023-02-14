@@ -63,13 +63,14 @@ message(STATUS "Assimp Configuration File Directory: ${assimp_DIR}")
 find_package(assimp REQUIRED)
 
 message(STATUS "OZZ-Animation Configuration File Directory: ${ozz-animation_DIR}")
-# find_library(ozz_animation REQUIRED names ozz_animation HINTS "${ozz-animation_DIR}")
 FILE(GLOB_RECURSE OZZAnimationIncludes ${ozz-animation_DIR}/include/*/*.h)
 FILE(GLOB_RECURSE OZZAnimationLibs ${ozz-animation_DIR}/Install/lib/*/*.so)
 message(STATUS ${OZZAnimationIncludes})
 add_library(ozz_animation ${OZZAnimationIncludes})
 target_link_libraries(ozz_animation ${OZZAnimationLibs})
 set_target_properties(ozz_animation PROPERTIES LINKER_LANGUAGE CXX)
+
+
 
 # Include Util CMake Scripts
 include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
@@ -85,7 +86,7 @@ include(${CMAKE_SCRIPTS_DIR}/CompileTimeStamp/CompileTimeStamp.cmake)
 # Include Package Addition Scripts
 include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/ThreadNamingUtils.cmake)
+# include(${CMAKE_BUILD_UTILS_DIR}/ThreadNamingUtils.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Python.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/YAML-CPP.cmake)
