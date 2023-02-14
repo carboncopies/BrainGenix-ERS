@@ -32,6 +32,8 @@ if (USE_SUPERBUILD)
 # Run second part of build, create target/find library we built in the above superbuild target
 else()
 
+    option (assimp_DIR "Location Of Assimp Configuration File (Used In Superbuild Process)")
+
     message(STATUS "Assimp Configuration Install Directory: ${assimp_DIR}")
     find_package(assimp REQUIRED)
 
