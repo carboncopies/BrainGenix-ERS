@@ -12,11 +12,12 @@ if (USE_SUPERBUILD)
 
     # Create External Project
     message(STATUS "Configuring Library ${TARGET_NAME}")
+    file(COPY "${LIB_SOURCE_DIR}/" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Source/ThirdParty_${TARGET_NAME}")
     ExternalProject_Add (ThirdParty_${TARGET_NAME}
 
-        SOURCE_DIR ${LIB_SOURCE_DIR}
+        BUILD_IN_SOURCE 1
         CONFIGURE_COMMAND ""
-        BUILD_COMMAND "make -j"
+        BUILD_COMMAND "./Build.sh"
         INSTALL_COMMAND "make DESTDIR=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME} install"
         CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/
 
