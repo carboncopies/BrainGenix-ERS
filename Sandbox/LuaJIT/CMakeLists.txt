@@ -15,7 +15,8 @@ if (USE_SUPERBUILD)
 else()
   project (Test-Project) # <-- YOUR PROJECT NAME HERE
   message("Performing Second Pass Run To Build Project")
-  include (cmake/SuperBuild.cmake)
+
+  include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/LuaJIT.cmake)
 
 endif()
 

@@ -44,6 +44,6 @@ else()
     add_library(LuaJIT ${Includes})
     target_link_libraries(LuaJIT ${Libs})
     set_target_properties(LuaJIT PROPERTIES LINKER_LANGUAGE CXX)
-    target_include_directories(LuaJIT PUBLIC ${LuaJIT_DIR}/include)
+    target_include_directories(LuaJIT PUBLIC ${LuaJIT_DIR}/include/luajit-2.1)
 
 endif()
