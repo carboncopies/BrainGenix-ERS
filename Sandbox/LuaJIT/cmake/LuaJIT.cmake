@@ -4,8 +4,8 @@
 if (USE_SUPERBUILD)
 
     # Configuration Parameters
-    set(TARGET_NAME ThreadNamingUtils)
-    set(LIB_SOURCE_DIR ${LIB_DIR}/SuperBuild/ThreadNamingUtils)
+    set(TARGET_NAME LuaJIT)
+    set(LIB_SOURCE_DIR ${LIB_DIR}/SuperBuild/LuaJIT)
 
     # Add To Dependencies
     list (APPEND DEPENDENCIES ThirdParty_${TARGET_NAME})
@@ -23,7 +23,7 @@ if (USE_SUPERBUILD)
 
     message(STATUS "Adding CMake Path Argument")
     list (APPEND EXTRA_CMAKE_ARGS
-      -DThreadNamingUtils_DIR=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/  
+      -DLuaJIT_DIR=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/  
     )
     message(STATUS "Added CMake Path Argument")
 
@@ -31,15 +31,15 @@ if (USE_SUPERBUILD)
 # Run second part of build, create target/find library we built in the above superbuild target
 else()
 
-    option (ThreadNamingUtils_DIR "Location Of ThreadNamingUtils Build (Used In Superbuild Process)")
+    option (LuaJIT_DIR "Location Of LuaJIT Build (Used In Superbuild Process)")
 
-    message(STATUS "ThreadNamingUtils Install Directory: ${ThreadNamingUtils_DIR}")
-    FILE(GLOB_RECURSE Includes ${ThreadNamingUtils_DIR}*/*.h)
-    FILE(GLOB_RECURSE Libs ${ThreadNamingUtils_DIR}*/*.a)
+    message(STATUS "LuaJIT Install Directory: ${LuaJIT_DIR}")
+    FILE(GLOB_RECURSE Includes ${LuaJIT_DIR}*/*.h)
+    FILE(GLOB_RECURSE Libs ${LuaJIT_DIR}*/*.a)
     message(STATUS ${Includes})
-    add_library(ThreadNamingUtils ${Includes})
-    target_link_libraries(ThreadNamingUtils ${Libs})
-    set_target_properties(ThreadNamingUtils PROPERTIES LINKER_LANGUAGE CXX)
-    target_include_directories(ThreadNamingUtils PUBLIC ${ThreadNamingUtils_DIR}/include)
+    add_library(LuaJIT ${Includes})
+    target_link_libraries(LuaJIT ${Libs})
+    set_target_properties(LuaJIT PROPERTIES LINKER_LANGUAGE CXX)
+    target_include_directories(LuaJIT PUBLIC ${LuaJIT_DIR}/include)
 
 endif()

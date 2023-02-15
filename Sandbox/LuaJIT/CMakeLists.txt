@@ -3,6 +3,8 @@ cmake_minimum_required (VERSION 3.0)
 # Handle superbuild first
 option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON)
 
+set(LIB_DIR ${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty)
+
 if (USE_SUPERBUILD)
   project (SUPERBUILD NONE)
   message("Performing Initial Superbuild To Create Third-Party Libs")
