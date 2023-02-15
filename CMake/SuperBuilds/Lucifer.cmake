@@ -44,5 +44,7 @@ else()
     target_link_libraries(Lucifer ${Libs})
     set_target_properties(Lucifer PROPERTIES LINKER_LANGUAGE CXX)
     target_include_directories(Lucifer PUBLIC ${LuciferIL_DIR}/include)
+    target_include_directories(Lucifer PUBLIC ${LIB_DIR}/SuperBuild/LuciferIL/LuciferIL/Third-Party/stb/)
+    
 
 endif()

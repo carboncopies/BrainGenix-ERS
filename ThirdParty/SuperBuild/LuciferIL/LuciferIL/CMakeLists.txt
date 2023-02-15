@@ -66,7 +66,7 @@ target_include_directories(Lucifer
 )
 
 
-target_link_libraries(Lucifer FreeImage-Lucifer)
+target_link_libraries(Lucifer FreeImage)
 #target_link_libraries(Lucifer IL-Lucifer)
 
 
