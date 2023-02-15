@@ -17,11 +17,10 @@ if (USE_SUPERBUILD)
 
     # Create External Project
     message(STATUS "Configuring Library ${TARGET_NAME}")
-    ExternalProject_Add (ThirdParty_${TARGET_NAME}
-
+    ExternalProject_Add (
+        ThirdParty_${TARGET_NAME}
         SOURCE_DIR ${LIB_SOURCE_DIR}
         CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/
-
     )
     message(STATUS "Finished Configuring Library ${TARGET_NAME}")
 
