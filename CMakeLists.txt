@@ -35,10 +35,6 @@ if (USE_SUPERBUILD)
 
   project (SUPERBUILD NONE)
 
-  # Disable Warnings For Extern Project
-  add_definitions(-w)
-
-
   # Add Superbuild Runner
   include(${CMAKE_UTILS_DIR}/SuperBuildMaster.cmake)
   return()
