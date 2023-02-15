@@ -40,7 +40,7 @@ else()
 
     message(STATUS "FreeImage Install Directory: ${FreeImage_DIR}")
     FILE(GLOB_RECURSE Includes ${FreeImage_DIR}*/*.h)
-    FILE(GLOB_RECURSE Libs ${FreeImage_DIR}*/*.a)
+    FILE(GLOB_RECURSE Libs ${FreeImage_DIR}*/*.so)
     add_library(FreeImage ${Includes})
     target_link_libraries(FreeImage ${Libs})
     set_target_properties(FreeImage PROPERTIES LINKER_LANGUAGE CXX)
