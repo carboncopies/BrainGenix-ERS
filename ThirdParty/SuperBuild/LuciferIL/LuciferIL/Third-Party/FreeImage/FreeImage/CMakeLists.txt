@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16.3)
-project(FreeImage VERSION 3.18.0)
+project(FreeImage-Lucifer VERSION 3.18.0)
 
 set(CMAKE_C_STANDARD 90)
 set(CMAKE_CXX_STANDARD 98)
@@ -29,19 +29,9 @@ set_target_properties(${PROJECT_NAME} PROPERTIES DEBUG_POSTFIX "d")
 set(${PROJECT_NAME}_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Source)
 target_include_directories(${PROJECT_NAME} PUBLIC ${${PROJECT_NAME}_INCLUDE_DIR})
 
-
-### ++ MODIFIED BY ERS TEAM FOR SUPERBUILDS ++ ###
-
-FILE(GLOB Includes ${CMAKE_CURRENT_SOURCE_DIR}/Source/*.h)
-install(TARGETS ${PROJECT_NAME})
-install(FILES ${Includes} DESTINATION include)
-
-### ++ END MODIFICATIONS ++ ###
-
-
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/TestAPI)
+# add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/TestAPI)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Wrapper/FreeImagePlus)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Wrapper/FreeImagePlus/test)
+# add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/Wrapper/FreeImagePlus/test)
 
 enable_testing ()
 if(WIN32)
