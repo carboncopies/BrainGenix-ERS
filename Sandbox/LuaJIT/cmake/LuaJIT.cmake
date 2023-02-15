@@ -15,6 +15,9 @@ if (USE_SUPERBUILD)
     ExternalProject_Add (ThirdParty_${TARGET_NAME}
 
         SOURCE_DIR ${LIB_SOURCE_DIR}
+        CONFIGURE_COMMAND ""
+        BUILD_COMMAND "make -j"
+        INSTALL_COMMAND "make DESTDIR=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME} install"
         CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/
 
 

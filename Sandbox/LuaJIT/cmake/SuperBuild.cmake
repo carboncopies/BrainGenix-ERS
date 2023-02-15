@@ -5,9 +5,6 @@ set_property (DIRECTORY PROPERTY EP_BASE Dependencies)
 set (DEPENDENCIES)
 set (EXTRA_CMAKE_ARGS)
 
-# Use static linking to avoid issues with system-wide installations of Boost.
-list (APPEND DEPENDENCIES ep_boost)
-
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/LuaJIT.cmake)
 
 # FIXME add to default target "all"?
