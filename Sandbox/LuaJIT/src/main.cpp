@@ -1,3 +1,6 @@
+// Credit to orig posting for lua c++ integration example: https://gist.github.com/Youka/2a6e69584672f7cb0331
+// We're thankful for your help by creating this example!
+
 // Lua C API
 #include <lua.hpp>
 // C++ input/output streams
