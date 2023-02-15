@@ -74,6 +74,6 @@ target_link_libraries(Lucifer FreeImage-Lucifer)
 
 FILE(GLOB Includes ${CMAKE_CURRENT_SOURCE_DIR}/LuciferIL/*.h)
 install(TARGETS ${PROJECT_NAME})
-install(FILES ${Includes} DESTINATION include)
+install(FILES ${Includes} DESTINATION include/LuciferIL)
 
 # ### ++ END MODIFICATIONS ++ ###

@@ -36,13 +36,13 @@ else()
 
     option (${LuciferIL_DIR} "Location Of meshoptimizer Build (Used In Superbuild Process)")
 
-    message(STATUS "FreeImage Install Directory: ${LuciferIL_DIR}")
+    message(STATUS "Lucifer Install Directory: ${LuciferIL_DIR}")
     FILE(GLOB_RECURSE Includes ${LuciferIL_DIR}*/*.h)
     FILE(GLOB_RECURSE Libs ${LuciferIL_DIR}*/*.a)
     message(STATUS ${Includes})
-    add_library(LuciferIL ${Includes})
-    target_link_libraries(LuciferIL ${Libs})
-    set_target_properties(LuciferIL PROPERTIES LINKER_LANGUAGE CXX)
-    target_include_directories(LuciferIL PUBLIC ${LuciferIL_DIR}/include)
+    add_library(Lucifer ${Includes})
+    target_link_libraries(Lucifer ${Libs})
+    set_target_properties(Lucifer PROPERTIES LINKER_LANGUAGE CXX)
+    target_include_directories(Lucifer PUBLIC ${LuciferIL_DIR}/include)
 
 endif()
