@@ -8,5 +8,5 @@ target_link_libraries (blah
   ${CMAKE_THREAD_LIBS_INIT})
 
 
-
-file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/src/test.lua" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/blah/bin/")
+  file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/test.lua" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/blah/bin/")
+  file(COPY "${CMAKE_CURRENT_SOURCE_DIR}/Run.sh" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/blah/bin/")
