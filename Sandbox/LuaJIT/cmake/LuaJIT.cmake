@@ -17,9 +17,9 @@ if (USE_SUPERBUILD)
 
         BUILD_IN_SOURCE 1
         CONFIGURE_COMMAND ""
-        BUILD_COMMAND "./Build.sh"
-        INSTALL_COMMAND "./Install.sh ${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}"
-        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/
+        BUILD_COMMAND ./Build.sh
+        INSTALL_COMMAND ./Install.sh ${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}
+        # CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/
 
 
     )
@@ -27,7 +27,7 @@ if (USE_SUPERBUILD)
 
     message(STATUS "Adding CMake Path Argument")
     list (APPEND EXTRA_CMAKE_ARGS
-      -DLuaJIT_DIR=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/  
+      -DLuaJIT_DIR=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/usr/local/  
     )
     message(STATUS "Added CMake Path Argument")
 
