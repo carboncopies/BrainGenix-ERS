@@ -72,7 +72,7 @@ target_link_libraries(Lucifer FreeImage-Lucifer)
 
 # ### ++ MODIFIED BY ERS TEAM FOR SUPERBUILDS ++ ###
 
-FILE(GLOB Includes ${CMAKE_CURRENT_SOURCE_DIR}/Source/*.h)
+FILE(GLOB Includes ${CMAKE_CURRENT_SOURCE_DIR}/LuciferIL/*.h)
 install(TARGETS ${PROJECT_NAME})
 install(FILES ${Includes} DESTINATION include)
 
