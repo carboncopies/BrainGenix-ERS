@@ -12,9 +12,6 @@
 // Standard Libraries (BG convention: use <> instead of "")
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <Tracy.hpp>
-
-
 #include <glad/glad.h>
 
 #include <GLFW/glfw3.h>

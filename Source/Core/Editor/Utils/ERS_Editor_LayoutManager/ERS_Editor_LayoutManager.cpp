@@ -4,6 +4,8 @@
 
 #include <ERS_Editor_LayoutManager.h>
 
+
+
 ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_LoggingSystem* Logger, const char* LayoutDirectory) {
 
     Logger_ = Logger;

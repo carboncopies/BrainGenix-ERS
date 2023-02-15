@@ -27,7 +27,6 @@ std::string GetExecutablePath() {
         int Length, DirectoryNameLength;
         Length = wai_getExecutablePath(Path, 0, &DirectoryNameLength);
         
-
         if (Path == NULL) {
             return "Unable To Get Binary Path";
         }

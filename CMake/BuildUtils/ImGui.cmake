@@ -3,5 +3,5 @@
 ##########################
 
 ERSBuildLogger(${Green} "Configuring ImGui Library")
-add_subdirectory(${LIB_DIR}/imgui)
+add_subdirectory(${LIB_DIR}/NonSuperBuild/imgui)
 ERSBuildLogger(${BoldGreen} "Finished Configuring ImGui Library")
