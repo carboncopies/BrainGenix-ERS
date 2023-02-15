@@ -33,7 +33,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${${PROJECT_NAME}_INCLUDE_DIR}
 ### ++ MODIFIED BY ERS TEAM FOR SUPERBUILDS ++ ###
 
 # Disable Warnings For Extern Project
-add_definitions(-w)
+target_compile_definitions(FreeImage -w)
 
 FILE(GLOB Includes ${CMAKE_CURRENT_SOURCE_DIR}/Source/*.h)
 install(TARGETS ${PROJECT_NAME})
