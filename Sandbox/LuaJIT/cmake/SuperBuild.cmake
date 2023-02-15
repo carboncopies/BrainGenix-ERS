@@ -8,7 +8,7 @@ set (EXTRA_CMAKE_ARGS)
 # Use static linking to avoid issues with system-wide installations of Boost.
 list (APPEND DEPENDENCIES ep_boost)
 
-include(LuaJIT.cmake)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/LuaJIT.cmake)
 
 # FIXME add to default target "all"?
 ExternalProject_Add (ep_blah
