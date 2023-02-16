@@ -6,8 +6,8 @@
 
 
 namespace ERS {
+namespace Script {
 
 
-
-
-}
+} // Close Namespace Script
+} // Close Namespace ERS

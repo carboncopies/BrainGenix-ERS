@@ -14,7 +14,10 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_LoggingSystem.h>
 
+
 namespace ERS {
+namespace Script {
+
 
 /**
  * @brief This class provides functionality to remesh an input mesh with various amounts of optimization.
@@ -34,5 +37,5 @@ public:
 
 };
 
-
-}
+} // Close Namespace Script
+} // Close Namespace ERS
