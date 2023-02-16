@@ -234,7 +234,9 @@ target_link_libraries(${PROJECT_NAME}
     glad
     glfw
     ozz_animation
-    Lucifer
+
+    # Temporary -- DELETE THESE WHEN NOT TESTING HERE ANYMORE --
+    ERS_LuaInterface
 
     # Internal Libs
     ERS_GPURequest
