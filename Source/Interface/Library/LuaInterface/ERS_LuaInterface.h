@@ -9,7 +9,7 @@
 
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <meshoptimizer.h>
+#include <LuaInterface.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_LoggingSystem.h>
@@ -20,7 +20,7 @@ namespace ERS {
  * @brief This class provides functionality to remesh an input mesh with various amounts of optimization.
  * 
  */
-class MeshOptimizer {
+class LuaInterface {
 
 private:
 
@@ -28,8 +28,8 @@ private:
 
 public:
 
-    MeshOptimizer();
-    ~MeshOptimizer();
+    LuaInterface();
+    ~LuaInterface();
 
 
 };
