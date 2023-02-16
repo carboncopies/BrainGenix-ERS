@@ -109,6 +109,8 @@ ERSBuildLogger(${Green} "Configuring Library Interfaces")
 
 add_subdirectory(${SRC_DIR}/Interface/Library/MeshOptimizerInterface)
 message(STATUS "Configured MeshOptimizer Interface")
+add_subdirectory(${SRC_DIR}/Interface/Library/LuaInterface)
+message(STATUS "Configured Lua Interface")
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Library Interfaces")
 
