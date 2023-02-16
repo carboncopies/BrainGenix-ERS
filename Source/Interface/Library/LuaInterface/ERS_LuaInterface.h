@@ -6,10 +6,10 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <string>
-
+#include <iostream>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
-#include <LuaInterface.h>
+#include <lua.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ERS_LoggingSystem.h>
