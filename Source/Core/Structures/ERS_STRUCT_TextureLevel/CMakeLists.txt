@@ -21,7 +21,7 @@ target_link_libraries(ERS_STRUCT_TextureLevel
     glm
     glad
     glfw
-    assimp
+    assimp::assimp
     FreeImage
     )
 

@@ -1,30 +1,75 @@
 # Set CMAKE Version, Define Project
 cmake_minimum_required (VERSION 3.1...3.21)
-project(
-	"BrainGenix-ERS"
-	VERSION "0.4.0"
-	LANGUAGES CXX
-	)
-set(CMAKE_CXX_STANDARD 20)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 
 # Set Configuration Options
 option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace information or not" ON)
 
 
+# Set Non-User Changable Configuration Data (Used during build process )
+option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You probably don't want to change this one - used internally
 
 
 # Set Dirs
-set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Third-Party")
+set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 set(BIN_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Binaries")
 set(CMAKE_UTIL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Utils")
 set(CMAKE_BUILD_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/BuildUtils")
 set(CMAKE_FIND_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/FindUtils")
 set(CMAKE_SCRIPTS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Scripts")
+set(CMAKE_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake")
 set(CMAKE_ASSETS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/EditorAssets")
 set(PROJECT_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+
+
+
+
+
+
+
+
+# Superbuild Configuration
+if (USE_SUPERBUILD)
+
+  project (SUPERBUILD NONE)
+
+  # Add Superbuild Runner
+  include(${CMAKE_UTILS_DIR}/SuperBuildMaster.cmake)
+  return()
+else()
+
+  project(
+      "BrainGenix-ERS"
+      VERSION "0.4.0"
+      LANGUAGES CXX
+  )
+
+endif()
+
+
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+
+# Superbuild Configuration
+message(STATUS "Superbuild Configuration:")
+
+include(${CMAKE_UTILS_DIR}/SuperBuilds/Assimp.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/ThreadNamingUtils.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/OZZAnimation.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/MeshOptimizer.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/FreeImage.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/YAMLCPP.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/Lucifer.cmake)
+include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
+
+
+
+
+
 
 
 # Include Util CMake Scripts
@@ -37,13 +82,12 @@ include(${CMAKE_SCRIPTS_DIR}/VersioningSystem/VersioningSystem.cmake)
 include(${CMAKE_SCRIPTS_DIR}/CompilePlatformInfo/CompilePlatformInfo.cmake)
 include(${CMAKE_SCRIPTS_DIR}/CompileTimeStamp/CompileTimeStamp.cmake)
 
+
 # Include Package Addition Scripts
-include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
+# include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/ThreadNamingUtils.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Python.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/YAML-CPP.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGui.cmake)
@@ -53,15 +97,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiColorTextEdit.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/FreeImage.cmake)
-#include(${CMAKE_BUILD_UTILS_DIR}/STB.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/Assimp.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/Tracy.cmake)
-#include(${CMAKE_BUILD_UTILS_DIR}/MySQLConnector.cmake)
-#include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/OZZ-Animation.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/MeshOptimizer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Filesystem.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/WhereAmI.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PlatformFolders.cmake)
@@ -73,6 +109,8 @@ ERSBuildLogger(${Green} "Configuring Library Interfaces")
 
 add_subdirectory(${SRC_DIR}/Interface/Library/MeshOptimizerInterface)
 message(STATUS "Configured MeshOptimizer Interface")
+add_subdirectory(${SRC_DIR}/Interface/Library/LuaInterface)
+message(STATUS "Configured Lua Interface")
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Library Interfaces")
 
@@ -176,61 +214,63 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Core Subsystems")
 
 # Configure Sources
 set(MAIN_SOURCES
-  ${SRC_DIR}/Main.cpp
-  ${LIB_DIR}/tracy/TracyClient.cpp
-  ${BACKWARD_ENABLE}
+    ${SRC_DIR}/Main.cpp
+    ${BACKWARD_ENABLE}
 )
 
 
 # Create Main Executable
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-  ERSBuildLogger(${Blue} "Detected Platform To Be Darwin, Building Bundle")
-  include(${CMAKE_SCRIPTS_DIR}/DarwinBundle/DarwinBundle.cmake)
+    ERSBuildLogger(${Blue} "Detected Platform To Be Darwin, Building Bundle")
+    include(${CMAKE_SCRIPTS_DIR}/DarwinBundle/DarwinBundle.cmake)
 else()
-  ERSBuildLogger(${Blue} "Platform Not Darwin, Building Regular Binary")
-  include(${CMAKE_SCRIPTS_DIR}/LinuxBundle/LinuxBundle.cmake)
+    ERSBuildLogger(${Blue} "Platform Not Darwin, Building Regular Binary")
+    include(${CMAKE_SCRIPTS_DIR}/LinuxBundle/LinuxBundle.cmake)
 endif()
 
 target_link_libraries(${PROJECT_NAME}
 
-  # Third Party Libs
-  glad
-  glfw
-  TracyClient
-  ozz_animation
-  Lucifer
+    # Third Party Libs
+    glad
+    glfw
+    ozz_animation
 
-  # Internal Libs
-  ERS_GPURequest
-  ERS_LoggingSystem
-  ERS_ModelImporter
-  ERS_LocalConfigLoader
+    # Temporary -- DELETE THESE WHEN NOT TESTING HERE ANYMORE --
+    ERS_LuaInterface
 
-  ERS_GetExecutablePath
+    # Internal Libs
+    ERS_GPURequest
+    ERS_LoggingSystem
+    ERS_ModelImporter
+    ERS_LocalConfigLoader
 
-  ERS_HardwareInformation
-  ERS_CLASS_PythonInterpreterIntegration
-  ERS_ArgumentParser
+    ERS_GetExecutablePath
 
-  ERS_SceneManager
-  ERS_ModelLoader
-  ERS_SceneLoader  
-  ERS_ModelWriter
-  ERS_ProjectLoader
-  ERS_ProjectWriter
-  ERS_InputOutputSubsystem
-  ERS_FramerateManager
-  ERS_ProjectManager
-  ERS_ControllerInputManager
-  
-  ERS_STRUCT_HumanInputDeviceUtils
-  ERS_STRUCT_SystemUtils
-  ERS_STRUCT_ProjectUtils
-  ERS_STRUCT_RendererSettings
+    ERS_HardwareInformation
+    ERS_CLASS_PythonInterpreterIntegration
+    ERS_ArgumentParser
 
-  Renderer
-  )
+    ERS_SceneManager
+    ERS_ModelLoader
+    ERS_SceneLoader  
+    ERS_ModelWriter
+    ERS_ProjectLoader
+    ERS_ProjectWriter
+    ERS_InputOutputSubsystem
+    ERS_FramerateManager
+    ERS_ProjectManager
+    ERS_ControllerInputManager
+
+    ERS_STRUCT_HumanInputDeviceUtils
+    ERS_STRUCT_SystemUtils
+    ERS_STRUCT_ProjectUtils
+    ERS_STRUCT_RendererSettings
+
+    Renderer
+)
 
 
 # Run Configuration On EditorAssetBundle
 include(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/EditorAssetsBundle.cmake)
+
+

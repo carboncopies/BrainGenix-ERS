@@ -38,6 +38,6 @@ ERSBuildLogger(${Green} "Configuring PlatformFolders Library")
 
 
 # find_package(platform_folders REQUIRED)
-add_subdirectory(${LIB_DIR}/PlatformFolders)
+add_subdirectory(${LIB_DIR}/NonSuperBuild/PlatformFolders)
 disable_target_warnings(platform_folders)
 ERSBuildLogger(${BoldGreen} "Finished Configuring PlatformFolders Library")

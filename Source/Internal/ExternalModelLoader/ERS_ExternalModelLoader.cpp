@@ -590,7 +590,7 @@ bool ExternalModelLoader::LoadModel(std::string ModelPath, ERS_STRUCT_ModelWrite
     std::string ModelDirectory = ModelPath.substr(0, std::string(ModelPath).find_last_of("/"));
     std::string ModelFileName = ModelPath.substr(ModelPath.find_last_of("/") + 1, ModelPath.size() - 1);
 
-    // Load Via Assimp
+    // Load Via assimp::assimp
     try {
         const aiScene* Scene = Data.ModelImporter.ReadFile(ModelPath, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices);
 

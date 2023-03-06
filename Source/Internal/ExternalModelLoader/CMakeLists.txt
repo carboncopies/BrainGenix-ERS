@@ -20,7 +20,7 @@ set_property(TARGET ERS_ExternalModelLoader PROPERTY CXX_STANDARD 17)
 target_link_libraries(ERS_ExternalModelLoader
     yaml-cpp
     glm
-    assimp
+    assimp::assimp
     FreeImage
     Lucifer
     ghc_filesystem

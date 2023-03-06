@@ -36,7 +36,7 @@ add_library(ERS_ModelLoader
 target_link_libraries(ERS_ModelLoader
     yaml-cpp
     glm
-    assimp
+    assimp::assimp
     FreeImage
     ThreadNamingUtils
     )

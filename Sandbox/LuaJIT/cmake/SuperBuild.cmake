@@ -1,0 +1,17 @@
+include (ExternalProject)
+
+set_property (DIRECTORY PROPERTY EP_BASE Dependencies)
+
+set (DEPENDENCIES)
+set (EXTRA_CMAKE_ARGS)
+
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/LuaJIT.cmake)
+
+# FIXME add to default target "all"?
+ExternalProject_Add (ep_blah
+  DEPENDS ${DEPENDENCIES}
+  SOURCE_DIR ${PROJECT_SOURCE_DIR}
+  CMAKE_ARGS -DUSE_SUPERBUILD=OFF ${EXTRA_CMAKE_ARGS}
+  INSTALL_COMMAND ""
+  BUILD_ALWAYS 1
+  BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR}/blah)
