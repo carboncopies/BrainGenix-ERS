@@ -27,7 +27,10 @@ build-job:       # This job runs in the build stage, which runs first.
     - cd Tools
     - bash CI-Install.sh
     - bash BuildNoRun.sh 24
-    - tar -I pigz -cf BrainGenix-ERS.tgz ../Binaries/
+  artifacts:
+    name: "BrainGenix-ERS_$CI_COMMIT_REF_NAME"
+    paths:
+      - ../Binaries/
   
 
 #unit-test-job:   # This job runs in the test stage.
