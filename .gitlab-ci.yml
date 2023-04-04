@@ -30,7 +30,7 @@ build-job:       # This job runs in the build stage, which runs first.
   artifacts:
     name: "BrainGenix-ERS_$CI_COMMIT_REF_NAME"
     paths:
-      - ../Binaries/
+      - Binaries/
   
 
 #unit-test-job:   # This job runs in the test stage.
