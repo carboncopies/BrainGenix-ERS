@@ -26,6 +26,7 @@ stages:          # List of stages for jobs, and their order of execution
 
 # Main build for compiling the main project executable.
 MainBuild:
+  image: ers_main_build_image
   stage: Build
   script:
     - cd CI/MainBuild
