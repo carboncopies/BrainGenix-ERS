@@ -21,6 +21,7 @@ stages:          # List of stages for jobs, and their order of execution
 #  - test
 #  - deploy
 
+
 ## BUILD STAGE ITEMS HERE ##
 
 # Main build for compiling the main project executable.
@@ -35,10 +36,10 @@ MainBuild:
     paths:
       - Binaries/
 
-DoxygenDocumentation:
+GenerateDocs:
   stage: Build
   script:
-    - cd CI/MainBuild
+    - cd CI/GenerateDocs
     - bash Install.sh
     - bash Build.sh 36
   artifacts:
