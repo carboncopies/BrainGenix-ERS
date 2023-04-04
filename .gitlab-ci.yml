@@ -46,6 +46,9 @@ GenerateDocs:
     name: "Docs_BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
     paths:
       - Docs/Doxygen/Generated/
+
+
+
 #unit-test-job:   # This job runs in the test stage.
 #  stage: test    # It only starts when the job in the build stage completes successfully.
 #  script:
