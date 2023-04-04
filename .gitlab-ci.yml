@@ -17,21 +17,22 @@
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
 stages:          # List of stages for jobs, and their order of execution
-  - build
+  - Build
 #  - test
 #  - deploy
 
-build-job:       # This job runs in the build stage, which runs first.
-  stage: build
+MainBuild:       # This job runs in the build stage, which runs first.
+  stage: Build
   script:
-    - cd Tools
-    - bash CI-Install.sh
-    - bash BuildNoRun.sh 36
+    - cd CI/MainBuild
+    - bash Install.sh
+    - bash Build.sh 36
   artifacts:
     name: "BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
     paths:
       - Binaries/
-  
+
+DoxygenDocumentation:
 
 #unit-test-job:   # This job runs in the test stage.
 #  stage: test    # It only starts when the job in the build stage completes successfully.
