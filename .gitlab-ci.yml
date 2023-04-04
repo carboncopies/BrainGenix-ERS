@@ -29,8 +29,8 @@ MainBuild:
   stage: Build
   script:
     - cd CI/MainBuild
-    - bash Install.sh
-    - bash Build.sh 36
+    - bash PreRun.sh
+    - bash Run.sh 36
   artifacts:
     name: "Build_BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
     paths:
