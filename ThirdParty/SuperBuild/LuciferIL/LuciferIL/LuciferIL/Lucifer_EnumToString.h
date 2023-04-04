@@ -34,4 +34,4 @@ std::string Lucifer_GetLoadingStatusString(LoadingStatus Status);
 std::string Lucifer_GetWritingStatusString(WritingStatus Status);
 
 
-};
+}

@@ -65,4 +65,4 @@ int Lucifer_GetChannes(Image &Image);
  */
 FIBITMAP* Lucifer_CreateFIBitmapFromImage(Image &Image);
 
-};
+}

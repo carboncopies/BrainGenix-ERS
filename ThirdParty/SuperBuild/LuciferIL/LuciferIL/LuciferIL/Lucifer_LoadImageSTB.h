@@ -38,4 +38,4 @@ LoadingStatus Lucifer_LoadSTB(unsigned char* ImageData, unsigned long Size, Imag
 
 
 
-};
+}

@@ -42,6 +42,6 @@ LoadingStatus Lucifer_LoadDevIL(unsigned char* ImageData, unsigned long Size, Im
 
 
 
-};
+}
 
 #endif
