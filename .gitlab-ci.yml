@@ -21,7 +21,10 @@ stages:          # List of stages for jobs, and their order of execution
 #  - test
 #  - deploy
 
-MainBuild:       # This job runs in the build stage, which runs first.
+## BUILD STAGE ITEMS HERE ##
+
+# Main build for compiling the main project executable.
+MainBuild:
   stage: Build
   script:
     - cd CI/MainBuild
@@ -33,7 +36,15 @@ MainBuild:       # This job runs in the build stage, which runs first.
       - Binaries/
 
 DoxygenDocumentation:
-
+  stage: Build
+  script:
+    - cd CI/MainBuild
+    - bash Install.sh
+    - bash Build.sh 36
+  artifacts:
+    name: "BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
+    paths:
+      - Binaries/
 #unit-test-job:   # This job runs in the test stage.
 #  stage: test    # It only starts when the job in the build stage completes successfully.
 #  script:
