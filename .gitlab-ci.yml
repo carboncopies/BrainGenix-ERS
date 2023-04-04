@@ -32,7 +32,7 @@ MainBuild:
     - bash Install.sh
     - bash Build.sh 36
   artifacts:
-    name: "BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
+    name: "BUILD_BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
     paths:
       - Binaries/
 
@@ -40,8 +40,7 @@ GenerateDocs:
   stage: Build
   script:
     - cd CI/GenerateDocs
-    - bash Install.sh
-    - bash Build.sh 36
+    - bash GenerateDocs.sh
   artifacts:
     name: "BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
     paths:
