@@ -26,9 +26,9 @@ build-job:       # This job runs in the build stage, which runs first.
   script:
     - cd Tools
     - bash CI-Install.sh
-    - bash BuildNoRun.sh 24
+    - bash BuildNoRun.sh 36
   artifacts:
-    name: "BrainGenix-ERS_$CI_COMMIT_REF_NAME"
+    name: "BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
     paths:
       - Binaries/
   
