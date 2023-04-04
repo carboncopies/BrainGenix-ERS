@@ -30,7 +30,7 @@ MainBuild:
   script:
     - cd CI/MainBuild
     - bash PreRun.sh
-    - bash Run.sh 36
+    - bash Run.sh 24
   artifacts:
     name: "Build_BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
     paths:
