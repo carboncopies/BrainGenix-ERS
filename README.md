@@ -1,4 +1,4 @@
-![Build](https://gitlab.example.com/carboncopies/BrainGenix-ERS/badges/master/pipeline.svg?ignore_skipped=true)
+![Build](https://gitlab.braingenix.org/carboncopies/BrainGenix-ERS/badges/master/pipeline.svg?ignore_skipped=true)
 
 
 ![Image](https://user-images.githubusercontent.com/49183477/193433511-1276948e-29e8-43d0-8c5e-8f87e097fec9.png)
