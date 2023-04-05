@@ -1,3 +1,3 @@
 
-cd ../../Docs/Doxygen/Tools
+cd ../../../Docs/Doxygen/Tools
 bash GenerateDocs.sh

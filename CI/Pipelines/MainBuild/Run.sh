@@ -3,7 +3,7 @@
 
 # Get Into Root Repo Dir
 echo "[ERS BUILD HELPER] - Entering Root Repo Directory"
-cd ../..
+cd ../../..
 
 
 # Configure Build Type
