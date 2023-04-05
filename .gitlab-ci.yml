@@ -29,7 +29,7 @@ Build Linux Ubuntu 22.04:
   tags:
    - linux
    - ubuntu
-   - 22.04
+   - "22.04"
   stage: Build
   script:
     - cd CI/Pipelines/MainBuild
@@ -44,7 +44,7 @@ Build Linux Ubuntu 20.04:
   tags:
    - linux
    - ubuntu
-   - 20.04
+   - "20.04"
   stage: Build
   script:
     - cd CI/Pipelines/MainBuild
@@ -59,7 +59,7 @@ Build Linux Ubuntu 18.04:
   tags:
    - linux
    - ubuntu
-   - 18.04
+   - "18.04"
   stage: Build
   script:
     - cd CI/Pipelines/MainBuild
