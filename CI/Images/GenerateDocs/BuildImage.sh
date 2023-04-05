@@ -1,2 +1,2 @@
 docker pull ubuntu:latest
-docker build -t ers_main_build_image .
+docker build -t ers_generate_docs_image .
