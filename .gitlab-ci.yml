@@ -93,6 +93,8 @@ Debian 10 Build:
 Generate Documentation:
   image: "10.1.3.11:5000/ers_generate_docs_image:latest"
   stage: Build
+  tags:
+    - linux
   script:
     - cd CI/Pipelines/GenerateDocs
     - bash Run.sh
