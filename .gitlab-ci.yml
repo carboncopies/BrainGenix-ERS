@@ -30,18 +30,17 @@ MainBuild:
   stage: Build
   script:
     - cd CI/Pipelines/MainBuild
-    # - bash PreRun.sh
-    - bash Run.sh 12
+    - bash Run.sh 24
   artifacts:
     name: "Build_BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
     paths:
       - Binaries/
 
 GenerateDocs:
+  image: "10.1.3.11:5000/ers_generate_docs_image:latest"
   stage: Build
   script:
     - cd CI/Pipelines/GenerateDocs
-    - bash PreRun.sh
     - bash Run.sh
   artifacts:
     name: "Docs_BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
