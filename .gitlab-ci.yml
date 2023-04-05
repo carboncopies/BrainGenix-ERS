@@ -39,6 +39,36 @@ Build Linux Ubuntu 22.04:
     paths:
       - Binaries/
 
+Build Linux Ubuntu 20.04:
+  image: "10.1.3.11:5000/ers_build_linux_ubuntu_2004:latest"
+  tags:
+   - linux
+   - ubuntu
+   - 20.04
+  stage: Build
+  script:
+    - cd CI/Pipelines/MainBuild
+    - bash Run.sh 24
+  artifacts:
+    name: "Build_BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
+    paths:
+      - Binaries/
+
+Build Linux Ubuntu 18.04:
+  image: "10.1.3.11:5000/ers_build_linux_ubuntu_1804:latest"
+  tags:
+   - linux
+   - ubuntu
+   - 18.04
+  stage: Build
+  script:
+    - cd CI/Pipelines/MainBuild
+    - bash Run.sh 24
+  artifacts:
+    name: "Build_BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
+    paths:
+      - Binaries/
+
 GenerateDocs:
   image: "10.1.3.11:5000/ers_generate_docs_image:latest"
   stage: Build
