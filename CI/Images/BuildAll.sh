@@ -2,8 +2,8 @@
 
 # Enumerate subdirs, run build script
 for Dir in */ ; do
-    echo "Building Image '$d'"
-    cd "$d"
+    echo "Building Image '$Dir'"
+    cd "$Dir"
     bash Run.sh
     cd ..
 done
