@@ -28,8 +28,6 @@ Build On Linux Ubuntu 22.04:
   image: "10.1.3.11:5000/ers_build_linux_ubuntu_2204:latest"
   tags:
    - linux
-   - ubuntu
-   - "22.04"
   stage: Build
   script:
     - cd CI/Pipelines/MainBuild
@@ -43,8 +41,6 @@ Build On Linux Ubuntu 20.04:
   image: "10.1.3.11:5000/ers_build_linux_ubuntu_2004:latest"
   tags:
    - linux
-   - ubuntu
-   - "20.04"
   stage: Build
   script:
     - cd CI/Pipelines/MainBuild
@@ -58,8 +54,6 @@ Build On Linux Ubuntu 20.10:
   image: "10.1.3.11:5000/ers_build_linux_ubuntu_2010:latest"
   tags:
    - linux
-   - ubuntu
-   - "2010"
   stage: Build
   script:
     - cd CI/Pipelines/MainBuild
