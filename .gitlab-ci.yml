@@ -65,6 +65,20 @@ Generate Documentation:
 
 ## PLATFORM BUILD TESTING HERE ##
 
+# Ensure ERS compiles on ubuntu 23.04
+Ubuntu 23.04 Build:
+  image: "$DOCKER_REGISTRY/ers_build_linux_ubuntu_2304:latest"
+  tags:
+   - linux
+  stage: Platform Build Testing
+  script:
+    - cd CI/Pipelines/MainBuild
+    - bash Run.sh $NUMBER_THREADS
+  artifacts:
+    name: "$PLATFORM_BUILD_PREAMBLE-Ubuntu23.04"
+    paths:
+      - Binaries/
+
 # Ensure ERS compiles on ubuntu 22.04
 Ubuntu 22.04 Build:
   image: "$DOCKER_REGISTRY/ers_build_linux_ubuntu_2204:latest"
@@ -93,19 +107,7 @@ Ubuntu 20.04 Build:
     paths:
       - Binaries/
 
-# Ensure ERS compiles on ubuntu 23.04
-Ubuntu 23.04 Build:
-  image: "$DOCKER_REGISTRY/ers_build_linux_ubuntu_2304:latest"
-  tags:
-   - linux
-  stage: Platform Build Testing
-  script:
-    - cd CI/Pipelines/MainBuild
-    - bash Run.sh $NUMBER_THREADS
-  artifacts:
-    name: "$PLATFORM_BUILD_PREAMBLE-Ubuntu23.04"
-    paths:
-      - Binaries/
+
 
 # Ensure ERS compiles on debian 11
 Debian 11 Build:
