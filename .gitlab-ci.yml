@@ -103,7 +103,7 @@ Ubuntu 23.04 Build:
     - cd CI/Pipelines/MainBuild
     - bash Run.sh $NUMBER_THREADS
   artifacts:
-    name: "ERS_UBUNTU2304_$CI_COMMIT_SHORT_SHA"
+    name: "$PLATFORM_BUILD_PREAMBLE-Ubuntu23.04"
     paths:
       - Binaries/
 
