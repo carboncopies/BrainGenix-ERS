@@ -75,7 +75,7 @@ Ubuntu 22.04 Build:
     - cd CI/Pipelines/MainBuild
     - bash Run.sh $NUMBER_THREADS
   artifacts:
-    name: "$PLATFORM_BUILD_PREAMBLE-Ubuntu22.04_"
+    name: "$PLATFORM_BUILD_PREAMBLE-Ubuntu22.04"
     paths:
       - Binaries/
 
@@ -89,7 +89,7 @@ Ubuntu 20.04 Build:
     - cd CI/Pipelines/MainBuild
     - bash Run.sh $NUMBER_THREADS
   artifacts:
-    name: "ERS_UBUNTU_2004_$CI_COMMIT_SHORT_SHA"
+    name: "$PLATFORM_BUILD_PREAMBLE-Ubuntu20.04"
     paths:
       - Binaries/
 
