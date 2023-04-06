@@ -131,7 +131,7 @@ Debian 10 Build:
     - cd CI/Pipelines/MainBuild
     - bash Run.sh $NUMBER_THREADS
   artifacts:
-    name: "ERS_DEBIAN10_$CI_COMMIT_SHORT_SHA"
+    name: "$PLATFORM_BUILD_PREAMBLE-Debian10"
     paths:
       - Binaries/
 
