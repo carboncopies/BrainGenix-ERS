@@ -15,6 +15,8 @@
 # This specific template is located at:
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
+
+
 stages:          # List of stages for jobs, and their order of execution
   - Build
   - Platform Build Testing
@@ -36,7 +38,7 @@ Main Build:
     - cd CI/Pipelines/MainBuild
     - bash Run.sh 24
   artifacts:
-    name: "Build_BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
+    name: "Build_BrainGenix-ERS_$CI_COMMIT_SHORT_SHA"
     paths:
       - Binaries/
 
@@ -51,7 +53,7 @@ Generate Documentation:
     - cd CI/Pipelines/GenerateDocs
     - bash Run.sh
   artifacts:
-    name: "Docs_BrainGenix-ERS_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
+    name: "Docs_BrainGenix-ERS_$CI_COMMIT_SHORT_SHA"
     paths:
       - Docs/Doxygen/Generated/
 
@@ -68,7 +70,7 @@ Ubuntu 22.04 Build:
     - cd CI/Pipelines/MainBuild
     - bash Run.sh 24
   artifacts:
-    name: "ERS_UBUNTU_2204_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
+    name: "ERS_UBUNTU_2204_$CI_COMMIT_SHORT_SHA"
     paths:
       - Binaries/
 
@@ -82,7 +84,7 @@ Ubuntu 20.04 Build:
     - cd CI/Pipelines/MainBuild
     - bash Run.sh 24
   artifacts:
-    name: "ERS_UBUNTU_2004_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
+    name: "ERS_UBUNTU_2004_$CI_COMMIT_SHORT_SHA"
     paths:
       - Binaries/
 
@@ -96,7 +98,7 @@ Ubuntu 23.04 Build:
     - cd CI/Pipelines/MainBuild
     - bash Run.sh 24
   artifacts:
-    name: "ERS_UBUNTU2304_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
+    name: "ERS_UBUNTU2304_$CI_COMMIT_SHORT_SHA"
     paths:
       - Binaries/
 
@@ -110,7 +112,7 @@ Debian 11 Build:
     - cd CI/Pipelines/MainBuild
     - bash Run.sh 24
   artifacts:
-    name: "ERS_DEBIAN11_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
+    name: "ERS_DEBIAN11_$CI_COMMIT_SHORT_SHA"
     paths:
       - Binaries/
 
@@ -124,7 +126,7 @@ Debian 10 Build:
     - cd CI/Pipelines/MainBuild
     - bash Run.sh 24
   artifacts:
-    name: "ERS_DEBIAN10_$CI_COMMIT_REF_NAME_$CI_COMMIT_SHORT_SHA"
+    name: "ERS_DEBIAN10_$CI_COMMIT_SHORT_SHA"
     paths:
       - Binaries/
 
