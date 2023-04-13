@@ -6,6 +6,9 @@ set(CMAKE_CXX_STANDARD 98)
 
 # LibJXR
 add_compile_definitions(DISABLE_PERF_MEASUREMENT)
+# Fix for apple
+add_definitions(-Wno-error=implicit-function-declaration) #Fixes issue with vsprintf on macOS
+add_definitions(-DPNG_ARM_NEON_OPT=0) #Fixes issue with linker on macOS
 # OpenJPEG
 add_compile_definitions(OPJ_STATIC)
 if(WIN32)
