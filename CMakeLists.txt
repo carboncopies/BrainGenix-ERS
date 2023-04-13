@@ -64,7 +64,7 @@ include(${CMAKE_UTILS_DIR}/SuperBuilds/MeshOptimizer.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/FreeImage.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/YAMLCPP.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/Lucifer.cmake)
-include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
+# include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
 
 
 
@@ -109,8 +109,8 @@ ERSBuildLogger(${Green} "Configuring Library Interfaces")
 
 add_subdirectory(${SRC_DIR}/Interface/Library/MeshOptimizerInterface)
 message(STATUS "Configured MeshOptimizer Interface")
-add_subdirectory(${SRC_DIR}/Interface/Library/LuaInterface)
-message(STATUS "Configured Lua Interface")
+# add_subdirectory(${SRC_DIR}/Interface/Library/LuaInterface)
+# message(STATUS "Configured Lua Interface")
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Library Interfaces")
 
@@ -236,7 +236,7 @@ target_link_libraries(${PROJECT_NAME}
     ozz_animation
 
     # Temporary -- DELETE THESE WHEN NOT TESTING HERE ANYMORE --
-    ERS_LuaInterface
+    # ERS_LuaInterface
 
     # Internal Libs
     ERS_GPURequest
