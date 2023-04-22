@@ -236,7 +236,7 @@ target_link_libraries(${PROJECT_NAME}
     ozz_animation
 
     # Temporary -- DELETE THESE WHEN NOT TESTING HERE ANYMORE --
-    # ERS_LuaInterface
+    ERS_LuaInterface
 
     # Internal Libs
     ERS_GPURequest
