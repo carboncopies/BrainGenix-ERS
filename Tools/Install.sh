@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Install Compiler Tools
 sudo apt install git wget cmake ninja-build g++ python3 python3-pip -y
 
