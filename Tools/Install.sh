@@ -14,7 +14,3 @@ sudo apt install libssl-dev -y
 pip3 install numpy
 sudo apt install libusb-1.0-0-dev glslang-dev glslang-tools libeigen3-dev libudev-dev libgl1-mesa-dev -y
 
-# Warn about openxr drivers
-echo "-------------------------------------"
-echo "YOU NEED TO INSTALL AN OPENXR RUNTIME TO USE VR! IF YOU ALREADY HAVE ONE INSTALLED, YOU CAN IGNORE THIS BUT OTHERWISE YOU NEED TO INSTALL ONE. Please Use The Associated Scripts (Monado) For That."
-echo "-------------------------------------"
