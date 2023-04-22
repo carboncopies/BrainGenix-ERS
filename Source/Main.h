@@ -52,19 +52,6 @@
 #include <ERS_GetExecutablePath.h>
 
 
-//
-//-----------------------------------------------------------------------------------------------------
-//
-// FIXME: Add proper lighting system (phong and more advanced (and shadow maps))
-// FIXME: implement animations (character deformations)
-// FIXME: implement offscreen rendering
-// FIXME: add other features to this list later, (audio rendering, ray tracing, etc.)
-// FIXME: Update this card with more info as needed!
-//
-//-----------------------------------------------------------------------------------------------------
-//
-
-
 /**
  * Main system function.
 */
