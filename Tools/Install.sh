@@ -9,8 +9,3 @@ sudo apt install libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-d
 
 # Install MySQL Connector Deps
 sudo apt install libssl-dev -y
-
-# Install Monado Deps
-pip3 install numpy
-sudo apt install libusb-1.0-0-dev glslang-dev glslang-tools libeigen3-dev libudev-dev libgl1-mesa-dev -y
-
