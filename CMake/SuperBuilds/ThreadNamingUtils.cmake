@@ -17,7 +17,6 @@ if (USE_SUPERBUILD)
         SOURCE_DIR ${LIB_SOURCE_DIR}
         CMAKE_ARGS -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_CURRENT_BINARY_DIR}/Dependencies/Install/ThirdParty_${TARGET_NAME}/
 
-
     )
     message(STATUS "Finished Configuring Library ${TARGET_NAME}")
 

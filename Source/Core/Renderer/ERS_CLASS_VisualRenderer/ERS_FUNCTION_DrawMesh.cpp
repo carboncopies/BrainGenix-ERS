@@ -89,7 +89,7 @@ void ERS_FUNCTION_DrawMesh(ERS_STRUCT_Mesh* Mesh, ERS_STRUCT_OpenGLDefaults* Ope
         // Check If Texture Has Any Levels
         if (Mesh->Textures_[i]->HasAnyLevelReady) {
             glActiveTexture(GL_TEXTURE0 + TypeID);
-            glBindTexture(GL_TEXTURE_2D, Mesh->Textures_[i]->BestAvailableOpenGLID);
+            glBindTexture(GL_TEXTURE_2D, Mesh->Textures_[i]->BestAvailableOpenGLID-1);
         } else {
             glActiveTexture(GL_TEXTURE0 + TypeID);
             glBindTexture(GL_TEXTURE_2D, OpenGLDefaults->Loadingtexture_);
