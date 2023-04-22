@@ -269,7 +269,7 @@ target_link_libraries(${PROJECT_NAME}
 
     Renderer
 )
-
+target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})
 
 # Run Configuration On EditorAssetBundle
 include(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/EditorAssetsBundle.cmake)
