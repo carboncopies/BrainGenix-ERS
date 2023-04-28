@@ -16,12 +16,12 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_Windows.h>
+#include <SystemUtils.h>
+#include <Windows.h>
 
-#include <ERS_Editor_WindowManager.h>
+#include <WindowManager.h>
 
-#include <ERS_CLASS_OpenGLDebug.h>
+#include <OpenGLDebug.h>
 
 
 /**

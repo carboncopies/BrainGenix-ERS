@@ -7,10 +7,10 @@
 add_library(ERS_Editor_ThemeManager
 
             # Add Source Files (.cpp)
-            "ERS_Editor_ThemeManager.cpp"
+            "ThemeManager.cpp"
 
             # Add Header Files (.h)
-            "ERS_Editor_ThemeManager.h"
+            "ThemeManager.h"
             
             ${BACKWARD_ENABLE}
             )
