@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-04-28T17:33:26.312Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="Le2hoTNV_-ohuGB-3BwN" version="21.2.1" type="device" pages="2">
+<mxfile host="Electron" modified="2023-04-28T18:16:58.779Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="Y1eQMnfIS7kSUQmQwNf2" version="21.2.1" type="device" pages="3">
   <diagram name="Page-1" id="zG-rwdA8NLukDpqJWhqa">
     <mxGraphModel dx="1434" dy="954" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -8,7 +8,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="aN3JS4Op0_-fJIj75qcH" name="IO Subsystem">
-    <mxGraphModel dx="869" dy="578" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="954" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -834,6 +834,50 @@
         </mxCell>
         <mxCell id="-4oxtgjENT5sa4G458ur-68" value="LODIDs_ : std::vector&amp;lt;__int128&amp;gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=12;fontFamily=Courier New;fontColor=default;" parent="-4oxtgjENT5sa4G458ur-65" vertex="1">
           <mxGeometry y="79" width="250" height="25" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="hQfWgxk2E81PBqkQHM2d" name="Memory Management">
+    <mxGraphModel dx="683" dy="454" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fUPeFBNklogr5K-iSxgo-1" value="Overview" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#3700CC;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#6a00ff;" vertex="1" parent="1">
+          <mxGeometry x="10" y="10" width="1580" height="600" as="geometry" />
+        </mxCell>
+        <mxCell id="1eH44fGbjhnHZ5_EjwBB-1" value="Description" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#006EAF;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#1ba1e2;" vertex="1" parent="fUPeFBNklogr5K-iSxgo-1">
+          <mxGeometry x="20" y="50" width="540" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="1eH44fGbjhnHZ5_EjwBB-2" value="&lt;h1&gt;ERS Memory Management Subsystem&lt;/h1&gt;&lt;p&gt;The ERS memory management subsystem should handle all of the large users of memory in the system. with ERS version &amp;lt; 0.5.x, memory is handled via direct allocation through smart pointers, however this leads to eventual memory fragmentation which can very quickly consume the entire system memory footprint.&lt;/p&gt;&lt;p&gt;To address this issue, the memory management subsystem should be used to keep track of and defragment the heap in the background. Since this would potentially be a disruptive action, ideally this system would make use of threads and other tricks so as to reduce (or hopefully eliminate) any latency caused by relocating objects.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Courier New;fontSize=12;fontColor=default;" vertex="1" parent="1eH44fGbjhnHZ5_EjwBB-1">
+          <mxGeometry x="10" y="35" width="520" height="385" as="geometry" />
+        </mxCell>
+        <mxCell id="1eH44fGbjhnHZ5_EjwBB-9" value="BG::ERS::MM::State" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=29;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;rounded=0;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;fillColor=default;" vertex="1" parent="fUPeFBNklogr5K-iSxgo-1">
+          <mxGeometry x="940" y="150" width="280" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="1eH44fGbjhnHZ5_EjwBB-10" value="&amp;lt;&amp;lt;enum&amp;gt;&amp;gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=12;fontFamily=Courier New;fontColor=default;" vertex="1" parent="1eH44fGbjhnHZ5_EjwBB-9">
+          <mxGeometry y="29" width="280" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="1eH44fGbjhnHZ5_EjwBB-11" value="BG_Normal" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=12;fontFamily=Courier New;fontColor=default;" vertex="1" parent="1eH44fGbjhnHZ5_EjwBB-9">
+          <mxGeometry y="54" width="280" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="1eH44fGbjhnHZ5_EjwBB-12" value="BG_Relocating" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=12;fontFamily=Courier New;fontColor=default;" vertex="1" parent="1eH44fGbjhnHZ5_EjwBB-9">
+          <mxGeometry y="79" width="280" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="1eH44fGbjhnHZ5_EjwBB-3" value="MemoryObject" style="swimlane;fontStyle=1;align=center;verticalAlign=middle;childLayout=stackLayout;horizontal=1;startSize=29;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;html=1;whiteSpace=wrap;rounded=0;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;fillColor=default;" vertex="1" parent="fUPeFBNklogr5K-iSxgo-1">
+          <mxGeometry x="600" y="150" width="320" height="129" as="geometry" />
+        </mxCell>
+        <mxCell id="1eH44fGbjhnHZ5_EjwBB-4" value="&amp;lt;&amp;lt;struct&amp;gt;&amp;gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=12;fontFamily=Courier New;fontColor=default;" vertex="1" parent="1eH44fGbjhnHZ5_EjwBB-3">
+          <mxGeometry y="29" width="320" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="1eH44fGbjhnHZ5_EjwBB-5" value="Pointer_ : void*" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=12;fontFamily=Courier New;fontColor=default;" vertex="1" parent="1eH44fGbjhnHZ5_EjwBB-3">
+          <mxGeometry y="54" width="320" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="1eH44fGbjhnHZ5_EjwBB-8" value="State_ : std::atomic&amp;lt;BG::ERS::MM::State&amp;gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=12;fontFamily=Courier New;fontColor=default;" vertex="1" parent="1eH44fGbjhnHZ5_EjwBB-3">
+          <mxGeometry y="79" width="320" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="1eH44fGbjhnHZ5_EjwBB-6" value="Size_ : long unsigned int" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;fontSize=12;fontFamily=Courier New;fontColor=default;" vertex="1" parent="1eH44fGbjhnHZ5_EjwBB-3">
+          <mxGeometry y="104" width="320" height="25" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
