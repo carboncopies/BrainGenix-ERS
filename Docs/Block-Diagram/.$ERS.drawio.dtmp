@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-04-28T21:15:42.761Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="VXszSqI6sJMxMEj0BFL0" version="21.2.1" type="device" pages="3">
+<mxfile host="Electron" modified="2023-04-28T21:22:57.993Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="RxhQ8QMV2g3H8VP0V4rJ" version="21.2.1" type="device" pages="3">
   <diagram name="Page-1" id="zG-rwdA8NLukDpqJWhqa">
     <mxGraphModel dx="1434" dy="954" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -8,7 +8,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="aN3JS4Op0_-fJIj75qcH" name="IO Subsystem">
-    <mxGraphModel dx="989" dy="658" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="965" dy="658" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -863,11 +863,73 @@
         <mxCell id="DD023Jd7H42glesCn6Rg-15" value="Underlying Raw IO" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#3700CC;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#6a00ff;" vertex="1" parent="1">
           <mxGeometry x="4810" y="10" width="1580" height="1180" as="geometry" />
         </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-18" value="High Level Overview" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#006EAF;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#1ba1e2;" vertex="1" parent="DD023Jd7H42glesCn6Rg-15">
+          <mxGeometry x="490" y="42" width="1070" height="1118" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-19" value="Initialization" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#6F0000;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#a20025;" vertex="1" parent="DD023Jd7H42glesCn6Rg-18">
+          <mxGeometry x="20" y="39.5" width="550" height="300.5" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-22" value="" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" edge="1" parent="DD023Jd7H42glesCn6Rg-19" source="DD023Jd7H42glesCn6Rg-20" target="DD023Jd7H42glesCn6Rg-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-20" value="" style="ellipse;fillColor=#008a00;html=1;rounded=0;strokeColor=#005700;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;" vertex="1" parent="DD023Jd7H42glesCn6Rg-19">
+          <mxGeometry x="20" y="63.5" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-24" value="" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" edge="1" parent="DD023Jd7H42glesCn6Rg-19" source="DD023Jd7H42glesCn6Rg-21" target="DD023Jd7H42glesCn6Rg-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-21" value="Check Configuration For Backend" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startSize=23;fillColor=default;" vertex="1" parent="DD023Jd7H42glesCn6Rg-19">
+          <mxGeometry x="80" y="48.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-26" value="" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" edge="1" parent="DD023Jd7H42glesCn6Rg-19" source="DD023Jd7H42glesCn6Rg-23" target="DD023Jd7H42glesCn6Rg-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-27" value="Local" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontFamily=Courier New;fontColor=default;" vertex="1" connectable="0" parent="DD023Jd7H42glesCn6Rg-26">
+          <mxGeometry x="0.2884" y="2" relative="1" as="geometry">
+            <mxPoint x="-15" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-33" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" edge="1" parent="DD023Jd7H42glesCn6Rg-19" source="DD023Jd7H42glesCn6Rg-23" target="DD023Jd7H42glesCn6Rg-30">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="159" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-34" value="Network" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontFamily=Courier New;fontColor=default;" vertex="1" connectable="0" parent="DD023Jd7H42glesCn6Rg-33">
+          <mxGeometry x="0.1092" relative="1" as="geometry">
+            <mxPoint x="27" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-23" value="" style="rhombus;whiteSpace=wrap;html=1;rounded=0;strokeColor=#3700CC;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#6a00ff;" vertex="1" parent="DD023Jd7H42glesCn6Rg-19">
+          <mxGeometry x="240" y="58.5" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-29" value="" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" edge="1" parent="DD023Jd7H42glesCn6Rg-19" source="DD023Jd7H42glesCn6Rg-25" target="DD023Jd7H42glesCn6Rg-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-25" value="Read/Index Local Database File" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startSize=23;fillColor=default;" vertex="1" parent="DD023Jd7H42glesCn6Rg-19">
+          <mxGeometry x="350" y="48.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-28" value="" style="shape=sumEllipse;perimeter=ellipsePerimeter;html=1;backgroundOutline=1;rounded=0;strokeColor=#6F0000;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#a20025;" vertex="1" parent="DD023Jd7H42glesCn6Rg-19">
+          <mxGeometry x="500" y="63.5" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-32" value="" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" edge="1" parent="DD023Jd7H42glesCn6Rg-19" source="DD023Jd7H42glesCn6Rg-30" target="DD023Jd7H42glesCn6Rg-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-30" value="Connect To Network Storage System" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startSize=23;fillColor=default;" vertex="1" parent="DD023Jd7H42glesCn6Rg-19">
+          <mxGeometry x="350" y="128.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-31" value="" style="shape=sumEllipse;perimeter=ellipsePerimeter;html=1;backgroundOutline=1;rounded=0;strokeColor=#6F0000;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#a20025;" vertex="1" parent="DD023Jd7H42glesCn6Rg-19">
+          <mxGeometry x="500" y="143.5" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="DD023Jd7H42glesCn6Rg-35" value="&lt;h1 style=&quot;line-height: 60%;&quot;&gt;&lt;span style=&quot;font-size: 12px; font-weight: 400;&quot;&gt;Upon initialization, the system will check it&#39;s configuration to determine what backend to use. Te backend selected will then be used whenever a read/write operation is requested for any type of data (meshes, textures, etc.).&lt;/span&gt;&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Courier New;" vertex="1" parent="DD023Jd7H42glesCn6Rg-19">
+          <mxGeometry x="10" y="208.5" width="530" height="81.5" as="geometry" />
+        </mxCell>
         <mxCell id="DD023Jd7H42glesCn6Rg-16" value="Description" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#006EAF;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#1ba1e2;" vertex="1" parent="1">
-          <mxGeometry x="4830" y="50" width="740" height="430" as="geometry" />
+          <mxGeometry x="4830" y="50" width="450" height="580" as="geometry" />
         </mxCell>
         <mxCell id="DD023Jd7H42glesCn6Rg-17" value="&lt;h1&gt;Raw IO Layer&lt;/h1&gt;&lt;p&gt;The IO Subsystem needs to be able to read/write data to the key-value store, and as such must include some system to actually deal with that data. This back-end must also be configurable to ensure that the system runs on the different platforms required of it.&amp;nbsp;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;The back-end configuration will be set by the main system configuration file, and will determine the type of back-end used. If ERS is used in a cluster, the configuration file will simply point it to the cluster, at which point the clusters configuration will be used.&amp;nbsp;&lt;/p&gt;&lt;p&gt;This should be able to set whatever distributed back-end is decided on (object storage or database), and should have error handling with intelligent error messages that help system administrators debug the configuration issue.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;For local installations such as when ERS is running as a game engine (for the game project), then it should use local file-based storage. This key-value storage system does not need to be as efficient as the distributed one, but should still be good enough for a video game.&lt;/p&gt;&lt;p&gt;Since there does not seem to be any librarys for C++ that support multiple backends for object/database storage, we will write our own subsystem for this under the ERS backend. This subsystem is to be treated as if it was a third-party library and should have it&#39;s own standalone build system.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Courier New;fontSize=12;fontColor=default;" vertex="1" parent="DD023Jd7H42glesCn6Rg-16">
-          <mxGeometry x="10" y="35" width="720" height="385" as="geometry" />
+          <mxGeometry x="10" y="35" width="430" height="525" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
