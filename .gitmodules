@@ -1,3 +1,0 @@
-[submodule "Sandbox/NewIOSystem/ThirdParty/GoogleTest"]
-	path = Sandbox/NewIOSystem/ThirdParty/GoogleTest
-	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Dependencies/googletest
