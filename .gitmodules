@@ -16,3 +16,6 @@
 [submodule "Sandbox/EGLGladBindingTest"]
 	path = Sandbox/EGLGladBindingTest
 	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/EGLGladBindingTest
+[submodule "Sandbox/ImageMemoryLoadTest"]
+	path = Sandbox/ImageMemoryLoadTest
+	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/ImageMemoryLoadTest
