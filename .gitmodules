@@ -4,3 +4,6 @@
 [submodule "Sandbox/GTestCMake"]
 	path = Sandbox/GTestCMake
 	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/GTestCMake
+[submodule "Sandbox/CubeMapArrayTest"]
+	path = Sandbox/CubeMapArrayTest
+	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/CubeMapArrayTest
