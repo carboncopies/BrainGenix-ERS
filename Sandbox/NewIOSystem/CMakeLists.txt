@@ -14,6 +14,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
+
 # Include Util CMake Scripts
 include(${CMAKE_CURRENT_SOURCE_DIR}/CMake/Utils/ColorizeMessages.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/CMake/Utils/SetBinaryDir.cmake)
