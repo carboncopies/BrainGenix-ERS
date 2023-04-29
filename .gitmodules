@@ -7,3 +7,6 @@
 [submodule "Sandbox/CubeMapArrayTest"]
 	path = Sandbox/CubeMapArrayTest
 	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/CubeMapArrayTest
+[submodule "Sandbox/CubeMapTest"]
+	path = Sandbox/CubeMapTest
+	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/CubeMapTest
