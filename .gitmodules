@@ -1,3 +1,6 @@
 [submodule "Sandbox/NewIOSystem/ThirdParty/GoogleTest"]
 	path = Sandbox/NewIOSystem/ThirdParty/GoogleTest
 	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Dependencies/googletest
+[submodule "Sandbox/GTestCMake"]
+	path = Sandbox/GTestCMake
+	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/GTestCMake
