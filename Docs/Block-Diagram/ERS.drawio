@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-04-29T04:17:14.869Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="RkGoKGjRw03Qavx9fGhk" version="21.2.1" type="device" pages="3">
+<mxfile host="Electron" modified="2023-04-29T04:45:04.307Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="mUgQlpBcFIBoxLmb04tD" version="21.2.1" type="device" pages="3">
   <diagram name="Page-1" id="zG-rwdA8NLukDpqJWhqa">
     <mxGraphModel dx="1426" dy="878" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -8,7 +8,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="aN3JS4Op0_-fJIj75qcH" name="IO Subsystem">
-    <mxGraphModel dx="1426" dy="878" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="1188" dy="732" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -923,6 +923,65 @@
           <mxGeometry x="500" y="143.5" width="30" height="30" as="geometry" />
         </mxCell>
         <mxCell id="DD023Jd7H42glesCn6Rg-35" value="&lt;h1 style=&quot;line-height: 60%;&quot;&gt;&lt;span style=&quot;font-size: 12px; font-weight: 400;&quot;&gt;Upon initialization, the system will check it&#39;s configuration to determine what backend to use. Te backend selected will then be used whenever a read/write operation is requested for any type of data (meshes, textures, etc.).&lt;/span&gt;&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Courier New;" parent="DD023Jd7H42glesCn6Rg-19" vertex="1">
+          <mxGeometry x="10" y="208.5" width="530" height="81.5" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-1" value="Public Interface" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#6F0000;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#a20025;" vertex="1" parent="DD023Jd7H42glesCn6Rg-18">
+          <mxGeometry x="20" y="367.75" width="550" height="300.5" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-2" value="" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" edge="1" parent="dJi6E4JsF9dUqWb4i51n-1" source="dJi6E4JsF9dUqWb4i51n-3" target="dJi6E4JsF9dUqWb4i51n-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-3" value="" style="ellipse;fillColor=#008a00;html=1;rounded=0;strokeColor=#005700;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;" vertex="1" parent="dJi6E4JsF9dUqWb4i51n-1">
+          <mxGeometry x="20" y="63.5" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-4" value="" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" edge="1" parent="dJi6E4JsF9dUqWb4i51n-1" source="dJi6E4JsF9dUqWb4i51n-5" target="dJi6E4JsF9dUqWb4i51n-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-5" value="Request Read/Write Data" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startSize=23;fillColor=default;" vertex="1" parent="dJi6E4JsF9dUqWb4i51n-1">
+          <mxGeometry x="80" y="48.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-6" value="" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" edge="1" parent="dJi6E4JsF9dUqWb4i51n-1" source="dJi6E4JsF9dUqWb4i51n-10" target="dJi6E4JsF9dUqWb4i51n-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-7" value="Local" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontFamily=Courier New;fontColor=default;" vertex="1" connectable="0" parent="dJi6E4JsF9dUqWb4i51n-6">
+          <mxGeometry x="0.2884" y="2" relative="1" as="geometry">
+            <mxPoint x="-15" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-8" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=default;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" edge="1" parent="dJi6E4JsF9dUqWb4i51n-1" source="dJi6E4JsF9dUqWb4i51n-10" target="dJi6E4JsF9dUqWb4i51n-15">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="159" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-9" value="Network" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=12;fontFamily=Courier New;fontColor=default;" vertex="1" connectable="0" parent="dJi6E4JsF9dUqWb4i51n-8">
+          <mxGeometry x="0.1092" relative="1" as="geometry">
+            <mxPoint x="27" y="-10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-10" value="" style="rhombus;whiteSpace=wrap;html=1;rounded=0;strokeColor=#3700CC;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#6a00ff;" vertex="1" parent="dJi6E4JsF9dUqWb4i51n-1">
+          <mxGeometry x="240" y="58.5" width="40" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-11" value="" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" edge="1" parent="dJi6E4JsF9dUqWb4i51n-1" source="dJi6E4JsF9dUqWb4i51n-12" target="dJi6E4JsF9dUqWb4i51n-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-12" value="Read/Write Data From Local Filesystem" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startSize=23;fillColor=default;" vertex="1" parent="dJi6E4JsF9dUqWb4i51n-1">
+          <mxGeometry x="350" y="48.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-13" value="" style="shape=sumEllipse;perimeter=ellipsePerimeter;html=1;backgroundOutline=1;rounded=0;strokeColor=#6F0000;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#a20025;" vertex="1" parent="dJi6E4JsF9dUqWb4i51n-1">
+          <mxGeometry x="500" y="63.5" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-14" value="" style="edgeStyle=orthogonalEdgeStyle;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startArrow=none;startFill=0;endArrow=classic;" edge="1" parent="dJi6E4JsF9dUqWb4i51n-1" source="dJi6E4JsF9dUqWb4i51n-15" target="dJi6E4JsF9dUqWb4i51n-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-15" value="Read/Write Data From Network Server" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=default;fontFamily=Courier New;fontSize=12;fontColor=default;startSize=23;fillColor=default;" vertex="1" parent="dJi6E4JsF9dUqWb4i51n-1">
+          <mxGeometry x="350" y="128.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-16" value="" style="shape=sumEllipse;perimeter=ellipsePerimeter;html=1;backgroundOutline=1;rounded=0;strokeColor=#6F0000;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#a20025;" vertex="1" parent="dJi6E4JsF9dUqWb4i51n-1">
+          <mxGeometry x="500" y="143.5" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="dJi6E4JsF9dUqWb4i51n-17" value="&lt;h1 style=&quot;line-height: 60%;&quot;&gt;&lt;span style=&quot;font-size: 12px; font-weight: 400;&quot;&gt;Here, a worker from a thread pool will accept the task and based on the configuration parameters set during startup, will adjust the task accordingly. Optional logging metrics may also be recorded for debugging purposes but this may also be disabled for performance if needed.&lt;/span&gt;&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Courier New;" vertex="1" parent="dJi6E4JsF9dUqWb4i51n-1">
           <mxGeometry x="10" y="208.5" width="530" height="81.5" as="geometry" />
         </mxCell>
         <mxCell id="DD023Jd7H42glesCn6Rg-16" value="Description" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#006EAF;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#1ba1e2;" parent="1" vertex="1">
