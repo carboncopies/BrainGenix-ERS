@@ -22,3 +22,6 @@
 [submodule "Sandbox/LuaJIT"]
 	path = Sandbox/LuaJIT
 	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/LuaJIT
+[submodule "Sandbox/NewImageLoaderSystem"]
+	path = Sandbox/NewImageLoaderSystem
+	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/NewImageLoaderSystem
