@@ -19,3 +19,6 @@
 [submodule "Sandbox/ImageMemoryLoadTest"]
 	path = Sandbox/ImageMemoryLoadTest
 	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/ImageMemoryLoadTest
+[submodule "Sandbox/LuaJIT"]
+	path = Sandbox/LuaJIT
+	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/LuaJIT
