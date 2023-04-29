@@ -13,3 +13,6 @@
 [submodule "Sandbox/EGLBasicTest"]
 	path = Sandbox/EGLBasicTest
 	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/EGLBasicTest
+[submodule "Sandbox/EGLGladBindingTest"]
+	path = Sandbox/EGLGladBindingTest
+	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/EGLGladBindingTest
