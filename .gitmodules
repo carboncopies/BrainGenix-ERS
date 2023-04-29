@@ -25,3 +25,6 @@
 [submodule "Sandbox/NewImageLoaderSystem"]
 	path = Sandbox/NewImageLoaderSystem
 	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/NewImageLoaderSystem
+[submodule "Sandbox/CMakeSuperbuildTest"]
+	path = Sandbox/CMakeSuperbuildTest
+	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/CMakeSuperbuildTest
