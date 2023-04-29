@@ -5,5 +5,5 @@ cd ..
 cd Binaries
 
 # Depending On Platform, Run
-echo "[BG BUILD SYSTEM] - Running Binary"
-./API
+echo "[BG BUILD SYSTEM] - Running Test Binary"
+./IOSystem-Tests

@@ -17,10 +17,10 @@ fi
 
 # Delete Binary If Exists 
 echo "[BG BUILD HELPER] - Checking If Binary Exists"
-if [ -f "Binaries/BrainGenix-API" ]
+if [ -f "Binaries/IOSystem-Tests" ]
 then
     echo "[BG BUILD HELPER] - Removing Last Executable"
-    rm Binaries/BrainGenix-API
+    rm Binaries/IOSystem-Tests
 else
     echo "[BG BUILD HELPER] - No Binaries To Clean"
 fi
@@ -50,7 +50,7 @@ else
     echo "[BG BUILD HELPER] - Entering Build Directory"
     cd Build
 
-    # Make Only BrainGenix-API
+    # Make Only IOSystem
     echo "[BG BUILD HELPER] - Configuring Build Files"
     cmake .. -D CMAKE_BUILD_TYPE=$BuildType
 
@@ -62,16 +62,16 @@ fi
 
 # Build Files
 echo "[BG BUILD HELPER] - Building, Please Wait. This may take some time"
-cmake --build . -j $1 --target API
+cmake --build . -j $1 --target IOSystem
 
 
 # Run Program
 cd ../Binaries
-echo "[BG BUILD HELPER] - Checking If Binary Exists"
-if [ -f "BrainGenix-API" ]
+echo "[BG BUILD HELPER] - Checking If Test Binary Exists"
+if [ -f "IOSystem-Tests" ]
 then
-    echo "[BG BUILD HELPER] - Running Program"
-    ./BrainGenix-API
+    echo "[BG BUILD HELPER] - Running Library Tests"
+    ./IOSystem-Tests
 else
     echo "[BG BUILD HELPER] - Build Failed! Exiting"
 fi
