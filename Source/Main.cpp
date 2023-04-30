@@ -151,11 +151,6 @@ int main(int NumArguments, char** ArguemntValues) {
     // Setup Controller Manager
     SystemUtils->Logger_->Log("Instantiating ERS Controller Input Manager", 5);
     HIDUtils->ControllerInputManager = std::make_unique<ERS_CLASS_ControllerInputManager>(SystemUtils.get());
-
-    // VR Driver here?
-
-    // More????
-
     SystemUtils->Logger_->Log("Finished Setting Up Human Input Device Managers", 5);    
 
 

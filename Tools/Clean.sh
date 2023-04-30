@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Cleans the build directories
 echo "[ERS BUILD SYSTEM] - Cleaning Build"
 

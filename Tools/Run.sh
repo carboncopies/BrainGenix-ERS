@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # Enter Artifact/Binary Dir
 echo "[ERS BUILD SYSTEM] - Entering Artifacts Directory"
@@ -28,3 +29,4 @@ then
 else
     echo "Unknown Platform, Cannot Run Executable"
 fi
+

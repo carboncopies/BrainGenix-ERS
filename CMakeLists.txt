@@ -215,6 +215,7 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Core Subsystems")
 # Configure Sources
 set(MAIN_SOURCES
     ${SRC_DIR}/Main.cpp
+    ${SRC_DIR}/Main.h
     ${BACKWARD_ENABLE}
 )
 
@@ -233,7 +234,6 @@ target_link_libraries(${PROJECT_NAME}
     # Third Party Libs
     glad
     glfw
-    ozz_animation
 
     # Temporary -- DELETE THESE WHEN NOT TESTING HERE ANYMORE --
     ERS_LuaInterface
@@ -268,7 +268,7 @@ target_link_libraries(${PROJECT_NAME}
 
     Renderer
 )
-
+target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})
 
 # Run Configuration On EditorAssetBundle
 include(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/EditorAssetsBundle.cmake)
