@@ -2,12 +2,6 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_MeshOptimizer.h>
+#pragma once
 
-
-namespace ERS {
-
-
-
-
-}
+#define ERS_VERSION "0.4.0"

@@ -20,35 +20,35 @@
 #include <LuciferIL/Lucifer.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_GPURequest.h>
+#include <GPURequest.h>
 #include <RendererManager.h>
 
-#include <ERS_LoggingSystem.h>
-#include <ERS_LogSystemInfo.h>
-#include <ERS_HardwareInformation.h>
-#include <ERS_ArgumentParser.h>
-#include <ERS_ModelImporter.h>
-#include <ERS_LocalConfigLoader.h>
+#include <LoggingSystem.h>
+#include <LogSystemInfo.h>
+#include <HardwareInformation.h>
+#include <ArgumentParser.h>
+#include <ModelImporter.h>
+#include <LocalConfigLoader.h>
 
 
-#include <ERS_SceneManager.h>
+#include <SceneManager.h>
 
-#include <ERS_InputOutputSubsystem.h>
-#include <ERS_FramerateManager.h>
-#include <ERS_ProjectLoader.h>
-#include <ERS_ProjectManager.h>
-#include <ERS_ProjectWriter.h>
-#include <ERS_ControllerInputManager.h>
+#include <InputOutputSubsystem.h>
+#include <FramerateManager.h>
+#include <ProjectLoader.h>
+#include <ProjectManager.h>
+#include <ProjectWriter.h>
+#include <ControllerInputManager.h>
 
-#include <ERS_STRUCT_HumanInputDeviceUtils.h>
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_ProjectUtils.h>
-#include <ERS_STRUCT_RendererSettings.h>
+#include <HumanInputDeviceUtils.h>
+#include <SystemUtils.h>
+#include <ProjectUtils.h>
+#include <RendererSettings.h>
 
-#include <ERS_CLASS_PythonInterpreterIntegration.h>
+#include <PythonInterpreterIntegration.h>
 
 
-#include <ERS_GetExecutablePath.h>
+#include <GetExecutablePath.h>
 
 
 //
