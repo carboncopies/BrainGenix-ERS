@@ -7,10 +7,10 @@
 add_library(ERS_ControllerSettingsLoader
 
             # Add Source Files (.cpp)
-            "ERS_ControllerSettingsLoader.cpp"
+            "ControllerSettingsLoader.cpp"
 
             # Add Header Files (.h)
-            "ERS_ControllerSettingsLoader.h"
+            "ControllerSettingsLoader.h"
             
             ${BACKWARD_ENABLE}
             )
