@@ -12,8 +12,8 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_SceneManager.h>
-#include <ERS_STRUCT_DirectionalLight.h>
+#include <SceneManager.h>
+#include <DirectionalLight.h>
 
 /**
  * @brief Duplicate the DirectionalLight

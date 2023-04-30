@@ -5,7 +5,7 @@
 // FIXME: Make template textures added to their own map so they can be reused.
 // FIXME: Make dynamic/static models that can each be rotated/translated (dynamically or statically). Then make updateposition functions, etc.
 
-#include <ERS_SceneWriter.h>
+#include <SceneWriter.h>
 
 SceneWriter::SceneWriter(ERS_STRUCT_SystemUtils* SystemUtils) {
 

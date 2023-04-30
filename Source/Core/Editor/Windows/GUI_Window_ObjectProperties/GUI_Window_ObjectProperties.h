@@ -18,14 +18,14 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_Editor_3DCursor.h>
+#include <3DCursor.h>
 
-#include <ERS_STRUCT_LocRotScale.h>
-#include <ERS_STRUCT_ProjectUtils.h>
+#include <LocRotScale.h>
+#include <ProjectUtils.h>
 
-#include <ERS_CLASS_VisualRenderer.h>
+#include <VisualRenderer.h>
 
-#include <ERS_SceneManager.h>
+#include <SceneManager.h>
 
 
 

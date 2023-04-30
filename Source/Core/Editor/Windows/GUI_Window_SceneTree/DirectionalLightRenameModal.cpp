@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_GUI_CLASS_DirectionalLightRenameModal.h>
+#include <DirectionalLightRenameModal.h>
 
 Subwindow_DirectionalLightRenameModal::Subwindow_DirectionalLightRenameModal(ERS_CLASS_SceneManager* SceneManager) {
 

@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_ModelWriter.h>
+#include <ModelWriter.h>
 
 
 ERS_CLASS_ModelWriter::ERS_CLASS_ModelWriter(ERS_LoggingSystem* Logger, ERS_InputOutputSubsystem* IOSubsystem) {

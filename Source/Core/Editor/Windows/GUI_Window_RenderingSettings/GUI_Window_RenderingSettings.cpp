@@ -65,17 +65,17 @@ void GUI_Window_RenderingSettings::Draw() {
                 ERS_STRUCT_RendererSettings* Settings = SystemUtils_->RendererSettings_.get();
 
                 const char* ShadowFilteringNames[] = {
-                    "ERS_SHADOW_FILTERING_DISABLED",
-                    "ERS_SHADOW_FILTERING_PCF",
-                    "ERS_SHADOW_FILTERING_POISSON_SAMPLING",
-                    "ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING"
+                    "SHADOW_FILTERING_DISABLED",
+                    "SHADOW_FILTERING_PCF",
+                    "SHADOW_FILTERING_POISSON_SAMPLING",
+                    "SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING"
                 };
                 const char* ShadowUpdateNames[] = {
-                    "ERS_SHADOW_UPDATE_MODE_DISABLED",
-                    "ERS_SHADOW_UPDATE_MODE_RANDOM",
-                    "ERS_SHADOW_UPDATE_MODE_CONSECUTIVE",
-                    "ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED",
-                    "ERS_SHADOW_UPDATE_MODE_ALL"
+                    "SHADOW_UPDATE_MODE_DISABLED",
+                    "SHADOW_UPDATE_MODE_RANDOM",
+                    "SHADOW_UPDATE_MODE_CONSECUTIVE",
+                    "SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED",
+                    "SHADOW_UPDATE_MODE_ALL"
                 };
 
 

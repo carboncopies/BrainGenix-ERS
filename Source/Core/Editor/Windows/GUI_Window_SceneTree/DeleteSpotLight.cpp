@@ -3,7 +3,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_GUI_CLASS_DeleteSpotLight.h>
+#include <DeleteSpotLight.h>
 
 
 Subwindow_DeleteSpotLight::Subwindow_DeleteSpotLight(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor) {

@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_GUI_FUNCTION_DuplicateScene.h>
+#include <DuplicateScene.h>
 
 
 void GUI_Windowutil_DuplicateScene(ERS_CLASS_SceneManager* SceneManager, int SceneIndex) {

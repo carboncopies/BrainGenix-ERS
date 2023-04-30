@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_GUI_CLASS_SpotLightRenameModal.h>
+#include <SpotLightRenameModal.h>
 
 Subwindow_SpotLightRenameModal::Subwindow_SpotLightRenameModal(ERS_CLASS_SceneManager* SceneManager) {
 

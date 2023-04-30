@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_GUI_CLASS_DeleteModel.h>
+#include <DeleteModel.h>
 
 
 Subwindow_DeleteModel::Subwindow_DeleteModel(ERS_CLASS_SceneManager* SceneManager, Cursors3D* Cursor) {

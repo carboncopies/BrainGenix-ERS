@@ -15,15 +15,15 @@
 #include <assimp/Exporter.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_LoggingSystem.h>
+#include <LoggingSystem.h>
 
-#include <ERS_STRUCT_Model.h>
-#include <ERS_STRUCT_Scene.h>
-#include <ERS_STRUCT_Mesh.h>
-#include <ERS_STRUCT_Texture.h>
-#include <ERS_STRUCT_ModelWriterData.h>
+#include <Model.h>
+#include <Scene.h>
+#include <Mesh.h>
+#include <Texture.h>
+#include <ModelWriterData.h>
 
-#include <ERS_InputOutputSubsystem.h>
+#include <InputOutputSubsystem.h>
 
 
 /**

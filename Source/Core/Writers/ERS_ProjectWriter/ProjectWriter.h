@@ -12,9 +12,9 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_IOData.h>
-#include <ERS_STRUCT_Project.h>
-#include <ERS_STRUCT_SystemUtils.h>
+#include <IOData.h>
+#include <Project.h>
+#include <SystemUtils.h>
 
 
 /**

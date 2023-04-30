@@ -12,10 +12,10 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_SceneManager.h>
-#include <ERS_STRUCT_Scene.h>
+#include <SceneManager.h>
+#include <Scene.h>
 
-#include <ERS_Editor_3DCursor.h>
+#include <3DCursor.h>
 
 /**
  * @brief Implement Scene Deltion, Open Popup For Confirm, Error.

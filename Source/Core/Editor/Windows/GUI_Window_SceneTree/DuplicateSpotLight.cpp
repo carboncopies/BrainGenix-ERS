@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_GUI_FUNCTION_DuplicateSpotLight.h>
+#include <DuplicateSpotLight.h>
 
 
 void GUI_Windowutil_DuplicateSpotLight(ERS_CLASS_SceneManager* SceneManager, int SceneIndex, int SpotLightIndex) {

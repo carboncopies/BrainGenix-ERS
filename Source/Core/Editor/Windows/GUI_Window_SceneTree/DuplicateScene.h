@@ -12,8 +12,8 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_SceneManager.h>
-#include <ERS_STRUCT_Scene.h>
+#include <SceneManager.h>
+#include <Scene.h>
 
 /**
  * @brief Duplicate the scene in the project

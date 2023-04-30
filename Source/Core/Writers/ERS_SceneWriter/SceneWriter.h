@@ -11,14 +11,14 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_LoggingSystem.h>
-#include <ERS_STRUCT_Model.h>
-#include <ERS_STRUCT_Scene.h>
-#include <ERS_STRUCT_Mesh.h>
-#include <ERS_STRUCT_Texture.h>
+#include <LoggingSystem.h>
+#include <Model.h>
+#include <Scene.h>
+#include <Mesh.h>
+#include <Texture.h>
 
-#include <ERS_STRUCT_IOData.h>
-#include <ERS_STRUCT_SystemUtils.h>
+#include <IOData.h>
+#include <SystemUtils.h>
 
 
 

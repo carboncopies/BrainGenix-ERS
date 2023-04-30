@@ -14,9 +14,9 @@
 #include <ImGuiFileDialog.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_ProjectUtils.h>
-#include <ERS_STRUCT_ModelImportOptions.h>
+#include <SystemUtils.h>
+#include <ProjectUtils.h>
+#include <ModelImportOptions.h>
 
 #include <GUI_Window_ImportProgressBar.h>
 

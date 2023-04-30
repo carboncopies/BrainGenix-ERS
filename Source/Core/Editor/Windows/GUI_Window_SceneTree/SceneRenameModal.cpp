@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_GUI_CLASS_SceneRenameModal.h>
+#include <SceneRenameModal.h>
 
 Subwindow_SceneRenameModal::Subwindow_SceneRenameModal(ERS_CLASS_SceneManager* SceneManager) {
 
