@@ -17,8 +17,8 @@
 #include <GLFW/glfw3.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_ControllerSettings.h>
+#include <SystemUtils.h>
+#include <ControllerSettings.h>
 
 
 /**

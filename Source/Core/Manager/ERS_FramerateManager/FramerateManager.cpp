@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_FramerateManager.h>
+#include <FramerateManager.h>
 
 
 ERS_CLASS_FramerateManager::ERS_CLASS_FramerateManager() {

@@ -13,14 +13,14 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_Project.h>
+#include <SystemUtils.h>
+#include <Project.h>
 
-#include <ERS_SceneLoader.h>
-#include <ERS_SceneManager.h>
-#include <ERS_ProjectLoader.h>
-#include <ERS_ProjectWriter.h>
-#include <ERS_ControllerSettingsLoader.h>
+#include <SceneLoader.h>
+#include <SceneManager.h>
+#include <ProjectLoader.h>
+#include <ProjectWriter.h>
+#include <ControllerSettingsLoader.h>
 
 
 /**

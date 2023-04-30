@@ -11,11 +11,11 @@
 #include <glm/glm.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_LoggingSystem.h>
-#include <ERS_STRUCT_Shader.h>
-#include <ERS_STRUCT_Scene.h>
-#include <ERS_STRUCT_LocRotScale.h>
-#include <ERS_STRUCT_OpenGLDefaults.h>
+#include <LoggingSystem.h>
+#include <Shader.h>
+#include <Scene.h>
+#include <LocRotScale.h>
+#include <OpenGLDefaults.h>
 
 
 /**

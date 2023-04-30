@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_SceneManager.h>
+#include <SceneManager.h>
 
 
 ERS_CLASS_SceneManager::ERS_CLASS_SceneManager(ERS_LoggingSystem* Logger) {
