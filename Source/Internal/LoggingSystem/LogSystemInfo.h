@@ -10,11 +10,11 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_LoggingSystem.h>
+#include <LoggingSystem.h>
 
-#include <ERS_Version.h>
-#include <ERS_CompilePlatformInfo.h>
-#include <ERS_CompileTimeStamp.h>
+#include <Version.h>
+#include <CompilePlatformInfo.h>
+#include <CompileTimeStamp.h>
 
 
 /**

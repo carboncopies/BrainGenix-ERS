@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_ExternalModelLoader.h>
+#include <ExternalModelLoader.h>
 
 
 namespace BrainGenix {

@@ -25,10 +25,10 @@
 #include <ghc/filesystem.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_AssetIndexInputOutputManager.h>
-#include <ERS_LoggingSystem.h>
-#include <ERS_CompareAssetIndexDelta.h>
-#include <ERS_STRUCT_IOData.h>
+#include <AssetIndexInputOutputManager.h>
+#include <LoggingSystem.h>
+#include <CompareAssetIndexDelta.h>
+#include <IOData.h>
 
 /**
  * @brief This class provides a single input/ouput file operation system. It is

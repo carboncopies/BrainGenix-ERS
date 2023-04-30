@@ -38,14 +38,14 @@
 
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_Mesh.h>
-#include <ERS_STRUCT_Texture.h>
-#include <ERS_STRUCT_Vertex.h>
-#include <ERS_STRUCT_Model.h>
-#include <ERS_STRUCT_ModelWriterData.h>
+#include <Mesh.h>
+#include <Texture.h>
+#include <Vertex.h>
+#include <Model.h>
+#include <ModelWriterData.h>
 
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_IOData.h>
+#include <SystemUtils.h>
+#include <IOData.h>
 
 
 

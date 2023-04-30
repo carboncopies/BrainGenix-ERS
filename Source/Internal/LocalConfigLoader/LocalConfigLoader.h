@@ -19,7 +19,7 @@
 #include <platform_folders.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_GetExecutablePath.h>
+#include <GetExecutablePath.h>
 
 
 namespace BrainGenix {

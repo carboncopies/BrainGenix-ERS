@@ -13,8 +13,8 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_LoggingSystem.h>
-#include <ERS_STRUCT_IOData.h>
+#include <LoggingSystem.h>
+#include <IOData.h>
 
 
 class ERS_AssetIndexInputOutputManager {

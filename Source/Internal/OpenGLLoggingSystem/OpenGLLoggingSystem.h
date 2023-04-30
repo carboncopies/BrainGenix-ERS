@@ -13,12 +13,12 @@
 #include <glad/glad.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_LoggingSystem.h>
+#include <LoggingSystem.h>
 
 
 
-#include <ERS_OpenGLLogItem.h>
-#include <ERS_MessageCallbackUserParam.h>
+#include <OpenGLLogItem.h>
+#include <MessageCallbackUserParam.h>
 
 
 /**

@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_ModelImporter.h>
+#include <ModelImporter.h>
 
 
 ERS_ModelImporter::ERS_ModelImporter(ERS_STRUCT_SystemUtils* SystemUtils) {
@@ -45,7 +45,7 @@ ERS_ModelImporter::~ERS_ModelImporter() {
 void ERS_ModelImporter::ImportThread() {
 
     // Name Thread
-    SetThreadName("ERS_ImportManager");
+    SetThreadName("ImportManager");
 
     while (true) {
 

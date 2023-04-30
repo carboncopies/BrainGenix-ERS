@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_InputOutputSubsystem.h>
+#include <InputOutputSubsystem.h>
 
 ERS_InputOutputSubsystem::ERS_InputOutputSubsystem(
     ERS_LoggingSystem* Logger,

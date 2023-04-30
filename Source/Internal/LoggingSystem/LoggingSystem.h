@@ -22,7 +22,7 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_RGBColor.h>
+#include <RGBColor.h>
 
 
 /**
