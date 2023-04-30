@@ -20,10 +20,10 @@
 #include <ImGuizmo.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_LoggingSystem.h>
+#include <LoggingSystem.h>
 
-#include <ERS_STRUCT_Camera.h>
-#include <ERS_STRUCT_LocRotScale.h>
+#include <Camera.h>
+#include <LocRotScale.h>
 
 
 

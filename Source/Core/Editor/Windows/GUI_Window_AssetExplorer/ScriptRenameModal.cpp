@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_GUI_CLASS_ScriptRenameModal.h>
+#include <GUI_CLASS_ScriptRenameModal.h>
 
 Subwindow_ScriptRenameModal::Subwindow_ScriptRenameModal(ERS_STRUCT_ProjectUtils* ProjectUtils) {
 

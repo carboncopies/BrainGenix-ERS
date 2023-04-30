@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_Editor_UserProfileManager.h>
+#include <UserProfileManager.h>
 
 
 ERS_CLASS_UserProfileManager::ERS_CLASS_UserProfileManager(ERS_LoggingSystem* Logger, const char* UserProfilePath) {

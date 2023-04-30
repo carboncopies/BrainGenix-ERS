@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_Editor_LayoutManager.h>
+#include <LayoutManager.h>
 
 
 

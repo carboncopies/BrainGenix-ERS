@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_Editor_3DCursor.h>
+#include <3DCursor.h>
 
 
 Cursors3D::Cursors3D() {

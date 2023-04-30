@@ -17,9 +17,9 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_LoggingSystem.h>
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_Editor_WindowManager.h>
+#include <LoggingSystem.h>
+#include <SystemUtils.h>
+#include <WindowManager.h>
 
 
 struct ERS_STRUCT_EditorLayout {

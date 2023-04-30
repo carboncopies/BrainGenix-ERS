@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_Editor_FontManager.h>
+#include <FontManager.h>
 
 
 ERS_CLASS_FontManager::ERS_CLASS_FontManager(ERS_LoggingSystem* Logger, const char* FontsDirPath) {

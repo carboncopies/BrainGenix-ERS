@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_Editor_ThemeManager.h>
+#include <ThemeManager.h>
 
 
 ERS_CLASS_ThemeManager::ERS_CLASS_ThemeManager(ERS_LoggingSystem* Logger, const char* ThemePath) {
@@ -26,7 +26,7 @@ ERS_CLASS_ThemeManager::ERS_CLASS_ThemeManager(ERS_LoggingSystem* Logger, const 
 
 ERS_CLASS_ThemeManager::~ERS_CLASS_ThemeManager() {
 
-    Logger_->Log("ERS_CLASS_ThemeManager Destructor Called", 6);
+    Logger_->Log("ThemeManager Destructor Called", 6);
 
 }
 
