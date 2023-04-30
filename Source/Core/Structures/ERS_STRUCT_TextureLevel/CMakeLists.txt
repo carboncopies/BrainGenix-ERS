@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_TextureLevel
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_TextureLevel.cpp"
+            "TextureLevel.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_TextureLevel.h"
+            "TextureLevel.h"
             
             ${BACKWARD_ENABLE}
             )

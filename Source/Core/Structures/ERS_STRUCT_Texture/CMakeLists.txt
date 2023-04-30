@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_Texture
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_Texture.cpp"
+            "Texture.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_Texture.h"
+            "Texture.h"
             
             ${BACKWARD_ENABLE}
             )
