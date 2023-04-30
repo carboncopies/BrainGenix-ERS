@@ -1,7 +1,3 @@
-//======================================================================//
-// This file is part of the BrainGenix-ERS Environment Rendering System //
-//======================================================================//
-
 #pragma once
 
 // Standard Libraries (BG convention: use <> instead of "")
@@ -20,8 +16,8 @@
 #include <SetThreadName.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_LoggingSystem.h>
-#include <ERS_STRUCT_HardwareInfo.h>
+#include <LoggingSystem.h>
+#include <HardwareInfo.h>
 
 
 /**

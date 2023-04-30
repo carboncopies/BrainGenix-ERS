@@ -19,7 +19,7 @@
 #include <SystemUtils.h>
 #include <ProjectUtils.h>
 
-#include <GUI_CLASS_ScriptRenameModal.h>
+#include <ScriptRenameModal.h>
 
 
 /**

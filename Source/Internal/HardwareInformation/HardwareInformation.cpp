@@ -2,7 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-#include <ERS_HardwareInformation.h>
+#include <HardwareInformation.h>
 
 
 
@@ -134,7 +134,7 @@ ERS_STRUCT_HardwareInfo ERS_HardwareInformation::GetHWInfo() {
 void ERS_HardwareInformation::DynamicInformationThread() {
 
     // Name Thread
-    SetThreadName("ERS_SysInfo");
+    SetThreadName("SysInfo");
 
     while (ShouldDynamicInfoThreadRun_) {
 
