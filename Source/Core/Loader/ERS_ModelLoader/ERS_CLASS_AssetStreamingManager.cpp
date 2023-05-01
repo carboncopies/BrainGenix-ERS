@@ -190,40 +190,36 @@ void ERS_CLASS_AssetStreamingManager::CheckHardwareLimitations(ERS_STRUCT_Scene*
     unsigned long long int FreeRAM = HWInfo.Dynamic_.PhysicalMemoryFree;
     long long unsigned int FreeVRAM = SystemUtils_->RendererSettings_->VRAMBudget_ - SystemUtils_->RendererSettings_->CurrentVRAMUsage_;
 
-    // Start Reducing Target Texture Levels (RAM Limitation)
-    if (FreeRAM < SystemUtils_->RendererSettings_->WarningLowRAMBytes) {
+    // Start Reducing Target Texture Levels (RAM n VRAM Limitation)
+    if((FreeRAM < SystemUtils_->RendererSettings_->WarningLowRAMBytes) || (FreeVRAM < SystemUtils_->RendererSettings_->WarningLowVRAMBytes)){
         for (unsigned int i = 0; i < Scene->Models.size(); i++) {
             if (Scene->Models[i]->Textures_.size() > 0) {
 
                 // Calculate Max Allowed Texture Level
                 int TotalLevels = Scene->Models[i]->Textures_[0].TextureLevels.size();
-                unsigned long long int WarningThreshold = SystemUtils_->RendererSettings_->WarningLowRAMBytes;
-                int MaxTextureLevel = FreeRAM / ((double)WarningThreshold / (double)TotalLevels);
+                if (FreeRAM < SystemUtils_->RendererSettings_->WarningLowRAMBytes ){
+            
+                    unsigned long long int WarningThreshold= SystemUtils_->RendererSettings_->WarningLowRAMBytes;
+                    int MaxTextureLevel = FreeRAM / ((double)WarningThreshold / (double)TotalLevels);
 
-                // Enforce Limit
-                Scene->Models[i]->TargetTextureLevelRAM  = std::min(Scene->Models[i]->TargetTextureLevelRAM, MaxTextureLevel);
-                Scene->Models[i]->TargetTextureLevelVRAM = std::min(Scene->Models[i]->TargetTextureLevelVRAM, MaxTextureLevel);
+                    // Enforce Limit
+                    Scene->Models[i]->TargetTextureLevelRAM  = std::min(Scene->Models[i]->TargetTextureLevelRAM, MaxTextureLevel);
+                    Scene->Models[i]->TargetTextureLevelVRAM = std::min(Scene->Models[i]->TargetTextureLevelVRAM, MaxTextureLevel);
+                }
+                if (FreeVRAM < SystemUtils_->RendererSettings_->WarningLowVRAMBytes){
 
-            }
-        }
-    }
+                    // Calculate Max Allowed Texture Level
+                    unsigned long long int WarningThreshold = SystemUtils_->RendererSettings_->WarningLowVRAMBytes;
+                    int MaxTextureLevel = FreeVRAM / ((double)WarningThreshold / (double)TotalLevels);
 
-    // Start Limiting Texture Levels In
-    if (FreeVRAM < SystemUtils_->RendererSettings_->WarningLowVRAMBytes) {
-        for (unsigned int i = 0; i < Scene->Models.size(); i++) {
-            if (Scene->Models[i]->Textures_.size() > 0) {
-
-                // Calculate Max Allowed Texture Level
-                int TotalLevels = Scene->Models[i]->Textures_[0].TextureLevels.size();
-                unsigned long long int WarningThreshold = SystemUtils_->RendererSettings_->WarningLowVRAMBytes;
-                int MaxTextureLevel = FreeVRAM / ((double)WarningThreshold / (double)TotalLevels);
-
-                // Enforce Limit
-                Scene->Models[i]->TargetTextureLevelVRAM = std::min(Scene->Models[i]->TargetTextureLevelVRAM, MaxTextureLevel);
+                    // Enforce Limit
+                    Scene->Models[i]->TargetTextureLevelVRAM = std::min(Scene->Models[i]->TargetTextureLevelVRAM, MaxTextureLevel);
+                }
 
             }
         }
     }
+
 
     // Hard RAM Cap (256MiB), Stops Any New Textures From Being Loaded
     if (FreeRAM < SystemUtils_->RendererSettings_->CriticalLowRAMBytes){
