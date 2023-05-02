@@ -44,7 +44,7 @@
 #include <ERS_STRUCT_ProjectUtils.h>
 #include <ERS_STRUCT_RendererSettings.h>
 
-#include <ERS_CLASS_PythonInterpreterIntegration.h>
+//#include <ERS_CLASS_PythonInterpreterIntegration.h>
 
 
 #include <ERS_GetExecutablePath.h>

@@ -55,9 +55,9 @@ int main(int NumArguments, char** ArguemntValues) {
         *SystemUtils->LocalSystemConfiguration_.get()
     );
 
-    SystemUtils->ERS_CLASS_PythonInterpreterIntegration_ = std::make_unique<ERS_CLASS_PythonInterpreterIntegration>(
+   /* SystemUtils->ERS_CLASS_PythonInterpreterIntegration_ = std::make_unique<ERS_CLASS_PythonInterpreterIntegration>(
         SystemUtils->Logger_.get()
-    );
+    );*/
 
     SystemUtils->RendererSettings_ = std::make_unique<ERS_STRUCT_RendererSettings>();
 
