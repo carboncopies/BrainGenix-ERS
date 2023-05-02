@@ -1,20 +1,14 @@
-<mxfile host="Electron" modified="2023-05-02T02:19:21.410Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="BTMA7hRmsks5AdcchzwT" version="21.2.1" type="device" pages="3">
+<mxfile host="Electron" modified="2023-05-02T02:21:03.831Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="-RfzH1NAozmxNKczJQ3g" version="21.2.1" type="device" pages="3">
   <diagram name="Page-1" id="zG-rwdA8NLukDpqJWhqa">
-    <mxGraphModel dx="2194" dy="1351" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="3421" dy="924" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="RNYJAYzDWkYhAqMdC7L9-4" value="Overview" style="swimlane;whiteSpace=wrap;html=1;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;fontFamily=Courier New;" vertex="1" parent="1">
           <mxGeometry x="10" y="10" width="1900" height="1180" as="geometry" />
         </mxCell>
-        <mxCell id="RNYJAYzDWkYhAqMdC7L9-2" value="Description" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#006EAF;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#1ba1e2;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-4">
-          <mxGeometry x="20" y="40" width="400" height="380" as="geometry" />
-        </mxCell>
-        <mxCell id="RNYJAYzDWkYhAqMdC7L9-3" value="&lt;h1&gt;ERS Overview&lt;/h1&gt;&lt;p&gt;BrainGenix-ERS or (Environment Rendering System) aims to be a distributed high performance realtime rendering system targeted for the application of Whole Brain Emulation (WBE).&amp;nbsp;&lt;/p&gt;&lt;p&gt;With ERS, we want to be able to render an extremely high-fidelity environment in real-time using data center grade hardware. In the shorter term, we will be using ERS as a game engine for the Video Game Project, which will need to run on hardware that is more commonly found on consumer machines.&lt;/p&gt;&lt;p&gt;The long term goal also includes accurately rendering other senses than sight and hearing, such as touch, taste, smell, etc. These components will all be a part of the larger goal of virtual embodyment for emulations.&lt;/p&gt;&lt;p&gt;Essentially, emulated beings would experience reality through a simulated world in ERS.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-2">
-          <mxGeometry x="10" y="35" width="380" height="335" as="geometry" />
-        </mxCell>
         <mxCell id="RNYJAYzDWkYhAqMdC7L9-5" value="High Level System Diagram" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-4">
-          <mxGeometry x="440" y="40" width="1440" height="680" as="geometry" />
+          <mxGeometry x="20" y="40" width="1860" height="680" as="geometry" />
         </mxCell>
         <mxCell id="RNYJAYzDWkYhAqMdC7L9-6" value="ERS API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
           <mxGeometry x="30" y="140" width="420" height="30" as="geometry" />
@@ -71,10 +65,10 @@
           <mxGeometry x="330" y="200" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="RNYJAYzDWkYhAqMdC7L9-29" value="ERS Editor" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#006EAF;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#1ba1e2;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
-          <mxGeometry x="30" y="310" width="400" height="350" as="geometry" />
+          <mxGeometry x="1370" y="50" width="280" height="610" as="geometry" />
         </mxCell>
         <mxCell id="RNYJAYzDWkYhAqMdC7L9-30" value="&lt;h1&gt;ERS Editor&lt;/h1&gt;&lt;p&gt;The ERS Editor simply provides a frontend to the API, which includes a window and associated buttons/viewport/tools. This system should default to running in a window but should also be streamable over the network through the main BrainGenix API.&lt;/p&gt;&lt;p&gt;Within the editor, users should be able to manipulate the scene, import things, export things, etc. The current ERS verison has an integrated editor where the editor does not use any API but rather directly edits the data structures. This should be first separated to use the API but then later completely detached from the code so that ERS may be used without the editor at all if desired.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-29">
-          <mxGeometry x="10" y="35" width="380" height="305" as="geometry" />
+          <mxGeometry x="10" y="35" width="260" height="565" as="geometry" />
         </mxCell>
         <mxCell id="RNYJAYzDWkYhAqMdC7L9-31" value="Scene Manager Subsystem" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#006EAF;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#1ba1e2;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
           <mxGeometry x="470" y="50" width="280" height="610" as="geometry" />
@@ -93,6 +87,12 @@
         </mxCell>
         <mxCell id="RNYJAYzDWkYhAqMdC7L9-36" value="&lt;h1&gt;ERS IO System&lt;br&gt;&lt;/h1&gt;&lt;div&gt;&lt;div&gt;The IO System should manage loading/decoding/writing/encoding of all data for the Scene Manager. The IO system must also be a modular system that can be expanded to enable different components of the system to handle different formats and types of data.&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Continuing the ERS design paradigm, the IO system must be concurrent and distribute work amongst a threadpool quickly.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;The IO Subsystem must also be able to support multiple types of storage - this would include both local file storage as well as network-based DB storage.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;This system will be initialized and configured through the ERS API manager. The system&#39;s configuration will be managed though a configuration struct which the ERS API can modify to set options.&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-35">
           <mxGeometry x="10" y="35" width="260" height="565" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-2" value="Description" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#006EAF;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#1ba1e2;" vertex="1" parent="1">
+          <mxGeometry x="-400" y="100" width="400" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-3" value="&lt;h1&gt;ERS Overview&lt;/h1&gt;&lt;p&gt;BrainGenix-ERS or (Environment Rendering System) aims to be a distributed high performance realtime rendering system targeted for the application of Whole Brain Emulation (WBE).&amp;nbsp;&lt;/p&gt;&lt;p&gt;With ERS, we want to be able to render an extremely high-fidelity environment in real-time using data center grade hardware. In the shorter term, we will be using ERS as a game engine for the Video Game Project, which will need to run on hardware that is more commonly found on consumer machines.&lt;/p&gt;&lt;p&gt;The long term goal also includes accurately rendering other senses than sight and hearing, such as touch, taste, smell, etc. These components will all be a part of the larger goal of virtual embodyment for emulations.&lt;/p&gt;&lt;p&gt;Essentially, emulated beings would experience reality through a simulated world in ERS.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-2">
+          <mxGeometry x="10" y="35" width="380" height="335" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
