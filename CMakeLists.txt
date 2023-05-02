@@ -86,6 +86,7 @@ include(${CMAKE_SCRIPTS_DIR}/CompileTimeStamp/CompileTimeStamp.cmake)
 # Include Package Addition Scripts
 # include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/LuaJIT.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Python.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
@@ -199,7 +200,7 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ShaderUniformData)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ModelImportOptions)
 
 add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_PythonInterpreterIntegration)
-
+add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_LuaJITInterpreterIntegration)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_SceneLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ShaderLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ProjectLoader)
@@ -245,11 +246,11 @@ target_link_libraries(${PROJECT_NAME}
     ERS_LocalConfigLoader
 
     ERS_GetExecutablePath
-
+    ERS_CLASS_LuaJITInterpreterIntegration
     ERS_HardwareInformation
     ERS_CLASS_PythonInterpreterIntegration
     ERS_ArgumentParser
-
+    ERS_CLASS_LuaJITInterpreterIntegration
     ERS_SceneManager
     ERS_ModelLoader
     ERS_SceneLoader  
