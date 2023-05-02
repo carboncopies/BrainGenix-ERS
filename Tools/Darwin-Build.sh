@@ -1,3 +1,6 @@
+#!/bin/bash
+
+
 # Firstly, Create And Enter The Build Directory
 echo "[ERS BUILD HELPER] - Entering Root Repository Directory"
 cd ..

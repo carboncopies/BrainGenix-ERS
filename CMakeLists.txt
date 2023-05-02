@@ -234,7 +234,6 @@ target_link_libraries(${PROJECT_NAME}
     # Third Party Libs
     glad
     glfw
-    ozz_animation # Temp
 
     # Temporary -- DELETE THESE WHEN NOT TESTING HERE ANYMORE --
     ERS_LuaInterface
