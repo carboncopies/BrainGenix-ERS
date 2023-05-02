@@ -1,9 +1,40 @@
-<mxfile host="Electron" modified="2023-04-29T04:45:04.307Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="mUgQlpBcFIBoxLmb04tD" version="21.2.1" type="device" pages="3">
+<mxfile host="Electron" modified="2023-05-02T01:39:57.506Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="EpIRxA51lXsnJqdjpi7O" version="21.2.1" type="device" pages="3">
   <diagram name="Page-1" id="zG-rwdA8NLukDpqJWhqa">
-    <mxGraphModel dx="1426" dy="878" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="594" dy="366" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-4" value="Overview" style="swimlane;whiteSpace=wrap;html=1;fillColor=#6a00ff;fontColor=#ffffff;strokeColor=#3700CC;fontFamily=Courier New;" vertex="1" parent="1">
+          <mxGeometry x="10" y="10" width="1900" height="1180" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-2" value="Description" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#006EAF;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#1ba1e2;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-4">
+          <mxGeometry x="20" y="40" width="400" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-3" value="&lt;h1&gt;ERS Overview&lt;/h1&gt;&lt;p&gt;BrainGenix-ERS or (Environment Rendering System) aims to be a distributed high performance realtime rendering system targeted for the application of Whole Brain Emulation (WBE).&amp;nbsp;&lt;/p&gt;&lt;p&gt;With ERS, we want to be able to render an extremely high-fidelity environment in real-time using data center grade hardware. In the shorter term, we will be using ERS as a game engine for the Video Game Project, which will need to run on hardware that is more commonly found on consumer machines.&lt;/p&gt;&lt;p&gt;The long term goal also includes accurately rendering other senses than sight and hearing, such as touch, taste, smell, etc. These components will all be a part of the larger goal of virtual embodyment for emulations.&lt;/p&gt;&lt;p&gt;Essentially, emulated beings would experience reality through a simulated world in ERS.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-2">
+          <mxGeometry x="10" y="35" width="380" height="335" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-5" value="High Level System Diagram" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-4">
+          <mxGeometry x="440" y="40" width="530" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-6" value="ERS API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
+          <mxGeometry x="30" y="140" width="260" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="RNYJAYzDWkYhAqMdC7L9-5" source="RNYJAYzDWkYhAqMdC7L9-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="230" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-7" value="ERS Editor" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
+          <mxGeometry x="170" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="RNYJAYzDWkYhAqMdC7L9-5" source="RNYJAYzDWkYhAqMdC7L9-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="90" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-8" value="BrainGenix API (external to ERS)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
+          <mxGeometry x="30" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
