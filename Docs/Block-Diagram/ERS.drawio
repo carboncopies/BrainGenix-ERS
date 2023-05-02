@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-05-02T01:39:57.506Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="EpIRxA51lXsnJqdjpi7O" version="21.2.1" type="device" pages="3">
+<mxfile host="Electron" modified="2023-05-02T02:01:17.445Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="MzGuZUDm5uiIauNvaVBa" version="21.2.1" type="device" pages="3">
   <diagram name="Page-1" id="zG-rwdA8NLukDpqJWhqa">
-    <mxGraphModel dx="594" dy="366" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="731" dy="450" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -14,26 +14,73 @@
           <mxGeometry x="10" y="35" width="380" height="335" as="geometry" />
         </mxCell>
         <mxCell id="RNYJAYzDWkYhAqMdC7L9-5" value="High Level System Diagram" style="swimlane;whiteSpace=wrap;html=1;fillColor=#1ba1e2;fontColor=#ffffff;strokeColor=#006EAF;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-4">
-          <mxGeometry x="440" y="40" width="530" height="380" as="geometry" />
+          <mxGeometry x="440" y="40" width="1440" height="680" as="geometry" />
         </mxCell>
         <mxCell id="RNYJAYzDWkYhAqMdC7L9-6" value="ERS API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
-          <mxGeometry x="30" y="140" width="260" height="30" as="geometry" />
+          <mxGeometry x="30" y="140" width="420" height="30" as="geometry" />
         </mxCell>
         <mxCell id="RNYJAYzDWkYhAqMdC7L9-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="RNYJAYzDWkYhAqMdC7L9-5" source="RNYJAYzDWkYhAqMdC7L9-7">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="230" y="140" as="targetPoint" />
+            <mxPoint x="390" y="140" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="390" y="140" />
+            </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="RNYJAYzDWkYhAqMdC7L9-7" value="ERS Editor" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
-          <mxGeometry x="170" y="50" width="120" height="60" as="geometry" />
+          <mxGeometry x="330" y="50" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="RNYJAYzDWkYhAqMdC7L9-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="RNYJAYzDWkYhAqMdC7L9-5" source="RNYJAYzDWkYhAqMdC7L9-8">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="90" y="140" as="targetPoint" />
+            <mxPoint x="100" y="140" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="RNYJAYzDWkYhAqMdC7L9-8" value="BrainGenix API (external to ERS)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
-          <mxGeometry x="30" y="50" width="120" height="60" as="geometry" />
+          <mxGeometry x="40" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.14;entryY=1.026;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" edge="1" parent="RNYJAYzDWkYhAqMdC7L9-5" source="RNYJAYzDWkYhAqMdC7L9-13" target="RNYJAYzDWkYhAqMdC7L9-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="RNYJAYzDWkYhAqMdC7L9-5" source="RNYJAYzDWkYhAqMdC7L9-13" target="RNYJAYzDWkYhAqMdC7L9-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-13" value="Scene Manager Subsystem" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
+          <mxGeometry x="30" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="RNYJAYzDWkYhAqMdC7L9-5" source="RNYJAYzDWkYhAqMdC7L9-14" target="RNYJAYzDWkYhAqMdC7L9-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-14" value="Rendering Subsystem" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
+          <mxGeometry x="180" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.857;entryY=1.052;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;" edge="1" parent="RNYJAYzDWkYhAqMdC7L9-5" source="RNYJAYzDWkYhAqMdC7L9-15" target="RNYJAYzDWkYhAqMdC7L9-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="RNYJAYzDWkYhAqMdC7L9-5" source="RNYJAYzDWkYhAqMdC7L9-15" target="RNYJAYzDWkYhAqMdC7L9-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-24" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=classic;startFill=1;" edge="1" parent="RNYJAYzDWkYhAqMdC7L9-5" source="RNYJAYzDWkYhAqMdC7L9-15" target="RNYJAYzDWkYhAqMdC7L9-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="280" />
+              <mxPoint x="90" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-15" value="IO Subsystem" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
+          <mxGeometry x="330" y="200" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-29" value="ERS Editor" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#006EAF;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#1ba1e2;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
+          <mxGeometry x="30" y="310" width="400" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-30" value="&lt;h1&gt;ERS Editor&lt;/h1&gt;&lt;p&gt;The ERS Editor simply provides a frontend to the API, which includes a window and associated buttons/viewport/tools. This system should default to running in a window but should also be streamable over the network through the main BrainGenix API.&lt;/p&gt;&lt;p&gt;Within the editor, users should be able to manipulate the scene, import things, export things, etc. The current ERS verison has an integrated editor where the editor does not use any API but rather directly edits the data structures. This should be first separated to use the API but then later completely detached from the code so that ERS may be used without the editor at all if desired.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-29">
+          <mxGeometry x="10" y="35" width="380" height="305" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-31" value="Scene Manager Subsystem" style="swimlane;whiteSpace=wrap;html=1;rounded=0;strokeColor=#006EAF;fontFamily=Courier New;fontSize=12;fontColor=#ffffff;startSize=23;fillColor=#1ba1e2;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-5">
+          <mxGeometry x="470" y="50" width="400" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="RNYJAYzDWkYhAqMdC7L9-32" value="&lt;h1&gt;ERS Scene Manager&lt;/h1&gt;&lt;p&gt;The scene manager owns and manages the entire scene state. This system needs to be able to sync the various subsystems from the rest of the program.&amp;nbsp;&lt;/p&gt;&lt;p&gt;The scene object itself, is stored as a tree of all the various entities, objects, lights, etc. within any given scene. The manager allows async read/write access to this data by the API.&lt;/p&gt;&lt;p&gt;Additionally, scripts, animations, and all other dynamic actions are applied in a concurrent manner by this system.&lt;/p&gt;&lt;p&gt;To load and save data from the scene tree, the IO Subsystem should be used.&lt;/p&gt;&lt;p&gt;Every frame, the scene manager will provide a static state which the renderer will display to the user.&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Courier New;" vertex="1" parent="RNYJAYzDWkYhAqMdC7L9-31">
+          <mxGeometry x="10" y="35" width="380" height="315" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
