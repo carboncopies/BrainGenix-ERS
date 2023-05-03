@@ -37,7 +37,32 @@ ERS_ModelImporter::~ERS_ModelImporter() {
     BlockThread_.unlock();
 
     SystemUtils_->Logger_->Log("Joining Asset Import Thread", 3);
-    ImportThread_.join();
+	//if (ImportThread_.joinable()) {
+		//TerminateThread tt(std::thread(ImportThread_));
+	//}
+	
+	if (ImportThread_.joinable()) {
+		
+		// Wait for the thread to finish for up to 10 seconds
+		for (int i = 0; i < 100 && ImportThread_.joinable(); ++i) {
+			if (ImportThread_.joinable()) 
+				ImportThread_.join();
+			else
+				break;
+			
+			std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		}
+
+		//If the thread is still running, terminate it
+		if (ImportThread_.joinable()) {
+			ImportThread_.detach();
+			
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+			
+		if (ImportThread_.joinable()) 
+			std::terminate();
+		}
+	}	
 
 }
 

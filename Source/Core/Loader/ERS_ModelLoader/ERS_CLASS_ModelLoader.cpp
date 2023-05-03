@@ -54,7 +54,27 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
     SystemUtils_->Logger_->Log("Joining Worker Threads", 6);
     for (int i = 0; (long)i < (long)WorkerThreads_.size(); i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Joining Worker Thread ") + std::to_string(i)).c_str(), 3);
-        WorkerThreads_[i].join();
+		if (WorkerThreads_[i].joinable()) {
+		
+			// Wait for the thread to finish for up to 10 seconds
+			for (int k = 0; k < 100 && WorkerThreads_[i].joinable(); ++k) {
+				if (WorkerThreads_[i].joinable()) 
+					WorkerThreads_[i].join();
+				else
+					break;
+				std::this_thread::sleep_for(std::chrono::milliseconds(100));
+			}			
+
+			//If the thread is still running, terminate it
+			if (WorkerThreads_[i].joinable()) {
+				WorkerThreads_[i].detach();
+
+
+			if (WorkerThreads_[i].joinable()) 
+				std::terminate();
+			}
+		}
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
     SystemUtils_->Logger_->Log("Finished Joining Worker Threads", 6);
 
