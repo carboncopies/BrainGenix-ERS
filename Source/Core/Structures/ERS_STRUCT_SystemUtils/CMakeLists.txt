@@ -27,7 +27,7 @@ target_link_libraries(ERS_STRUCT_SystemUtils
 
     ERS_LoggingSystem
     ERS_HardwareInformation
-    ERS_CLASS_PythonInterpreterIntegration
+   # ERS_CLASS_PythonInterpreterIntegration
 
     ERS_STRUCT_RendererSettings
 
