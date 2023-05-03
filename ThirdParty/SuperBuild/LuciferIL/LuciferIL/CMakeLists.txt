@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
 project(Lucifer)
 
+# Add Fix For Apple Silicon Compilation
+add_definitions( -DPNG_ARM_NEON_OPT=0)
+
 
 # Include Libs
 include(${PROJECT_SOURCE_DIR}/CMake/DisableTargetWarnings.cmake)

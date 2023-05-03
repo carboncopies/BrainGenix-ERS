@@ -20,4 +20,4 @@ enum LoadingStatus {
 };
 
 
-};
+}

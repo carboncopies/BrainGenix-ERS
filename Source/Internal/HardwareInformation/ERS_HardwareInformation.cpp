@@ -116,8 +116,27 @@ ERS_HardwareInformation::~ERS_HardwareInformation() {
     // Shut Down Dynamic Update Thread
     Logger_->Log("Stopping Dynamic Update Thread", 5);
     ShouldDynamicInfoThreadRun_ = false;
-    DynamicUpdateThread_.join();
+	if (DynamicUpdateThread_.joinable()) {
+		// Wait for the thread to finish for up to 10 seconds
+		for (int i = 0; i < 100 && DynamicUpdateThread_.joinable(); ++i) {
+			if (DynamicUpdateThread_.joinable()) 
+				DynamicUpdateThread_.join();
+			else
+				break;
+			
+			std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		}
 
+		//If the thread is still running, terminate it
+		if (DynamicUpdateThread_.joinable()) {
+			DynamicUpdateThread_.detach();
+			
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+			
+		if (DynamicUpdateThread_.joinable()) 
+			std::terminate();
+		}
+	}	
 }
 
 

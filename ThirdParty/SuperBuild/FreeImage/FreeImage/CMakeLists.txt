@@ -6,6 +6,9 @@ set(CMAKE_CXX_STANDARD 98)
 
 # LibJXR
 add_compile_definitions(DISABLE_PERF_MEASUREMENT)
+# Fix for apple
+add_definitions(-Wno-error=implicit-function-declaration) #Fixes issue with vsprintf on macOS
+add_definitions(-DPNG_ARM_NEON_OPT=0) #Fixes issue with linker on macOS
 # OpenJPEG
 add_compile_definitions(OPJ_STATIC)
 if(WIN32)
@@ -32,8 +35,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${${PROJECT_NAME}_INCLUDE_DIR}
 
 ### ++ MODIFIED BY ERS TEAM FOR SUPERBUILDS ++ ###
 
-# Disable Warnings For Extern Project
-target_compile_definitions(FreeImage -w)
+## Disable Warnings For Extern Project
+#target_compile_definitions(FreeImage -w)
 
 FILE(GLOB Includes ${CMAKE_CURRENT_SOURCE_DIR}/Source/*.h)
 install(TARGETS ${PROJECT_NAME})

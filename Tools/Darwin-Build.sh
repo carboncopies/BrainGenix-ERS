@@ -1,3 +1,6 @@
+#!/bin/bash
+
+
 # Firstly, Create And Enter The Build Directory
 echo "[ERS BUILD HELPER] - Entering Root Repository Directory"
 cd ..
@@ -81,7 +84,7 @@ fi
 
 # Build Files
 echo "[ERS BUILD HELPER] - Building, Please Wait. This may take some time"
-cmake --build . --target BrainGenix-ERS --parallel $1
+cmake --build . --target ERS --parallel $1
 
 
 # Run Program

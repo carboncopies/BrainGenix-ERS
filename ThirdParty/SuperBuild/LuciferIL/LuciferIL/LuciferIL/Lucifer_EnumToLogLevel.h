@@ -32,4 +32,4 @@ int Lucifer_GetLoadingStatusLevel(LoadingStatus Status);
  */
 int Lucifer_GetWritingStatusLevel(WritingStatus Status);
 
-};
+}

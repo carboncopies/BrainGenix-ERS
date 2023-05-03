@@ -109,7 +109,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
 
     RunTime_ = glfwGetTime() - GameStartTime_;
-    SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->UpdateSystemInfoData(RunTime_);
+   // SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->UpdateSystemInfoData(RunTime_);
 
 
     // Iterate Through Viewports
@@ -174,7 +174,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 long ScriptIndex = Model->AttachedScriptIndexes_[x];
                 std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
 
-                bool Status;
+              /*  bool Status;
                 if (x == (unsigned long)SelectedScript_) {
                     Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, Model, DebugLog_);
                 } else {
@@ -183,7 +183,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
                 if (!Status) {
                     IsEditorMode_ = true;
-                }
+                }*/
             }
         }
 
@@ -198,8 +198,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 long ScriptIndex = Target->AttachedScriptIndexes_[x];
                 std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
 
-                bool Status;
-                if (x == (unsigned long)SelectedScript_) {
+              /*  bool Status;
+                  if (x == (unsigned long)SelectedScript_) {
                     Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecutePointLightScript(Code, Target, DebugLog_);
                 } else {
                     Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecutePointLightScript(Code, Target);
@@ -207,7 +207,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
                 if (!Status) {
                     IsEditorMode_ = true;
-                }
+                }*/
             }
         }
 
@@ -222,7 +222,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 long ScriptIndex = Target->AttachedScriptIndexes_[x];
                 std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
 
-                bool Status;
+               /* bool Status;
                 if (x == (unsigned long)SelectedScript_) {
                     Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteDirectionalLightScript(Code, Target, DebugLog_);
                 } else {
@@ -231,7 +231,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
                 if (!Status) {
                     IsEditorMode_ = true;
-                }
+                }*/
             }
         }
 
@@ -246,7 +246,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 long ScriptIndex = Target->AttachedScriptIndexes_[x];
                 std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
 
-                bool Status;
+              /*  bool Status;
                 if (x == (unsigned long)SelectedScript_) {
                     Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteSpotLightScript(Code, Target, DebugLog_);
                 } else {
@@ -255,7 +255,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
                 if (!Status) {
                     IsEditorMode_ = true;
-                }
+                }*/
             }
         }
 
@@ -270,8 +270,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 long ScriptIndex = Target->AttachedScriptIndexes_[x];
                 std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
 
-                bool Status;
-                if (x == (unsigned long)SelectedScript_) {
+                /*bool Status;
+                //if (x == (unsigned long)SelectedScript_) {
                     Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteSceneCameraScript(Code, Target, DebugLog_);
                 } else {
                     Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteSceneCameraScript(Code, Target);
@@ -279,7 +279,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
                 if (!Status) {
                     IsEditorMode_ = true;
-                }
+                }*/
             }
         }
 

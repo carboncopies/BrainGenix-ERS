@@ -38,4 +38,4 @@ LoadingStatus Lucifer_Load(unsigned char* ImageData, unsigned long Size, Image& 
 
 
 
-};
+}
