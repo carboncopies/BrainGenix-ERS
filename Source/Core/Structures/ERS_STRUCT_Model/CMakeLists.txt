@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_Model 
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_Model.cpp"
+            "Model.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_Model.h"
+            "Model.h"
             
             ${BACKWARD_ENABLE}
             )

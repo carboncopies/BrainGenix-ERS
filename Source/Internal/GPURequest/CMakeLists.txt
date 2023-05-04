@@ -7,10 +7,10 @@
 add_library(ERS_GPURequest
 
             # Add Source Files (.cpp)
-            "ERS_GPURequest.cpp"
+            "GPURequest.cpp"
 
             # Add Header Files (.h)
-            "ERS_GPURequest.h"
+            "GPURequest.h"
             
             ${BACKWARD_ENABLE}
             )

@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_SceneObject
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_SceneObject.cpp"
+            "SceneObject.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_SceneObject.h"
+            "SceneObject.h"
             
             ${BACKWARD_ENABLE}
             )

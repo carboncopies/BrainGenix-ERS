@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_ShaderUniformData
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_ShaderUniformData.cpp"
+            "ShaderUniformData.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_ShaderUniformData.h"
+            "ShaderUniformData.h"
             
             ${BACKWARD_ENABLE}
             )

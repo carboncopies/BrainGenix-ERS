@@ -15,11 +15,11 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_SystemUtils.h>
+#include <SystemUtils.h>
 
-#include <ERS_Version.h>
-#include <ERS_CompilePlatformInfo.h>
-#include <ERS_CompileTimeStamp.h>
+#include <Version.h>
+#include <CompilePlatformInfo.h>
+#include <CompileTimeStamp.h>
 
 
 /**

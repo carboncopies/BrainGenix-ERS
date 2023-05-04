@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_ModelWriterData 
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_ModelWriterData.cpp"
+            "ModelWriterData.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_ModelWriterData.h"
+            "ModelWriterData.h"
             
             ${BACKWARD_ENABLE}
             )

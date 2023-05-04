@@ -14,7 +14,7 @@
 #include <implot.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_SystemUtils.h>
+#include <SystemUtils.h>
 
 /**
  * @brief Create GUI GUI_Window "Framerate Graph"

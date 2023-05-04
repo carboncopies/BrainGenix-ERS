@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_SystemUtils
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_SystemUtils.cpp"
+            "SystemUtils.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_SystemUtils.h"
+            "SystemUtils.h"
             
             ${BACKWARD_ENABLE}
             )

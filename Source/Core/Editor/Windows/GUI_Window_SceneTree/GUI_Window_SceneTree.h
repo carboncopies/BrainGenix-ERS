@@ -15,33 +15,33 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_SceneManager.h>
+#include <SceneManager.h>
 
-#include <ERS_STRUCT_Scene.h>
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_ProjectUtils.h>
-#include <ERS_STRUCT_SceneObject.h>
-#include <ERS_Editor_3DCursor.h>
+#include <Scene.h>
+#include <SystemUtils.h>
+#include <ProjectUtils.h>
+#include <SceneObject.h>
+#include <3DCursor.h>
 
-#include <ERS_GUI_CLASS_SceneRenameModal.h>
-#include <ERS_GUI_CLASS_ModelRenameModal.h>
-#include <ERS_GUI_CLASS_PointLightRenameModal.h>
-#include <ERS_GUI_CLASS_SpotLightRenameModal.h>
-#include <ERS_GUI_CLASS_DirectionalLightRenameModal.h>
+#include <SceneRenameModal.h>
+#include <ModelRenameModal.h>
+#include <PointLightRenameModal.h>
+#include <SpotLightRenameModal.h>
+#include <DirectionalLightRenameModal.h>
 
-#include <ERS_GUI_CLASS_DeleteScene.h>
-#include <ERS_GUI_CLASS_DeleteModel.h>
-#include <ERS_GUI_CLASS_DeletePointLight.h>
-#include <ERS_GUI_CLASS_DeleteDirectionalLight.h>
-#include <ERS_GUI_CLASS_DeleteSpotLight.h>
+#include <DeleteScene.h>
+#include <DeleteModel.h>
+#include <DeletePointLight.h>
+#include <DeleteDirectionalLight.h>
+#include <DeleteSpotLight.h>
 
-#include <ERS_GUI_CLASS_ModelReplaceModal.h>
+#include <ModelReplaceModal.h>
 
-#include <ERS_GUI_FUNCTION_DuplicateScene.h>
-#include <ERS_GUI_FUNCTION_DuplicateModel.h>
-#include <ERS_GUI_FUNCTION_DuplicatePointLight.h>
-#include <ERS_GUI_FUNCTION_DuplicateDirectionalLight.h>
-#include <ERS_GUI_FUNCTION_DuplicateSpotLight.h>
+#include <DuplicateScene.h>
+#include <DuplicateModel.h>
+#include <DuplicatePointLight.h>
+#include <DuplicateDirectionalLight.h>
+#include <DuplicateSpotLight.h>
 
 
 

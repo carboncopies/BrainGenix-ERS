@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_LocRotScale
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_LocRotScale.cpp"
+            "LocRotScale.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_LocRotScale.h"
+            "LocRotScale.h"
             
             ${BACKWARD_ENABLE}
             )

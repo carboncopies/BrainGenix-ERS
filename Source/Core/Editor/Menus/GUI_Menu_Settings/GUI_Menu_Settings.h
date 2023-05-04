@@ -16,10 +16,10 @@
 
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_HumanInputDeviceUtils.h>
-#include <ERS_STRUCT_ProjectUtils.h>
-#include <ERS_STRUCT_Windows.h>
+#include <SystemUtils.h>
+#include <HumanInputDeviceUtils.h>
+#include <ProjectUtils.h>
+#include <Windows.h>
 
 
 #include <GUI_Window_ControllerSettings.h>

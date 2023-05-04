@@ -18,20 +18,20 @@
 
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_LoggingSystem.h>
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_ProjectUtils.h>
+#include <LoggingSystem.h>
+#include <SystemUtils.h>
+#include <ProjectUtils.h>
 
 
-#include <ERS_ProjectLoader.h>
-#include <ERS_SceneWriter.h>
-#include <ERS_SceneManager.h>
+#include <ProjectLoader.h>
+#include <SceneWriter.h>
+#include <SceneManager.h>
 
-#include <ERS_Editor_WindowManager.h>
+#include <WindowManager.h>
 
 #include <GUI_Window_ProjectSettings.h>
 
-#include <ERS_CLASS_VisualRenderer.h>
+#include <VisualRenderer.h>
 
 
 /**

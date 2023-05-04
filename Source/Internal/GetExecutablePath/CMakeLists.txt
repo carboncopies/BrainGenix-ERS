@@ -7,10 +7,10 @@
 add_library(ERS_GetExecutablePath
 
             # Add Source Files (.cpp)
-            "ERS_GetExecutablePath.cpp"
+            "GetExecutablePath.cpp"
 
             # Add Header Files (.h)
-            "ERS_GetExecutablePath.h"
+            "GetExecutablePath.h"
             
             ${BACKWARD_ENABLE}
             )

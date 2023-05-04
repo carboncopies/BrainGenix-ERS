@@ -7,10 +7,10 @@
 add_library(ERS_ArgumentParser
 
             # Add Source Files (.cpp)
-            "ERS_ArgumentParser.cpp"
+            "ArgumentParser.cpp"
 
             # Add Header Files (.h)
-            "ERS_ArgumentParser.h"
+            "ArgumentParser.h"
             
             ${BACKWARD_ENABLE}
             )

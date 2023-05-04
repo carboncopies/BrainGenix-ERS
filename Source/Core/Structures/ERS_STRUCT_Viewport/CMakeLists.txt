@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_Viewport
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_Viewport.cpp"
+            "Viewport.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_Viewport.h"
+            "Viewport.h"
             
             ${BACKWARD_ENABLE}
             )

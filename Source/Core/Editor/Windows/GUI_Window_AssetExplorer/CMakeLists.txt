@@ -7,11 +7,11 @@ add_library(GUI_Window_AssetExplorer
 
             # Add Source Files (.cpp)
             "GUI_Window_AssetExplorer.cpp"
-            "ERS_GUI_CLASS_ScriptRenameModal.cpp"
+            "ScriptRenameModal.cpp"
 
             # Add Header Files (.h)
             "GUI_Window_AssetExplorer.h"
-            "ERS_GUI_CLASS_ScriptRenameModal.h"
+            "ScriptRenameModal.h"
 
 
             ${BACKWARD_ENABLE}
