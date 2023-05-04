@@ -7,10 +7,10 @@
 add_library(ERS_ExternalModelLoader
 
             # Add Source Files (.cpp)
-            "ERS_ExternalModelLoader.cpp"
+            "ExternalModelLoader.cpp"
 
             # Add Header Files (.h)
-            "ERS_ExternalModelLoader.h"
+            "ExternalModelLoader.h"
             
             ${BACKWARD_ENABLE}
             )

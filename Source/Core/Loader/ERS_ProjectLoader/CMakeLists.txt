@@ -7,10 +7,10 @@
 add_library(ERS_ProjectLoader
 
             # Add Source Files (.cpp)
-            "ERS_ProjectLoader.cpp"
+            "ProjectLoader.cpp"
 
             # Add Header Files (.h)
-            "ERS_ProjectLoader.h"
+            "ProjectLoader.h"
             
             ${BACKWARD_ENABLE}
             )

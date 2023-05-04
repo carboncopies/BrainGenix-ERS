@@ -8,8 +8,59 @@
     Date Created: 2021-11-01
 */
 
+// Standard Libraries (BG convention: use <> instead of "")
 
-#include <Main.h>
+// Third-Party Libraries (BG convention: use <> instead of "")
+#include <glad/glad.h>
+
+#include <GLFW/glfw3.h>
+
+#include <LuciferIL/Lucifer_IncludeOnce.h>
+#include <LuciferIL/Lucifer.h>
+
+// Internal Libraries (BG convention: use <> instead of "")
+#include <GPURequest.h>
+#include <RendererManager.h>
+
+#include <LoggingSystem.h>
+#include <LogSystemInfo.h>
+#include <HardwareInformation.h>
+#include <ArgumentParser.h>
+#include <ModelImporter.h>
+#include <LocalConfigLoader.h>
+
+
+#include <SceneManager.h>
+
+#include <InputOutputSubsystem.h>
+#include <FramerateManager.h>
+#include <ProjectLoader.h>
+#include <ProjectManager.h>
+#include <ProjectWriter.h>
+#include <ControllerInputManager.h>
+
+#include <HumanInputDeviceUtils.h>
+#include <SystemUtils.h>
+#include <ProjectUtils.h>
+#include <RendererSettings.h>
+
+//#include <PythonInterpreterIntegration.h>
+
+
+#include <GetExecutablePath.h>
+
+
+//
+//-----------------------------------------------------------------------------------------------------
+//
+// FIXME: Add proper lighting system (phong and more advanced (and shadow maps))
+// FIXME: implement animations (character deformations)
+// FIXME: implement offscreen rendering
+// FIXME: add other features to this list later, (audio rendering, ray tracing, etc.)
+// FIXME: Update this card with more info as needed!
+//
+//-----------------------------------------------------------------------------------------------------
+//
 
 
 int main(int NumArguments, char** ArguemntValues) {

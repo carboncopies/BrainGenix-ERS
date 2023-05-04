@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_OpenGLDefaults 
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_OpenGLDefaults.cpp"
+            "OpenGLDefaults.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_OpenGLDefaults.h"
+            "OpenGLDefaults.h"
             
             ${BACKWARD_ENABLE}
             )

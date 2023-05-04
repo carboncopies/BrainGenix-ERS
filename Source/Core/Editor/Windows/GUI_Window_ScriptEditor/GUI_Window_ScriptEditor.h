@@ -18,11 +18,11 @@
 #include <TextEditor.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_ProjectUtils.h>
-#include <ERS_STRUCT_Script.h>
+#include <SystemUtils.h>
+#include <ProjectUtils.h>
+#include <Script.h>
 
-#include <ERS_CLASS_VisualRenderer.h>
+#include <VisualRenderer.h>
 
 
 

@@ -7,10 +7,10 @@
 add_library(ERS_LocalConfigLoader
 
             # Add Source Files (.cpp)
-            "ERS_LocalConfigLoader.cpp"
+            "LocalConfigLoader.cpp"
 
             # Add Header Files (.h)
-            "ERS_LocalConfigLoader.h"
+            "LocalConfigLoader.h"
             
             ${BACKWARD_ENABLE}
             )

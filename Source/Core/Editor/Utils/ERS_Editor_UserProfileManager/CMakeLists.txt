@@ -7,10 +7,10 @@
 add_library(ERS_Editor_UserProfileManager
 
             # Add Source Files (.cpp)
-            "ERS_Editor_UserProfileManager.cpp"
+            "UserProfileManager.cpp"
 
             # Add Header Files (.h)
-            "ERS_Editor_UserProfileManager.h"
+            "UserProfileManager.h"
             
             ${BACKWARD_ENABLE}
             )

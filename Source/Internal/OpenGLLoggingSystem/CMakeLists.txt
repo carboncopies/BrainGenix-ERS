@@ -7,14 +7,14 @@
 add_library(ERS_OpenGLLoggingSystem
 
             # Add Source Files (.cpp)
-            "ERS_OpenGLLoggingSystem.cpp"
-            "ERS_MessageCallbackUserParam.cpp"
-            "ERS_OpenGLLogItem.cpp"
+            "OpenGLLoggingSystem.cpp"
+            "MessageCallbackUserParam.cpp"
+            "OpenGLLogItem.cpp"
 
             # Add Header Files (.h)
-            "ERS_OpenGLLoggingSystem.h"
-            "ERS_MessageCallbackUserParam.h"
-            "ERS_OpenGLLogItem.h"
+            "OpenGLLoggingSystem.h"
+            "MessageCallbackUserParam.h"
+            "OpenGLLogItem.h"
 
             
             ${BACKWARD_ENABLE}

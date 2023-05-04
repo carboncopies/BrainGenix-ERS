@@ -7,10 +7,10 @@
 add_library(ERS_ModelWriter
 
             # Add Source Files (.cpp)
-            "ERS_ModelWriter.cpp"
+            "ModelWriter.cpp"
 
             # Add Header Files (.h)
-            "ERS_ModelWriter.h"
+            "ModelWriter.h"
 
             ${BACKWARD_ENABLE}
             )

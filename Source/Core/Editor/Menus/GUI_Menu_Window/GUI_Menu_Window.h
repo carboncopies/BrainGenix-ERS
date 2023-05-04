@@ -15,11 +15,11 @@
 #include <imgui.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_CLASS_VisualRenderer.h>
+#include <VisualRenderer.h>
 
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_ProjectUtils.h>
-#include <ERS_STRUCT_Windows.h>
+#include <SystemUtils.h>
+#include <ProjectUtils.h>
+#include <Windows.h>
 
 #include <GUI_Window_SceneTree.h>
 #include <GUI_Window_SystemLog.h>
@@ -38,8 +38,8 @@
 #include <GUI_Window_AssetStreamingSettings.h>
 
 
-#include <ERS_Editor_3DCursor.h>
-#include <ERS_SceneManager.h>
+#include <3DCursor.h>
+#include <SceneManager.h>
 
 
 /**

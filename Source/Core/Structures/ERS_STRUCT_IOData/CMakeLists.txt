@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_IOData
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_IOData.cpp"
+            "IOData.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_IOData.h"
+            "IOData.h"
             
             ${BACKWARD_ENABLE}
             )

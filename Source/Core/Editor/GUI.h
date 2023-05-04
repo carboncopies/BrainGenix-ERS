@@ -20,20 +20,20 @@
 #include <ImGuizmo.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_LoggingSystem.h>
-#include <ERS_CLASS_VisualRenderer.h>
+#include <LoggingSystem.h>
+#include <VisualRenderer.h>
 
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_ProjectUtils.h>
-#include <ERS_STRUCT_HumanInputDeviceUtils.h>
+#include <SystemUtils.h>
+#include <ProjectUtils.h>
+#include <HumanInputDeviceUtils.h>
 
-#include <ERS_Editor_ThemeManager.h>
-#include <ERS_Editor_FontManager.h>
-#include <ERS_Editor_UserProfileManager.h>
-#include <ERS_Editor_3DCursor.h>
-#include <ERS_Editor_WindowManager.h>
+#include <ThemeManager.h>
+#include <FontManager.h>
+#include <UserProfileManager.h>
+#include <3DCursor.h>
+#include <WindowManager.h>
 
-#include <ERS_SceneManager.h>
+#include <SceneManager.h>
 
 #include <GUI_Menu_File.h>
 #include <GUI_Menu_Window.h>

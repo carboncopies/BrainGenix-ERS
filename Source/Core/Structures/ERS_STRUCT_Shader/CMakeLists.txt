@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_Shader
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_Shader.cpp"
+            "Shader.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_Shader.h"
+            "Shader.h"
 
             ${BACKWARD_ENABLE}
             )

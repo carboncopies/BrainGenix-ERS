@@ -7,10 +7,10 @@
 add_library(ERS_Editor_FontManager
 
             # Add Source Files (.cpp)
-            "ERS_Editor_FontManager.cpp"
+            "FontManager.cpp"
 
             # Add Header Files (.h)
-            "ERS_Editor_FontManager.h"
+            "FontManager.h"
             
             ${BACKWARD_ENABLE}
             )

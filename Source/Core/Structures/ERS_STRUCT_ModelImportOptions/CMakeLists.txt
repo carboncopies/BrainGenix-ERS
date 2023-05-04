@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_ModelImportOptions
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_ModelImportOptions.cpp"
+            "ModelImportOptions.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_ModelImportOptions.h"
+            "ModelImportOptions.h"
             
             ${BACKWARD_ENABLE}
             )

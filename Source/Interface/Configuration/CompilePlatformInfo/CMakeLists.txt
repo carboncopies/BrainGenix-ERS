@@ -7,10 +7,10 @@
 add_library(ERS_CompilePlatformInfo
 
             # Add Source Files (.cpp)
-            "ERS_CompilePlatformInfo.cpp"
+            "CompilePlatformInfo.cpp"
 
             # Add Header Files (.h)
-            "ERS_CompilePlatformInfo.h"
+            "CompilePlatformInfo.h"
             
             ${BACKWARD_ENABLE}
             )

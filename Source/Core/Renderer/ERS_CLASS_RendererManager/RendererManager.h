@@ -17,25 +17,25 @@
 #include <FreeImage.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_LoggingSystem.h>
-#include <ERS_CLASS_VisualRenderer.h>
-#include <ERS_STRUCT_Camera.h>
+#include <LoggingSystem.h>
+#include <VisualRenderer.h>
+#include <Camera.h>
 
-#include <ERS_CLASS_ShaderLoader.h>
+#include <ShaderLoader.h>
 #include <GUI.h>
 
-#include <ERS_ModelWriter.h>
-#include <ERS_CLASS_ModelLoader.h>
+#include <ModelWriter.h>
+#include <ModelLoader.h>
 
-#include <ERS_Editor_3DCursor.h>
+#include <3DCursor.h>
 
-#include <ERS_STRUCT_IOData.h>
-#include <ERS_STRUCT_SystemUtils.h>
-#include <ERS_STRUCT_ProjectUtils.h>
-#include <ERS_STRUCT_HumanInputDeviceUtils.h>
-#include <ERS_STRUCT_OpenGLDefaults.h>
+#include <IOData.h>
+#include <SystemUtils.h>
+#include <ProjectUtils.h>
+#include <HumanInputDeviceUtils.h>
+#include <OpenGLDefaults.h>
 
-#include <ERS_Version.h>
+#include <Version.h>
 
 
 

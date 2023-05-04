@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_ProjectUtils
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_ProjectUtils.cpp"
+            "ProjectUtils.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_ProjectUtils.h"
+            "ProjectUtils.h"
             
             ${BACKWARD_ENABLE}
             )
