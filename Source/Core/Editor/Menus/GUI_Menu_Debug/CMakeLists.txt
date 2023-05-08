@@ -8,11 +8,11 @@ add_library(Menu_Debug
 
             # Add Source Files (.cpp)
             "GUI_Menu_Debug.cpp"
-            "ERS_CLASS_OpenGLDebug.cpp"
+            "OpenGLDebug.cpp"
 
             # Add Header Files (.h)
             "GUI_Menu_Debug.h"
-            "ERS_CLASS_OpenGLDebug.h"
+            "OpenGLDebug.h"
 
 
             ${BACKWARD_ENABLE}

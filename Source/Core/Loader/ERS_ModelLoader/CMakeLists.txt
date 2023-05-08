@@ -7,26 +7,26 @@
 add_library(ERS_ModelLoader
 
             # Add Source Files (.cpp)
-            "ERS_CLASS_ModelLoader.cpp"
-            "ERS_CLASS_AssetStreamingManager.cpp"
-            "ERS_CLASS_AsyncTextureUpdater.cpp"
-            "ERS_CLASS_AssetStreamingSystemResourceMonitor.cpp"
-            "ERS_FUNCTION_Legacy_PreprocessTextureInfo.cpp"
-            "ERS_FUNCTION_ModelMetadataDecoderV0.0.0.cpp"
-            "ERS_FUNCTION_ModelMetadataDecoderV0.0.1.cpp"
-            "ERS_FUNCTION_ModelMetadataDecoderV0.0.2.cpp"
-            "ERS_FUNCTION_ModelMetadataDecoderManager.cpp"
+            "ModelLoader.cpp"
+            "AssetStreamingManager.cpp"
+            "AsyncTextureUpdater.cpp"
+            "AssetStreamingSystemResourceMonitor.cpp"
+            "Legacy_PreprocessTextureInfo.cpp"
+            "ModelMetadataDecoderV0.0.0.cpp"
+            "ModelMetadataDecoderV0.0.1.cpp"
+            "ModelMetadataDecoderV0.0.2.cpp"
+            "ModelMetadataDecoderManager.cpp"
 
             # Add Header Files (.h)
-            "ERS_CLASS_ModelLoader.h"
-            "ERS_CLASS_AssetStreamingManager.h"
-            "ERS_CLASS_AsyncTextureUpdater.h"
-            "ERS_CLASS_AssetStreamingSystemResourceMonitor.h"
-            "ERS_FUNCTION_Legacy_PreprocessTextureInfo.h"
-            "ERS_FUNCTION_ModelMetadataDecoderV0.0.0.h"
-            "ERS_FUNCTION_ModelMetadataDecoderV0.0.1.h"
-            "ERS_FUNCTION_ModelMetadataDecoderV0.0.2.h"
-            "ERS_FUNCTION_ModelMetadataDecoderManager.h"
+            "ModelLoader.h"
+            "AssetStreamingManager.h"
+            "AsyncTextureUpdater.h"
+            "AssetStreamingSystemResourceMonitor.h"
+            "Legacy_PreprocessTextureInfo.h"
+            "ModelMetadataDecoderV0.0.0.h"
+            "ModelMetadataDecoderV0.0.1.h"
+            "ModelMetadataDecoderV0.0.2.h"
+            "ModelMetadataDecoderManager.h"
 
 
             ${BACKWARD_ENABLE}

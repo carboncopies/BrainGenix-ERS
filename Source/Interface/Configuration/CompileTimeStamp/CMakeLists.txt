@@ -7,10 +7,10 @@
 add_library(ERS_CompileTimeStamp
 
             # Add Source Files (.cpp)
-            "ERS_CompileTimeStamp.cpp"
+            "CompileTimeStamp.cpp"
 
             # Add Header Files (.h)
-            "ERS_CompileTimeStamp.h"
+            "CompileTimeStamp.h"
             
             ${BACKWARD_ENABLE}
             )

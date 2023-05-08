@@ -7,7 +7,7 @@
 add_library(ERS_CLASS_PythonInterpreterIntegration 
 
             # Add Source Files (.cpp)
-            "ERS_CLASS_PythonInterpreterIntegration.cpp"
+            "PythonInterpreterIntegration.cpp"
             "PyBind11ModelClass.cpp"
             "PyBind11SystemInfo.cpp"
             "PyBind11PointLightClass.cpp"
@@ -17,7 +17,7 @@ add_library(ERS_CLASS_PythonInterpreterIntegration
             
 
             # Add Header Files (.h)
-            "ERS_CLASS_PythonInterpreterIntegration.h"
+            "PythonInterpreterIntegration.h"
             "PyBind11ModelClass.h"
             "PyBind11SystemInfo.h"
             "PyBind11PointLightClass.h"
@@ -29,9 +29,9 @@ add_library(ERS_CLASS_PythonInterpreterIntegration
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_CLASS_PythonInterpreterIntegration
-    pybind11::embed
-    )
+#target_link_libraries(ERS_CLASS_PythonInterpreterIntegration
+ #   pybind11::embed
+  #  )
 
 # Link Internal Libs
 target_link_libraries(ERS_CLASS_PythonInterpreterIntegration

@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_Script
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_Script.cpp"
+            "Script.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_Script.h"
+            "Script.h"
             
             ${BACKWARD_ENABLE}
             )

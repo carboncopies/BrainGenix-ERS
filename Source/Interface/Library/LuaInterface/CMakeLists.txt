@@ -7,10 +7,10 @@
 add_library(ERS_LuaInterface
 
             # Add Source Files (.cpp)
-            "ERS_LuaInterface.cpp"
+            "LuaInterface.cpp"
 
             # Add Header Files (.h)
-            "ERS_LuaInterface.h"
+            "LuaInterface.h"
             
             ${BACKWARD_ENABLE}
             )

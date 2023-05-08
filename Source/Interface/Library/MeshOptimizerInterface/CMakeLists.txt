@@ -7,10 +7,10 @@
 add_library(ERS_MeshOptimizer
 
             # Add Source Files (.cpp)
-            "ERS_MeshOptimizer.cpp"
+            "MeshOptimizer.cpp"
 
             # Add Header Files (.h)
-            "ERS_MeshOptimizer.h"
+            "MeshOptimizer.h"
             
             ${BACKWARD_ENABLE}
             )

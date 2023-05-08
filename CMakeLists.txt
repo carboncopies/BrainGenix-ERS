@@ -86,7 +86,7 @@ include(${CMAKE_SCRIPTS_DIR}/CompileTimeStamp/CompileTimeStamp.cmake)
 # Include Package Addition Scripts
 # include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/Python.cmake)
+#include(${CMAKE_BUILD_UTILS_DIR}/Python.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
@@ -97,7 +97,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiColorTextEdit.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
+#include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Filesystem.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/WhereAmI.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PlatformFolders.cmake)
@@ -198,8 +198,11 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_RendererSettings)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ShaderUniformData)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ModelImportOptions)
 
-add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_PythonInterpreterIntegration)
+
+#add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_PythonInterpreterIntegration)
 add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_LuaJITInterpreterIntegration)
+
+
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_SceneLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ShaderLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ProjectLoader)
@@ -215,7 +218,7 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Core Subsystems")
 # Configure Sources
 set(MAIN_SOURCES
     ${SRC_DIR}/Main.cpp
-    ${SRC_DIR}/Main.h
+#   ${SRC_DIR}/Main.h
     ${BACKWARD_ENABLE}
 )
 
@@ -247,7 +250,7 @@ target_link_libraries(${PROJECT_NAME}
     ERS_GetExecutablePath
     ERS_CLASS_LuaJITInterpreterIntegration
     ERS_HardwareInformation
-    ERS_CLASS_PythonInterpreterIntegration
+   # ERS_CLASS_PythonInterpreterIntegration
     ERS_ArgumentParser
 
     ERS_SceneManager

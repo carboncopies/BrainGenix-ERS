@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_Vertex
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_Vertex.cpp"
+            "Vertex.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_Vertex.h"
+            "Vertex.h"
             
             ${BACKWARD_ENABLE}
             )

@@ -7,10 +7,10 @@
 add_library(ERS_Editor_LayoutManager
 
             # Add Source Files (.cpp)
-            "ERS_Editor_LayoutManager.cpp"
+            "LayoutManager.cpp"
 
             # Add Header Files (.h)
-            "ERS_Editor_LayoutManager.h"
+            "LayoutManager.h"
             
             ${BACKWARD_ENABLE}
             )

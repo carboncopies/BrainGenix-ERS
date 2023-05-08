@@ -18,7 +18,7 @@
 #include <lua.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <ERS_LoggingSystem.h>
+#include <LoggingSystem.h>
 
 /**
  * @brief This class hosts the LuaJIT Interpreter, all other LuaJIT systems use this class to run their LuaJIT code.
