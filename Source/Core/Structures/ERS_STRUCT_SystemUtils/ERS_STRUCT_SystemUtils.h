@@ -14,7 +14,7 @@
 #include <ERS_LoggingSystem.h>
 #include <ERS_HardwareInformation.h>
 #include <ERS_CLASS_PythonInterpreterIntegration.h>
-
+#include <ERS_CLASS_LuaJITInterpreterIntegration.h>
 #include <ERS_STRUCT_RendererSettings.h>
 
 #include <ERS_InputOutputSubsystem.h>
@@ -42,7 +42,7 @@ struct ERS_STRUCT_SystemUtils {
     std::unique_ptr<ERS_CLASS_FramerateManager> FramerateManager_; /**<Pointer to framerate subsystem*/
     std::unique_ptr<ERS_HardwareInformation> ERS_HardwareInformation_; /**<Pointer to the hardware informaton class instance*/
     std::unique_ptr<ERS_CLASS_PythonInterpreterIntegration> ERS_CLASS_PythonInterpreterIntegration_; /**<Pointer to the class integrating the python interpreter*/
-
+    std::unique_ptr<ERS_CLASS_LuaJITInterpreterIntegration> ERS_CLASS_LuaJITInterpreterIntegration_; /**<Pointer to the class integrating the LuaJIT interpreter*/
     std::unique_ptr<ERS_STRUCT_RendererSettings> RendererSettings_; /**<Contains settings to be used by the renderer class, Automatically updates the renderer when this struct is updated.*/
 
 

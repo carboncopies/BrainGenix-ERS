@@ -86,7 +86,6 @@ include(${CMAKE_SCRIPTS_DIR}/CompileTimeStamp/CompileTimeStamp.cmake)
 # Include Package Addition Scripts
 # include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/LuaJIT.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Python.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
@@ -250,7 +249,7 @@ target_link_libraries(${PROJECT_NAME}
     ERS_HardwareInformation
     ERS_CLASS_PythonInterpreterIntegration
     ERS_ArgumentParser
-    ERS_CLASS_LuaJITInterpreterIntegration
+
     ERS_SceneManager
     ERS_ModelLoader
     ERS_SceneLoader  
@@ -273,5 +272,3 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})
 
 # Run Configuration On EditorAssetBundle
 include(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/EditorAssetsBundle.cmake)
-
-

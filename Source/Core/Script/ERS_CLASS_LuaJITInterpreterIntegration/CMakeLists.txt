@@ -16,3 +16,14 @@ add_library(ERS_CLASS_LuaJITInterpreterIntegration
             ${BACKWARD_ENABLE}
             )
 
+# Link 3rd Party Libs
+target_link_libraries(ERS_CLASS_LuaJITInterpreterIntegration
+    LuaJIT
+    )
+
+# Link Internal Libs
+target_link_libraries(ERS_CLASS_LuaJITInterpreterIntegration
+    ERS_LoggingSystem
+    )
+
+target_include_directories(ERS_CLASS_LuaJITInterpreterIntegration PUBLIC ./)
