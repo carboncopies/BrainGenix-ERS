@@ -24,7 +24,22 @@ set(PROJECT_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 
+# Include Util CMake Scripts
+include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
+include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)
+include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 
+
+# Setup Test Driver
+set(BG_TEST_EXECUTABLES "")
+ERSBuildLogger(${Green} "Checking if If Tests Are Enabled")
+if (BG_ENABLE_TESTS)
+    ERSBuildLogger(${BoldGreen} "Tests Enabled, Creating CTest Driver")
+    enable_testing()
+    include(GoogleTest)
+else() 
+    ERSBuildLogger(${BoldCyan} "Tests Are Not Enabled, Skipping Tests")
+endif()
 
 
 
@@ -67,16 +82,6 @@ include(${CMAKE_UTILS_DIR}/SuperBuilds/Lucifer.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
 
 
-
-
-
-
-
-# Include Util CMake Scripts
-include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
-include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)
-include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
-
 # Run Configuration Tools
 include(${CMAKE_SCRIPTS_DIR}/VersioningSystem/VersioningSystem.cmake)
 include(${CMAKE_SCRIPTS_DIR}/CompilePlatformInfo/CompilePlatformInfo.cmake)
@@ -84,9 +89,7 @@ include(${CMAKE_SCRIPTS_DIR}/CompileTimeStamp/CompileTimeStamp.cmake)
 
 
 # Include Package Addition Scripts
-# include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
-#include(${CMAKE_BUILD_UTILS_DIR}/Python.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
@@ -97,11 +100,12 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiColorTextEdit.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
-#include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Filesystem.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/WhereAmI.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PlatformFolders.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GoogleTest.cmake)
+
+
 
 
 
@@ -148,11 +152,6 @@ message(STATUS "Configured Internal Library 'GetExecutablePath'")
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 
-
-# Setup Test Driver
-if (ENABLE_TESTS)
-  enable_testing()
-endif()
 
 
 # ADD CORE SUBDIRECTORIES
@@ -278,5 +277,4 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})
 
 # Run Configuration On EditorAssetBundle
 include(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/EditorAssetsBundle.cmake)
-
 

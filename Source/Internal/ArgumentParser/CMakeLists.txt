@@ -25,16 +25,25 @@ target_include_directories(${LIBRARY_NAME} PUBLIC ./)
 
 # Run Tests IF Tests Enabled
 if (${BG_ENABLE_TESTS})
+    message(STATUS "Setting Up Unit Tests For ${LIBRARY_NAME}")
+
+    # Enable Testing For this Lib
+    # cmake docs are awful on this, it implies recursion but you need to do it manually
+    enable_testing()
+    include(GoogleTest)
 
     # Set Name of test executable
     set(LIBRARY_TEST_EXECUTABLE "${LIBRARY_NAME}-Test")
+    set(BG_TEST_EXECUTABLES ${BG_TEST_EXECUTABLES} ${LIBRARY_TEST_EXECUTABLE} PARENT_SCOPE)
+    message(STATUS "Created Unit Test Executable ${LIBRARY_TEST_EXECUTABLE}")
+    message("${CMAKE_CURRENT_BINARY_DIR}")
 
     # Add Executable with that name, set include dirs, and link to our library to test as well as gtests
     add_executable(${LIBRARY_TEST_EXECUTABLE} ${LIB_TEST_SOURCE_FILES})
     target_include_directories(${LIBRARY_TEST_EXECUTABLE} PUBLIC ./)
     target_link_libraries(${LIBRARY_TEST_EXECUTABLE} ${LIBRARY_NAME} GTest::gtest_main )
 
-    # Register our tests with Ctests so when user calls ctest it will run these tests
-    include(GoogleTest)
+    # Discover tests
     gtest_discover_tests(${LIBRARY_TEST_EXECUTABLE})
+
 endif()
