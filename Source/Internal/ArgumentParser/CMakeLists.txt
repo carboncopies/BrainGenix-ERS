@@ -2,37 +2,28 @@
 # This file is part of the BrainGenix-ERS Environment Rendering System #
 ########################################################################
 
-# Configure Library Settings
+# Configure Library Settings (MAINTAINERS: EDIT THIS SECTION)
 set(LIBRARY_NAME "ERS_ArgumentParser")
 set(LIB_SOURCE_FILES 
-
-    # Add Source Files (.cpp)
     "ArgumentParser.cpp"
-
-    # Add Header Files (.h)
     "ArgumentParser.h"
-
 )
 set(LIB_TEST_SOURCE_FILES
-    # Add Source Files (.cpp)
     "ArgumentParserTest.cpp"
-
-    # Add Header Files (.h)
     "ArgumentParserTest.h"
-
 )
 set(LIB_LINKS
-    # Internal Libs
     ERS_LoggingSystem
-    # Third Party Libs
 )
+
+
 
 # Create Library
 add_library(${LIBRARY_NAME} ${LIB_SOURCE_FILES} ${BACKWARD_ENABLE})
 target_link_libraries(${LIBRARY_NAME} ${LIB_LINKS})
 target_include_directories(${LIBRARY_NAME} PUBLIC ./)
 
-# Run Tests
+# Run Tests IF Tests Enabled
 if (${BG_ENABLE_TESTS})
 
     # Set Name of test executable
