@@ -30,7 +30,7 @@ if (${BG_ENABLE_TESTS})
     # Enable Testing For this Lib
     # cmake docs are awful on this, it implies recursion but you need to do it manually
     enable_testing()
-    include(GoogleTest)
+    # include(GoogleTest)
 
     # Set Name of test executable
     set(LIBRARY_TEST_EXECUTABLE "${LIBRARY_NAME}-Test")

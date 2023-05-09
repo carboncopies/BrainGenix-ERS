@@ -24,22 +24,8 @@ set(PROJECT_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 
-# Include Util CMake Scripts
-include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
-include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)
-include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 
 
-# Setup Test Driver
-set(BG_TEST_EXECUTABLES "")
-ERSBuildLogger(${Green} "Checking if If Tests Are Enabled")
-if (BG_ENABLE_TESTS)
-    ERSBuildLogger(${BoldGreen} "Tests Enabled, Creating CTest Driver")
-    enable_testing()
-    include(GoogleTest)
-else() 
-    ERSBuildLogger(${BoldCyan} "Tests Are Not Enabled, Skipping Tests")
-endif()
 
 
 
@@ -63,6 +49,26 @@ else()
 
 endif()
 
+
+
+# Include Util CMake Scripts
+include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
+include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)
+include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
+
+
+
+# Setup Test Driver
+set(BG_TEST_EXECUTABLES "")
+ERSBuildLogger(${Green} "Checking if If Tests Are Enabled")
+if (BG_ENABLE_TESTS)
+    ERSBuildLogger(${BoldGreen} "Tests Enabled, Creating CTest Driver")
+    # enable_testing()
+    include(CTest)
+    include(GoogleTest)
+else() 
+    ERSBuildLogger(${BoldCyan} "Tests Are Not Enabled, Skipping Tests")
+endif()
 
 
 set(CMAKE_CXX_STANDARD 20)
