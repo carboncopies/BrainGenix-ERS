@@ -30,7 +30,7 @@ if (${BG_ENABLE_TESTS})
     set(LIBRARY_TEST_EXECUTABLE "${LIBRARY_NAME}-Test")
 
     # Add Executable with that name, set include dirs, and link to our library to test as well as gtests
-    add_executable(${TARGET_NAME} ${LIB_TEST_SOURCE_FILES})
+    add_executable(${LIBRARY_TEST_EXECUTABLE} ${LIB_TEST_SOURCE_FILES})
     target_include_directories(${LIBRARY_TEST_EXECUTABLE} PUBLIC ./)
     target_link_libraries(${LIBRARY_TEST_EXECUTABLE} ${LIBRARY_NAME} GTest::gtest_main )
 

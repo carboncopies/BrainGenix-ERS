@@ -219,9 +219,9 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Core Subsystems")
 
 
 # Configure Sources
-set(BG_ENABLE_TESTS
+set(MAIN_SOURCES
     ${SRC_DIR}/Main.cpp
-#   ${SRC_DIR}/Main.h
+    ${SRC_DIR}/Main.h
     ${BACKWARD_ENABLE}
 )
 
