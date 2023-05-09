@@ -5,3 +5,11 @@
 #include <ArgumentParserTest.h>
 
 // Your gtest code here...
+
+TEST(AddTwoNumbersTest, PositiveNumbers) {
+    int a = 5;
+    int b = 6;
+    int expected_result = 10;
+
+    ASSERT_EQ(a+b, expected_result);
+}
