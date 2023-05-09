@@ -34,3 +34,6 @@
 [submodule "Sandbox/IOSystemTest"]
 	path = Sandbox/IOSystemTest
 	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/IOSystemTest
+[submodule "ThirdParty/NonSuperBuild/GoogleTest"]
+	path = ThirdParty/NonSuperBuild/GoogleTest
+	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Dependencies/googletest.git
