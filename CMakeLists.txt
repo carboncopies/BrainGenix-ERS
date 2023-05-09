@@ -27,48 +27,45 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 
 
-
-
-
-
-# Superbuild Configuration
-if (USE_SUPERBUILD)
-
-  project (SUPERBUILD NONE)
-
-  # Add Superbuild Runner
-  include(${CMAKE_UTILS_DIR}/SuperBuildMaster.cmake)
-  return()
-else()
-
-  project(
-      "BrainGenix-ERS"
-      VERSION "0.4.0"
-      LANGUAGES CXX
-  )
-
-endif()
-
-
-
 # Include Util CMake Scripts
 include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
 include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)
 include(${CMAKE_UTIL_DIR}/DisableTargetWarnings.cmake)
 
 
+# Superbuild Configuration
+if (USE_SUPERBUILD)
 
-# Setup Test Driver
-set(BG_TEST_EXECUTABLES "")
-ERSBuildLogger(${Green} "Checking if If Tests Are Enabled")
-if (BG_ENABLE_TESTS)
-    ERSBuildLogger(${BoldGreen} "Tests Enabled, Creating CTest Driver")
-    # enable_testing()
-    include(CTest)
-    include(GoogleTest)
-else() 
-    ERSBuildLogger(${BoldCyan} "Tests Are Not Enabled, Skipping Tests")
+    project (SUPERBUILD NONE)
+
+    # Add Superbuild Runner
+    include(${CMAKE_UTILS_DIR}/SuperBuildMaster.cmake)
+    return()
+else()
+
+    project(
+        "BrainGenix-ERS"
+        VERSION "0.4.0"
+        LANGUAGES CXX
+    )
+
+    # Setup Test Driver
+    set(BG_TEST_EXECUTABLES "")
+    ERSBuildLogger(${Green} "Checking if If Tests Are Enabled")
+    if (BG_ENABLE_TESTS)
+        ERSBuildLogger(${BoldGreen} "Tests Enabled, Creating CTest Driver")
+        # include(CTest)
+        include(GoogleTest)
+    else() 
+        ERSBuildLogger(${BoldCyan} "Tests Are Not Enabled, Skipping Tests")
+    endif()
+
+
 endif()
+
+
+
+
 
 
 set(CMAKE_CXX_STANDARD 20)
@@ -284,3 +281,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})
 # Run Configuration On EditorAssetBundle
 include(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/EditorAssetsBundle.cmake)
 
+# if (${BG_ENABLE_TESTS}) 
+#     gtest_discover_tests(${BG_TEST_EXECUTABLES} )
+# endif()
