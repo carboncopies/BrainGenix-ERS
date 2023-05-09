@@ -4,7 +4,7 @@ cmake_minimum_required (VERSION 3.1...3.21)
 
 # Set Configuration Options
 option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace information or not" ON)
-
+option(BG_ENABLE_TESTS "Build ERS Unit Tests" ON)
 
 # Set Non-User Changable Configuration Data (Used during build process )
 option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You probably don't want to change this one - used internally
@@ -101,6 +101,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Filesystem.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/WhereAmI.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PlatformFolders.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/GoogleTest.cmake)
 
 
 
@@ -145,8 +146,13 @@ message(STATUS "Configured Internal Library 'LocalConfigLoader'")
 add_subdirectory(${SRC_DIR}/Internal/GetExecutablePath)
 message(STATUS "Configured Internal Library 'GetExecutablePath'")
 
-
 ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
+
+
+# Setup Test Driver
+if (ENABLE_TESTS)
+  enable_testing()
+endif()
 
 
 # ADD CORE SUBDIRECTORIES
@@ -213,7 +219,7 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Core Subsystems")
 
 
 # Configure Sources
-set(MAIN_SOURCES
+set(BG_ENABLE_TESTS
     ${SRC_DIR}/Main.cpp
 #   ${SRC_DIR}/Main.h
     ${BACKWARD_ENABLE}
