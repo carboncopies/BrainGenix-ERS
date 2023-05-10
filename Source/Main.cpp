@@ -45,6 +45,7 @@
 #include <RendererSettings.h>
 
 //#include <PythonInterpreterIntegration.h>
+#include <ERS_CLASS_LuaJITInterpreterIntegration.h>
 
 
 #include <GetExecutablePath.h>
@@ -109,6 +110,12 @@ int main(int NumArguments, char** ArguemntValues) {
    /* SystemUtils->ERS_CLASS_PythonInterpreterIntegration_ = std::make_unique<ERS_CLASS_PythonInterpreterIntegration>(
         SystemUtils->Logger_.get()
     );*/
+    SystemUtils->ERS_CLASS_LuaJITInterpreterIntegration_ = std::make_unique<ERS_CLASS_LuaJITInterpreterIntegration>(
+        SystemUtils->Logger_.get()
+    );
+    //Testing LuaScript
+    ERS_CLASS_LuaJITInterpreterIntegration lua_interpreter( SystemUtils->Logger_.get());
+    lua_interpreter.Test_Script();
 
     SystemUtils->RendererSettings_ = std::make_unique<ERS_STRUCT_RendererSettings>();
 

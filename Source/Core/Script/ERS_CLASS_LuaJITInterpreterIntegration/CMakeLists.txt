@@ -4,36 +4,26 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_STRUCT_SystemUtils
+add_library(ERS_CLASS_LuaJITInterpreterIntegration 
 
             # Add Source Files (.cpp)
-            "SystemUtils.cpp"
+            "ERS_CLASS_LuaJITInterpreterIntegration.cpp"
+                        
 
             # Add Header Files (.h)
-            "SystemUtils.h"
-            
+            "ERS_CLASS_LuaJITInterpreterIntegration.h"
+                        
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_SystemUtils
+target_link_libraries(ERS_CLASS_LuaJITInterpreterIntegration
+    LuaJIT
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_SystemUtils
-
-    ERS_InputOutputSubsystem
-    ERS_FramerateManager
-
+target_link_libraries(ERS_CLASS_LuaJITInterpreterIntegration
     ERS_LoggingSystem
-    ERS_HardwareInformation
-
-    #ERS_CLASS_PythonInterpreterIntegration
-    ERS_CLASS_LuaJITInterpreterIntegration
-
-    ERS_STRUCT_RendererSettings
-
     )
 
-
-target_include_directories(ERS_STRUCT_SystemUtils PUBLIC ./)
+target_include_directories(ERS_CLASS_LuaJITInterpreterIntegration PUBLIC ./)

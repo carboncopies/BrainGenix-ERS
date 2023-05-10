@@ -198,7 +198,10 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_RendererSettings)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ShaderUniformData)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ModelImportOptions)
 
+
 #add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_PythonInterpreterIntegration)
+add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_LuaJITInterpreterIntegration)
+
 
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_SceneLoader)
 add_subdirectory(${SRC_DIR}/Core/Loader/ERS_ShaderLoader)
@@ -245,7 +248,7 @@ target_link_libraries(${PROJECT_NAME}
     ERS_LocalConfigLoader
 
     ERS_GetExecutablePath
-
+    ERS_CLASS_LuaJITInterpreterIntegration
     ERS_HardwareInformation
    # ERS_CLASS_PythonInterpreterIntegration
     ERS_ArgumentParser
@@ -272,5 +275,3 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})
 
 # Run Configuration On EditorAssetBundle
 include(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/EditorAssetsBundle.cmake)
-
-

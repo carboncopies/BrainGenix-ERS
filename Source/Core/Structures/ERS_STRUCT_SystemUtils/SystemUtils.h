@@ -11,9 +11,11 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
+
 #include <LoggingSystem.h>
 #include <HardwareInformation.h>
 //#include <PythonInterpreterIntegration.h>
+#include <ERS_CLASS_LuaJITInterpreterIntegration.h>
 
 
 #include <RendererSettings.h>
@@ -42,7 +44,8 @@ struct ERS_STRUCT_SystemUtils {
     std::unique_ptr<ERS_InputOutputSubsystem> ERS_IOSubsystem_; /**<Pointer To ERS Input Output Subsystem*/
     std::unique_ptr<ERS_CLASS_FramerateManager> FramerateManager_; /**<Pointer to framerate subsystem*/
     std::unique_ptr<ERS_HardwareInformation> ERS_HardwareInformation_; /**<Pointer to the hardware informaton class instance*/
-  //  std::unique_ptr<ERS_CLASS_PythonInterpreterIntegration> ERS_CLASS_PythonInterpreterIntegration_; /**<Pointer to the class integrating the python interpreter*/
+   // std::unique_ptr<ERS_CLASS_PythonInterpreterIntegration> ERS_CLASS_PythonInterpreterIntegration_; /**<Pointer to the class integrating the python interpreter*/
+    std::unique_ptr<ERS_CLASS_LuaJITInterpreterIntegration> ERS_CLASS_LuaJITInterpreterIntegration_; /**<Pointer to the class integrating the LuaJIT interpreter*/
 
     std::unique_ptr<ERS_STRUCT_RendererSettings> RendererSettings_; /**<Contains settings to be used by the renderer class, Automatically updates the renderer when this struct is updated.*/
 
