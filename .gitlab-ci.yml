@@ -22,6 +22,10 @@ variables:
 
   PLATFORM_BUILD_PREAMBLE: "ERS_$CI_COMMIT_SHORT_SHA"
 
+  # Ensure that submodules are cloned for CI job
+  GIT_SUBMODULE_STRATEGY: recursive
+
+
 stages:          # List of stages for jobs, and their order of execution
   - Build
   - Platform Build Testing
