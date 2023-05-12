@@ -1,7 +1,6 @@
 ########################################################################
 # This file is part of the BrainGenix-ERS Environment Rendering System #
 ########################################################################
-set(BG_ENABLE_TESTS true)
 
 # Configure Library Settings (MAINTAINERS: EDIT THIS SECTION)
 set(LIBRARY_NAME "ERS_ArgumentParser")

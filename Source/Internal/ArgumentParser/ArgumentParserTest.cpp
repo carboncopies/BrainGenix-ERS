@@ -6,7 +6,7 @@
 
 // Your gtest code here...
 
-TEST_F(ArgumentParserTest, ParseArguments) {
+TEST(ArgumentParserTest, ParseArguments) {
     // Arrange
     const int argc = 6;
     char* argv[argc] = {"./program", "-input", "file.txt", "-output", "output.txt", "-verbose"};
