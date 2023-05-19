@@ -1,6 +1,7 @@
 #include "ArgumentParser.h"
 #include "ERS_LoggingSystem.h"
 #include "gtest/gtest.h"
+#include "yaml-cpp/yaml.h" 
 
 namespace BrainGenix {
 namespace ERS {
@@ -12,7 +13,8 @@ protected:
     ArgumentParser* parser;
 
     void SetUp() override {
-        Logger = new ERS_LoggingSystem();
+        YAML::Node config = YAML::Load("{}"); // create an empty YAML node
+        Logger = new ERS_LoggingSystem(config);
         parser = new ArgumentParser(Logger);
     }
 
@@ -54,7 +56,8 @@ TEST_F(ArgumentParserTest, TestParseArgumentsWithUnevenArgs) {
     ASSERT_FALSE(result);
 }
 
+// Rest of the test cases...
+
 } // Close Namespace: Module
 } // Close Namespace: ERS
 } // Close Namespace: BrainGenix
-
