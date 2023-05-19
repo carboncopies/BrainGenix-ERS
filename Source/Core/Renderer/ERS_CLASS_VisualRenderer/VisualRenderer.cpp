@@ -109,7 +109,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
 
     RunTime_ = glfwGetTime() - GameStartTime_;
-   // SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->UpdateSystemInfoData(RunTime_);
+   SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->UpdateSystemInfoData(RunTime_);
+
 
 
     // Iterate Through Viewports
@@ -270,16 +271,16 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 long ScriptIndex = Target->AttachedScriptIndexes_[x];
                 std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
 
-                /*bool Status;
-                //if (x == (unsigned long)SelectedScript_) {
-                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteSceneCameraScript(Code, Target, DebugLog_);
+                bool Status;
+                if (x == (unsigned long)SelectedScript_) {
+                    Status = SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->ExecuteSceneCameraScript(Code, Target, DebugLog_);
                 } else {
-                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteSceneCameraScript(Code, Target);
+                    //Status = SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->ExecuteSceneCameraScript(Code, Target);
                 }
 
                 if (!Status) {
                     IsEditorMode_ = true;
-                }*/
+                }
             }
         }
 
@@ -287,9 +288,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
     // Reset Selected Script
     SelectedScript_ = -1;
-
-    
-
 
 
 }
