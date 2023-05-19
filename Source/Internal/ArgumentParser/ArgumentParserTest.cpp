@@ -1,27 +1,60 @@
-//======================================================================//
-// This file is part of the BrainGenix-ERS Environment Rendering System //
-//======================================================================//
+#include "ArgumentParser.h"
+#include "ERS_LoggingSystem.h"
+#include "gtest/gtest.h"
 
-#include <ArgumentParserTest.h>
+namespace BrainGenix {
+namespace ERS {
+namespace Module {
 
-// Your gtest code here...
+class ArgumentParserTest : public ::testing::Test {
+protected:
+    ERS_LoggingSystem* Logger;
+    ArgumentParser* parser;
 
-TEST(ArgumentParserTest, ParseArguments) {
-    // Arrange
-    const int argc = 6;
-    char* argv[argc] = {"./program", "-input", "file.txt", "-output", "output.txt", "-verbose"};
-    const std::vector<std::pair<std::string, std::string>> expectedPairs = {
-        {"input", "file.txt"},
-        {"output", "output.txt"},
-        {"verbose", ""}
-    };
-    const std::string expectedString = "-input file.txt -output output.txt -verbose ";
+    void SetUp() override {
+        Logger = new ERS_LoggingSystem();
+        parser = new ArgumentParser(Logger);
+    }
 
-    // Act
-    const bool result = parser->ParseArguments(argc, argv);
+    void TearDown() override {
+        delete parser;
+        delete Logger;
+    }
+};
 
-    // Assert
-    EXPECT_TRUE(result);
-    EXPECT_EQ(parser->GetArgumentString(), expectedString);
-    EXPECT_EQ(parser->GetArgumentPairs(), expectedPairs);
+TEST_F(ArgumentParserTest, TestGetArgumentString) {
+    const int argc = 3;
+    char* argv[argc] = {"program", "-arg1", "value1"};
+    parser->ParseArguments(argc, argv);
+    ASSERT_EQ(parser->GetArgumentString(), "program -arg1 value1 ");
 }
+
+TEST_F(ArgumentParserTest, TestGetArgumentPairs) {
+    const int argc = 3;
+    char* argv[argc] = {"program", "-arg1", "value1"};
+    parser->ParseArguments(argc, argv);
+
+    std::vector<std::pair<std::string, std::string>> argPairs = parser->GetArgumentPairs();
+    ASSERT_EQ(argPairs.size(), 1);
+    ASSERT_EQ(argPairs[0].first, "arg1");
+    ASSERT_EQ(argPairs[0].second, "value1");
+}
+
+TEST_F(ArgumentParserTest, TestParseArgumentsWithoutLeadingDash) {
+    const int argc = 3;
+    char* argv[argc] = {"program", "arg1", "value1"};
+    bool result = parser->ParseArguments(argc, argv);
+    ASSERT_FALSE(result);
+}
+
+TEST_F(ArgumentParserTest, TestParseArgumentsWithUnevenArgs) {
+    const int argc = 4;
+    char* argv[argc] = {"program", "-arg1", "value1", "-arg2"};
+    bool result = parser->ParseArguments(argc, argv);
+    ASSERT_FALSE(result);
+}
+
+} // Close Namespace: Module
+} // Close Namespace: ERS
+} // Close Namespace: BrainGenix
+

@@ -12,4 +12,3 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ArgumentParser.h>
 
-TEST_F(ArgumentParserTest, ParseArguments);
