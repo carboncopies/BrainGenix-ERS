@@ -1,5 +1,4 @@
 #include "ArgumentParser.h"
-#include "ERS_LoggingSystem.h"
 #include "gtest/gtest.h"
 #include "yaml-cpp/yaml.h" 
 
