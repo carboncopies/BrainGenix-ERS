@@ -44,6 +44,6 @@ if (${BG_ENABLE_TESTS})
     target_link_libraries(${LIBRARY_TEST_EXECUTABLE} ${LIBRARY_NAME} GTest::gtest_main )
 
     # Discover tests
-    # gtest_discover_tests(${LIBRARY_TEST_EXECUTABLE} )
+    gtest_discover_tests(${LIBRARY_TEST_EXECUTABLE} )
 
 endif()
