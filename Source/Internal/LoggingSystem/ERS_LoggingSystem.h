@@ -17,6 +17,8 @@
 #include <mutex>
 #include <fstream>
 #include <ctime>
+#include <chrono>
+#include <sstream>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -44,14 +46,18 @@ private:
     bool EnableLogFile_            = true; /**Enables or disables saving logs to a file locally*/
     std::string LogFilePathPrefix_ = "";   /**Path prefix for log file, is relative to the working directory ers is run with*/
     std::ofstream FileStream_;             /**Filestream used to write the log to disk, if not enabled this will never be touched at runtime*/
+    std::string LogFilePath_;
 
 
     int LogLevelTargetWidth = 6;
     int LogTimeTargetWidth = 19;
     const char* InsertString = "                                                         ";
     
+    std::vector<std::string> LogBuffer_; // New buffer to store log messages
+    std::mutex LogBufferMutex_; // Mutex to synchronize access to the log buffer
     std::mutex LogMutex_; /**<Used to ensure thread safety during vector operations*/
-
+    const int WriteThreshold_ = 10;
+    int CurrentMessages_;
 
     std::map<int, ERS_RGBColor> ColorLookup_; /*!< Lookup for converting log level to RGB values (stored in RGBColor struct). Populated based on values stored in Config.yaml */
     std::map<int, std::string> LogNameLookup_; /*!< Lookup for converting log level to name of log level (See Config.yaml for values). */
@@ -108,8 +114,11 @@ public:
     ~ERS_LoggingSystem();
 
 
+    void CreateLogFile();
 
+    std::string GetFormattedTime();
 
+   std::string GetLogLevelString(int LogLevel);
     /**
      * @brief Overload allowing the user to enable/disable the log by passing in a bool to the enable param
      * 
@@ -127,6 +136,10 @@ public:
      * @param Enable 
      */
     void Log(const char* LogMessage, int LogLevel=5, bool Enable=true);
+
+    void LogPerformanceTest();
+
+    void FlushLogBuffer();
 
 };
 

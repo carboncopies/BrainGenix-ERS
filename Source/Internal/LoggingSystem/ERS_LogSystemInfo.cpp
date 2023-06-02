@@ -33,5 +33,5 @@ void ERS_LogSystemInfo(ERS_LoggingSystem* Logger) {
     Logger->Log(std::string("Host OS: ")                       + ERS_HOST_OS_NAME,       4);
     Logger->Log(std::string("Host OS Version: ")               + ERS_HOST_OS_VERSION,    4);
     Logger->Log(std::string("Host Processor Architecture:  ")  + ERS_HOST_PROCESSOR,     4);
-
+    //Logger->LogPerformanceTest();
 }
