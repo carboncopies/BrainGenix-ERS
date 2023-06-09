@@ -275,7 +275,7 @@ target_link_libraries(${PROJECT_NAME}
     ERS_STRUCT_RendererSettings
 
     Renderer
-)
+ )
 target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})
 
 # Run Configuration On EditorAssetBundle
