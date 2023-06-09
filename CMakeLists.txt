@@ -258,7 +258,7 @@ target_link_libraries(${PROJECT_NAME}
    # ERS_CLASS_PythonInterpreterIntegration
     ERS_ArgumentParser
 
-    ERS_SceneManager
+    ERS_SceneManagerFile 
     ERS_ModelLoader
     ERS_SceneLoader  
     ERS_ModelWriter
