@@ -8,11 +8,11 @@
 #include <vector>
 #include <string>
 #include <memory>
-//#include <chrono>
+#include <chrono>
 #include <iostream>
-//#include <algorithm>
+#include <algorithm>
 #include <sstream>
-//#include <iterator>
+#include <iterator>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <lua.hpp>
@@ -58,9 +58,63 @@ public:
      * 
      */
     void Test_Script();
-    void UpdateSystemInfoData(double RunTime);
+
+
+     /**
+     * @brief Writes to the target error handling string if there's a pointer passed in.
+     * 
+     * @param Target 
+     * @param LineNumber 
+     * @param Error 
+     */
     void ErrorHandle(std::vector<std::string>* Target, unsigned long LineNumber, std::string Error);
-    bool ExecuteSceneCameraScript(std::string ScriptSource, ERS_STRUCT_SceneCamera* Camera, std::vector<std::string>* ErrorMessageString);
+
+    /**
+     * @brief Updates info sent to system info parts of the scripts. 
+     * 
+     * @param PlayTime 
+     */
+    void UpdateSystemInfoData(double PlayTime);
+
+
+    /**
+     * @brief Runs a script attached to a model object
+     * 
+     */
+    bool ExecuteModelScript(std::string ScriptSource, ERS_STRUCT_Model* Model, std::vector<std::string>* ErrorMessageString = nullptr);
+
+    /**
+     * @brief Runs a script attached to a model object
+     * 
+     */
+    bool ExecuteSceneCameraScript(std::string ScriptSource, ERS_STRUCT_SceneCamera* Camera, std::vector<std::string>* ErrorMessageString = nullptr);
+
+    /**
+     * @brief Runs a script attached to a point light
+     * 
+     */
+    bool ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* PointLight, std::vector<std::string>* ErrorMessageString = nullptr);
+
+
+    /**
+     * @brief Runs a script attached to a directional light
+     * 
+     */
+    bool ExecuteDirectionalLightScript(std::string ScriptSource, ERS_STRUCT_DirectionalLight* DirectionalLight, std::vector<std::string>* ErrorMessageString = nullptr);
+
+
+    /**
+     * @brief Runs a script attached to a spot light
+     * 
+     */
+    bool ExecuteSpotLightScript(std::string ScriptSource, ERS_STRUCT_SpotLight* SpotLight, std::vector<std::string>* ErrorMessageString = nullptr);
+
+
+    /**
+     * @brief Provides access to systeminfo data
+     * 
+     */
+    void SetSystemInfoData(lua_State* L);
 
 
 };
