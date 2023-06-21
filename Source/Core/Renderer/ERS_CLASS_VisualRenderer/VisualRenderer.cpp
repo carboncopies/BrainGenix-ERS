@@ -110,6 +110,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
     RunTime_ = glfwGetTime() - GameStartTime_;
    SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->UpdateSystemInfoData(RunTime_);
+   //SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->SetSystemInfoData(lua_State* L);
+
 
 
 
@@ -175,16 +177,16 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 long ScriptIndex = Model->AttachedScriptIndexes_[x];
                 std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
 
-              /*  bool Status;
+              bool Status;
                 if (x == (unsigned long)SelectedScript_) {
-                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, Model, DebugLog_);
+                    Status = SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->ExecuteModelScript(Code, Model, DebugLog_);
                 } else {
-                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteModelScript(Code, Model);
+                    Status = SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->ExecuteModelScript(Code, Model);
                 }
 
                 if (!Status) {
                     IsEditorMode_ = true;
-                }*/
+                }
             }
         }
 
@@ -199,16 +201,16 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 long ScriptIndex = Target->AttachedScriptIndexes_[x];
                 std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
 
-              /*  bool Status;
+                bool Status;
                   if (x == (unsigned long)SelectedScript_) {
-                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecutePointLightScript(Code, Target, DebugLog_);
+                    Status = SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->ExecutePointLightScript(Code, Target, DebugLog_);
                 } else {
-                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecutePointLightScript(Code, Target);
+                    Status = SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->ExecutePointLightScript(Code, Target);
                 }
 
                 if (!Status) {
                     IsEditorMode_ = true;
-                }*/
+                }
             }
         }
 
@@ -223,16 +225,16 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 long ScriptIndex = Target->AttachedScriptIndexes_[x];
                 std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
 
-               /* bool Status;
+               bool Status;
                 if (x == (unsigned long)SelectedScript_) {
-                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteDirectionalLightScript(Code, Target, DebugLog_);
+                    Status = SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->ExecuteDirectionalLightScript(Code, Target, DebugLog_);
                 } else {
-                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteDirectionalLightScript(Code, Target);
+                    Status = SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->ExecuteDirectionalLightScript(Code, Target);
                 }
 
                 if (!Status) {
                     IsEditorMode_ = true;
-                }*/
+                }
             }
         }
 
@@ -247,16 +249,16 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 long ScriptIndex = Target->AttachedScriptIndexes_[x];
                 std::string Code = ProjectUtils_->ProjectManager_->Project_.Scripts[ScriptIndex].Code_;
 
-              /*  bool Status;
+              bool Status;
                 if (x == (unsigned long)SelectedScript_) {
-                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteSpotLightScript(Code, Target, DebugLog_);
+                    Status = SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->ExecuteSpotLightScript(Code, Target, DebugLog_);
                 } else {
-                    Status = SystemUtils_->ERS_CLASS_PythonInterpreterIntegration_->ExecuteSpotLightScript(Code, Target);
+                    Status = SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->ExecuteSpotLightScript(Code, Target);
                 }
 
                 if (!Status) {
                     IsEditorMode_ = true;
-                }*/
+                }
             }
         }
 
@@ -275,7 +277,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
                 if (x == (unsigned long)SelectedScript_) {
                     Status = SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->ExecuteSceneCameraScript(Code, Target, DebugLog_);
                 } else {
-                    //Status = SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->ExecuteSceneCameraScript(Code, Target);
+                    Status = SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->ExecuteSceneCameraScript(Code, Target);
                 }
 
                 if (!Status) {
