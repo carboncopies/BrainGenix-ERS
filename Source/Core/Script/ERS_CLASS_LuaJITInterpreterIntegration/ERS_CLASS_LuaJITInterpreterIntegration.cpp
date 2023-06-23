@@ -55,6 +55,7 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
 
+    SetSystemInfoData(L);
 
     // Set system parameters
     lua_pushnumber(L, Camera->Pos_.x);
@@ -111,6 +112,7 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
 
+    SetSystemInfoData(L);
 
     // Set system parameters
     lua_pushnumber(L, Model->ModelPosition.x);
@@ -171,6 +173,7 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecutePointLightScript(std::string
 lua_State* L = luaL_newstate();
     luaL_openlibs(L);
 
+    SetSystemInfoData(L);
 
     // Set system parameters
     lua_pushnumber(L, PointLight->Pos.x);
@@ -228,6 +231,7 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteDirectionalLightScript(std::
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
 
+    SetSystemInfoData(L);
 
     // Set system parameters
     lua_pushnumber(L, DirectionalLight->Pos.x);
@@ -294,9 +298,10 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteDirectionalLightScript(std::
 }
 
 bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteSpotLightScript(std::string ScriptSource, ERS_STRUCT_SpotLight* SpotLight, std::vector<std::string>* ErrorMessageString) {
-lua_State* L = luaL_newstate();
+    lua_State* L = luaL_newstate();
     luaL_openlibs(L);
 
+    SetSystemInfoData(L);
 
     // Set system parameters
     lua_pushnumber(L, SpotLight->Pos.x);
@@ -378,7 +383,7 @@ void ERS_CLASS_LuaJITInterpreterIntegration::UpdateSystemInfoData(double RunTime
 
 void ERS_CLASS_LuaJITInterpreterIntegration::SetSystemInfoData(lua_State* L) {
     // Set System Info Module
-     lua_getglobal(L, "require");
+    lua_getglobal(L, "require");
     lua_pushstring(L, "SystemInfo");
     lua_call(L, 1, 1);
     lua_setglobal(L, "SystemInfo");
