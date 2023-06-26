@@ -21,7 +21,7 @@ target_link_libraries(ERS_ExternalModelLoader
     yaml-cpp
     glm
     assimp::assimp
-    FreeImage
+    freeimage::FreeImage
     Lucifer
     ghc_filesystem
     )

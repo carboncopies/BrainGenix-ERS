@@ -5,6 +5,7 @@
   "dependencies": [
     "yaml-cpp",
     "assimp",
-    "freeimage"
+    "freeimage",
+    "meshoptimizer"
   ]
 }
