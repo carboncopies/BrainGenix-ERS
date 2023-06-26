@@ -25,6 +25,8 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 
 
+# Setup vcpkg script with CMake (note: should be placed before project() call)
+set(CMAKE_TOOLCHAIN_FILE ${LIB_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake CACHE STRING "Vcpkg toolchain file")
 
 
 
@@ -53,16 +55,23 @@ endif()
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Add Libraries
+message(STATUS "Finding yaml-cpp Package")
+find_package(yaml-cpp CONFIG REQUIRED)
+
+message(STATUS "Finding assimp Package")
+find_package(assimp CONFIG REQUIRED)
+
 
 # Superbuild Configuration
 message(STATUS "Superbuild Configuration:")
 
-include(${CMAKE_UTILS_DIR}/SuperBuilds/Assimp.cmake)
+# include(${CMAKE_UTILS_DIR}/SuperBuilds/Assimp.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/ThreadNamingUtils.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/OZZAnimation.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/MeshOptimizer.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/FreeImage.cmake)
-include(${CMAKE_UTILS_DIR}/SuperBuilds/YAMLCPP.cmake)
+# include(${CMAKE_UTILS_DIR}/SuperBuilds/YAMLCPP.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/Lucifer.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
 

@@ -1,0 +1,9 @@
+{
+  "name": "braingenix-ers",
+  "version-string": "0.4.1",
+  "license": "AGPL-3.0-or-later",
+  "dependencies": [
+    "yaml-cpp",
+    "assimp"
+  ]
+}
