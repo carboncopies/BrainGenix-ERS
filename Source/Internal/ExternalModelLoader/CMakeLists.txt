@@ -23,7 +23,7 @@ target_link_libraries(ERS_ExternalModelLoader
     assimp::assimp
     freeimage::FreeImage
     Lucifer
-    ghc_filesystem
+    ghcFilesystem::ghc_filesystem
     )
 
 # Link Internal Libs

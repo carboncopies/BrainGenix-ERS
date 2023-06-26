@@ -21,7 +21,7 @@ set_property(TARGET GUI_Window_ImportModelDirectory PROPERTY CXX_STANDARD 17)
 target_link_libraries(GUI_Window_ImportModelDirectory
     IMGUI
     ImGuiFileDialog
-    ghc_filesystem
+    ghcFilesystem::ghc_filesystem
     )
 
 # Link Internal Libs

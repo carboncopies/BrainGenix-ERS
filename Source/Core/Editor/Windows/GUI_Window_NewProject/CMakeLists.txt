@@ -23,7 +23,7 @@ target_link_libraries(GUI_Window_NewProject
     glfw
     IMGUI
     ImGuiFileDialog
-    ghc_filesystem
+    ghcFilesystem::ghc_filesystem
     )
 
 # Link Internal Libs

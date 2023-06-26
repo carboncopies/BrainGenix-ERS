@@ -8,6 +8,7 @@
     "freeimage",
     "meshoptimizer",
     "glfw3",
-    "platform-folders"
+    "platform-folders",
+    "ghc-filesystem"
   ]
 }
