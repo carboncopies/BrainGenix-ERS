@@ -83,6 +83,9 @@ find_package(ghc_filesystem CONFIG REQUIRED)
 message(STATUS "Finding infoware Package")
 find_package(infoware CONFIG REQUIRED)
 
+# message(STATUS "Finding implot Package")
+# find_package(implot CONFIG REQUIRED)
+
 
 # Superbuild Configuration
 message(STATUS "Superbuild Configuration:")
