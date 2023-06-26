@@ -62,6 +62,9 @@ find_package(yaml-cpp CONFIG REQUIRED)
 message(STATUS "Finding assimp Package")
 find_package(assimp CONFIG REQUIRED)
 
+message(STATUS "Finding freeimage Package")
+find_package(freeimage CONFIG REQUIRED)
+
 
 # Superbuild Configuration
 message(STATUS "Superbuild Configuration:")
@@ -70,7 +73,7 @@ message(STATUS "Superbuild Configuration:")
 include(${CMAKE_UTILS_DIR}/SuperBuilds/ThreadNamingUtils.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/OZZAnimation.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/MeshOptimizer.cmake)
-include(${CMAKE_UTILS_DIR}/SuperBuilds/FreeImage.cmake)
+# include(${CMAKE_UTILS_DIR}/SuperBuilds/FreeImage.cmake)
 # include(${CMAKE_UTILS_DIR}/SuperBuilds/YAMLCPP.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/Lucifer.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
