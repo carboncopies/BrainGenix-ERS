@@ -71,6 +71,10 @@ find_package(freeimage CONFIG REQUIRED)
 message(STATUS "Finding meshoptimizer Package")
 find_package(meshoptimizer CONFIG REQUIRED)
 
+message(STATUS "Finding glfw3 Package")
+find_package(glfw3 CONFIG REQUIRED)
+
+
 
 # Superbuild Configuration
 message(STATUS "Superbuild Configuration:")
@@ -113,7 +117,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGuizmo.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImPlot.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiColorTextEdit.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
+# include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Filesystem.cmake)
