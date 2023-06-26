@@ -16,7 +16,7 @@
 
 #include <ghc/filesystem.hpp>
 
-#include <platform_folders.h>
+#include <sago/platform_folders.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <GetExecutablePath.h>

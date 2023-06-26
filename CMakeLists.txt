@@ -74,6 +74,9 @@ find_package(meshoptimizer CONFIG REQUIRED)
 message(STATUS "Finding glfw3 Package")
 find_package(glfw3 CONFIG REQUIRED)
 
+message(STATUS "Finding platform-folders Package")
+find_package(platform_folders CONFIG REQUIRED)
+
 
 
 # Superbuild Configuration
@@ -122,7 +125,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
 #include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Filesystem.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/WhereAmI.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/PlatformFolders.cmake)
+# include(${CMAKE_BUILD_UTILS_DIR}/PlatformFolders.cmake)
 
 
 

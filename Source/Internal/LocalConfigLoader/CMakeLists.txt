@@ -19,7 +19,7 @@ add_library(ERS_LocalConfigLoader
 target_link_libraries(ERS_LocalConfigLoader
     yaml-cpp
     ghc_filesystem
-    platform_folders
+    sago::platform_folders
     )
 
 # Link Internal Libs
