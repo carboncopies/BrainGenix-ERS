@@ -9,6 +9,7 @@
     "meshoptimizer",
     "glfw3",
     "platform-folders",
-    "ghc-filesystem"
+    "ghc-filesystem",
+    "infoware"
   ]
 }

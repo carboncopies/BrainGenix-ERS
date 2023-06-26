@@ -80,6 +80,9 @@ find_package(platform_folders CONFIG REQUIRED)
 message(STATUS "Finding ghc-filesystem Package")
 find_package(ghc_filesystem CONFIG REQUIRED)
 
+message(STATUS "Finding infoware Package")
+find_package(infoware CONFIG REQUIRED)
+
 
 # Superbuild Configuration
 message(STATUS "Superbuild Configuration:")
@@ -112,7 +115,6 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGuizmo.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImPlot.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiColorTextEdit.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/WhereAmI.cmake)
 
 
