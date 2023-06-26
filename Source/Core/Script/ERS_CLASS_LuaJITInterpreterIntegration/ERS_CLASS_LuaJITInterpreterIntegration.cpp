@@ -56,7 +56,6 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     luaL_openlibs(L);
     SetSystemInfoData(L);
 
-
     // Set system parameters
     lua_pushnumber(L, Camera->Pos_.x);
     lua_setglobal(L, "PosX");
@@ -112,7 +111,6 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
     SetSystemInfoData(L);
-
 
     // Set system parameters
     lua_pushnumber(L, Model->ModelPosition.x);
@@ -174,7 +172,6 @@ lua_State* L = luaL_newstate();
     luaL_openlibs(L);
     SetSystemInfoData(L);
 
-
     // Set system parameters
     lua_pushnumber(L, PointLight->Pos.x);
     lua_setglobal(L, "PosX");
@@ -231,8 +228,6 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteDirectionalLightScript(std::
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
     SetSystemInfoData(L);
-
-
 
     // Set system parameters
     lua_pushnumber(L, DirectionalLight->Pos.x);
@@ -299,11 +294,9 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteDirectionalLightScript(std::
 }
 
 bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteSpotLightScript(std::string ScriptSource, ERS_STRUCT_SpotLight* SpotLight, std::vector<std::string>* ErrorMessageString) {
-lua_State* L = luaL_newstate();
+    lua_State* L = luaL_newstate();
     luaL_openlibs(L);
     SetSystemInfoData(L);
-
-
 
     // Set system parameters
     lua_pushnumber(L, SpotLight->Pos.x);
@@ -384,18 +377,17 @@ void ERS_CLASS_LuaJITInterpreterIntegration::UpdateSystemInfoData(double RunTime
 
 
 void ERS_CLASS_LuaJITInterpreterIntegration::SetSystemInfoData(lua_State* L) {
-    // Set System Info Module
-     
+  
   // Set Game Time
   
-  lua_pushnumber(L, RunTime_);
+    lua_pushnumber(L, RunTime_);
     lua_setglobal(L, "GameTime");
 
   // Get System Time
-  auto Clock = std::chrono::system_clock::now();
-  double UnixEpoch = std::chrono::duration_cast<std::chrono::seconds>(Clock.time_since_epoch()).count();
+    auto Clock = std::chrono::system_clock::now();
+    double UnixEpoch = std::chrono::duration_cast<std::chrono::seconds>(Clock.time_since_epoch()).count();
 
   // Set System Time
-  lua_pushnumber(L, UnixEpoch);
-  lua_setglobal(L, "SystemTime");
+    lua_pushnumber(L, UnixEpoch);
+    lua_setglobal(L, "SystemTime");
 }
