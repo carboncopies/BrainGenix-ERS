@@ -34,3 +34,6 @@
 [submodule "Sandbox/IOSystemTest"]
 	path = Sandbox/IOSystemTest
 	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/IOSystemTest
+[submodule "ThirdParty/vcpkg"]
+	path = ThirdParty/vcpkg
+	url = https://github.com/Microsoft/vcpkg
