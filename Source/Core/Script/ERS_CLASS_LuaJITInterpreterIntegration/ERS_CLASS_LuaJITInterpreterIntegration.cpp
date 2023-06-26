@@ -54,6 +54,7 @@ void ERS_CLASS_LuaJITInterpreterIntegration::ErrorHandle(std::vector<std::string
 bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteSceneCameraScript(std::string ScriptSource, ERS_STRUCT_SceneCamera* Camera, std::vector<std::string>* ErrorMessageString) {
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
+    SetSystemInfoData(L);
 
 
     // Set system parameters
@@ -110,6 +111,7 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteSceneCameraScript(std::strin
 
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
+    SetSystemInfoData(L);
 
 
     // Set system parameters
@@ -170,6 +172,7 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteSceneCameraScript(std::strin
 bool ERS_CLASS_LuaJITInterpreterIntegration::ExecutePointLightScript(std::string ScriptSource, ERS_STRUCT_PointLight* PointLight, std::vector<std::string>* ErrorMessageString) {
 lua_State* L = luaL_newstate();
     luaL_openlibs(L);
+    SetSystemInfoData(L);
 
 
     // Set system parameters
@@ -227,6 +230,8 @@ lua_State* L = luaL_newstate();
 bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteDirectionalLightScript(std::string ScriptSource, ERS_STRUCT_DirectionalLight* DirectionalLight, std::vector<std::string>* ErrorMessageString) {
     lua_State* L = luaL_newstate();
     luaL_openlibs(L);
+    SetSystemInfoData(L);
+
 
 
     // Set system parameters
@@ -296,6 +301,8 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteDirectionalLightScript(std::
 bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteSpotLightScript(std::string ScriptSource, ERS_STRUCT_SpotLight* SpotLight, std::vector<std::string>* ErrorMessageString) {
 lua_State* L = luaL_newstate();
     luaL_openlibs(L);
+    SetSystemInfoData(L);
+
 
 
     // Set system parameters
@@ -378,18 +385,17 @@ void ERS_CLASS_LuaJITInterpreterIntegration::UpdateSystemInfoData(double RunTime
 
 void ERS_CLASS_LuaJITInterpreterIntegration::SetSystemInfoData(lua_State* L) {
     // Set System Info Module
-     lua_getglobal(L, "require");
-    lua_pushstring(L, "SystemInfo");
-    lua_call(L, 1, 1);
-    lua_setglobal(L, "SystemInfo");
-
-    // Set GameTime
-    lua_pushnumber(L, RunTime_);
+     
+  // Set Game Time
+  
+  lua_pushnumber(L, RunTime_);
     lua_setglobal(L, "GameTime");
 
-    // Set SystemTime
-    auto Clock = std::chrono::system_clock::now();
-    long double UnixEpoch = std::chrono::duration_cast<std::chrono::seconds>(Clock.time_since_epoch()).count();
-    lua_pushnumber(L, UnixEpoch);
-    lua_setglobal(L, "SystemTime");
+  // Get System Time
+  auto Clock = std::chrono::system_clock::now();
+  double UnixEpoch = std::chrono::duration_cast<std::chrono::seconds>(Clock.time_since_epoch()).count();
+
+  // Set System Time
+  lua_pushnumber(L, UnixEpoch);
+  lua_setglobal(L, "SystemTime");
 }
