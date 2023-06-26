@@ -84,18 +84,10 @@ find_package(ghc_filesystem CONFIG REQUIRED)
 # Superbuild Configuration
 message(STATUS "Superbuild Configuration:")
 
-# include(${CMAKE_UTILS_DIR}/SuperBuilds/Assimp.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/ThreadNamingUtils.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/OZZAnimation.cmake)
-# include(${CMAKE_UTILS_DIR}/SuperBuilds/MeshOptimizer.cmake)
-# include(${CMAKE_UTILS_DIR}/SuperBuilds/FreeImage.cmake)
-# include(${CMAKE_UTILS_DIR}/SuperBuilds/YAMLCPP.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/Lucifer.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
-
-
-
-
 
 
 
@@ -111,9 +103,7 @@ include(${CMAKE_SCRIPTS_DIR}/CompileTimeStamp/CompileTimeStamp.cmake)
 
 
 # Include Package Addition Scripts
-# include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
-#include(${CMAKE_BUILD_UTILS_DIR}/Python.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
@@ -122,12 +112,8 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGuizmo.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImPlot.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiColorTextEdit.cmake)
-# include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
-#include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
-# include(${CMAKE_BUILD_UTILS_DIR}/Filesystem.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/WhereAmI.cmake)
-# include(${CMAKE_BUILD_UTILS_DIR}/PlatformFolders.cmake)
 
 
 
