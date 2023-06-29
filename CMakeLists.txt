@@ -6,10 +6,6 @@ cmake_minimum_required (VERSION 3.1...3.21)
 option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace information or not" ON)
 
 
-# Set Non-User Changable Configuration Data (Used during build process )
-option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You probably don't want to change this one - used internally
-
-
 # Set Dirs
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
@@ -29,26 +25,11 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 set(CMAKE_TOOLCHAIN_FILE ${LIB_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake CACHE STRING "Vcpkg toolchain file")
 
 
-
-
-
-# Superbuild Configuration
-if (USE_SUPERBUILD)
-
-  project (SUPERBUILD NONE)
-
-  # Add Superbuild Runner
-  include(${CMAKE_UTILS_DIR}/SuperBuildMaster.cmake)
-  return()
-else()
-
-  project(
-      "BrainGenix-ERS"
-      VERSION "0.4.0"
-      LANGUAGES CXX
-  )
-
-endif()
+project(
+    "BrainGenix-ERS"
+    VERSION "0.4.0"
+    LANGUAGES CXX
+)
 
 
 
@@ -84,13 +65,6 @@ message(STATUS "Finding infoware Package")
 find_package(infoware CONFIG REQUIRED)
 
 
-# Superbuild Configuration
-message(STATUS "Superbuild Configuration:")
-
-# include(${CMAKE_UTILS_DIR}/SuperBuilds/Lucifer.cmake)
-# include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
-
-
 
 # Include Util CMake Scripts
 include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
@@ -119,7 +93,6 @@ include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 
 
 
-
 # ADD INTERNAL SUBDIRECTORIES
 ERSBuildLogger(${Green} "Configuring Internal Libraries")
 
@@ -144,8 +117,8 @@ message(STATUS "Configured Internal Library 'LocalConfigLoader'")
 add_subdirectory(${SRC_DIR}/Internal/GetExecutablePath)
 message(STATUS "Configured Internal Library 'GetExecutablePath'")
 
-
 ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
+
 
 
 # ADD CORE SUBDIRECTORIES
@@ -197,8 +170,6 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_RendererSettings)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ShaderUniformData)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ModelImportOptions)
 
-
-#add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_PythonInterpreterIntegration)
 add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_LuaJITInterpreterIntegration)
 
 
@@ -217,28 +188,21 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Core Subsystems")
 # Configure Sources
 set(MAIN_SOURCES
     ${SRC_DIR}/Main.cpp
-#   ${SRC_DIR}/Main.h
+    ${SRC_DIR}/Main.h
     ${BACKWARD_ENABLE}
 )
 
 
 # Create Main Executable
-if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    ERSBuildLogger(${Blue} "Detected Platform To Be Darwin, Building Bundle")
-    include(${CMAKE_SCRIPTS_DIR}/DarwinBundle/DarwinBundle.cmake)
-else()
-    ERSBuildLogger(${Blue} "Platform Not Darwin, Building Regular Binary")
-    include(${CMAKE_SCRIPTS_DIR}/LinuxBundle/LinuxBundle.cmake)
-endif()
 
-target_link_libraries(${PROJECT_NAME}
+add_executable("ERS" ${MAIN_SOURCES})
+set(EXECUTABLE_TYPE "Binary")
+target_link_libraries("ERS"
 
     # Third Party Libs
     glad
     glfw
 
-    # Temporary -- DELETE THESE WHEN NOT TESTING HERE ANYMORE --
-    # ERS_LuaInterface
 
     # Internal Libs
     ERS_GPURequest
@@ -249,7 +213,6 @@ target_link_libraries(${PROJECT_NAME}
     ERS_GetExecutablePath
     ERS_CLASS_LuaJITInterpreterIntegration
     ERS_HardwareInformation
-   # ERS_CLASS_PythonInterpreterIntegration
     ERS_ArgumentParser
 
     ERS_SceneManager
@@ -270,7 +233,7 @@ target_link_libraries(${PROJECT_NAME}
 
     Renderer
 )
-target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})
+target_include_directories("ERS" PRIVATE ${SRC_DIR})
 
 # Run Configuration On EditorAssetBundle
 include(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/EditorAssetsBundle.cmake)
