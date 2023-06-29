@@ -10,6 +10,7 @@
     "glfw3",
     "platform-folders",
     "ghc-filesystem",
-    "infoware"
+    "infoware",
+    "lua"
   ]
 }

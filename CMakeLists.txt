@@ -65,8 +65,8 @@ find_package(assimp CONFIG REQUIRED)
 message(STATUS "Finding freeimage Package")
 find_package(freeimage CONFIG REQUIRED)
 
-# message(STATUS "Finding luajit Package")
-# find_package(LuaJIT CONFIG REQUIRED)
+message(STATUS "Finding lua Package")
+find_package(Lua REQUIRED)
 
 message(STATUS "Finding meshoptimizer Package")
 find_package(meshoptimizer CONFIG REQUIRED)
@@ -83,15 +83,12 @@ find_package(ghc_filesystem CONFIG REQUIRED)
 message(STATUS "Finding infoware Package")
 find_package(infoware CONFIG REQUIRED)
 
-# message(STATUS "Finding implot Package")
-# find_package(implot CONFIG REQUIRED)
-
 
 # Superbuild Configuration
 message(STATUS "Superbuild Configuration:")
 
 include(${CMAKE_UTILS_DIR}/SuperBuilds/Lucifer.cmake)
-include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
+# include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
 
 
 
@@ -256,7 +253,7 @@ target_link_libraries(${PROJECT_NAME}
     glfw
 
     # Temporary -- DELETE THESE WHEN NOT TESTING HERE ANYMORE --
-    ERS_LuaInterface
+    # ERS_LuaInterface
 
     # Internal Libs
     ERS_GPURequest

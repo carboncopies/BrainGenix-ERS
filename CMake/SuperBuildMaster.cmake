@@ -11,6 +11,6 @@ set (EXTRA_CMAKE_ARGS)
 
 # Include Superbuilds
 include(${CMAKE_UTILS_DIR}/SuperBuilds/Lucifer.cmake)
-include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
+# include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
 include(${CMAKE_UTILS_DIR}/SuperBuilds/ERS.cmake)
 
