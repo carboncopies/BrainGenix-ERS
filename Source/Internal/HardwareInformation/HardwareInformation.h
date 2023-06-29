@@ -13,7 +13,7 @@
 #include <infoware/pci.hpp>
 #include <infoware/gpu.hpp>
 
-#include <SetThreadName.h>
+#include <ThreadNamingUtils/SetThreadName.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <LoggingSystem.h>
