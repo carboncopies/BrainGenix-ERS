@@ -87,7 +87,7 @@ find_package(infoware CONFIG REQUIRED)
 # Superbuild Configuration
 message(STATUS "Superbuild Configuration:")
 
-include(${CMAKE_UTILS_DIR}/SuperBuilds/Lucifer.cmake)
+# include(${CMAKE_UTILS_DIR}/SuperBuilds/Lucifer.cmake)
 # include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
 
 
@@ -115,6 +115,7 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiColorTextEdit.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/WhereAmI.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ThreadNamingUtils.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 
 
 
