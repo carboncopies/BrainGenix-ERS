@@ -27,9 +27,12 @@ VCPKG_DEPS="curl zip unzip tar pkg-config autoconf flex bison"
 # glfw3 Deps
 GLFW_DEPS="libx11-dev libxrandr-dev libxinerama-dev libxcursor-dev libxi-dev"
 
+# GLUT Deps
+GLUT_DEPS="libxi-dev libgl1-mesa-dev libglu1-mesa-dev mesa-common-dev libxrandr-dev libxxf86vm-dev"
+
 
 # Install Everything
-INSTALL_COMMAND="$APT_COMMAND_PREFIX apt install $VCPKG_DEPS $COMPILER_DEPS $GLFW_DEPS -y"
+INSTALL_COMMAND="$APT_COMMAND_PREFIX apt install $VCPKG_DEPS $COMPILER_DEPS $GLFW_DEPS $GLUT_DEPS -y"
 echo "Running Install Command: $INSTALL_COMMAND"
 $INSTALL_COMMAND || exit 1
 
