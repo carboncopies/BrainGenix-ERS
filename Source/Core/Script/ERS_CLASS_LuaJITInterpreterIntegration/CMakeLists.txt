@@ -18,7 +18,7 @@ add_library(ERS_CLASS_LuaJITInterpreterIntegration
 
 # Link 3rd Party Libs
 target_link_libraries(ERS_CLASS_LuaJITInterpreterIntegration
-    LuaJIT
+    ${LUA_LIBRARIES}
     )
 
 # Link Internal Libs
@@ -30,3 +30,4 @@ target_link_libraries(ERS_CLASS_LuaJITInterpreterIntegration
     )
 
 target_include_directories(ERS_CLASS_LuaJITInterpreterIntegration PUBLIC ./)
+target_include_directories(ERS_CLASS_LuaJITInterpreterIntegration PRIVATE ${LUA_INCLUDE_DIR})

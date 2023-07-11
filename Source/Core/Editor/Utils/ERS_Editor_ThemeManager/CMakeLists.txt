@@ -20,7 +20,7 @@ set_property(TARGET ERS_Editor_ThemeManager PROPERTY CXX_STANDARD 17)
 target_link_libraries(ERS_Editor_ThemeManager
     yaml-cpp
     IMGUI
-    ghc_filesystem
+    ghcFilesystem::ghc_filesystem
     )
 
 # Link Internal Libs

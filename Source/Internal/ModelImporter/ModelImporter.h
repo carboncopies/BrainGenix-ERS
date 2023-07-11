@@ -16,7 +16,7 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
-#include <SetThreadName.h>
+#include <ThreadNamingUtils/SetThreadName.h>
 
 
 // Internal Libraries (BG convention: use <> instead of "")

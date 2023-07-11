@@ -24,7 +24,7 @@ set_property(TARGET ERS_InputOutputSubsystem PROPERTY CXX_STANDARD 17)
 # Link 3rd Party Libs
 target_link_libraries(ERS_InputOutputSubsystem
     yaml-cpp
-    ghc_filesystem
+    ghcFilesystem::ghc_filesystem
     )
 
 # Link Internal Libs
