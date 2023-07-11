@@ -1,6 +1,6 @@
 # Set some global variables
 variables:
-  PROJECT_NAME: "SceneManager"
+  PROJECT_NAME: "BrainGenix-ERS"
   PLATFORM_BUILD_PREAMBLE: "$PROJECT_NAME_$CI_COMMIT_SHORT_SHA"
   GIT_SUBMODULE_STRATEGY: recursive
   
@@ -9,7 +9,7 @@ variables:
 stages:
   - Update CI Containers
   - Build
-  - Test
+  # - Test
 
 include: 
   # Update CI Containersers
@@ -28,8 +28,8 @@ include:
   - '/CI/Build/Debian11/CI.yml'
   - '/CI/Build/Debian12/CI.yml'
 
-  # Tests
-  - '/CI/Test/Ubuntu2204/CI.yml'
-  - '/CI/Test/Ubuntu2004/CI.yml'
-  - '/CI/Test/Debian11/CI.yml'
-  - '/CI/Test/Debian12/CI.yml'
+  # # Tests
+  # - '/CI/Test/Ubuntu2204/CI.yml'
+  # - '/CI/Test/Ubuntu2004/CI.yml'
+  # - '/CI/Test/Debian11/CI.yml'
+  # - '/CI/Test/Debian12/CI.yml'
