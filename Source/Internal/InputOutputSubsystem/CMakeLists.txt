@@ -7,14 +7,14 @@
 add_library(ERS_InputOutputSubsystem
 
             # Add Source Files (.cpp)
-            "ERS_InputOutputSubsystem.cpp"
-            "ERS_AssetIndexInputOutputManager.cpp"
-            "ERS_CompareAssetIndexDelta.cpp"
+            "InputOutputSubsystem.cpp"
+            "AssetIndexInputOutputManager.cpp"
+            "CompareAssetIndexDelta.cpp"
 
             # Add Header Files (.h)
-            "ERS_InputOutputSubsystem.h"
-            "ERS_AssetIndexInputOutputManager.h"
-            "ERS_CompareAssetIndexDelta.h"
+            "InputOutputSubsystem.h"
+            "AssetIndexInputOutputManager.h"
+            "CompareAssetIndexDelta.h"
 
             ${BACKWARD_ENABLE}
 )

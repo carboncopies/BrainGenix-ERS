@@ -7,10 +7,10 @@
 add_library(ERS_FramerateManager
 
             # Add Source Files (.cpp)
-            "ERS_FramerateManager.cpp"
+            "FramerateManager.cpp"
 
             # Add Header Files (.h)
-            "ERS_FramerateManager.h"
+            "FramerateManager.h"
 
             ${BACKWARD_ENABLE}
 )

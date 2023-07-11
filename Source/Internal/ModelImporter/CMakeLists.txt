@@ -7,10 +7,10 @@
 add_library(ERS_ModelImporter
 
             # Add Source Files (.cpp)
-            "ERS_ModelImporter.cpp"
+            "ModelImporter.cpp"
 
             # Add Header Files (.h)
-            "ERS_ModelImporter.h"
+            "ModelImporter.h"
             
             ${BACKWARD_ENABLE}
             )

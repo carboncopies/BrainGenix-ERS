@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_Mesh
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_Mesh.cpp"
+            "Mesh.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_Mesh.h"
+            "Mesh.h"
             
             ${BACKWARD_ENABLE}
             )

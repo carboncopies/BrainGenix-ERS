@@ -7,10 +7,10 @@
 add_library(ERS_ControllerInputManager
 
             # Add Source Files (.cpp)
-            "ERS_ControllerInputManager.cpp"
+            "ControllerInputManager.cpp"
 
             # Add Header Files (.h)
-            "ERS_ControllerInputManager.h"
+            "ControllerInputManager.h"
 
             ${BACKWARD_ENABLE}
 )

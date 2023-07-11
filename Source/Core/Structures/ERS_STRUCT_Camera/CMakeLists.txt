@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_Camera 
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_Camera.cpp"
+            "Camera.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_Camera.h"
+            "Camera.h"
             
             ${BACKWARD_ENABLE}
             )

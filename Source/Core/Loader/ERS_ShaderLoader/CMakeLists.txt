@@ -7,10 +7,10 @@
 add_library(ERS_ShaderLoader
 
             # Add Source Files (.cpp)
-            "ERS_CLASS_ShaderLoader.cpp"
+            "ShaderLoader.cpp"
 
             # Add Header Files (.h)
-            "ERS_CLASS_ShaderLoader.h"
+            "ShaderLoader.h"
 
             ${BACKWARD_ENABLE}
             )

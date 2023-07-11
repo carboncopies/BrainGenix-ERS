@@ -7,10 +7,10 @@
 add_library(ERS_ProjectWriter
 
             # Add Source Files (.cpp)
-            "ERS_ProjectWriter.cpp"
+            "ProjectWriter.cpp"
 
             # Add Header Files (.h)
-            "ERS_ProjectWriter.h"
+            "ProjectWriter.h"
 
             ${BACKWARD_ENABLE}
             )

@@ -7,10 +7,10 @@
 add_library(ERS_VersioningSystem
 
             # Add Source Files (.cpp)
-            "ERS_Version.cpp"
+            "Version.cpp"
 
             # Add Header Files (.h)
-            "ERS_Version.h"
+            "Version.h"
             
             ${BACKWARD_ENABLE}
             )

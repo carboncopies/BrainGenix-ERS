@@ -1,0 +1,39 @@
+How to change the value of an individual component by script
+
+Step 1: Open the Script Editor
+
+    Click the Window button in the app.
+    Click Script Editor.
+
+Step 2: Create a new file and enter your script
+
+    Click Create.
+    Enter your script.
+
+For example, to change the position of a Point Light, you would enter the following script:
+Lua Script snippet:
+-------
+PosX = 1
+-------
+
+You can also include mathematical expressions in your script. For example, the following script would set the position of the Point Light to the sine of the current game time:
+Lua Script snippet:
+-------------------------
+PosX = math.sin(GameTime)
+-------------------------
+
+Step 3: Save your script
+
+    Click File.
+    Click Save.
+
+Step 4: Drag the script to the desired element
+
+    Open the Asset Manager.
+    Drag the script to the desired element (model, Point Light, or camera).
+
+Step 5: Run the script
+
+    Click F5 or go to Run from Editor from the Run in Viewpoint tab.
+    The script should run. If it doesn't, you should see an error under the Script Tools tab.
+    Press Escape or Stop from the Run in Viewpoint tab.

@@ -7,10 +7,10 @@
 add_library(ERS_SceneManager
 
             # Add Source Files (.cpp)
-            "ERS_SceneManager.cpp"
+            "SceneManager.cpp"
 
             # Add Header Files (.h)
-            "ERS_SceneManager.h"
+            "SceneManager.h"
             
             ${BACKWARD_ENABLE}
             )

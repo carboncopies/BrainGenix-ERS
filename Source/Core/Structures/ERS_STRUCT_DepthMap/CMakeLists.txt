@@ -7,10 +7,10 @@
 add_library(ERS_STRUCT_DepthMap
 
             # Add Source Files (.cpp)
-            "ERS_STRUCT_DepthMap.cpp"
+            "DepthMap.cpp"
 
             # Add Header Files (.h)
-            "ERS_STRUCT_DepthMap.h"
+            "DepthMap.h"
             
             ${BACKWARD_ENABLE}
             )

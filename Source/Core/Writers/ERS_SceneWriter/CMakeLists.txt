@@ -7,10 +7,10 @@
 add_library(ERS_SceneWriter
 
             # Add Source Files (.cpp)
-            "ERS_SceneWriter.cpp"
+            "SceneWriter.cpp"
 
             # Add Header Files (.h)
-            "ERS_SceneWriter.h"
+            "SceneWriter.h"
 
             ${BACKWARD_ENABLE}
             )
