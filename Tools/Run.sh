@@ -22,7 +22,7 @@ echo "[ERS BUILD SYSTEM] - Detected Platform To Be '${Machine}'"
 echo "[ERS BUILD SYSTEM] - Running Binary"
 if [ ${Machine} == "Linux" ]
 then
-    ./BrainGenix-ERS
+    ./ERS
 elif ${Machine} == "Mac"
 then
     open BrainGenix-ERS.app

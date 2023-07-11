@@ -21,7 +21,7 @@ target_link_libraries(Renderer
     glm
     glad
     glfw
-    FreeImage
+    freeimage::FreeImage
     )
 
 # Link Internal Libs

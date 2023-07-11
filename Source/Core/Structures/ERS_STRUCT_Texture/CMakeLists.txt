@@ -22,7 +22,7 @@ target_link_libraries(ERS_STRUCT_Texture
     glad
     glfw
     assimp::assimp
-    FreeImage
+    freeimage::FreeImage
     )
 
 # Link Internal Libs

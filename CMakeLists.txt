@@ -6,10 +6,6 @@ cmake_minimum_required (VERSION 3.1...3.21)
 option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace information or not" ON)
 
 
-# Set Non-User Changable Configuration Data (Used during build process )
-option (USE_SUPERBUILD "Whether or not a superbuild should be invoked" ON) # You probably don't want to change this one - used internally
-
-
 # Set Dirs
 set(LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ThirdParty")
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/Source")
@@ -25,50 +21,48 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 
 
+# Setup vcpkg script with CMake (note: should be placed before project() call)
+set(CMAKE_TOOLCHAIN_FILE ${LIB_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake CACHE STRING "Vcpkg toolchain file")
 
 
-
-
-
-# Superbuild Configuration
-if (USE_SUPERBUILD)
-
-  project (SUPERBUILD NONE)
-
-  # Add Superbuild Runner
-  include(${CMAKE_UTILS_DIR}/SuperBuildMaster.cmake)
-  return()
-else()
-
-  project(
-      "BrainGenix-ERS"
-      VERSION "0.4.0"
-      LANGUAGES CXX
-  )
-
-endif()
+project(
+    "BrainGenix-ERS"
+    VERSION "0.4.0"
+    LANGUAGES CXX
+)
 
 
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Add Libraries
+message(STATUS "Finding yaml-cpp Package")
+find_package(yaml-cpp CONFIG REQUIRED)
 
-# Superbuild Configuration
-message(STATUS "Superbuild Configuration:")
+message(STATUS "Finding assimp Package")
+find_package(assimp CONFIG REQUIRED)
 
-include(${CMAKE_UTILS_DIR}/SuperBuilds/Assimp.cmake)
-include(${CMAKE_UTILS_DIR}/SuperBuilds/ThreadNamingUtils.cmake)
-include(${CMAKE_UTILS_DIR}/SuperBuilds/OZZAnimation.cmake)
-include(${CMAKE_UTILS_DIR}/SuperBuilds/MeshOptimizer.cmake)
-include(${CMAKE_UTILS_DIR}/SuperBuilds/FreeImage.cmake)
-include(${CMAKE_UTILS_DIR}/SuperBuilds/YAMLCPP.cmake)
-include(${CMAKE_UTILS_DIR}/SuperBuilds/Lucifer.cmake)
-include(${CMAKE_UTILS_DIR}/SuperBuilds/LuaJIT.cmake)
+message(STATUS "Finding freeimage Package")
+find_package(freeimage CONFIG REQUIRED)
 
+message(STATUS "Finding lua Package")
+find_package(Lua REQUIRED)
 
+message(STATUS "Finding meshoptimizer Package")
+find_package(meshoptimizer CONFIG REQUIRED)
 
+message(STATUS "Finding glfw3 Package")
+find_package(glfw3 CONFIG REQUIRED)
 
+message(STATUS "Finding platform-folders Package")
+find_package(platform_folders CONFIG REQUIRED)
+
+message(STATUS "Finding ghc-filesystem Package")
+find_package(ghc_filesystem CONFIG REQUIRED)
+
+message(STATUS "Finding infoware Package")
+find_package(infoware CONFIG REQUIRED)
 
 
 
@@ -84,9 +78,7 @@ include(${CMAKE_SCRIPTS_DIR}/CompileTimeStamp/CompileTimeStamp.cmake)
 
 
 # Include Package Addition Scripts
-# include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
-#include(${CMAKE_BUILD_UTILS_DIR}/Python.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
@@ -95,30 +87,10 @@ include(${CMAKE_BUILD_UTILS_DIR}/ImGuizmo.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImPlot.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiFileDialog.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGuiColorTextEdit.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/GLFW.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/PCIIDS.cmake)
-#include(${CMAKE_BUILD_UTILS_DIR}/PyBind11.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/Filesystem.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/WhereAmI.cmake)
-include(${CMAKE_BUILD_UTILS_DIR}/PlatformFolders.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/ThreadNamingUtils.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 
-
-
-# Add LIBRARY INTERFACE SUBDIRECTORIES
-ERSBuildLogger(${Green} "Configuring Library Interfaces")
-
-add_subdirectory(${SRC_DIR}/Interface/Library/MeshOptimizerInterface)
-message(STATUS "Configured MeshOptimizer Interface")
-add_subdirectory(${SRC_DIR}/Interface/Library/LuaInterface)
-message(STATUS "Configured Lua Interface")
-
-ERSBuildLogger(${BoldGreen} "Finished Configuring Library Interfaces")
-
-
-# ADD STRUCT INTERFACE SUBDIRECTORIES
-ERSBuildLogger(${Green} "Configuring Structure Interfaces")
-
-ERSBuildLogger(${BoldGreen} "Finished Configuring Structure Interfaces")
 
 
 # ADD INTERNAL SUBDIRECTORIES
@@ -145,8 +117,8 @@ message(STATUS "Configured Internal Library 'LocalConfigLoader'")
 add_subdirectory(${SRC_DIR}/Internal/GetExecutablePath)
 message(STATUS "Configured Internal Library 'GetExecutablePath'")
 
-
 ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
+
 
 
 # ADD CORE SUBDIRECTORIES
@@ -198,8 +170,6 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_RendererSettings)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ShaderUniformData)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ModelImportOptions)
 
-
-#add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_PythonInterpreterIntegration)
 add_subdirectory(${SRC_DIR}/Core/Script/ERS_CLASS_LuaJITInterpreterIntegration)
 
 
@@ -218,28 +188,21 @@ ERSBuildLogger(${BoldGreen} "Finished Configuring Core Subsystems")
 # Configure Sources
 set(MAIN_SOURCES
     ${SRC_DIR}/Main.cpp
-#   ${SRC_DIR}/Main.h
+    ${SRC_DIR}/Main.h
     ${BACKWARD_ENABLE}
 )
 
 
 # Create Main Executable
-if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    ERSBuildLogger(${Blue} "Detected Platform To Be Darwin, Building Bundle")
-    include(${CMAKE_SCRIPTS_DIR}/DarwinBundle/DarwinBundle.cmake)
-else()
-    ERSBuildLogger(${Blue} "Platform Not Darwin, Building Regular Binary")
-    include(${CMAKE_SCRIPTS_DIR}/LinuxBundle/LinuxBundle.cmake)
-endif()
 
-target_link_libraries(${PROJECT_NAME}
+add_executable("ERS" ${MAIN_SOURCES})
+set(EXECUTABLE_TYPE "Binary")
+target_link_libraries("ERS"
 
     # Third Party Libs
     glad
     glfw
 
-    # Temporary -- DELETE THESE WHEN NOT TESTING HERE ANYMORE --
-    ERS_LuaInterface
 
     # Internal Libs
     ERS_GPURequest
@@ -250,7 +213,6 @@ target_link_libraries(${PROJECT_NAME}
     ERS_GetExecutablePath
     ERS_CLASS_LuaJITInterpreterIntegration
     ERS_HardwareInformation
-   # ERS_CLASS_PythonInterpreterIntegration
     ERS_ArgumentParser
 
     ERS_SceneManager
@@ -271,7 +233,7 @@ target_link_libraries(${PROJECT_NAME}
 
     Renderer
 )
-target_include_directories(${PROJECT_NAME} PRIVATE ${SRC_DIR})
+target_include_directories("ERS" PRIVATE ${SRC_DIR})
 
 # Run Configuration On EditorAssetBundle
 include(${CMAKE_SCRIPTS_DIR}/EditorAssetsBundle/EditorAssetsBundle.cmake)
