@@ -1,39 +1,3 @@
-[submodule "Sandbox/NewIOSystem/ThirdParty/GoogleTest"]
-	path = Sandbox/NewIOSystem/ThirdParty/GoogleTest
-	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Dependencies/googletest
-[submodule "Sandbox/GTestCMake"]
-	path = Sandbox/GTestCMake
-	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/GTestCMake
-[submodule "Sandbox/CubeMapArrayTest"]
-	path = Sandbox/CubeMapArrayTest
-	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/CubeMapArrayTest
-[submodule "Sandbox/CubeMapTest"]
-	path = Sandbox/CubeMapTest
-	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/CubeMapTest
-[submodule "Sandbox/EGLBasicTest"]
-	path = Sandbox/EGLBasicTest
-	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/EGLBasicTest
-[submodule "Sandbox/EGLGladBindingTest"]
-	path = Sandbox/EGLGladBindingTest
-	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/EGLGladBindingTest
-[submodule "Sandbox/ImageMemoryLoadTest"]
-	path = Sandbox/ImageMemoryLoadTest
-	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/ImageMemoryLoadTest
-[submodule "Sandbox/LuaJIT"]
-	path = Sandbox/LuaJIT
-	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/LuaJIT
-[submodule "Sandbox/NewImageLoaderSystem"]
-	path = Sandbox/NewImageLoaderSystem
-	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/NewImageLoaderSystem
-[submodule "Sandbox/CMakeSuperbuildTest"]
-	path = Sandbox/CMakeSuperbuildTest
-	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/CMakeSuperbuildTest
-[submodule "Sandbox/ThreadingTest"]
-	path = Sandbox/ThreadingTest
-	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/ThreadingTest
-[submodule "Sandbox/IOSystemTest"]
-	path = Sandbox/IOSystemTest
-	url = https://gitlab.braingenix.org/carboncopies/BrainGenix/Sandbox/IOSystemTest
 [submodule "ThirdParty/vcpkg"]
 	path = ThirdParty/vcpkg
 	url = https://github.com/Microsoft/vcpkg
