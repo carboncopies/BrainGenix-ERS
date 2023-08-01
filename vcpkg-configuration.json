@@ -8,7 +8,7 @@
     {
       "kind": "git",
       "repository": "https://gitlab.braingenix.org/carboncopies/BrainGenix/ERS/ERS-VCPKG-Registry",
-      "baseline": "adec600d3ba57c407a7f5dd29730cba7837099b0",
+      "baseline": "e03e68e05ae0b101c249612b54ca0c6d22192a4d",
       "packages": ["ers-iosubsystem"]
     }
   ]
