@@ -6,6 +6,7 @@
 
     "dependencies": [
       "gtest",
+      "ghc-filesystem",
       {
         "name": "vcpkg-cmake",
         "host": true
