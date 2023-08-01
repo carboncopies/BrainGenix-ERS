@@ -1,15 +1,6 @@
 {
-  "default-registry": {
-    "kind": "builtin",
-    "baseline": "4a1035927d26de8601513a0591ba99213d3bcfbc"
-  },
-
-  "registries": [
-    {
-      "kind": "git",
-      "repository": "https://gitlab.braingenix.org/carboncopies/BrainGenix/ERS/ERS-VCPKG-Registry",
-      "baseline": "e03e68e05ae0b101c249612b54ca0c6d22192a4d",
-      "packages": ["ers-iosubsystem"]
-    }
+  "overlay-ports": [
+      "Portfiles/ERS-IOSubsystem"
   ]
+
 }
