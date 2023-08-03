@@ -4,6 +4,14 @@
 ![Image](https://user-images.githubusercontent.com/49183477/193433511-1276948e-29e8-43d0-8c5e-8f87e097fec9.png)
 
 
+# Todo
+
+ - [ ] Add Logging Lib To Target Link Libs
+ - [ ] Add IOSubsystem Lib To Target Link Libs
+ - [ ] Replace Logging System With Internal VPCKG Lib
+ - [ ] Replace IOSystem With Internal VCPKG Lib
+
+
 # Feature List
 
 Here's a (mostly) up to date list of the currently implemented features.
