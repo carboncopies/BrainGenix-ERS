@@ -8,6 +8,7 @@
 // Standard Libraries (BG convention: use <> instead of "")
 #include <memory>
 #include <map>
+#include <cstring>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
