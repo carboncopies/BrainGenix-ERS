@@ -26,7 +26,7 @@ target_link_libraries(GUI_Window_ImportModelDirectory
 
 # Link Internal Libs
 target_link_libraries(GUI_Window_ImportModelDirectory
-    ERS_LoggingSystem
+    bg-common-logger
 
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils

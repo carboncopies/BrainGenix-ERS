@@ -25,7 +25,7 @@ target_link_libraries(ERS_HardwareInformation
 # Link Internal Libs
 target_link_libraries(ERS_HardwareInformation
 
-    ERS_LoggingSystem
+    bg-common-logger
 
     ERS_STRUCT_HardwareInfo
 

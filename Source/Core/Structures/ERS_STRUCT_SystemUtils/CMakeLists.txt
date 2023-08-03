@@ -25,7 +25,7 @@ target_link_libraries(ERS_STRUCT_SystemUtils
     ERS_InputOutputSubsystem
     ERS_FramerateManager
 
-    ERS_LoggingSystem
+    bg-common-logger
     ERS_HardwareInformation
 
     #ERS_CLASS_PythonInterpreterIntegration

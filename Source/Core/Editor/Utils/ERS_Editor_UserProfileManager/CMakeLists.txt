@@ -23,7 +23,7 @@ target_link_libraries(ERS_Editor_UserProfileManager
 
 # Link Internal Libs
 target_link_libraries(ERS_Editor_UserProfileManager
-    ERS_LoggingSystem
+    bg-common-logger
     )
 
 target_include_directories(ERS_Editor_UserProfileManager PUBLIC ./)

@@ -207,7 +207,7 @@ target_link_libraries("ERS"
 
     # Internal Libs
     ERS_GPURequest
-    ERS_LoggingSystem
+    bg-common-logger
     ERS_ModelImporter
     ERS_LocalConfigLoader
 

@@ -41,7 +41,7 @@ target_link_libraries(ERS_SceneLoader
 
     ERS_ModelLoader
 
-    ERS_LoggingSystem
+    bg-common-logger
 
     ERS_STRUCT_Model
     ERS_STRUCT_Scene

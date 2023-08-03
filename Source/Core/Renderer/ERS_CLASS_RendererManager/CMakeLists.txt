@@ -26,7 +26,7 @@ target_link_libraries(Renderer
 
 # Link Internal Libs
 target_link_libraries(Renderer
-    ERS_LoggingSystem
+    bg-common-logger
     ERS_CLASS_VisualRenderer
 
     VisualEditor

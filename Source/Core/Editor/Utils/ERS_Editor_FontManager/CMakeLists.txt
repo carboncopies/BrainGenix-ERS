@@ -25,7 +25,7 @@ target_link_libraries(ERS_Editor_FontManager
 
 # Link Internal Libs
 target_link_libraries(ERS_Editor_FontManager
-    ERS_LoggingSystem
+    bg-common-logger
     )
 
 target_include_directories(ERS_Editor_FontManager PUBLIC ./)

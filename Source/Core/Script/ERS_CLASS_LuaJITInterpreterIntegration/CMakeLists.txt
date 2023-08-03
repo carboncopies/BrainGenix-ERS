@@ -23,7 +23,7 @@ target_link_libraries(ERS_CLASS_LuaJITInterpreterIntegration
 
 # Link Internal Libs
 target_link_libraries(ERS_CLASS_LuaJITInterpreterIntegration
-    ERS_LoggingSystem
+    bg-common-logger
     ERS_STRUCT_Model
     ERS_STRUCT_Light
     ERS_STRUCT_SceneCamera

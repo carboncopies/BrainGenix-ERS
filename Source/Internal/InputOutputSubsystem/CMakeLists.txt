@@ -29,7 +29,7 @@ target_link_libraries(ERS_InputOutputSubsystem
 
 # Link Internal Libs
 target_link_libraries(ERS_InputOutputSubsystem
-    ERS_LoggingSystem
+    bg-common-logger
     ERS_STRUCT_IOData
     )
 
