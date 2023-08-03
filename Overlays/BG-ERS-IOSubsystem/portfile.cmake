@@ -1,7 +1,7 @@
 vcpkg_from_git(
   OUT_SOURCE_PATH SOURCE_PATH
   URL https://gitlab.braingenix.org/carboncopies/BrainGenix/ERS/IOSubsystem.git
-  REF a3b0ddbe70c10b79dc715868efbbd8f1788259cf
+  REF 2aac30dd51a62249903be98bcb804ffd51863734
   HEAD_REF main
 )
 
@@ -10,7 +10,7 @@ vcpkg_from_git(
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
     OPTIONS
-        -DOVERRIDE_INSTALL_DIR=OFF
+        # -DOVERRIDE_INSTALL_DIR=OFF
         # -DBUILD_TESTS=OFF
 )
 

@@ -65,6 +65,9 @@ message(STATUS "Finding infoware Package")
 find_package(infoware CONFIG REQUIRED)
 
 
+message(STATUS "Finding bg-ers-iosubsystem Package")
+find_package(bg-ers-iosubsystem CONFIG REQUIRED)
+
 
 # Include Util CMake Scripts
 include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)

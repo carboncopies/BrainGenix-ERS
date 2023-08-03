@@ -1,6 +1,7 @@
 {
   "overlay-ports": [
-      "Overlays/ERS-IOSubsystem"
+    "Overlays/BG-ERS-IOSubsystem",
+    "Overlays/BG-Logger"
   ]
 
 }
