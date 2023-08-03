@@ -23,7 +23,7 @@
 #include <ERS_GPURequest.h>
 #include <RendererManager.h>
 
-#include <ERS_LoggingSystem.h>
+#include <ERS_Logger.h>
 #include <ERS_LogSystemInfo.h>
 #include <ERS_HardwareInformation.h>
 #include <ERS_ArgumentParser.h>

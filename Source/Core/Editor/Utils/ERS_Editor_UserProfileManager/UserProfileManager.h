@@ -12,7 +12,7 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <BG/Common/Logger/LoggingSystem.h>
+#include <BG/Common/Logger/Logger.h>
 
 
 /**

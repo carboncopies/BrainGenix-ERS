@@ -22,7 +22,7 @@
 #include <GPURequest.h>
 #include <RendererManager.h>
 
-#include <BG/Common/Logger/LoggingSystem.h>
+#include <BG/Common/Logger/Logger.h>
 #include <LogSystemInfo.h>
 #include <HardwareInformation.h>
 #include <ArgumentParser.h>

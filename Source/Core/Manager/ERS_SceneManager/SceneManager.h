@@ -11,7 +11,7 @@
 #include <glm/glm.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <BG/Common/Logger/LoggingSystem.h>
+#include <BG/Common/Logger/Logger.h>
 #include <Shader.h>
 #include <Scene.h>
 #include <LocRotScale.h>

@@ -18,7 +18,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <SystemUtils.h>
 
-#include <OpenGLLoggingSystem.h>
+#include <OpenGLLogger.h>
 
 
 
