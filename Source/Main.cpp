@@ -80,7 +80,7 @@ int main(int NumArguments, char** ArguemntValues) {
     }
 
     // Instantiate Logging Subsystem
-    SystemUtils->Logger_ = std::make_unique<ERS_LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());
+    SystemUtils->Logger_ = std::make_unique<BG::Common::Logger::LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());
     SystemUtils->Logger_->Log("Initialized Logging System", 5);
 
     // Handle Command Line Arguments

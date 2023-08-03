@@ -4,7 +4,7 @@
 
 #include <ERS_CLASS_LuaJITInterpreterIntegration.h>
 
-ERS_CLASS_LuaJITInterpreterIntegration::ERS_CLASS_LuaJITInterpreterIntegration(ERS_LoggingSystem* Logger)
+ERS_CLASS_LuaJITInterpreterIntegration::ERS_CLASS_LuaJITInterpreterIntegration(BG::Common::Logger::LoggingSystem* Logger)
 {
 	Logger_ = Logger;
 

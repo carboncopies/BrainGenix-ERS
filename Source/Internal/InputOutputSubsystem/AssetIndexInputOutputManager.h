@@ -21,7 +21,7 @@ class ERS_AssetIndexInputOutputManager {
 
 private:
 
-    ERS_LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
+    BG::Common::Logger::LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
     std::mutex Lock_; /**<Stops other threads from accessing the maps when in use*/
 
 
@@ -40,7 +40,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_AssetIndexInputOutputManager(ERS_LoggingSystem* Logger);
+    ERS_AssetIndexInputOutputManager(BG::Common::Logger::LoggingSystem* Logger);
 
     /**
      * @brief Destroy the ers class assetindexIOM object

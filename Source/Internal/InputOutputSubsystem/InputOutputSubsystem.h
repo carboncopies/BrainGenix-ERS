@@ -38,7 +38,7 @@
 class ERS_InputOutputSubsystem {
 
 private:
-  ERS_LoggingSystem* Logger_; /**<Logging Class Pointer*/
+  BG::Common::Logger::LoggingSystem* Logger_; /**<Logging Class Pointer*/
 
 public:
   std::unique_ptr<ERS_AssetIndexInputOutputManager>
@@ -62,7 +62,7 @@ public:
    * @param LocalSystemConfiguration
    */
   ERS_InputOutputSubsystem(
-      ERS_LoggingSystem* Logger,
+      BG::Common::Logger::LoggingSystem* Logger,
       YAML::Node LocalSystemConfiguration,
       std::vector<std::pair<std::string, std::string>> ArgumentPair);
 

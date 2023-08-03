@@ -5,7 +5,7 @@
 #include <YAMLHelpers.h>
 
 // Standart Type Helper Functions
-bool ERS_FUNCTION_GetInt(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, int &Target) {
+bool ERS_FUNCTION_GetInt(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, int &Target) {
     try {
         Target = Data[Name].as<int>();
         return true;
@@ -17,7 +17,7 @@ bool ERS_FUNCTION_GetInt(ERS_LoggingSystem* Logger, YAML::Node Data, std::string
         return false;
     }
 }
-bool ERS_FUNCTION_GetFloat(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, float &Target) {
+bool ERS_FUNCTION_GetFloat(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, float &Target) {
     try {
         Target = Data[Name].as<float>();
         return true;
@@ -29,7 +29,7 @@ bool ERS_FUNCTION_GetFloat(ERS_LoggingSystem* Logger, YAML::Node Data, std::stri
         return false;
     }
 }
-bool ERS_FUNCTION_GetBool(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, bool &Target) {
+bool ERS_FUNCTION_GetBool(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, bool &Target) {
     try {
         Target = Data[Name].as<bool>();
         return true;
@@ -41,7 +41,7 @@ bool ERS_FUNCTION_GetBool(ERS_LoggingSystem* Logger, YAML::Node Data, std::strin
         return false;
     }
 }
-bool ERS_FUNCTION_GetLong(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, long &Target) {
+bool ERS_FUNCTION_GetLong(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, long &Target) {
     try {
         Target = Data[Name].as<long>();
         return true;
@@ -53,7 +53,7 @@ bool ERS_FUNCTION_GetLong(ERS_LoggingSystem* Logger, YAML::Node Data, std::strin
         return false;
     }
 }
-bool ERS_FUNCTION_GetDouble(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, double &Target) {
+bool ERS_FUNCTION_GetDouble(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, double &Target) {
     try {
         Target = Data[Name].as<double>();
         return true;
@@ -65,7 +65,7 @@ bool ERS_FUNCTION_GetDouble(ERS_LoggingSystem* Logger, YAML::Node Data, std::str
         return false;
     }
 }
-bool ERS_FUNCTION_GetUnsignedInt(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, unsigned int &Target) {
+bool ERS_FUNCTION_GetUnsignedInt(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, unsigned int &Target) {
     try {
         Target = Data[Name].as<unsigned int>();
         return true;
@@ -77,7 +77,7 @@ bool ERS_FUNCTION_GetUnsignedInt(ERS_LoggingSystem* Logger, YAML::Node Data, std
         return false;
     }
 }
-bool ERS_FUNCTION_GetBool(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, unsigned long &Target) {
+bool ERS_FUNCTION_GetBool(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, unsigned long &Target) {
     try {
         Target = Data[Name].as<unsigned long>();
         return true;
@@ -89,7 +89,7 @@ bool ERS_FUNCTION_GetBool(ERS_LoggingSystem* Logger, YAML::Node Data, std::strin
         return false;
     }
 }
-bool ERS_FUNCTION_GetLongLong(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, long long &Target) {
+bool ERS_FUNCTION_GetLongLong(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, long long &Target) {
     try {
         Target = Data[Name].as<long long>();
         return true;
@@ -101,7 +101,7 @@ bool ERS_FUNCTION_GetLongLong(ERS_LoggingSystem* Logger, YAML::Node Data, std::s
         return false;
     }
 }
-bool ERS_FUNCTION_GetUnsignedLongLong(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, unsigned long long &Target) {
+bool ERS_FUNCTION_GetUnsignedLongLong(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, unsigned long long &Target) {
     try {
         Target = Data[Name].as<unsigned long long>();
         return true;
@@ -113,7 +113,7 @@ bool ERS_FUNCTION_GetUnsignedLongLong(ERS_LoggingSystem* Logger, YAML::Node Data
         return false;
     }
 }
-bool ERS_FUNCTION_GetString(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, std::string &Target) {
+bool ERS_FUNCTION_GetString(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, std::string &Target) {
     try {
         Target = Data[Name].as<std::string>();
         return true;
@@ -125,7 +125,7 @@ bool ERS_FUNCTION_GetString(ERS_LoggingSystem* Logger, YAML::Node Data, std::str
         return false;
     }
 }
-bool ERS_FUNCTION_GetNode(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, YAML::Node &Target) {
+bool ERS_FUNCTION_GetNode(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, YAML::Node &Target) {
     try {
         Target = Data[Name];
         return true;
@@ -137,7 +137,7 @@ bool ERS_FUNCTION_GetNode(ERS_LoggingSystem* Logger, YAML::Node Data, std::strin
 
 
 // Vector Helpers
-bool ERS_FUNCTION_GetStringVector(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, std::vector<std::string> &Target) {
+bool ERS_FUNCTION_GetStringVector(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, std::vector<std::string> &Target) {
     try {
         YAML::Node TargetNode = Data[Name];
         for (YAML::const_iterator it=TargetNode.begin(); it!=TargetNode.end(); ++it) {
@@ -152,7 +152,7 @@ bool ERS_FUNCTION_GetStringVector(ERS_LoggingSystem* Logger, YAML::Node Data, st
         return false;
     }
 }
-bool ERS_FUNCTION_GetIntVector(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, std::vector<int> &Target) {
+bool ERS_FUNCTION_GetIntVector(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, std::vector<int> &Target) {
     try {
         YAML::Node TargetNode = Data[Name];
         for (YAML::const_iterator it=TargetNode.begin(); it!=TargetNode.end(); ++it) {
@@ -167,7 +167,7 @@ bool ERS_FUNCTION_GetIntVector(ERS_LoggingSystem* Logger, YAML::Node Data, std::
         return false;
     }
 }
-bool ERS_FUNCTION_GetLongVector(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, std::vector<long> &Target) {
+bool ERS_FUNCTION_GetLongVector(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, std::vector<long> &Target) {
     try {
         YAML::Node TargetNode = Data[Name];
         for (YAML::const_iterator it=TargetNode.begin(); it!=TargetNode.end(); ++it) {
@@ -182,7 +182,7 @@ bool ERS_FUNCTION_GetLongVector(ERS_LoggingSystem* Logger, YAML::Node Data, std:
         return false;
     }
 }
-bool ERS_FUNCTION_GetNodeVector(ERS_LoggingSystem* Logger, YAML::Node Data, std::string Name, std::vector<YAML::Node> &Target) {
+bool ERS_FUNCTION_GetNodeVector(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string Name, std::vector<YAML::Node> &Target) {
     try {
         YAML::Node TargetNode = Data[Name];
         for (YAML::const_iterator it=TargetNode.begin(); it!=TargetNode.end(); ++it) {
@@ -197,7 +197,7 @@ bool ERS_FUNCTION_GetNodeVector(ERS_LoggingSystem* Logger, YAML::Node Data, std:
 
 
 // GLM Helper Functions
-bool ERS_FUNCTION_GetVec3(ERS_LoggingSystem* Logger, YAML::Node Data, std::string NameBase, glm::vec3 &Target) {
+bool ERS_FUNCTION_GetVec3(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string NameBase, glm::vec3 &Target) {
 
     float X,Y,Z = 0.0f;
     bool Status = true;
@@ -210,7 +210,7 @@ bool ERS_FUNCTION_GetVec3(ERS_LoggingSystem* Logger, YAML::Node Data, std::strin
     return Status;
 
 }
-bool ERS_FUNCTION_GetVec3Color(ERS_LoggingSystem* Logger, YAML::Node Data, std::string NameBase, glm::vec3 &Target) {
+bool ERS_FUNCTION_GetVec3Color(BG::Common::Logger::LoggingSystem* Logger, YAML::Node Data, std::string NameBase, glm::vec3 &Target) {
     float X,Y,Z = 0.0f;
     bool Status = true;
 

@@ -43,7 +43,7 @@ void ERS_STRUCT_Shader::ResetProgram() {
 
 }
 
-std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, ERS_LoggingSystem* Logger) {
+std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, BG::Common::Logger::LoggingSystem* Logger) {
 
     // Compile The Vertex Shader Text Into A Binary
     std::string ErrorMessage;
@@ -69,7 +69,7 @@ std::string ERS_STRUCT_Shader::CompileVertexShader(const char* VertexText, ERS_L
 
 }
 
-std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, ERS_LoggingSystem* Logger) {
+std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, BG::Common::Logger::LoggingSystem* Logger) {
 
     // Compile The Fragment Shader Text Into A Binary
     FragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -94,7 +94,7 @@ std::string ERS_STRUCT_Shader::CompileFragmentShader(const char* FragmentText, E
 
 }
 
-std::string ERS_STRUCT_Shader::CompileGeometryShader(const char* GeometryText, ERS_LoggingSystem* Logger) {
+std::string ERS_STRUCT_Shader::CompileGeometryShader(const char* GeometryText, BG::Common::Logger::LoggingSystem* Logger) {
 
     // Compile The Fragment Shader Text Into A Binary
     GeometryShader = glCreateShader(GL_GEOMETRY_SHADER);
@@ -121,7 +121,7 @@ std::string ERS_STRUCT_Shader::CompileGeometryShader(const char* GeometryText, E
 
 }
 
-std::string ERS_STRUCT_Shader::CompileComputeShader(const char* ComputeText, ERS_LoggingSystem* Logger) {
+std::string ERS_STRUCT_Shader::CompileComputeShader(const char* ComputeText, BG::Common::Logger::LoggingSystem* Logger) {
 
     // Compile The Fragment Shader Text Into A Binary
     ComputeShader = glCreateShader(GL_COMPUTE_SHADER);
@@ -148,7 +148,7 @@ std::string ERS_STRUCT_Shader::CompileComputeShader(const char* ComputeText, ERS
 
 }
 
-std::string ERS_STRUCT_Shader::CompileTCShader(const char* TCText, ERS_LoggingSystem* Logger) {
+std::string ERS_STRUCT_Shader::CompileTCShader(const char* TCText, BG::Common::Logger::LoggingSystem* Logger) {
 
     // Compile The Fragment Shader Text Into A Binary
     TCShader = glCreateShader(GL_TESS_CONTROL_SHADER);
@@ -175,7 +175,7 @@ std::string ERS_STRUCT_Shader::CompileTCShader(const char* TCText, ERS_LoggingSy
 
 }
 
-std::string ERS_STRUCT_Shader::CompileTEShader(const char* TEText, ERS_LoggingSystem* Logger) {
+std::string ERS_STRUCT_Shader::CompileTEShader(const char* TEText, BG::Common::Logger::LoggingSystem* Logger) {
 
     // Compile The Fragment Shader Text Into A Binary
     TEShader = glCreateShader(GL_TESS_EVALUATION_SHADER);
@@ -202,7 +202,7 @@ std::string ERS_STRUCT_Shader::CompileTEShader(const char* TEText, ERS_LoggingSy
 
 }
 
-std::string ERS_STRUCT_Shader::CreateShaderProgram(ERS_LoggingSystem* Logger, bool LogEnable) {
+std::string ERS_STRUCT_Shader::CreateShaderProgram(BG::Common::Logger::LoggingSystem* Logger, bool LogEnable) {
 
     // Create Shader Program
     ShaderProgram_ = glCreateProgram();

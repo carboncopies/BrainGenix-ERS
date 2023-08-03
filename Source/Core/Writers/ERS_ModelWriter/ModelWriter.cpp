@@ -5,7 +5,7 @@
 #include <ModelWriter.h>
 
 
-ERS_CLASS_ModelWriter::ERS_CLASS_ModelWriter(ERS_LoggingSystem* Logger, ERS_InputOutputSubsystem* IOSubsystem) {
+ERS_CLASS_ModelWriter::ERS_CLASS_ModelWriter(BG::Common::Logger::LoggingSystem* Logger, ERS_InputOutputSubsystem* IOSubsystem) {
 
     Logger_ = Logger;
     IOSubsystem_ = IOSubsystem;

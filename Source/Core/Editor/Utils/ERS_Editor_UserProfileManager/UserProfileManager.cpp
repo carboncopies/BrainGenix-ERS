@@ -5,7 +5,7 @@
 #include <UserProfileManager.h>
 
 
-ERS_CLASS_UserProfileManager::ERS_CLASS_UserProfileManager(ERS_LoggingSystem* Logger, const char* UserProfilePath) {
+ERS_CLASS_UserProfileManager::ERS_CLASS_UserProfileManager(BG::Common::Logger::LoggingSystem* Logger, const char* UserProfilePath) {
 
     Logger_ = Logger;
     UserProfilePath_ = std::string(UserProfilePath);

@@ -32,7 +32,7 @@
 class ERS_CLASS_LuaJITInterpreterIntegration {
 
 private:
-    ERS_LoggingSystem*                      Logger_ = nullptr; /**<Pointer to the logging system class instance*/
+    BG::Common::Logger::LoggingSystem*                      Logger_ = nullptr; /**<Pointer to the logging system class instance*/
     lua_State* L;
     double RunTime_ = -1.0f; /**<Time since game started playing*/
 
@@ -43,7 +43,7 @@ public:
      * @brief Construct a new ERS class LuaJItInterpreterintegration object
      * 
      */
-    ERS_CLASS_LuaJITInterpreterIntegration(ERS_LoggingSystem* Logger);
+    ERS_CLASS_LuaJITInterpreterIntegration(BG::Common::Logger::LoggingSystem* Logger);
 
     /**
      * @brief Destroy the ERS class LuaJITInterpreterintegration object

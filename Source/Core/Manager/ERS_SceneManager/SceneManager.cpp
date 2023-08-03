@@ -5,7 +5,7 @@
 #include <SceneManager.h>
 
 
-ERS_CLASS_SceneManager::ERS_CLASS_SceneManager(ERS_LoggingSystem* Logger) {
+ERS_CLASS_SceneManager::ERS_CLASS_SceneManager(BG::Common::Logger::LoggingSystem* Logger) {
 
     Logger_ = Logger;
 
