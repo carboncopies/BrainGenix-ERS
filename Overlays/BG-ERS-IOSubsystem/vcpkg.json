@@ -1,0 +1,17 @@
+{
+    "name": "bg-ers-iosubsystem",
+    "version": "0.0.1",
+    "description": "Input/Output internal library for use in BrainGenix BrainGenix-ERS. Used to read/write files/objects and decode/encode various formats through extensive use of multithreading.",
+    "homepage": "https://gitlab.braingenix.org/carboncopies/BrainGenix/ERS/IOSubsystem",
+
+    "dependencies": [
+      "gtest",
+      "ghc-filesystem",
+      "yaml-cpp",
+      "bg-common-logger",
+      {
+        "name": "vcpkg-cmake",
+        "host": true
+      }
+    ]
+}

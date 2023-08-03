@@ -66,13 +66,13 @@ cmake --build . -j $1 --target ERS
 
 
 # Run Program
-cd ../Binaries
-echo "[ERS BUILD HELPER] - Checking If Binary Exists"
-if [ -f "ERS" ]
-then
-    echo "[ERS BUILD HELPER] - Running Program"
-    ./ERS
-else
-    echo "[ERS BUILD HELPER] - Build Failed! Exiting"
-fi
-cd ..
+#cd ../Binaries
+#echo "[ERS BUILD HELPER] - Checking If Binary Exists"
+#if [ -f "ERS" ]
+#then
+#    echo "[ERS BUILD HELPER] - Running Program"
+#    ./ERS
+#else
+#    echo "[ERS BUILD HELPER] - Build Failed! Exiting"
+#fi
+#cd ..
