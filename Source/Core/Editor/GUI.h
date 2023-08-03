@@ -20,7 +20,7 @@
 #include <ImGuizmo.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/LoggingSystem.h>
 #include <VisualRenderer.h>
 
 #include <SystemUtils.h>

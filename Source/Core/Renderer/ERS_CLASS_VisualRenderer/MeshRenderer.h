@@ -22,7 +22,7 @@
 
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/LoggingSystem.h>
 #include <ShaderLoader.h>
 #include <InputProcessor.h>
 #include <Grid.h>

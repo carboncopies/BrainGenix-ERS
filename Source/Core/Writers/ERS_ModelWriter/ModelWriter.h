@@ -15,7 +15,7 @@
 #include <assimp/Exporter.hpp>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/LoggingSystem.h>
 
 #include <Model.h>
 #include <Scene.h>

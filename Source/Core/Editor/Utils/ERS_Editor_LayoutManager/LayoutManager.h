@@ -17,7 +17,7 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/LoggingSystem.h>
 #include <SystemUtils.h>
 #include <WindowManager.h>
 

@@ -16,7 +16,7 @@
 #include <ThreadNamingUtils/SetThreadName.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/LoggingSystem.h>
 #include <HardwareInfo.h>
 
 

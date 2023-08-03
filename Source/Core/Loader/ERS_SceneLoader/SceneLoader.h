@@ -12,7 +12,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <ModelLoader.h>
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/LoggingSystem.h>
 
 #include <SceneDecoderManager.h>
 

@@ -12,7 +12,7 @@
 
 // Internal Libraries (BG convention: use <> instead of "")
 
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/LoggingSystem.h>
 #include <HardwareInformation.h>
 //#include <PythonInterpreterIntegration.h>
 #include <ERS_CLASS_LuaJITInterpreterIntegration.h>
