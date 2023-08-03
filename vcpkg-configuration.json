@@ -1,6 +1,6 @@
 {
   "overlay-ports": [
-      "Portfiles/ERS-IOSubsystem"
+      "Overlays/ERS-IOSubsystem"
   ]
 
 }
