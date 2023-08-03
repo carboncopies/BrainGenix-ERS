@@ -99,8 +99,6 @@ include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 # ADD INTERNAL SUBDIRECTORIES
 ERSBuildLogger(${Green} "Configuring Internal Libraries")
 
-add_subdirectory(${SRC_DIR}/Internal/LoggingSystem)
-message(STATUS "Configured Internal Library 'LoggingSystem'")
 add_subdirectory(${SRC_DIR}/Internal/OpenGLLoggingSystem)
 message(STATUS "Configured Internal Library 'OpenGLLoggingSystem'")
 add_subdirectory(${SRC_DIR}/Internal/ArgumentParser)
