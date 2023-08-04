@@ -23,7 +23,7 @@
 #include <RendererManager.h>
 
 #include <BG/Common/Logger/Logger.h>
-// #include <LogSystemInfo.h>
+#include <BG/Common/Logger/LogSystemInfo.h>
 #include <HardwareInformation.h>
 #include <ArgumentParser.h>
 #include <ModelImporter.h>
@@ -163,7 +163,7 @@ int main(int NumArguments, char** ArguemntValues) {
     RendererManager sERSRendererManager(SystemUtils.get(), ProjectUtils.get(), HIDUtils.get());
 
 
-    ERS_LogSystemInfo(SystemUtils->Logger_.get());
+    BG::Common::Logger::LogSystemInfo(SystemUtils->Logger_.get());
 
 
     // Initialize Times
