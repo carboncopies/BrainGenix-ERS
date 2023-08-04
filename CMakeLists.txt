@@ -73,7 +73,6 @@ message(STATUS "Finding bg-ers-iosubsystem Package")
 find_package(bg-ers-iosubsystem CONFIG REQUIRED)
 
 
-
 # Include Util CMake Scripts
 include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
 include(${CMAKE_UTIL_DIR}/SetBinaryDir.cmake)
