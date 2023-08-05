@@ -20,7 +20,7 @@
 
 #include <RendererSettings.h>
 
-#include <InputOutputSubsystem.h>
+#include <BG/ERS/IOSubsystem/IOSubsystem.h>
 #include <FramerateManager.h>
 
 
@@ -41,7 +41,7 @@ struct ERS_STRUCT_SystemUtils {
     std::unique_ptr<bool> SystemShouldRun_; /**<Pointer To Variable Setting If System Should Run Or Not*/
 
     std::unique_ptr<BG::Common::Logger::LoggingSystem> Logger_; /**<Pointer To BG-ERS Logging System*/
-    std::unique_ptr<ERS_InputOutputSubsystem> ERS_IOSubsystem_; /**<Pointer To ERS Input Output Subsystem*/
+    std::unique_ptr<BG::ERS::IOSubsystem::IOSubsystem> ERS_IOSubsystem_; /**<Pointer To ERS Input Output Subsystem*/
     std::unique_ptr<ERS_CLASS_FramerateManager> FramerateManager_; /**<Pointer to framerate subsystem*/
     std::unique_ptr<ERS_HardwareInformation> ERS_HardwareInformation_; /**<Pointer to the hardware informaton class instance*/
    // std::unique_ptr<ERS_CLASS_PythonInterpreterIntegration> ERS_CLASS_PythonInterpreterIntegration_; /**<Pointer to the class integrating the python interpreter*/

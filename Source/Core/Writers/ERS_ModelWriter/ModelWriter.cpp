@@ -5,7 +5,7 @@
 #include <ModelWriter.h>
 
 
-ERS_CLASS_ModelWriter::ERS_CLASS_ModelWriter(BG::Common::Logger::LoggingSystem* Logger, ERS_InputOutputSubsystem* IOSubsystem) {
+ERS_CLASS_ModelWriter::ERS_CLASS_ModelWriter(BG::Common::Logger::LoggingSystem* Logger, BG::ERS::IOSubsystem::IOSubsystem* IOSubsystem) {
 
     Logger_ = Logger;
     IOSubsystem_ = IOSubsystem;
@@ -48,7 +48,7 @@ bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data,
 
 
     // Write Model Geo Data
-    std::unique_ptr<ERS_STRUCT_IOData> IOData = std::make_unique<ERS_STRUCT_IOData>();
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> IOData = std::make_unique<BG::ERS::IOSubsystem::IOData>();
     IOData->Data.reset(new unsigned char[Blob->size]);
     ::memcpy(IOData->Data.get(), Blob->data, Blob->size);
     IOData->Size_B = Blob->size;
@@ -62,7 +62,7 @@ bool ERS_CLASS_ModelWriter::WriteModelGeometry(ERS_STRUCT_ModelWriterData &Data,
     Data.ModelAssetID = ModelID;
     return true;
 }
-bool ERS_CLASS_ModelWriter::ReadFile(std::string FilePath, ERS_STRUCT_IOData* OutputData) {
+bool ERS_CLASS_ModelWriter::ReadFile(std::string FilePath, BG::ERS::IOSubsystem::IOData* OutputData) {
 
 
     struct stat Buffer;
@@ -164,7 +164,7 @@ void ERS_CLASS_ModelWriter::WriteTextures(ERS_STRUCT_ModelWriterData &Data, std:
             FreeImage_Unload(NewImage);
 
 
-            ERS_STRUCT_IOData IOData;
+            BG::ERS::IOSubsystem::IOData IOData;
             IOData.AssetTypeName = "TextureImage";
             DWORD ImageCompressedSize = 0;
             BYTE *ImageCompressedBytes;
@@ -366,7 +366,7 @@ void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data, bool Fl
     std::string Metadata = GenerateModelMetadata(Data);
 
     // Write Metadata
-    ERS_STRUCT_IOData IOData;
+    BG::ERS::IOSubsystem::IOData IOData;
     IOData.Data.reset(new unsigned char[Metadata.size()]);
     IOData.Size_B = Metadata.size();
     memcpy(IOData.Data.get(), Metadata.c_str(), Metadata.size());

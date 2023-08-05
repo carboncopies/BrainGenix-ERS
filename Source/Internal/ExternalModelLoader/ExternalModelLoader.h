@@ -45,7 +45,7 @@
 #include <ModelWriterData.h>
 
 #include <SystemUtils.h>
-#include <IOData.h>
+#include <BG/ERS/IOSubsystem/IOData/IOData.h>
 
 
 
@@ -103,7 +103,7 @@ private:
      * @param Path 
      * @param IOData 
      */
-    bool ReadFile(std::string Path, ERS_STRUCT_IOData* IOData);
+    bool ReadFile(std::string Path, BG::ERS::IOSubsystem::IOData* IOData);
 
     /**
      * @brief Calculates the bounding box of the model and it's offset

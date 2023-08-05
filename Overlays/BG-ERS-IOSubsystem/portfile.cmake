@@ -1,7 +1,7 @@
 vcpkg_from_git(
   OUT_SOURCE_PATH SOURCE_PATH
   URL https://gitlab.braingenix.org/carboncopies/BrainGenix/ERS/IOSubsystem.git
-  REF f4b5c6dcde53a8dee58537a602b6afd43cba95de
+  REF d2363f132e2a348688e6519c6196661c7800b6c9
   HEAD_REF main
 )
 

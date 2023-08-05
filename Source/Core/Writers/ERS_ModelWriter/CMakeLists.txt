@@ -21,12 +21,13 @@ target_link_libraries(ERS_ModelWriter
 
 # Link Internal Libs
 target_link_libraries(ERS_ModelWriter
+    bg-ers-iosubsystem
     bg-common-logger
+    
     ERS_STRUCT_Model
     ERS_STRUCT_Scene
     ERS_STRUCT_Mesh
     ERS_STRUCT_Texture
-    ERS_InputOutputSubsystem
     ERS_STRUCT_ModelWriterData
     )
 

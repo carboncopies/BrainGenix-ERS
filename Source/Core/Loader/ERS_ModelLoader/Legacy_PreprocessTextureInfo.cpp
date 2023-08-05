@@ -11,7 +11,7 @@ void ERS_FUNCTION_Legacy_PreprocessTextureInfo(YAML::Node Metadata, ERS_STRUCT_M
 
     // Read Mesh
     Assimp::Importer Importer;
-    std::unique_ptr<ERS_STRUCT_IOData> ModelData = std::make_unique<ERS_STRUCT_IOData>();
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> ModelData = std::make_unique<BG::ERS::IOSubsystem::IOData>();
     SystemUtils->ERS_IOSubsystem_->ReadAsset(Metadata["ModelID"].as<long>(), ModelData.get());
     const aiScene* Scene = Importer.ReadFileFromMemory(ModelData->Data.get(), (int)ModelData->Size_B, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices, "");
 

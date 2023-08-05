@@ -37,7 +37,7 @@ target_link_libraries(Renderer
     ERS_ModelLoader
     ERS_ShaderLoader
     
-    ERS_STRUCT_IOData
+    bg-ers-iosubsystem
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_HumanInputDeviceUtils

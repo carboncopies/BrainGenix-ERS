@@ -24,7 +24,7 @@ target_link_libraries(ERS_STRUCT_ProjectUtils
     bg-common-logger
     ERS_SceneManager
 
-    ERS_InputOutputSubsystem
+    bg-ers-iosubsystem
     ERS_FramerateManager
     ERS_ModelWriter
     ERS_ModelLoader

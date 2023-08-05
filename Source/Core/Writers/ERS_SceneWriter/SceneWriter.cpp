@@ -26,7 +26,7 @@ void SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene, long AssetID) {
     std::string SceneByteString = ProcessScene(InputScene); 
 
     // Copy Into System IOData Struct
-    std::unique_ptr<ERS_STRUCT_IOData> SceneData = std::make_unique<ERS_STRUCT_IOData>();
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> SceneData = std::make_unique<BG::ERS::IOSubsystem::IOData>();
 
     SceneData->Data.reset(new unsigned char[SceneByteString.size()]);
     SceneData->Size_B = SceneByteString.size();

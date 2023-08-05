@@ -45,9 +45,12 @@
 
 #include <ModelMetadataDecoderManager.h>
 
+#include <BG/ERS/IOSubsystem/IOSubsystem.h>
+
+
+
 // TESTING STUFF HERE
 #include <AssetStreamingManager.h>
-
 
 
 

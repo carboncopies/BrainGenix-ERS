@@ -213,7 +213,7 @@ void ExternalModelLoader::ProcessModelTextures(ERS_STRUCT_ModelWriterData &Data)
     std::vector<std::pair<std::string, FIBITMAP*>> ImageBytes;
     for (int i = 0; (long)i < (long)Data.TextureList.size(); i++) {
 
-        ERS_STRUCT_IOData IOData;
+        BG::ERS::IOSubsystem::IOData IOData;
         std::string TexturePath = Data.TextureList[i];
         bool Success = ReadFile(Data.TextureList[i], &IOData);
         IOData.AssetTypeName = "Texture";
@@ -516,7 +516,7 @@ void ExternalModelLoader::AddTexture(ERS_STRUCT_ModelWriterData &Data, ERS_STRUC
     }
 
 }
-bool ExternalModelLoader::ReadFile(std::string FilePath, ERS_STRUCT_IOData* OutputData) {
+bool ExternalModelLoader::ReadFile(std::string FilePath, BG::ERS::IOSubsystem::IOData* OutputData) {
 
     struct stat Buffer;
     int FileStatus = stat(FilePath.c_str(), &Buffer);

@@ -75,12 +75,12 @@ void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct
      + std::to_string(TEID)
      , 5);
 
-    std::unique_ptr<ERS_STRUCT_IOData> VertexData = std::make_unique<ERS_STRUCT_IOData>();
-    std::unique_ptr<ERS_STRUCT_IOData> FragmentData = std::make_unique<ERS_STRUCT_IOData>();
-    std::unique_ptr<ERS_STRUCT_IOData> GeometryData = std::make_unique<ERS_STRUCT_IOData>();
-    std::unique_ptr<ERS_STRUCT_IOData> ComputeData = std::make_unique<ERS_STRUCT_IOData>();
-    std::unique_ptr<ERS_STRUCT_IOData> TCData = std::make_unique<ERS_STRUCT_IOData>();
-    std::unique_ptr<ERS_STRUCT_IOData> TEData = std::make_unique<ERS_STRUCT_IOData>();
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> VertexData = std::make_unique<BG::ERS::IOSubsystem::IOData>();
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> FragmentData = std::make_unique<BG::ERS::IOSubsystem::IOData>();
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> GeometryData = std::make_unique<BG::ERS::IOSubsystem::IOData>();
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> ComputeData = std::make_unique<BG::ERS::IOSubsystem::IOData>();
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> TCData = std::make_unique<BG::ERS::IOSubsystem::IOData>();
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> TEData = std::make_unique<BG::ERS::IOSubsystem::IOData>();
 
     std::string GeometryText, ComputeText, TCText, TEText;
 

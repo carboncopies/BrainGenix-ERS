@@ -33,7 +33,7 @@
 
 #include <ERS_SceneManager.h>
 
-#include <ERS_InputOutputSubsystem.h>
+#include <BG::ERS::IOSubsystem::IOSubsystem.h>
 #include <ERS_FramerateManager.h>
 #include <ERS_ProjectLoader.h>
 #include <ERS_ProjectManager.h>

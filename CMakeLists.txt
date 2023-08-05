@@ -111,8 +111,6 @@ add_subdirectory(${SRC_DIR}/Internal/GPURequest)
 message(STATUS "Configured Internal Library 'GPURequest'")
 add_subdirectory(${SRC_DIR}/Internal/HardwareInformation)
 message(STATUS "Configured Internal Library 'HardwareInformation'")
-add_subdirectory(${SRC_DIR}/Internal/InputOutputSubsystem)
-message(STATUS "Configured Internal Library 'InputOutputSubsystem'")
 add_subdirectory(${SRC_DIR}/Internal/ExternalModelLoader)
 message(STATUS "Configured Internal Library 'ExternalModelLoader'")
 add_subdirectory(${SRC_DIR}/Internal/ModelImporter)
@@ -146,6 +144,7 @@ add_subdirectory(${SRC_DIR}/Core/Editor/Menus)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_RendererManager)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_VisualRenderer)
 
+
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Camera)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SceneCamera)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_HumanInputDeviceUtils)
@@ -158,7 +157,6 @@ add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Scene)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Shader)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_HardwareInfo)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_LocRotScale)
-add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_IOData)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SystemUtils)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_ProjectUtils)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Project)
@@ -211,7 +209,9 @@ target_link_libraries("ERS"
 
     # Internal Libs
     ERS_GPURequest
+
     bg-common-logger
+
     ERS_ModelImporter
     ERS_LocalConfigLoader
 
@@ -226,7 +226,6 @@ target_link_libraries("ERS"
     ERS_ModelWriter
     ERS_ProjectLoader
     ERS_ProjectWriter
-    ERS_InputOutputSubsystem
     ERS_FramerateManager
     ERS_ProjectManager
     ERS_ControllerInputManager

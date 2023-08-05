@@ -22,7 +22,7 @@ target_link_libraries(ERS_ShaderLoader
 # Link Internal Libs
 target_link_libraries(ERS_ShaderLoader
     ERS_STRUCT_Shader
-    ERS_STRUCT_IOData
+    bg-ers-iosubsystem
     ERS_STRUCT_SystemUtils
     )
 

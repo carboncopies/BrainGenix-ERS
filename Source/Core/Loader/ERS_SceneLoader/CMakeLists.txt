@@ -38,10 +38,11 @@ target_link_libraries(ERS_SceneLoader
 
 # Link Internal Libs
 target_link_libraries(ERS_SceneLoader
+    bg-common-logger
+    bg-ers-iosubsystem
 
     ERS_ModelLoader
 
-    bg-common-logger
 
     ERS_STRUCT_Model
     ERS_STRUCT_Scene
