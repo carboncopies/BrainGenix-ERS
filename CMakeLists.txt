@@ -144,6 +144,7 @@ add_subdirectory(${SRC_DIR}/Core/Editor/Menus)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_RendererManager)
 add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_VisualRenderer)
 
+
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Camera)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SceneCamera)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_HumanInputDeviceUtils)
@@ -208,7 +209,9 @@ target_link_libraries("ERS"
 
     # Internal Libs
     ERS_GPURequest
+
     bg-common-logger
+
     ERS_ModelImporter
     ERS_LocalConfigLoader
 
@@ -223,7 +226,6 @@ target_link_libraries("ERS"
     ERS_ModelWriter
     ERS_ProjectLoader
     ERS_ProjectWriter
-    bg-ers-iosubsystem
     ERS_FramerateManager
     ERS_ProjectManager
     ERS_ControllerInputManager

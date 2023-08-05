@@ -43,6 +43,8 @@ target_link_libraries(ERS_ModelLoader
 
 # Link Internal Libs
 target_link_libraries(ERS_ModelLoader
+    bg-ers-iosubsystem
+    
     ERS_STRUCT_Mesh
     ERS_STRUCT_Model
     ERS_STRUCT_Texture
@@ -55,7 +57,6 @@ target_link_libraries(ERS_ModelLoader
     ERS_STRUCT_Camera
     ERS_STRUCT_HardwareInfo
 
-    bg-ers-iosubsystem
     )
 
 target_include_directories(ERS_ModelLoader PUBLIC ./)

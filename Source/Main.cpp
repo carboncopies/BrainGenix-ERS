@@ -32,7 +32,7 @@
 
 #include <SceneManager.h>
 
-#include <BG/ERS/IOSubsystem/IOSubsystem.h>
+// #include <BG/ERS/IOSubsystem/IOSubsystem.h>
 #include <FramerateManager.h>
 #include <ProjectLoader.h>
 #include <ProjectManager.h>
@@ -164,6 +164,9 @@ int main(int NumArguments, char** ArguemntValues) {
 
 
     BG::Common::Logger::LogSystemInfo(SystemUtils->Logger_.get());
+
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> ModelData = std::make_unique<BG::ERS::IOSubsystem::IOData>();
+    SystemUtils->ERS_IOSubsystem_->ReadAsset(1, ModelData.get());
 
 
     // Initialize Times
