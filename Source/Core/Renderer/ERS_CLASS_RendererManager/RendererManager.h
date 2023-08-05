@@ -29,7 +29,7 @@
 
 #include <3DCursor.h>
 
-#include <IOData.h>
+#include <BG/ERS/IOSubsystem/IOData/IOData.h>
 #include <SystemUtils.h>
 #include <ProjectUtils.h>
 #include <HumanInputDeviceUtils.h>

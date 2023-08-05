@@ -12,7 +12,7 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <IOData.h>
+#include <BG/ERS/IOSubsystem/IOData/IOData.h>
 #include <Project.h>
 #include <SystemUtils.h>
 
