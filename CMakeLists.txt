@@ -65,6 +65,10 @@ message(STATUS "Finding infoware Package")
 find_package(infoware CONFIG REQUIRED)
 
 
+# Internal Deps
+message(STATUS "Finding bg-common-logger Package")
+find_package(bg-common-logger CONFIG REQUIRED)
+
 message(STATUS "Finding bg-ers-iosubsystem Package")
 find_package(bg-ers-iosubsystem CONFIG REQUIRED)
 
@@ -99,8 +103,6 @@ include(${CMAKE_BUILD_UTILS_DIR}/Lucifer.cmake)
 # ADD INTERNAL SUBDIRECTORIES
 ERSBuildLogger(${Green} "Configuring Internal Libraries")
 
-add_subdirectory(${SRC_DIR}/Internal/LoggingSystem)
-message(STATUS "Configured Internal Library 'LoggingSystem'")
 add_subdirectory(${SRC_DIR}/Internal/OpenGLLoggingSystem)
 message(STATUS "Configured Internal Library 'OpenGLLoggingSystem'")
 add_subdirectory(${SRC_DIR}/Internal/ArgumentParser)
@@ -209,7 +211,7 @@ target_link_libraries("ERS"
 
     # Internal Libs
     ERS_GPURequest
-    ERS_LoggingSystem
+    bg-common-logger
     ERS_ModelImporter
     ERS_LocalConfigLoader
 

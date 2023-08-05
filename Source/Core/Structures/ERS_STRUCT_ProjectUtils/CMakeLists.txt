@@ -21,7 +21,7 @@ target_link_libraries(ERS_STRUCT_ProjectUtils
 
 # Link Internal Libs
 target_link_libraries(ERS_STRUCT_ProjectUtils
-    ERS_LoggingSystem
+    bg-common-logger
     ERS_SceneManager
 
     ERS_InputOutputSubsystem

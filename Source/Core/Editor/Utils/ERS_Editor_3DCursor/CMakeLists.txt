@@ -24,7 +24,7 @@ target_link_libraries(ERS_Editor_3DCursor
 
 # Link Internal Libs
 target_link_libraries(ERS_Editor_3DCursor
-    ERS_LoggingSystem
+    bg-common-logger
     
     ERS_STRUCT_Camera
     ERS_STRUCT_LocRotScale

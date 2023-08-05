@@ -8,12 +8,13 @@
 // Standard Libraries (BG convention: use <> instead of "")
 #include <memory>
 #include <map>
+#include <cstring>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/Logger.h>
 #include <IOData.h>
 
 
@@ -21,7 +22,7 @@ class ERS_AssetIndexInputOutputManager {
 
 private:
 
-    ERS_LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
+    BG::Common::Logger::LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
     std::mutex Lock_; /**<Stops other threads from accessing the maps when in use*/
 
 
@@ -40,7 +41,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_AssetIndexInputOutputManager(ERS_LoggingSystem* Logger);
+    ERS_AssetIndexInputOutputManager(BG::Common::Logger::LoggingSystem* Logger);
 
     /**
      * @brief Destroy the ers class assetindexIOM object

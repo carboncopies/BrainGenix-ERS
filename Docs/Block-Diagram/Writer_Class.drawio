@@ -21,7 +21,7 @@
             <mxPoint x="-1912" y="-460" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zg09Nzef80ySRzNZ7IzD-6" value="ERS_LoggingSystem" style="swimlane;fontStyle=3;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;fillColor=#4D9900;fontColor=#ffffff;" parent="1" vertex="1" collapsed="1">
+        <mxCell id="zg09Nzef80ySRzNZ7IzD-6" value="BG::Common::Logger::LoggingSystem" style="swimlane;fontStyle=3;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;fillColor=#4D9900;fontColor=#ffffff;" parent="1" vertex="1" collapsed="1">
           <mxGeometry x="-2470" y="-1040" width="310" height="26" as="geometry">
             <mxRectangle x="280" y="10" width="310" height="40" as="alternateBounds" />
           </mxGeometry>
@@ -39,7 +39,7 @@
             <mxRectangle x="-1910" y="-1053" width="245" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zg09Nzef80ySRzNZ7IzD-13" value="- ERS_LoggingSystem Logger &#xa;- ERS_InputOutputSubsystem IOSubsystem" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=default;" parent="zg09Nzef80ySRzNZ7IzD-12" vertex="1">
+        <mxCell id="zg09Nzef80ySRzNZ7IzD-13" value="- BG::Common::Logger::LoggingSystem Logger &#xa;- ERS_InputOutputSubsystem IOSubsystem" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;labelBackgroundColor=default;" parent="zg09Nzef80ySRzNZ7IzD-12" vertex="1">
           <mxGeometry y="26" width="420" height="44" as="geometry" />
         </mxCell>
         <mxCell id="zg09Nzef80ySRzNZ7IzD-14" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="zg09Nzef80ySRzNZ7IzD-12" vertex="1">

@@ -16,7 +16,7 @@
 #include <ThreadNamingUtils/SetThreadName.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/Logger.h>
 #include <HardwareInfo.h>
 
 
@@ -29,7 +29,7 @@ class ERS_HardwareInformation {
     private:
 
         // Class Instances
-        ERS_LoggingSystem* Logger_; /**<Instance Of Logging System*/
+        BG::Common::Logger::LoggingSystem* Logger_; /**<Instance Of Logging System*/
         ERS_STRUCT_HardwareInfo HardwareInfo_; /**<Internal Hardware Information Struct*/
 
         // Config
@@ -61,7 +61,7 @@ class ERS_HardwareInformation {
          * @param Logger 
          * @param SystemConfig 
          */
-        ERS_HardwareInformation(ERS_LoggingSystem* Logger, YAML::Node SystemConfig);
+        ERS_HardwareInformation(BG::Common::Logger::LoggingSystem* Logger, YAML::Node SystemConfig);
 
         /**
          * @brief Destroy the Hardware Information object

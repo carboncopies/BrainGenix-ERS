@@ -70,7 +70,7 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_STRUCT_Camera
     ERS_STRUCT_SceneCamera
     
-    ERS_LoggingSystem
+    bg-common-logger
 
     ERS_SceneManager
     ERS_ShaderLoader

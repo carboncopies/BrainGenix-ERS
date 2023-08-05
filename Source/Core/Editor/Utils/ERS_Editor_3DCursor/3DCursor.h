@@ -20,7 +20,7 @@
 #include <ImGuizmo.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/Logger.h>
 
 #include <Camera.h>
 #include <LocRotScale.h>

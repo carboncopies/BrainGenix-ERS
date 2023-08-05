@@ -19,7 +19,7 @@
 #include <pybind11/embed.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/Logger.h>
 
 #include <Model.h>
 #include <PointLight.h>
@@ -44,7 +44,7 @@ class ERS_CLASS_PythonInterpreterIntegration {
 
 private:
 
-    ERS_LoggingSystem*                      Logger_ = nullptr; /**<Pointer to the logging system class instance*/
+    BG::Common::Logger::LoggingSystem*                      Logger_ = nullptr; /**<Pointer to the logging system class instance*/
     std::unique_ptr<pybind11::scoped_interpreter> Guard_;            /**<Python Interpreter Guard Class*/
     
     double RunTime_ = -1.0f; /**<Time since game started playing*/
@@ -76,7 +76,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_PythonInterpreterIntegration(ERS_LoggingSystem* Logger);
+    ERS_CLASS_PythonInterpreterIntegration(BG::Common::Logger::LoggingSystem* Logger);
 
     /**
      * @brief Destroy the ers class pythonInterpreterintegration object

@@ -13,7 +13,7 @@
 // Third-Party Libraries (BG convention: use <> instead of "")
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/Logger.h>
 
 
 
@@ -25,4 +25,4 @@
  * @param UsedAssetIDIndex 
  * @param AssetIndexIOM 
  */
-void ERS_FUNCTION_CompareIndexDelta(ERS_LoggingSystem* Logger, std::shared_ptr<std::vector<long>> UsedAssetIDIndex, std::vector<long> AssetIndexIOM);
+void ERS_FUNCTION_CompareIndexDelta(BG::Common::Logger::LoggingSystem* Logger, std::shared_ptr<std::vector<long>> UsedAssetIDIndex, std::vector<long> AssetIndexIOM);

@@ -28,7 +28,7 @@ target_link_libraries(ERS_OpenGLLoggingSystem
 
 # Link Internal Libs
 target_link_libraries(ERS_OpenGLLoggingSystem
-    ERS_LoggingSystem
+    bg-common-logger
     )
 
 target_include_directories(ERS_OpenGLLoggingSystem PUBLIC ./)

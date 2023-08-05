@@ -10,7 +10,7 @@ bool ERS_FUNCTION_DecodeSceneV5(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     // Init
     bool Success = true;
     SystemUtils->Logger_->Log(std::string("Processing Scene '") + Scene->SceneName + "' With Decoder Version 3", 3, LogEnable);
-    ERS_LoggingSystem* Logger = SystemUtils->Logger_.get();
+    BG::Common::Logger::LoggingSystem* Logger = SystemUtils->Logger_.get();
 
     // Grab Metadata
     std::vector<YAML::Node> Models, PointLights, SpotLights, DirectionalLights, SceneCameras;

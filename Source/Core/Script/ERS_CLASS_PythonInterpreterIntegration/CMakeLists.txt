@@ -35,7 +35,7 @@ add_library(ERS_CLASS_PythonInterpreterIntegration
 
 # Link Internal Libs
 target_link_libraries(ERS_CLASS_PythonInterpreterIntegration
-    ERS_LoggingSystem
+    bg-common-logger
 
     ERS_STRUCT_Model
     ERS_STRUCT_Light

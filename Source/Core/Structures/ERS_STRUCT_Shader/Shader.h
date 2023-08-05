@@ -20,7 +20,7 @@
 #include <GLFW/glfw3.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/Logger.h>
 
 
 
@@ -74,42 +74,42 @@ struct ERS_STRUCT_Shader {
      * 
      * @param VertexText 
      */
-    std::string CompileVertexShader(const char* VertexText, ERS_LoggingSystem* Logger = nullptr);
+    std::string CompileVertexShader(const char* VertexText, BG::Common::Logger::LoggingSystem* Logger = nullptr);
 
     /**
      * @brief Function To Compile Fragment Shader With Given Code (const char*)
      * 
      * @param FragmentText 
      */
-    std::string CompileFragmentShader(const char* FragmentText, ERS_LoggingSystem* Logger = nullptr);
+    std::string CompileFragmentShader(const char* FragmentText, BG::Common::Logger::LoggingSystem* Logger = nullptr);
 
     /**
      * @brief Function To Compile Geometry Shader With Given Code (const char*)
      * 
      * @param GeometryText 
      */
-    std::string CompileGeometryShader(const char* GeometryText, ERS_LoggingSystem* Logger = nullptr);
+    std::string CompileGeometryShader(const char* GeometryText, BG::Common::Logger::LoggingSystem* Logger = nullptr);
 
     /**
      * @brief Function To Compile Compute Shader With Given Code (const char*)
      * 
      * @param ComputeText 
      */
-    std::string CompileComputeShader(const char* ComputeText, ERS_LoggingSystem* Logger = nullptr);
+    std::string CompileComputeShader(const char* ComputeText, BG::Common::Logger::LoggingSystem* Logger = nullptr);
 
     /**
      * @brief Function To Compile Compute Shader With Given Code (const char*)
      * 
      * @param ComputeText 
      */
-    std::string CompileTCShader(const char* TCText, ERS_LoggingSystem* Logger = nullptr);
+    std::string CompileTCShader(const char* TCText, BG::Common::Logger::LoggingSystem* Logger = nullptr);
 
     /**
      * @brief Function To Compile Compute Shader With Given Code (const char*)
      * 
      * @param ComputeText 
      */
-    std::string CompileTEShader(const char* TEText, ERS_LoggingSystem* Logger = nullptr);
+    std::string CompileTEShader(const char* TEText, BG::Common::Logger::LoggingSystem* Logger = nullptr);
 
 
     /**
@@ -117,7 +117,7 @@ struct ERS_STRUCT_Shader {
      * 
      * @param DeleteShadersUponLink 
      */
-    std::string CreateShaderProgram(ERS_LoggingSystem* Logger, bool LogEnable = true);
+    std::string CreateShaderProgram(BG::Common::Logger::LoggingSystem* Logger, bool LogEnable = true);
 
     /**
      * @brief Make The Shader Stored Within The Struct Active.

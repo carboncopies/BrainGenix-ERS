@@ -5,7 +5,7 @@
 #include <ThemeManager.h>
 
 
-ERS_CLASS_ThemeManager::ERS_CLASS_ThemeManager(ERS_LoggingSystem* Logger, const char* ThemePath) {
+ERS_CLASS_ThemeManager::ERS_CLASS_ThemeManager(BG::Common::Logger::LoggingSystem* Logger, const char* ThemePath) {
 
     Logger_ = Logger;
     ThemePath_ = ThemePath;

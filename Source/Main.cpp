@@ -22,8 +22,8 @@
 #include <GPURequest.h>
 #include <RendererManager.h>
 
-#include <LoggingSystem.h>
-#include <LogSystemInfo.h>
+#include <BG/Common/Logger/Logger.h>
+#include <BG/Common/Logger/LogSystemInfo.h>
 #include <HardwareInformation.h>
 #include <ArgumentParser.h>
 #include <ModelImporter.h>
@@ -80,7 +80,7 @@ int main(int NumArguments, char** ArguemntValues) {
     }
 
     // Instantiate Logging Subsystem
-    SystemUtils->Logger_ = std::make_unique<ERS_LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());
+    SystemUtils->Logger_ = std::make_unique<BG::Common::Logger::LoggingSystem>(*SystemUtils->LocalSystemConfiguration_.get());
     SystemUtils->Logger_->Log("Initialized Logging System", 5);
 
     // Handle Command Line Arguments
@@ -163,7 +163,7 @@ int main(int NumArguments, char** ArguemntValues) {
     RendererManager sERSRendererManager(SystemUtils.get(), ProjectUtils.get(), HIDUtils.get());
 
 
-    ERS_LogSystemInfo(SystemUtils->Logger_.get());
+    BG::Common::Logger::LogSystemInfo(SystemUtils->Logger_.get());
 
 
     // Initialize Times

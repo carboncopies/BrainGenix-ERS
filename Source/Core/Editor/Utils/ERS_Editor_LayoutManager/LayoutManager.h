@@ -17,7 +17,7 @@
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
-#include <LoggingSystem.h>
+#include <BG/Common/Logger/Logger.h>
 #include <SystemUtils.h>
 #include <WindowManager.h>
 
@@ -40,7 +40,7 @@ class ERS_CLASS_LayoutManager {
 private:
 
     ERS_STRUCT_SystemUtils*  SystemUtils_   = nullptr; /**<Pointer to System utillities struct, used to get things like logger, etc.*/
-    ERS_LoggingSystem* Logger_        = nullptr; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
+    BG::Common::Logger::LoggingSystem* Logger_        = nullptr; /**<ERS_CLASS_LoggingSystem Instance Pointer*/
     ERS_CLASS_WindowManager* WindowManager_ = nullptr; /**<Window Manager Class Instance*/
     
     std::string LayoutDirectory_; /**<This string stores the path to the editor's layout directory ending in a trailing slash*/
@@ -62,7 +62,7 @@ public:
      * @param WindowManager
      * @param LayoutDirectory
      */
-    ERS_CLASS_LayoutManager(ERS_LoggingSystem* Logger, const char* LayoutDirectory = "EditorAssets/Layouts/");
+    ERS_CLASS_LayoutManager(BG::Common::Logger::LoggingSystem* Logger, const char* LayoutDirectory = "EditorAssets/Layouts/");
 
     /**
      * @brief Destroy the Layout Manager object

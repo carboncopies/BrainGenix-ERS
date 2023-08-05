@@ -6,7 +6,7 @@
 
 
 
-ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(ERS_LoggingSystem* Logger, const char* LayoutDirectory) {
+ERS_CLASS_LayoutManager::ERS_CLASS_LayoutManager(BG::Common::Logger::LoggingSystem* Logger, const char* LayoutDirectory) {
 
     Logger_ = Logger;
     LayoutDirectory_ = LayoutDirectory;

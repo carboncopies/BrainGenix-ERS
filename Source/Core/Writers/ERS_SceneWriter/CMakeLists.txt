@@ -21,7 +21,7 @@ target_link_libraries(ERS_SceneWriter
 
 # Link Internal Libs
 target_link_libraries(ERS_SceneWriter
-    ERS_LoggingSystem
+    bg-common-logger
     ERS_STRUCT_Model
     ERS_STRUCT_Scene
     ERS_STRUCT_Mesh
