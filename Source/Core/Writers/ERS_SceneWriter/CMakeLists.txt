@@ -28,7 +28,7 @@ target_link_libraries(ERS_SceneWriter
     ERS_STRUCT_Texture
 
     ERS_STRUCT_SystemUtils
-    ERS_STRUCT_IOData
+    bg-ers-iosubsystem
     )
 
 target_include_directories(ERS_SceneWriter PUBLIC ./)

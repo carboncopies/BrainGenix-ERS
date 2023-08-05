@@ -114,7 +114,7 @@ bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, lo
     for (unsigned long i = 0; i < ProjectPointer->Scripts.size(); i++) {
 
         SystemUtils_->Logger_->Log(std::string("Writing Data For Script '") + ProjectPointer->Scripts[i].Name_ + std::string("'"), 3);
-        std::unique_ptr<ERS_STRUCT_IOData> ScriptData = std::make_unique<ERS_STRUCT_IOData>();
+        std::unique_ptr<BG::ERS::IOSubsystem::IOData> ScriptData = std::make_unique<BG::ERS::IOSubsystem::IOData>();
         ScriptData->AssetTypeName = "Script";
         ScriptData->Data.reset(new unsigned char[ProjectPointer->Scripts[i].Code_.size()]);
         ScriptData->Size_B = ProjectPointer->Scripts[i].Code_.size();
@@ -126,7 +126,7 @@ bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, lo
 
     // Write To IOData
     SystemUtils_->Logger_->Log("Writing Project To Asset", 4);
-    std::unique_ptr<ERS_STRUCT_IOData> ProjectData = std::make_unique<ERS_STRUCT_IOData>();
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> ProjectData = std::make_unique<BG::ERS::IOSubsystem::IOData>();
     
     ProjectData->Data.reset(new unsigned char[ProjectByteString.size()]);
     ProjectData->Size_B = ProjectByteString.size();

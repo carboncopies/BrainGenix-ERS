@@ -386,7 +386,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     Model->LoadingStartTime_ = glfwGetTime();
 
     // Read Metadata From Asset
-    std::unique_ptr<ERS_STRUCT_IOData> ModelMetadata = std::make_unique<ERS_STRUCT_IOData>();
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> ModelMetadata = std::make_unique<BG::ERS::IOSubsystem::IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, ModelMetadata.get());
     std::string ModelMetadataString = std::string((const char*)ModelMetadata->Data.get());
     YAML::Node Metadata = YAML::Load(ModelMetadataString);
@@ -398,7 +398,7 @@ void ERS_CLASS_ModelLoader::LoadModel(long AssetID, std::shared_ptr<ERS_STRUCT_M
     Assimp::Importer Importer;
     //SystemUtils_->Logger_->Log(std::string(std::string("Loading Model With ID: ") + std::to_string(AssetID)).c_str(), 3);
 
-    std::unique_ptr<ERS_STRUCT_IOData> ModelData = std::make_unique<ERS_STRUCT_IOData>();
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> ModelData = std::make_unique<BG::ERS::IOSubsystem::IOData>();
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(Model->ModelDataID, ModelData.get());
     const aiScene* Scene = Importer.ReadFileFromMemory(ModelData->Data.get(), (int)ModelData->Size_B, aiProcess_Triangulate | aiProcess_GenSmoothNormals | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_PreTransformVertices | aiProcess_JoinIdenticalVertices, "");
 

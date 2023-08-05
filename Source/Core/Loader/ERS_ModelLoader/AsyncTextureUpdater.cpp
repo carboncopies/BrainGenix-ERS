@@ -98,7 +98,7 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataRAM(ERS_STRUCT_Texture* Texture
     }
 
     // Load Image Data
-    ERS_STRUCT_IOData ImageData;
+    BG::ERS::IOSubsystem::IOData ImageData;
     long LevelAssetID = Texture->TextureLevels[Level].LevelTextureAssetID;
     SystemUtils_->ERS_IOSubsystem_->ReadAsset(LevelAssetID, &ImageData);
 

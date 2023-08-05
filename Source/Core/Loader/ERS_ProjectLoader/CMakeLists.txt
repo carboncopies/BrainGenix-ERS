@@ -21,7 +21,7 @@ target_link_libraries(ERS_ProjectLoader
 
 # Link Internal Libs
 target_link_libraries(ERS_ProjectLoader
-    ERS_STRUCT_IOData
+    bg-ers-iosubsystem
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_Project
     ERS_STRUCT_ShaderProgramAssetIDs

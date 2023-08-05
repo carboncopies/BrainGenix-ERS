@@ -35,7 +35,7 @@ class ERS_CLASS_ModelWriter {
 private:
 
     BG::Common::Logger::LoggingSystem* Logger_; /**<Pointer To Logger Instance*/
-    ERS_InputOutputSubsystem* IOSubsystem_; /**<Pointer To IOSubsystem*/
+    BG::ERS::IOSubsystem::IOSubsystem* IOSubsystem_; /**<Pointer To IOSubsystem*/
 
 private:
 
@@ -84,7 +84,7 @@ private:
      * @param Path 
      * @param IOData 
      */
-    bool ReadFile(std::string Path, ERS_STRUCT_IOData* IOData);
+    bool ReadFile(std::string Path, BG::ERS::IOSubsystem::IOData* IOData);
 
 public:
 
@@ -93,7 +93,7 @@ public:
      * 
      * @param Logger 
      */
-    ERS_CLASS_ModelWriter(BG::Common::Logger::LoggingSystem* Logger, ERS_InputOutputSubsystem* IOSubsystem);
+    ERS_CLASS_ModelWriter(BG::Common::Logger::LoggingSystem* Logger, BG::ERS::IOSubsystem::IOSubsystem* IOSubsystem);
     
     /**
      * @brief Destroy the ers class modelwriter object

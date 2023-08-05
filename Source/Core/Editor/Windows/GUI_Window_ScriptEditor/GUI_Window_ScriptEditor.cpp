@@ -44,7 +44,7 @@ void GUI_Window_ScriptEditor::ReloadEditorText(int ScriptIndex) {
 void GUI_Window_ScriptEditor::SaveScript(std::string ScriptText, long AssetID) {
 
     // Write Data
-    std::unique_ptr<ERS_STRUCT_IOData> Data = std::make_unique<ERS_STRUCT_IOData>();
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> Data = std::make_unique<BG::ERS::IOSubsystem::IOData>();
     
     Data->Data.reset(new unsigned char[ScriptText.size()]);
     Data->Size_B = ScriptText.size();

@@ -33,7 +33,7 @@ target_link_libraries(ERS_ExternalModelLoader
     ERS_STRUCT_Vertex
     ERS_STRUCT_ModelWriterData
     ERS_STRUCT_SystemUtils
-    ERS_STRUCT_IOData
+    bg-ers-iosubsystem
     )
 
 target_include_directories(ERS_ExternalModelLoader PUBLIC ./)
