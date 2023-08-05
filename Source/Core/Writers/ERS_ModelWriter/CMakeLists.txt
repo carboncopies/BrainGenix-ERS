@@ -26,7 +26,7 @@ target_link_libraries(ERS_ModelWriter
     ERS_STRUCT_Scene
     ERS_STRUCT_Mesh
     ERS_STRUCT_Texture
-    ERS_InputOutputSubsystem
+    bg-ers-iosubsystem
     ERS_STRUCT_ModelWriterData
     )
 

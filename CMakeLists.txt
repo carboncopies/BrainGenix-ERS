@@ -224,7 +224,7 @@ target_link_libraries("ERS"
     ERS_ModelWriter
     ERS_ProjectLoader
     ERS_ProjectWriter
-    ERS_InputOutputSubsystem
+    bg-ers-iosubsystem
     ERS_FramerateManager
     ERS_ProjectManager
     ERS_ControllerInputManager

@@ -27,7 +27,7 @@ target_link_libraries(ERS_ProjectLoader
     ERS_STRUCT_ShaderProgramAssetIDs
     ERS_STRUCT_Script
 
-    ERS_InputOutputSubsystem
+    bg-ers-iosubsystem
 
     )
 
