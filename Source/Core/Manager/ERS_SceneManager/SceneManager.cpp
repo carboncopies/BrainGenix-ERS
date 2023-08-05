@@ -5,7 +5,7 @@
 #include <SceneManager.h>
 
 
-ERS_CLASS_SceneManager::ERS_CLASS_SceneManager(BG::Common::Logger::LoggingSystem* Logger) {
+ERS_CLASS_SceneManager::ERS_CLASS_SceneManager(ERS_LoggingSystem* Logger) {
 
     Logger_ = Logger;
 
@@ -21,35 +21,38 @@ ERS_CLASS_SceneManager::~ERS_CLASS_SceneManager() {
 
 void ERS_CLASS_SceneManager::UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
 
-    // If The Scene Has No Models, Exit Early
-    if (Scenes_[ActiveScene_]->SceneObjects_.size() == 0) {
-        return;
+    if (Scenes_[ActiveScene_]->SceneObjects_.empty()) {
+        Logger_->Log("Scene has no models");
+        return; 
     }
 
     unsigned long SelectedObject = Scenes_[ActiveScene_]->SelectedObject;
 
-    if (Scenes_[ActiveScene_]->SceneObjects_[SelectedObject].Type_ == std::string("Model")) {
-        unsigned long Index = Scenes_[ActiveScene_]->SceneObjects_[SelectedObject].Index_;
+    if (SelectedObject >= Scenes_[ActiveScene_]->SceneObjects_.size()) {
+        Logger_->Log("Selected Scene Object is out of bounds.");
+        return; 
+    }
+
+    auto& selectedObject = Scenes_[ActiveScene_]->SceneObjects_[SelectedObject];
+
+    if (selectedObject.Type_ == "Model") {
+        unsigned long Index = selectedObject.Index_;
         Scenes_[ActiveScene_]->Models[Index]->SetLocRotScale(Pos, Rot, Scale);
         Scenes_[ActiveScene_]->Models[Index]->ApplyTransformations();
-    } else if (Scenes_[ActiveScene_]->SceneObjects_[Scenes_[ActiveScene_]->SelectedObject].Type_ == std::string("PointLight")) {
-        unsigned long Index = Scenes_[ActiveScene_]->SceneObjects_[SelectedObject].Index_;
+    } else if (selectedObject.Type_ == "PointLight") {
+        unsigned long Index = selectedObject.Index_;
         Scenes_[ActiveScene_]->PointLights[Index]->Pos = Pos;
-    } else if (Scenes_[ActiveScene_]->SceneObjects_[Scenes_[ActiveScene_]->SelectedObject].Type_ == std::string("DirectionalLight")) {
-        unsigned long Index = Scenes_[ActiveScene_]->SceneObjects_[SelectedObject].Index_;
+    } else if (selectedObject.Type_ == "DirectionalLight" || selectedObject.Type_ == "SpotLight") {
+        unsigned long Index = selectedObject.Index_;
         Scenes_[ActiveScene_]->DirectionalLights[Index]->Pos = Pos;
         Scenes_[ActiveScene_]->DirectionalLights[Index]->Rot = Rot;
-    } else if (Scenes_[ActiveScene_]->SceneObjects_[Scenes_[ActiveScene_]->SelectedObject].Type_ == std::string("SpotLight")) {
-        unsigned long Index = Scenes_[ActiveScene_]->SceneObjects_[SelectedObject].Index_;
-        Scenes_[ActiveScene_]->SpotLights[Index]->Pos = Pos;
-        Scenes_[ActiveScene_]->SpotLights[Index]->Rot = Rot;
-    } else if (Scenes_[ActiveScene_]->SceneObjects_[Scenes_[ActiveScene_]->SelectedObject].Type_ == std::string("SceneCamera")) {
-        unsigned long Index = Scenes_[ActiveScene_]->SceneObjects_[SelectedObject].Index_;
+    } else if (selectedObject.Type_ == "SceneCamera") {
+        unsigned long Index = selectedObject.Index_;
         Scenes_[ActiveScene_]->SceneCameras[Index]->Pos_ = Pos;
         Scenes_[ActiveScene_]->SceneCameras[Index]->Rot_ = Rot;
     }
-
 }
+
 
 bool ERS_CLASS_SceneManager::AddScene(ERS_STRUCT_Scene Scene) {
 
@@ -90,36 +93,25 @@ bool ERS_CLASS_SceneManager::SetActiveScene(int SceneIndex) {
 
 bool ERS_CLASS_SceneManager::SetActiveScene(std::string TargetSceneName) {
 
-    // Iterate Through Scenes, Check Name Against Target
-    int TargetSceneIndex;
-    bool TargetSceneFound = false;
+    // Create an unordered_map to store scene names and their indices
+    std::unordered_map<std::string, int> SceneNameToIndex;
 
-    for (TargetSceneIndex = 0; (long)TargetSceneIndex < (long)Scenes_.size(); TargetSceneIndex++) {
-
-        // Get Scene Name
-        std::string SceneName = Scenes_[TargetSceneIndex]->SceneName;
-
-        // Check Scene Name
-        if (SceneName == TargetSceneName) {
-            TargetSceneFound = true;
-            break;
-        }
-
+   // Populate the unordered_map with scene names and indices
+    for (int i = 0; i < Scenes_.size(); i++) {
+        SceneNameToIndex[Scenes_[i]->SceneName] = i;
     }
 
-    // Check Success/Fail
-    if (!TargetSceneFound) {
+    // Find the target scene index in the unordered_map
+    auto TargetName = SceneNameToIndex.find(TargetSceneName);
 
-        // Log Error
-        Logger_->Log(std::string(std::string("Failed To Set Active Scene To: ") + TargetSceneName + std::string(" Because It Isn't In The Scenes_ Vector")).c_str(), 7); 
-
+    // Check if the target scene was found
+    if (TargetName == SceneNameToIndex.end()) {
+        Logger_->Log(std::string("Failed To Set Active Scene To: " + TargetSceneName + " Because TargetName Isn't In The Scenes_ Vector").c_str(), 7); 
         return false;
-    } 
+    }
 
-    // Update Target Scene
-    ActiveScene_ = TargetSceneIndex;
+    // Update the ActiveScene_ wTargetNameh the target scene index
+    ActiveScene_ = TargetName->second;
 
     return true;
-    
-
 }
