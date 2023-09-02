@@ -169,11 +169,11 @@ Depending on the type of object selected, the window will display different prop
 
 
 
-# Build Instructions
+# Build Instructions (For Users)
 
 ## Linux:
 
-  It's pretty easy to build on linux and has been tested with Debian/Ubuntu to work. This is the primary development platform used, and such tends to work the best. 
+  It's pretty easy to build on Linux and has been tested with Debian/Ubuntu distros to work. This is the primary development platform used, and therefore tends to work the best. 
   
   Simply enter the `Tools` directory and run `sudo bash Setup.sh` followed by `bash Build.sh [number_of_threads]`. The build command can be adjusted to fit the number of cpu cores that your system has by changing the argument. **If you don't know how many CPU cores your system has, 4 is a good bet.** If you have issues building (machine hanging/freezing or other memory related issues) try lowering this number. ERS can take a *lot* of memory to build, so make sure to lower the number of threads if needed.
   
@@ -184,9 +184,12 @@ Depending on the type of object selected, the window will display different prop
 
 ## Windows:
 
+  At this time, we're not working on native Windows builds since we are working on cross-compiling for Windows platforms from Linux. This will allow us to simplify our build infrastructure significantly. Therefore, ***the following section is out of date and may not work!***
+
+
   Since we don't develop on Windows, builds aren't guarenteed to work. With that said, they *should* work most of the time.   
   
-  **Note: Having windows set to a non english language seems to break includes for some reason.** We really wish that this wasn't an issue but it seems to be a problem for whatever reason. Apologies for the inconvenience.
+  **Note: Having windows set to a non english language seems to break C++ includes for some reason.** We really wish that this wasn't an issue but it seems to be a problem for whatever reason (thanks Microsoft!). Apologies for the inconvenience.
 
   - Open Visual Stuido 2019 (Has to be this version)
   - Install python 3.9.5 (needed to link with the interpreter, embeddable version already included in project tree, also restart your machine after installing to avoid issues) (If just installing, make sure to restart after to make it show up in visual studio)
@@ -206,7 +209,7 @@ Depending on the type of object selected, the window will display different prop
   - Follow Linux build instructions
 
 
-# Development Environment Setup
+# Development Environment Setup (For Developers)
 
  - *Step One: Platform*  
 We do our development here on Linux based systems, (preferably Debian or Ubuntu).
