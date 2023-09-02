@@ -1,5 +1,4 @@
-# BrainGenix Engine 1
-# and Game Test Plan 1
+# ERS Testing Plan
 
 Prepared by: Josh Coldiron 
 Document creation 
