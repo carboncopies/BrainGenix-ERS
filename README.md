@@ -4,12 +4,7 @@
 ![Image](https://user-images.githubusercontent.com/49183477/193433511-1276948e-29e8-43d0-8c5e-8f87e097fec9.png)
 
 
-# Todo
 
- - [ ] Add Logging Lib To Target Link Libs
- - [ ] Add IOSubsystem Lib To Target Link Libs
- - [ ] Replace Logging System With Internal VPCKG Lib
- - [ ] Replace IOSystem With Internal VCPKG Lib
 
 
 # Feature List
@@ -174,22 +169,27 @@ Depending on the type of object selected, the window will display different prop
 
 
 
-# Build Instructions
+# Build Instructions (For Users)
 
 ## Linux:
 
-  It's pretty easy to build on linux and has been tested with Debian/Ubuntu to work. This is the primary development platform used, and such tends to work the best. 
+  It's pretty easy to build on Linux and has been tested with Debian/Ubuntu distros to work. This is the primary development platform used, and therefore tends to work the best. 
   
-  Simply enter the `Tools` directory and run `sudo bash Install.sh` followed by `bash Build.sh 4`. The build command can be adjusted to fit the number of cpu cores that your system has by changing the argument. If you don't know how many CPU cores your system has, just leave the command as is. If something isn't working quite right for you, you can try cleaning the build with `bash Clean.sh`.
+  Simply enter the `Tools` directory and run `sudo bash Setup.sh` followed by `bash Build.sh [number_of_threads]`. The build command can be adjusted to fit the number of cpu cores that your system has by changing the argument. **If you don't know how many CPU cores your system has, 4 is a good bet.** If you have issues building (machine hanging/freezing or other memory related issues) try lowering this number. ERS can take a *lot* of memory to build, so make sure to lower the number of threads if needed.
+  
+  If something isn't working quite right for you, you can try cleaning the build with `bash Clean.sh`.
 
   If some packages are missing on your distro, you'll have to substitute with whatever your distro uses. We try to include as many packages in our codebase as possible via superbuilds, but this isn't always possible or practical.
 
 
 ## Windows:
 
+  At this time, we're not working on native Windows builds since we are working on cross-compiling for Windows platforms from Linux. This will allow us to simplify our build infrastructure significantly. Therefore, ***the following section is out of date and may not work!***
+
+
   Since we don't develop on Windows, builds aren't guarenteed to work. With that said, they *should* work most of the time.   
   
-  **Note: Having windows set to a non english language seems to break includes for some reason.** We really wish that this wasn't an issue but it seems to be a problem for whatever reason. Apologies for the inconvenience.
+  **Note: Having windows set to a non english language seems to break C++ includes for some reason.** We really wish that this wasn't an issue but it seems to be a problem for whatever reason (thanks Microsoft!). Apologies for the inconvenience.
 
   - Open Visual Stuido 2019 (Has to be this version)
   - Install python 3.9.5 (needed to link with the interpreter, embeddable version already included in project tree, also restart your machine after installing to avoid issues) (If just installing, make sure to restart after to make it show up in visual studio)
@@ -203,13 +203,32 @@ Depending on the type of object selected, the window will display different prop
 
 ## Mac:
   
-  - NOTE: You must have a version of OSX that is greater than 10.15.0 as the <filesystem> header is broken on earlier versions of the OS.
-  
   - Install one of the following:
-    - [Ubuntu](https://ubuntu.com/download)
     - [Debian](https://www.debian.org/distrib/)
-    - [Fedora](https://getfedora.org/workstation/download/)
+    - [Ubuntu](https://ubuntu.com/download)
   - Follow Linux build instructions
+
+
+# Development Environment Setup (For Developers)
+
+ - *Step One: Platform*  
+We do our development here on Linux based systems, (preferably Debian or Ubuntu).
+Please ensure that you have a machine with either (Debian 11 or 12) or (Ubuntu 22.04) installed. A VM may work for all projects except ERS as that requires GPU acceleration (unless you have a VM with GPU passthrough).
+Other linux distros may work, but the dependencies may need to be figured out manually (feel free to update the relevant Setup.sh script in the Tools directory though!)
+Windows and OSX platforms are not supported and may fail to build.  
+
+ - *Step Two: Cloning and Setting Up*  
+For this part, ensure that you have git installed on your machine. This can be installed with `sudo apt install git` on debian distros.
+Now, clone the repo for the BG project you’re trying to build. Since the URL is different for every project, it’s not shown here but this would follow the format `git clone [url to project]`. Make sure to change directory `cd` into the place you want to clone the repo. Usually this is your Documents directory but can be whatever you want.
+Next, we’ll want to set up the needed dependencies. To do so, simply cd into the Tools directory in the repo. Now, just run `Setup.sh` - note that this will need root privileges to install the needed packages on your system. This will also bootstrap vcpkg which allows us to simplify our build system significantly.  
+
+ - *Step Three: Compiling and Testing*  
+Now that we have everything setup, we’re ready to compile the project. This is done with the Build.sh script, simply run this script (keep in mind that you can and probably should pass in an argument with the number of threads to use). If your machine runs out of memory while compiling, simply reduce the number of threads to use while compiling. It’s recommended that you have at least 32gb of memory when compiling - and if not, reduce the number of threads.
+Finally we can test that the compiled executable works by running `./Run.sh`. This will run whatever binary was produced for testing.  
+
+
+Done! You've now successfully setup your build environment. At this point, just install or tweak things how you like and you're all set.
+
 
 # Keybinds
 
