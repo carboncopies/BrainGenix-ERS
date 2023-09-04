@@ -69,7 +69,7 @@ void GUI_Window_NewProject::Draw() {
 #else
                 Command += "./";
 #endif
-                Command += "BrainGenix-ERS -ProjectDirectory ";
+                Command += "ERS -ProjectDirectory ";
                 Command += '"' + Path + '"' + " &";
                 int Status = std::system(Command.c_str());
 
