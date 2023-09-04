@@ -62,7 +62,7 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 					WorkerThreads_[i].join();
 				else
 					break;
-				std::this_thread::sleep_for(std::chrono::milliseconds(100));
+				std::this_thread::sleep_for(std::chrono::milliseconds(1));
 			}			
 
 			//If the thread is still running, terminate it
@@ -74,7 +74,7 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 				std::terminate();
 			}
 		}
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
     SystemUtils_->Logger_->Log("Finished Joining Worker Threads", 6);
 
