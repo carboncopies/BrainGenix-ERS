@@ -16,7 +16,7 @@
 #include <Scene.h>
 #include <LocRotScale.h>
 #include <OpenGLDefaults.h>
-
+#include <unordered_map>
 
 /**
  * @brief The ERS_CLASS_SceneManager Class Handles the Presentation and Rendering of BrainGenix ERS Scene Structures.
