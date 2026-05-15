@@ -88,6 +88,7 @@ include(${CMAKE_SCRIPTS_DIR}/CompileTimeStamp/CompileTimeStamp.cmake)
 # Include Package Addition Scripts
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/Bullet.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGui.cmake)
@@ -238,6 +239,7 @@ target_link_libraries("ERS"
 
     Renderer
 )
+target_link_libraries("ERS" ERS_Bullet)
 target_include_directories("ERS" PRIVATE ${SRC_DIR})
 
 # Run Configuration On EditorAssetBundle
