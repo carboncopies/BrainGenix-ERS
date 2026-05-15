@@ -300,7 +300,13 @@ if(OpenXR_headers_FOUND)
         add_library(OpenXR::Headers INTERFACE IMPORTED)
     endif()
     set_target_properties(OpenXR::Headers PROPERTIES
-        INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "${_oxr_include_dirs}")
+        INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "${OPENXR_INCLUDE_DIRS}")
+
+    if(NOT TARGET OpenXR::headers)
+        add_library(OpenXR::headers INTERFACE IMPORTED)
+    endif()
+    set_target_properties(OpenXR::headers PROPERTIES
+        INTERFACE_LINK_LIBRARIES "OpenXR::Headers")
 
     # This target just provides the headers, without any prototypes.
     # Finding and loading the loader at runtime is your problem.
@@ -332,4 +338,10 @@ if(OpenXR_loader_FOUND AND OpenXR_headers_FOUND)
         IMPORTED_LINK_INTERFACE_LANGUAGES "C"
         IMPORTED_LOCATION "${OPENXR_loader_LIBRARY}"
         INTERFACE_LINK_LIBRARIES "${_oxr_loader_interface_libs}")
+
+    if(NOT TARGET OpenXR::openxr_loader)
+        add_library(OpenXR::openxr_loader INTERFACE IMPORTED)
+    endif()
+    set_target_properties(OpenXR::openxr_loader PROPERTIES
+        INTERFACE_LINK_LIBRARIES "OpenXR::Loader")
 endif()
