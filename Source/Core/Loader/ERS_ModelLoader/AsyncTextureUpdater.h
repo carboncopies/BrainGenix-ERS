@@ -75,6 +75,7 @@ private:
 
     void TexturePusherThread(int Index);
     void TextureLoaderThread(int Index);
+    void ApplyHighFrequencyTextureFiltering();
 
 
     void FreeRAMAllocation(ERS_STRUCT_TextureLevel &Level);
@@ -243,4 +244,3 @@ public:
 
 
 };
-

@@ -4,6 +4,14 @@
 
 #include <AsyncTextureUpdater.h>
 
+#ifndef GL_TEXTURE_MAX_ANISOTROPY_EXT
+#define GL_TEXTURE_MAX_ANISOTROPY_EXT 0x84FE
+#endif
+
+#ifndef GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT
+#define GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT 0x84FF
+#endif
+
 
 ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_AssetStreamingSystemResourceMonitor* ResourceMonitor, GLFWwindow* Window, unsigned int Threads) {
 
@@ -51,6 +59,21 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 
 
 // Texture Streaming Helpers
+void ERS_CLASS_AsyncTextureUpdater::ApplyHighFrequencyTextureFiltering() {
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    if (glfwExtensionSupported("GL_EXT_texture_filter_anisotropic") == GLFW_TRUE) {
+        GLfloat MaxAnisotropy = 1.0f;
+        glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &MaxAnisotropy);
+        if (MaxAnisotropy > 1.0f) {
+            glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAX_ANISOTROPY_EXT, MaxAnisotropy);
+        }
+    }
+
+}
+
 void ERS_CLASS_AsyncTextureUpdater::FreeRAMAllocation(ERS_STRUCT_TextureLevel &Level) {
     if (Level.AllocatedRAMBudget) {
         ResourceMonitor_->DeallocateTextureRAMFromBudget(Level.LevelMemorySizeBytes);
@@ -406,6 +429,8 @@ bool ERS_CLASS_AsyncTextureUpdater::LoadImageDataVRAM(ERS_STRUCT_Texture* Textur
     }
     glFinish();
     glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, Width, Height, TextureExternFormat, GL_UNSIGNED_BYTE, 0);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    ApplyHighFrequencyTextureFiltering();
     
 
     // Cleanup Buffers, Wait For Everything To Finish
