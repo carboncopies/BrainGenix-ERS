@@ -1,0 +1,25 @@
+services:
+  cassandra:
+    image: cassandra:5.0
+    container_name: braingenix-ers-cassandra-sandbox
+    environment:
+      CASSANDRA_CLUSTER_NAME: BrainGenixERS-Sandbox
+      CASSANDRA_DC: dc1
+      CASSANDRA_RACK: rack1
+      MAX_HEAP_SIZE: 512M
+      HEAP_NEWSIZE: 128M
+    ports:
+      - "9042:9042"
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+      - ./schema:/workspace/schema:ro
+      - ./queries:/workspace/queries:ro
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -e \"DESCRIBE KEYSPACES\" || exit 1"]
+      interval: 20s
+      timeout: 10s
+      retries: 15
+      start_period: 90s
+
+volumes:
+  cassandra-data:
