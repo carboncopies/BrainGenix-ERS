@@ -4,6 +4,8 @@
 
 #include <SceneManager.h>
 
+#include <unordered_map>
+
 
 ERS_CLASS_SceneManager::ERS_CLASS_SceneManager(BG::Common::Logger::LoggingSystem* Logger) {
 
