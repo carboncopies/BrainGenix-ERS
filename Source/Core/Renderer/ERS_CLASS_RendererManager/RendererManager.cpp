@@ -5,9 +5,9 @@
 #include <RendererManager.h>
 
 
-// FIXME! MAKE MORE CLEAN LOOKING OR SOMETHING
-void ErrorCallback(int, const char* ErrorString) {
-    std::cout<<"GLFW ERROR: " << ErrorString << std::endl;
+void ErrorCallback(int ErrorCode, const char* ErrorString) {
+    const char* Message = ErrorString != nullptr ? ErrorString : "No error message provided";
+    std::cerr<<"GLFW ERROR (" << ErrorCode << "): " << Message << std::endl;
 }
 
 
