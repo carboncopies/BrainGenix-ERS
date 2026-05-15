@@ -1,6 +1,8 @@
 #pragma once
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <condition_variable>
+#include <mutex>
 #include <thread>
 #include <chrono>
 
@@ -50,6 +52,9 @@ class ERS_HardwareInformation {
         // Control Vars
         float DynamicInfoRefreshRate_; /*<Set Number Of ms To wait until next dynamic info refresh*/
         bool ShouldDynamicInfoThreadRun_ = true; /**<Control Variable For Dynamic Info Thread*/
+        bool DynamicInfoThreadActive_ = false; /**<Tracks dynamic-info thread liveness during shutdown.*/
+        std::mutex DynamicInfoThreadMutex_; /**<Protects dynamic thread control state.*/
+        std::condition_variable DynamicInfoThreadCondition_; /**<Wakes the dynamic-info thread for shutdown and signals exit.*/
 
         std::thread DynamicUpdateThread_; /**<Dynamic Update Thread*/
 
