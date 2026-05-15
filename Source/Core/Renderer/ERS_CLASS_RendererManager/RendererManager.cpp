@@ -160,6 +160,14 @@ void RendererManager::InitializeGLFW() {
     SystemUtils_->Logger_->Log("Read Configuration File For 'WindowTitle' Parameter", 1);
     WindowTitle_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
 
+    YAML::Node OffscreenRenderingNode = (*SystemUtils_->LocalSystemConfiguration_)["OffscreenRendering"];
+    OffscreenRendering_ = OffscreenRenderingNode ? OffscreenRenderingNode.as<bool>() : false;
+    if (OffscreenRendering_) {
+        SystemUtils_->Logger_->Log("Offscreen rendering enabled, creating the main GLFW context as a hidden window", 3);
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
+    }
+
     // Create Window Object
     glfwSetErrorCallback(ErrorCallback);
     Window_ = glfwCreateWindow(WindowWidth_, WindowHeight_, WindowTitle_, NULL, NULL);
@@ -170,7 +178,12 @@ void RendererManager::InitializeGLFW() {
 
     // Bring Window To Front, Unlock Framerate So Our Framerate System Is Used
     glfwMakeContextCurrent(Window_);
-    glfwSwapInterval(1);
+    if (OffscreenRendering_) {
+        glfwSwapInterval(0);
+        SystemUtils_->Logger_->Log("Running renderer without presenting a visible GLFW window", 3);
+    } else {
+        glfwSwapInterval(1);
+    }
 
 
 
