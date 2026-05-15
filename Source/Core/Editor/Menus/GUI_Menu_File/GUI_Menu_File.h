@@ -16,6 +16,10 @@
 
 #include <imgui.h>
 
+#include <ImGuiFileDialog.h>
+
+#include <ghc/filesystem.hpp>
+
 
 // Internal Libraries (BG convention: use <> instead of "")
 #include <BG/Common/Logger/Logger.h>
@@ -48,6 +52,36 @@ private:
     ERS_CLASS_SceneManager* SceneManager_     = nullptr; /**<Scene Manager Instance Pointer*/
     ERS_STRUCT_ProjectUtils* ProjectUtils_    = nullptr; /**<Pointer To Project Utils Instance*/
     std::unique_ptr<SceneWriter> SceneWriter_;           /**<Scene Writer Instance Pointer*/
+
+private:
+
+    /**
+     * @brief Save the active project and all loaded scenes.
+     *
+     */
+    void SaveCurrentProject();
+
+    /**
+     * @brief Draw the export-project directory picker and process accepted exports.
+     *
+     */
+    void DrawExportProjectDialog();
+
+    /**
+     * @brief Resolve the current project directory from launch args or local configuration.
+     *
+     * @return ghc::filesystem::path
+     */
+    ghc::filesystem::path GetCurrentProjectDirectory();
+
+    /**
+     * @brief Copy the active project directory to the target directory.
+     *
+     * @param ExportDirectory
+     * @return true
+     * @return false
+     */
+    bool ExportCurrentProject(ghc::filesystem::path ExportDirectory);
 
 public:
 

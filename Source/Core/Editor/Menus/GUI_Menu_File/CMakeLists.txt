@@ -15,9 +15,13 @@ add_library(Menu_File
             ${BACKWARD_ENABLE}
             )
 
+set_property(TARGET Menu_File PROPERTY CXX_STANDARD 17)
+
 # Link 3rd Party Libs
 target_link_libraries(Menu_File
     IMGUI
+    ImGuiFileDialog
+    ghcFilesystem::ghc_filesystem
     yaml-cpp
     )
 
