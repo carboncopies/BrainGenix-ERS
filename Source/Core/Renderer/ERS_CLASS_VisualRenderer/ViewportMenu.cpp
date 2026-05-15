@@ -3,7 +3,6 @@
 //======================================================================//
 
 #include <ViewportMenu.h>
-#include <cmath>
 
 namespace {
 
@@ -19,11 +18,7 @@ glm::vec3 ERS_FUNCTION_SnapLevelBlockPosition(glm::vec3 Position, float Step) {
         return Position;
     }
 
-    return glm::vec3(
-        std::round(Position.x / Step) * Step,
-        std::round(Position.y / Step) * Step,
-        std::round(Position.z / Step) * Step
-    );
+    return glm::round(Position / Step) * Step;
 }
 
 bool ERS_FUNCTION_DuplicateSelectedModelAsLevelBlock(ERS_STRUCT_Scene* Scene, const ERS_STRUCT_Viewport* Viewport, glm::vec3 Direction) {
