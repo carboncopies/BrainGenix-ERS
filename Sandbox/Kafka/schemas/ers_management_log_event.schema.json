@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ERS Management Log Event",
+  "type": "object",
+  "required": [
+    "timestamp",
+    "managementChannel",
+    "subsystem",
+    "category",
+    "severity",
+    "source",
+    "type",
+    "id",
+    "message"
+  ],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "managementChannel": {
+      "type": "string"
+    },
+    "subsystem": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "message": {
+      "type": "string"
+    },
+    "project": {
+      "type": "string"
+    },
+    "scene": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}
