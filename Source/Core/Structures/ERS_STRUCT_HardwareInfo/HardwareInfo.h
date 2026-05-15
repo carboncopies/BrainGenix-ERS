@@ -48,6 +48,11 @@ struct StaticHardwareInfo {
     std::vector<float> GPUVRAMSizes; /**<List of GPU VRAM Sizes*/
     std::vector<float> GPUCacheSize; /**<List OF GPU Cache Sizes*/
     std::vector<float> GPUMaxFreq; /**<:ist of GPU Max Frequency*/
+    int PreferredGPUDeviceID = -1; /**<Preferred GPU selected from config and hardware enumeration, or -1 if unset.*/
+    std::string PreferredGPUVendor; /**<Vendor of the preferred GPU selection.*/
+    std::string PreferredGPUName; /**<Name of the preferred GPU selection.*/
+    std::string PreferredGPUSelectionReason; /**<Why the preferred GPU was selected.*/
+    bool HasPreferredGPU = false; /**<Whether a preferred GPU was selected for future render backends.*/
 
 
 };
