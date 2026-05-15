@@ -2,13 +2,17 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
+// cppcheck-suppress missingIncludeSystem
 #include <SceneSorter.h>
 
 // Standard Libraries (BG convention: use <> instead of "")
+// cppcheck-suppress missingIncludeSystem
 #include <algorithm>
+// cppcheck-suppress missingIncludeSystem
 #include <future>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+// cppcheck-suppress missingIncludeSystem
 #include <glm/geometric.hpp>
 
 
