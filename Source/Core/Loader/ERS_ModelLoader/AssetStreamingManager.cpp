@@ -258,7 +258,7 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
                 // Calculate Total Texture Size For Next Level
                 int NextLevelTextureSize = 0;
                 for (unsigned int z = 0; z < CurrentModel->Textures_Loaded.size(); z++) {
-                    NextLevelTextureSize += CurrentModel->Textures_Loaded[i].TextureLevels[CurrentLevel].LevelMemorySizeBytes;
+                    NextLevelTextureSize += CurrentModel->Textures_Loaded[z].TextureLevels[CurrentLevel].LevelMemorySizeBytes;
                 }
 
                 // Check If Will Fit In Mem
@@ -305,7 +305,7 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
                 // Calculate Total Texture Size For Next Level
                 int NextLevelTextureSize = 0;
                 for (unsigned int z = 0; z < CurrentModel->Textures_Loaded.size(); z++) {
-                    NextLevelTextureSize += CurrentModel->Textures_Loaded[i].TextureLevels[CurrentLevel].LevelMemorySizeBytes;
+                    NextLevelTextureSize += CurrentModel->Textures_Loaded[z].TextureLevels[CurrentLevel].LevelMemorySizeBytes;
                 }
 
                 // Check If Will Fit In Mem
@@ -421,6 +421,5 @@ void ERS_CLASS_AssetStreamingManager::SetCurrentScene(ERS_STRUCT_Scene* Scene) {
 void ERS_CLASS_AssetStreamingManager::SetCameraStructs(std::vector<ERS_STRUCT_Camera*> Cameras) {
     Cameras_ = Cameras;
 }
-
 
 
