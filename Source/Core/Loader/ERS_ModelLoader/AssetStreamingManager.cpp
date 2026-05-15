@@ -44,14 +44,14 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::vector<std::pair<float, unsigned int>>> DistancesFromCamera, ERS_STRUCT_Scene* Scene) {
 
     // Iterate Over All Cameras, Make Recomendations From There
-    for (unsigned int CameraIndex = 0; CameraIndex < CameraUpdatesQuota.size(); CameraIndex++) {
+    for (unsigned int CameraIndex = 0; CameraIndex < CameraUpdatesQuota.size() && CameraIndex < DistancesFromCamera.size(); CameraIndex++) {
 
         
         // Sort Models From Cameras
         unsigned int MaxCameraUpdates = CameraUpdatesQuota[CameraIndex];
         unsigned int CameraVRAMUpdates = 0;
         unsigned int CameraRAMUpdates = 0;
-        for (auto DistanceMapIterator = DistancesFromCamera[0].begin(); DistanceMapIterator != DistancesFromCamera[0].end(); ++DistanceMapIterator) {
+        for (auto DistanceMapIterator = DistancesFromCamera[CameraIndex].begin(); DistanceMapIterator != DistancesFromCamera[CameraIndex].end(); ++DistanceMapIterator) {
             
             // Get Parameters From Model Array
             float ModelDistance = DistanceMapIterator->first;
@@ -421,4 +421,3 @@ void ERS_CLASS_AssetStreamingManager::SetCurrentScene(ERS_STRUCT_Scene* Scene) {
 void ERS_CLASS_AssetStreamingManager::SetCameraStructs(std::vector<ERS_STRUCT_Camera*> Cameras) {
     Cameras_ = Cameras;
 }
-
