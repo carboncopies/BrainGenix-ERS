@@ -3,6 +3,7 @@
 // Standard Libraries (BG convention: use <> instead of "")
 #include <thread>
 #include <chrono>
+#include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -41,6 +42,8 @@ class ERS_HardwareInformation {
         const char* endianness_name(iware::cpu::endianness_t endianness) noexcept;
         const char* architecture_name(iware::cpu::architecture_t architecture) noexcept;
         const char* cache_type_name(iware::cpu::cache_type_t cache_type) noexcept;
+        bool StringContainsInsensitive(const std::string& Haystack, const std::string& Needle) const;
+        int SelectPreferredGPU(std::string& SelectionReason) const;
 
         // Internal Functions
         void GetDynamicInformation(); /**<Updates Dynamic Information*/
