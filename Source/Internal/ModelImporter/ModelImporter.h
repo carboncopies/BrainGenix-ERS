@@ -9,6 +9,8 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <chrono>
+#include <condition_variable>
 #include <mutex>
 #include <future>
 #include <thread>
@@ -36,9 +38,11 @@ class ERS_ModelImporter {
 
         ERS_STRUCT_SystemUtils* SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
         std::mutex LockAssetImportQueue_; /**<Mutex used to control access to list of assets to be imported*/
-        std::mutex BlockThread_; /**<Use This To Block The Thread*/
+        std::condition_variable WorkAvailableCondition_; /**<Wakes the import thread when new work arrives or shutdown begins.*/
+        std::condition_variable ImportThreadShutdownCondition_; /**<Signals that the import thread has fully exited.*/
         bool StopThread_ = false; /**<Set this to true to make the importer thread exit*/
         bool HasJobFinished_ = false; /**<Indicate If A Job Has Finished*/
+        bool ImportThreadActive_ = false; /**<Tracks import-thread liveness during shutdown.*/
         std::thread ImportThread_; /**<Import Processor Thread*/
         std::vector<std::string> AssetImportQueue_; /**<List of assets to be imported, accessed by other threads so use mutex to control access*/
         std::vector<bool> AssetQueueFlipTextures_; /**<List of assets flip texture parameter*/
