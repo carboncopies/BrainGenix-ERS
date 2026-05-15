@@ -36,14 +36,10 @@
 #include <ConvertRotationToFrontVector.h>
 
 
-struct ERS_STRUCT_CubemapFBOIndexes {
+struct ERS_STRUCT_DepthMapAllocation {
 
-    long FBO1 = -1;
-    long FBO2 = -1;
-    long FBO3 = -1;
-    long FBO4 = -1;
-    long FBO5 = -1;
-    long FBO6 = -1;
+    bool Allocated = false;
+    long FrameBufferObjectID = -1;
     
 };
 
@@ -79,20 +75,12 @@ public:
     int DepthTextureArrayHeight_ = 2048; /**<Height of the depth map texutre*/
     int DepthTextureNumTextures_ = 16; /**<Number of textures that the tex array can hold*/
     int DepthTextureCubemapNumTextures_ = 2; /**<Number of cubemaps the array can hold*/
-    std::vector<long> DepthMapTexturesAlreadyAllocated_; /**<Use This To Check if the texture is already allocated or not*/
-    //std::vector<ERS_STRUCT_CubemapFBOIndexes> DepthMapTexturesCubemapAlreadyAllocated_; /**<Used to check if a given cubemap index is in use, and to indiciate it's framebuffer objects, so they can be rebound on resize*/
-    std::vector<bool> DepthMapTexturesCubemapAlreadyAllocated_; /**<Used to check if a given cubemap index is in use, and to indiciate it's framebuffer objects, so they can be rebound on resize*/
+    std::vector<ERS_STRUCT_DepthMapAllocation> DepthMapTextureAllocations_; /**<Tracks 2D depth map texture allocation state and framebuffer ownership*/
+    std::vector<ERS_STRUCT_DepthMapAllocation> DepthMapCubemapAllocations_; /**<Tracks cubemap depth map texture allocation state*/
     
 
     unsigned int CubemapFBO_;
     unsigned int PointLightClearFBO_;
-
-    // !!FIXME!!
-    // Replace above vector with instead pointers to struct list so we can keep track and automatically free, etc.
-
-    //std::vector<unsigned int> DepthMapTextureIndex_; /**<Use This To Check if the texture is already allocated or not*/
-    //std::vector<unsigned int> AssociatedDepthMapFramebufferIndex_; /**<Used To Pair The Framebuffer With The Depth Map*/
-
 
     /**
      * @brief Construct a new ers class DepthMaps object
