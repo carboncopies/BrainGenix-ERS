@@ -235,6 +235,3 @@ struct ERS_STRUCT_Shader {
     void SetMat4(const std::string &name, const glm::mat4 &mat) const;
 
 };
-
-// FIXME: MOVE THISE TO OTHER (seperate) Shader Loader Class
-
