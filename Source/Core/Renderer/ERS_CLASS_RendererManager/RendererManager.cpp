@@ -3,6 +3,7 @@
 //======================================================================//
 
 #include <RendererManager.h>
+// cppcheck-suppress missingIncludeSystem
 #include <Profiling.h>
 
 

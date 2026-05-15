@@ -48,6 +48,7 @@
 #include <ERS_CLASS_LuaJITInterpreterIntegration.h>
 
 #include <GetExecutablePath.h>
+// cppcheck-suppress missingIncludeSystem
 #include <Profiling.h>
 
 
