@@ -21,36 +21,160 @@ ERS_CLASS_SceneManager::~ERS_CLASS_SceneManager() {
 
 void ERS_CLASS_SceneManager::UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
 
+    if (Scenes_.empty() || ActiveScene_ < 0 || (unsigned long)ActiveScene_ >= Scenes_.size()) {
+        Logger_->Log("Cannot update LocRotScale because the active scene is invalid", 7);
+        return;
+    }
+
     if (Scenes_[ActiveScene_]->SceneObjects_.empty()) {
         Logger_->Log("Scene has no models");
-        return; 
+        return;
     }
 
-    unsigned long SelectedObject = Scenes_[ActiveScene_]->SelectedObject;
+    ApplyLocRotScale(ActiveScene_, Scenes_[ActiveScene_]->SelectedObject, Pos, Rot, Scale);
+}
 
-    if (SelectedObject >= Scenes_[ActiveScene_]->SceneObjects_.size()) {
+bool ERS_CLASS_SceneManager::GetSelectedLocRotScale(glm::vec3& Pos, glm::vec3& Rot, glm::vec3& Scale, bool& HasRotation, bool& HasScale) {
+
+    if (Scenes_.empty() || ActiveScene_ < 0 || (unsigned long)ActiveScene_ >= Scenes_.size()) {
+        return false;
+    }
+
+    return GetLocRotScale(ActiveScene_, Scenes_[ActiveScene_]->SelectedObject, Pos, Rot, Scale, HasRotation, HasScale);
+}
+
+bool ERS_CLASS_SceneManager::GetLocRotScale(int SceneIndex, unsigned long SceneObjectIndex, glm::vec3& Pos, glm::vec3& Rot, glm::vec3& Scale, bool& HasRotation, bool& HasScale) {
+
+    Pos = glm::vec3(0.0f);
+    Rot = glm::vec3(0.0f);
+    Scale = glm::vec3(1.0f);
+    HasRotation = false;
+    HasScale = false;
+
+    if (SceneIndex < 0 || (unsigned long)SceneIndex >= Scenes_.size()) {
+        Logger_->Log("Cannot read LocRotScale from invalid scene index", 7);
+        return false;
+    }
+
+    ERS_STRUCT_Scene* Scene = Scenes_[SceneIndex].get();
+    if (Scene->SceneObjects_.empty()) {
+        Logger_->Log("Scene has no models");
+        return false;
+    }
+
+    if (SceneObjectIndex >= Scene->SceneObjects_.size()) {
         Logger_->Log("Selected Scene Object is out of bounds.");
-        return; 
+        return false;
     }
 
-    auto& selectedObject = Scenes_[ActiveScene_]->SceneObjects_[SelectedObject];
+    auto& SelectedObject = Scene->SceneObjects_[SceneObjectIndex];
 
-    if (selectedObject.Type_ == "Model") {
-        unsigned long Index = selectedObject.Index_;
-        Scenes_[ActiveScene_]->Models[Index]->SetLocRotScale(Pos, Rot, Scale);
-        Scenes_[ActiveScene_]->Models[Index]->ApplyTransformations();
-    } else if (selectedObject.Type_ == "PointLight") {
-        unsigned long Index = selectedObject.Index_;
-        Scenes_[ActiveScene_]->PointLights[Index]->Pos = Pos;
-    } else if (selectedObject.Type_ == "DirectionalLight" || selectedObject.Type_ == "SpotLight") {
-        unsigned long Index = selectedObject.Index_;
-        Scenes_[ActiveScene_]->DirectionalLights[Index]->Pos = Pos;
-        Scenes_[ActiveScene_]->DirectionalLights[Index]->Rot = Rot;
-    } else if (selectedObject.Type_ == "SceneCamera") {
-        unsigned long Index = selectedObject.Index_;
-        Scenes_[ActiveScene_]->SceneCameras[Index]->Pos_ = Pos;
-        Scenes_[ActiveScene_]->SceneCameras[Index]->Rot_ = Rot;
+    if (SelectedObject.Type_ == "Model") {
+        unsigned long Index = SelectedObject.Index_;
+        if (Index >= Scene->Models.size()) {
+            return false;
+        }
+        Pos = Scene->Models[Index]->ModelPosition;
+        Rot = Scene->Models[Index]->ModelRotation;
+        Scale = Scene->Models[Index]->ModelScale;
+        HasRotation = true;
+        HasScale = true;
+    } else if (SelectedObject.Type_ == "PointLight") {
+        unsigned long Index = SelectedObject.Index_;
+        if (Index >= Scene->PointLights.size()) {
+            return false;
+        }
+        Pos = Scene->PointLights[Index]->Pos;
+    } else if (SelectedObject.Type_ == "DirectionalLight") {
+        unsigned long Index = SelectedObject.Index_;
+        if (Index >= Scene->DirectionalLights.size()) {
+            return false;
+        }
+        Pos = Scene->DirectionalLights[Index]->Pos;
+        Rot = Scene->DirectionalLights[Index]->Rot;
+        HasRotation = true;
+    } else if (SelectedObject.Type_ == "SpotLight") {
+        unsigned long Index = SelectedObject.Index_;
+        if (Index >= Scene->SpotLights.size()) {
+            return false;
+        }
+        Pos = Scene->SpotLights[Index]->Pos;
+        Rot = Scene->SpotLights[Index]->Rot;
+        HasRotation = true;
+    } else if (SelectedObject.Type_ == "SceneCamera") {
+        unsigned long Index = SelectedObject.Index_;
+        if (Index >= Scene->SceneCameras.size()) {
+            return false;
+        }
+        Pos = Scene->SceneCameras[Index]->Pos_;
+        Rot = Scene->SceneCameras[Index]->Rot_;
+        HasRotation = true;
+    } else {
+        return false;
     }
+
+    return true;
+}
+
+bool ERS_CLASS_SceneManager::ApplyLocRotScale(int SceneIndex, unsigned long SceneObjectIndex, glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale) {
+
+    if (SceneIndex < 0 || (unsigned long)SceneIndex >= Scenes_.size()) {
+        Logger_->Log("Cannot update LocRotScale on invalid scene index", 7);
+        return false;
+    }
+
+    ERS_STRUCT_Scene* Scene = Scenes_[SceneIndex].get();
+    if (Scene->SceneObjects_.empty()) {
+        Logger_->Log("Scene has no models");
+        return false;
+    }
+
+    if (SceneObjectIndex >= Scene->SceneObjects_.size()) {
+        Logger_->Log("Selected Scene Object is out of bounds.");
+        return false;
+    }
+
+    auto& SelectedObject = Scene->SceneObjects_[SceneObjectIndex];
+
+    if (SelectedObject.Type_ == "Model") {
+        unsigned long Index = SelectedObject.Index_;
+        if (Index >= Scene->Models.size()) {
+            return false;
+        }
+        Scene->Models[Index]->SetLocRotScale(Pos, Rot, Scale);
+        Scene->Models[Index]->ApplyTransformations();
+    } else if (SelectedObject.Type_ == "PointLight") {
+        unsigned long Index = SelectedObject.Index_;
+        if (Index >= Scene->PointLights.size()) {
+            return false;
+        }
+        Scene->PointLights[Index]->Pos = Pos;
+    } else if (SelectedObject.Type_ == "DirectionalLight") {
+        unsigned long Index = SelectedObject.Index_;
+        if (Index >= Scene->DirectionalLights.size()) {
+            return false;
+        }
+        Scene->DirectionalLights[Index]->Pos = Pos;
+        Scene->DirectionalLights[Index]->Rot = Rot;
+    } else if (SelectedObject.Type_ == "SpotLight") {
+        unsigned long Index = SelectedObject.Index_;
+        if (Index >= Scene->SpotLights.size()) {
+            return false;
+        }
+        Scene->SpotLights[Index]->Pos = Pos;
+        Scene->SpotLights[Index]->Rot = Rot;
+    } else if (SelectedObject.Type_ == "SceneCamera") {
+        unsigned long Index = SelectedObject.Index_;
+        if (Index >= Scene->SceneCameras.size()) {
+            return false;
+        }
+        Scene->SceneCameras[Index]->Pos_ = Pos;
+        Scene->SceneCameras[Index]->Rot_ = Rot;
+    } else {
+        return false;
+    }
+
+    return true;
 }
 
 

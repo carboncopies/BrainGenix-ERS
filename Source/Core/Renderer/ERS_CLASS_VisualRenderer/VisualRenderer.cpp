@@ -56,6 +56,105 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 
 }
 
+static bool ERS_FUNCTION_TransformUndoValuesDiffer(glm::vec3 Left, glm::vec3 Right) {
+    return glm::length(Left - Right) > 0.0001f;
+}
+
+void ERS_CLASS_VisualRenderer::BeginTransformUndoRecord(ERS_CLASS_SceneManager* SceneManager) {
+
+    if (TransformUndoRecordActive_ || SceneManager->Scenes_.empty()
+        || SceneManager->ActiveScene_ < 0
+        || (unsigned long)SceneManager->ActiveScene_ >= SceneManager->Scenes_.size()) {
+        return;
+    }
+
+    ERS_STRUCT_TransformUndoRecord Record;
+    Record.SceneIndex = SceneManager->ActiveScene_;
+    Record.SceneObjectIndex = SceneManager->Scenes_[SceneManager->ActiveScene_]->SelectedObject;
+
+    if (!SceneManager->GetSelectedLocRotScale(Record.BeforePos, Record.BeforeRot, Record.BeforeScale, Record.HasRotation, Record.HasScale)) {
+        return;
+    }
+
+    ActiveTransformUndoRecord_ = Record;
+    TransformUndoRecordActive_ = true;
+}
+
+void ERS_CLASS_VisualRenderer::FinishTransformUndoRecord(ERS_CLASS_SceneManager* SceneManager) {
+
+    if (!TransformUndoRecordActive_) {
+        return;
+    }
+
+    ERS_STRUCT_TransformUndoRecord Record = ActiveTransformUndoRecord_;
+    bool HasRotation = false;
+    bool HasScale = false;
+    if (!SceneManager->GetLocRotScale(Record.SceneIndex, Record.SceneObjectIndex, Record.AfterPos, Record.AfterRot, Record.AfterScale, HasRotation, HasScale)) {
+        TransformUndoRecordActive_ = false;
+        return;
+    }
+
+    bool HasChanged = ERS_FUNCTION_TransformUndoValuesDiffer(Record.BeforePos, Record.AfterPos)
+        || ERS_FUNCTION_TransformUndoValuesDiffer(Record.BeforeRot, Record.AfterRot)
+        || ERS_FUNCTION_TransformUndoValuesDiffer(Record.BeforeScale, Record.AfterScale);
+
+    if (HasChanged) {
+        TransformUndoStack_.push_back(Record);
+        TransformRedoStack_.clear();
+    }
+
+    TransformUndoRecordActive_ = false;
+}
+
+bool ERS_CLASS_VisualRenderer::ApplyTransformUndoRecord(ERS_CLASS_SceneManager* SceneManager, const ERS_STRUCT_TransformUndoRecord& Record, bool ApplyAfter) {
+
+    glm::vec3 Pos = ApplyAfter ? Record.AfterPos : Record.BeforePos;
+    glm::vec3 Rot = ApplyAfter ? Record.AfterRot : Record.BeforeRot;
+    glm::vec3 Scale = ApplyAfter ? Record.AfterScale : Record.BeforeScale;
+
+    if (!SceneManager->ApplyLocRotScale(Record.SceneIndex, Record.SceneObjectIndex, Pos, Rot, Scale)) {
+        return false;
+    }
+
+    SceneManager->SetActiveScene(Record.SceneIndex);
+    SceneManager->Scenes_[Record.SceneIndex]->SelectedObject = Record.SceneObjectIndex;
+    SceneManager->Scenes_[Record.SceneIndex]->HasSelectionChanged = true;
+    Cursors3D_->SetLocRotScale(Pos, Rot, Scale, Record.HasRotation, Record.HasScale);
+    Cursors3D_->ObjectHasChanged();
+
+    return true;
+}
+
+void ERS_CLASS_VisualRenderer::HandleTransformUndoShortcuts(ERS_CLASS_SceneManager* SceneManager) {
+
+    if (!IsEditorMode_ || TransformUndoRecordActive_) {
+        return;
+    }
+
+    ImGuiIO& IO = ImGui::GetIO();
+    if (IO.WantTextInput || !(IO.KeyCtrl || IO.KeySuper)) {
+        return;
+    }
+
+    bool UndoPressed = ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Z), false) && !IO.KeyShift;
+    bool RedoPressed = ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Y), false)
+        || (ImGui::IsKeyPressed(ImGui::GetKeyIndex(ImGuiKey_Z), false) && IO.KeyShift);
+
+    if (RedoPressed && !TransformRedoStack_.empty()) {
+        ERS_STRUCT_TransformUndoRecord Record = TransformRedoStack_.back();
+        TransformRedoStack_.pop_back();
+        if (ApplyTransformUndoRecord(SceneManager, Record, true)) {
+            TransformUndoStack_.push_back(Record);
+        }
+    } else if (UndoPressed && !TransformUndoStack_.empty()) {
+        ERS_STRUCT_TransformUndoRecord Record = TransformUndoStack_.back();
+        TransformUndoStack_.pop_back();
+        if (ApplyTransformUndoRecord(SceneManager, Record, false)) {
+            TransformRedoStack_.push_back(Record);
+        }
+    }
+}
+
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
 
     
@@ -116,6 +215,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
 
     // Iterate Through Viewports
+    HandleTransformUndoShortcuts(SceneManager);
     for (int i = 0; (long)i < (long)Viewports_.size(); i++) {
         UpdateViewport(i, SceneManager, DeltaTime);
     }
@@ -464,42 +564,16 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             }
 
             // Get LocRotScale
-            glm::vec3 Position;        
-            glm::vec3 Rotation;      
+            glm::vec3 Position;
+            glm::vec3 Rotation;
             glm::vec3 Scale;
             bool HasRotation = false;
             bool HasScale = false;
 
-            if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("Model")) {
-                unsigned long ModelIndex = Scene->SceneObjects_[SelectedObject].Index_;
-                Position = Scene->Models[ModelIndex]->ModelPosition;        
-                Rotation = Scene->Models[ModelIndex]->ModelRotation;        
-                Scale = Scene->Models[ModelIndex]->ModelScale;                
-                HasRotation = true;
-                HasScale = true;
-            } else if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("PointLight")) {
-                unsigned long Index = Scene->SceneObjects_[SelectedObject].Index_;
-                Position = Scene->PointLights[Index]->Pos;        
-            } else if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("DirectionalLight")) {
-                unsigned long Index = Scene->SceneObjects_[SelectedObject].Index_;
-                Position = Scene->DirectionalLights[Index]->Pos;        
-                Rotation = Scene->DirectionalLights[Index]->Rot;    
-                HasRotation = true;    
-            } else if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("SpotLight")) {
-                unsigned long Index = Scene->SceneObjects_[SelectedObject].Index_;
-                Position = Scene->SpotLights[Index]->Pos;        
-                Rotation = Scene->SpotLights[Index]->Rot;    
-                HasRotation = true;    
-            } else if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("SceneCamera")) {
-                unsigned long Index = Scene->SceneObjects_[SelectedObject].Index_;
-                Position = Scene->SceneCameras[Index]->Pos_;        
-                Rotation = Scene->SceneCameras[Index]->Rot_;    
-                HasRotation = true;    
-            }
-
-
             // Set Cursor Position        
-            Cursors3D_->SetLocRotScale(Position, Rotation, Scale, HasRotation, HasScale);
+            if (SceneManager->GetSelectedLocRotScale(Position, Rotation, Scale, HasRotation, HasScale)) {
+                Cursors3D_->SetLocRotScale(Position, Rotation, Scale, HasRotation, HasScale);
+            }
 
             // Indicate Selection Hasn't Changed
             Scene->HasSelectionChanged = false;
@@ -575,7 +649,9 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         }
 
-
+        if (DrawCursor && Cursors3D_->IsUsing() && !TransformUndoRecordActive_) {
+            BeginTransformUndoRecord(SceneManager);
+        }
 
         // Update Selected Object
         if (!Cursors3D_->HasObjectChanged_) {
@@ -583,6 +659,10 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         } else {
             Cursors3D_->HasObjectChanged_ = false;
             
+        }
+
+        if (TransformUndoRecordActive_ && !Cursors3D_->IsUsing()) {
+            FinishTransformUndoRecord(SceneManager);
         }
 
 
@@ -833,4 +913,3 @@ ERS_STRUCT_Viewport* Viewport) {
         ShaderUniformData_->SpotLights_[i].LightSpaceMatrix_ = ActiveScene->SpotLights[i]->DepthMap.TransformationMatrix;
     }
 }
-

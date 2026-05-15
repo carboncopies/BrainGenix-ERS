@@ -85,6 +85,47 @@ public:
      * @param LocRotScale 
      */
     void UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale);
+
+    /**
+     * @brief Get LocRotScale for a scene object.
+     *
+     * @param SceneIndex
+     * @param SceneObjectIndex
+     * @param Pos
+     * @param Rot
+     * @param Scale
+     * @param HasRotation
+     * @param HasScale
+     * @return true
+     * @return false
+     */
+    bool GetLocRotScale(int SceneIndex, unsigned long SceneObjectIndex, glm::vec3& Pos, glm::vec3& Rot, glm::vec3& Scale, bool& HasRotation, bool& HasScale);
+
+    /**
+     * @brief Get LocRotScale for the selected object in the active scene.
+     *
+     * @param Pos
+     * @param Rot
+     * @param Scale
+     * @param HasRotation
+     * @param HasScale
+     * @return true
+     * @return false
+     */
+    bool GetSelectedLocRotScale(glm::vec3& Pos, glm::vec3& Rot, glm::vec3& Scale, bool& HasRotation, bool& HasScale);
+
+    /**
+     * @brief Apply LocRotScale to a scene object.
+     *
+     * @param SceneIndex
+     * @param SceneObjectIndex
+     * @param Pos
+     * @param Rot
+     * @param Scale
+     * @return true
+     * @return false
+     */
+    bool ApplyLocRotScale(int SceneIndex, unsigned long SceneObjectIndex, glm::vec3 Pos, glm::vec3 Rot, glm::vec3 Scale);
     
 
 

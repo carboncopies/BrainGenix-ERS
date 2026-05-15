@@ -62,6 +62,19 @@ class ERS_CLASS_VisualRenderer {
 
 private:
 
+    struct ERS_STRUCT_TransformUndoRecord {
+        int SceneIndex = -1;
+        unsigned long SceneObjectIndex = 0;
+        glm::vec3 BeforePos = glm::vec3(0.0f);
+        glm::vec3 BeforeRot = glm::vec3(0.0f);
+        glm::vec3 BeforeScale = glm::vec3(1.0f);
+        glm::vec3 AfterPos = glm::vec3(0.0f);
+        glm::vec3 AfterRot = glm::vec3(0.0f);
+        glm::vec3 AfterScale = glm::vec3(1.0f);
+        bool HasRotation = false;
+        bool HasScale = false;
+    };
+
     GLFWwindow*                Window_             = nullptr; /**<GLFW Window Instance For Window Input To Viewports*/
     Cursors3D*                 Cursors3D_          = nullptr; /**<Setup 3D Cursor Class*/
     ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_     = nullptr; /**<Pointer acquired from renderermanager*/
@@ -77,6 +90,11 @@ private:
 
     long int FrameNumber_               = 0; /**<Frame counter, starts at 0*/
     int      ActiveViewportCursorIndex_ = 0; /**<The index of the viewport which the gizmo is being interacted with*/
+    bool     TransformUndoRecordActive_ = false; /**<Indicates an active gizmo transform transaction*/
+
+    ERS_STRUCT_TransformUndoRecord              ActiveTransformUndoRecord_;
+    std::vector<ERS_STRUCT_TransformUndoRecord> TransformUndoStack_;
+    std::vector<ERS_STRUCT_TransformUndoRecord> TransformRedoStack_;
 
 
 public:
@@ -126,6 +144,38 @@ private:
      * @param DeltaTime 
      */
     void UpdateViewport(int Index, ERS_CLASS_SceneManager* SceneManager, float DeltaTime, bool DrawCursor = true);
+
+    /**
+     * @brief Handle undo/redo keyboard shortcuts for editor transform operations.
+     *
+     * @param SceneManager
+     */
+    void HandleTransformUndoShortcuts(ERS_CLASS_SceneManager* SceneManager);
+
+    /**
+     * @brief Begin recording a selected object transform transaction.
+     *
+     * @param SceneManager
+     */
+    void BeginTransformUndoRecord(ERS_CLASS_SceneManager* SceneManager);
+
+    /**
+     * @brief Finish recording a selected object transform transaction.
+     *
+     * @param SceneManager
+     */
+    void FinishTransformUndoRecord(ERS_CLASS_SceneManager* SceneManager);
+
+    /**
+     * @brief Apply a transform undo record.
+     *
+     * @param SceneManager
+     * @param Record
+     * @param ApplyAfter
+     * @return true
+     * @return false
+     */
+    bool ApplyTransformUndoRecord(ERS_CLASS_SceneManager* SceneManager, const ERS_STRUCT_TransformUndoRecord& Record, bool ApplyAfter);
 
 
 
