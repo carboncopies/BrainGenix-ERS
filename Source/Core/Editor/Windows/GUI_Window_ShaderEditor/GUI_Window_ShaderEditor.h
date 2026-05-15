@@ -47,6 +47,7 @@ private:
     std::vector<std::shared_ptr<TextEditor>> Editors_; /**<List of editors, one for each type of shader*/
     std::shared_ptr<TextEditor> Editor_; /** Editor Instance*/
     int Mode_ = 0; /**<Used To Determine what shader the user is editing*/
+    static constexpr int ShaderStageCount_ = 6; /**<Number of shader stages exposed by the editor.*/
     long SelectedShaderProgramIndex_ = 0; /**<Index of the selected shader program in the project*/
     std::string LastFrameText_; /**Set The Last Text Shown In The Editor*/
     std::shared_ptr<ERS_STRUCT_Shader> LivePreviewShader_; /**<Current live preview shader*/
@@ -66,6 +67,36 @@ private:
      * 
      */
     void ReloadEditorText();
+
+    /**
+     * @brief Get the display name for a shader stage editor.
+     *
+     */
+    const char* GetStageName(int Stage) const;
+
+    /**
+     * @brief Get an asset id for the selected shader program and stage.
+     *
+     */
+    long GetStageAssetID(int Stage) const;
+
+    /**
+     * @brief Assign an asset id for the selected shader program and stage.
+     *
+     */
+    void SetStageAssetID(int Stage, long AssetID);
+
+    /**
+     * @brief Read shader text from storage, returning empty text for absent optional stages.
+     *
+     */
+    std::string ReadShaderText(long AssetID);
+
+    /**
+     * @brief Save one shader stage, allocating optional stage assets when text exists.
+     *
+     */
+    void SaveShaderStage(int Stage);
 
     /**
      * @brief Save the shader to asset data.
