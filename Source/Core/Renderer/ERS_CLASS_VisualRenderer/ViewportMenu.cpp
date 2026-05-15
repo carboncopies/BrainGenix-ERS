@@ -3,6 +3,71 @@
 //======================================================================//
 
 #include <ViewportMenu.h>
+#include <cmath>
+
+namespace {
+
+float ERS_FUNCTION_GetLevelBlockStep(const ERS_STRUCT_Viewport* Viewport) {
+    if (Viewport->GridSnapAmountTranslate_ > 0.0f) {
+        return Viewport->GridSnapAmountTranslate_;
+    }
+    return 1.0f;
+}
+
+glm::vec3 ERS_FUNCTION_SnapLevelBlockPosition(glm::vec3 Position, float Step) {
+    if (Step <= 0.0f) {
+        return Position;
+    }
+
+    return glm::vec3(
+        std::round(Position.x / Step) * Step,
+        std::round(Position.y / Step) * Step,
+        std::round(Position.z / Step) * Step
+    );
+}
+
+bool ERS_FUNCTION_DuplicateSelectedModelAsLevelBlock(ERS_STRUCT_Scene* Scene, const ERS_STRUCT_Viewport* Viewport, glm::vec3 Direction) {
+    if ((Scene == nullptr) || (Viewport == nullptr)) {
+        return false;
+    }
+
+    if ((Scene->SelectedObject < 0) || ((unsigned int)Scene->SelectedObject >= Scene->SceneObjects_.size())) {
+        return false;
+    }
+
+    ERS_STRUCT_SceneObject& SelectedObject = Scene->SceneObjects_[Scene->SelectedObject];
+    if (SelectedObject.Type_ != std::string("Model")) {
+        return false;
+    }
+
+    unsigned long ModelIndex = SelectedObject.Index_;
+    if (ModelIndex >= Scene->Models.size()) {
+        return false;
+    }
+
+    ERS_STRUCT_Model NewModel = *Scene->Models[ModelIndex];
+    float Step = ERS_FUNCTION_GetLevelBlockStep(Viewport);
+    glm::vec3 SnappedPosition = ERS_FUNCTION_SnapLevelBlockPosition(NewModel.ModelPosition, Step);
+    NewModel.ModelPosition = SnappedPosition + (Direction * Step);
+    NewModel.ApplyTransformations();
+    NewModel.Name = NewModel.Name + std::string(" - Block");
+
+    unsigned long NewModelIndex = Scene->Models.size();
+    Scene->Models.push_back(std::make_shared<ERS_STRUCT_Model>(NewModel));
+    Scene->IndexSceneObjects();
+
+    for (unsigned long SceneObjectIndex = 0; SceneObjectIndex < Scene->SceneObjects_.size(); SceneObjectIndex++) {
+        if ((Scene->SceneObjects_[SceneObjectIndex].Type_ == std::string("Model")) && (Scene->SceneObjects_[SceneObjectIndex].Index_ == NewModelIndex)) {
+            Scene->SelectedObject = (int)SceneObjectIndex;
+            Scene->HasSelectionChanged = true;
+            return true;
+        }
+    }
+
+    return true;
+}
+
+}
 
 
 ERS_CLASS_ViewportMenu::ERS_CLASS_ViewportMenu(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, double* GameStartTime, bool* IsEditorMode, std::vector<std::unique_ptr<ERS_STRUCT_Shader>>* Shaders) {
@@ -362,6 +427,12 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
         // Add Items Menu
         if (ImGui::BeginMenu("Add")) {
 
+            ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+            bool HasSelectedModel = false;
+            if ((ActiveScene->SelectedObject >= 0) && ((unsigned int)ActiveScene->SelectedObject < ActiveScene->SceneObjects_.size())) {
+                HasSelectedModel = ActiveScene->SceneObjects_[ActiveScene->SelectedObject].Type_ == std::string("Model");
+            }
+
             if (ImGui::BeginMenu("Light")) {
 
                 if (ImGui::MenuItem("Point Light")) {
@@ -395,6 +466,33 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             
             if (ImGui::MenuItem("Camera")) {
                 AddSceneCamera();
+            }
+
+            if (ImGui::BeginMenu("Level Block Tool", HasSelectedModel)) {
+                float BlockStep = ERS_FUNCTION_GetLevelBlockStep(Viewport);
+                ImGui::Text("Step: %.3f", BlockStep);
+                ImGui::Separator();
+
+                if (ImGui::MenuItem("+X")) {
+                    ERS_FUNCTION_DuplicateSelectedModelAsLevelBlock(ActiveScene, Viewport, glm::vec3(1.0f, 0.0f, 0.0f));
+                }
+                if (ImGui::MenuItem("-X")) {
+                    ERS_FUNCTION_DuplicateSelectedModelAsLevelBlock(ActiveScene, Viewport, glm::vec3(-1.0f, 0.0f, 0.0f));
+                }
+                if (ImGui::MenuItem("+Y")) {
+                    ERS_FUNCTION_DuplicateSelectedModelAsLevelBlock(ActiveScene, Viewport, glm::vec3(0.0f, 1.0f, 0.0f));
+                }
+                if (ImGui::MenuItem("-Y")) {
+                    ERS_FUNCTION_DuplicateSelectedModelAsLevelBlock(ActiveScene, Viewport, glm::vec3(0.0f, -1.0f, 0.0f));
+                }
+                if (ImGui::MenuItem("+Z")) {
+                    ERS_FUNCTION_DuplicateSelectedModelAsLevelBlock(ActiveScene, Viewport, glm::vec3(0.0f, 0.0f, 1.0f));
+                }
+                if (ImGui::MenuItem("-Z")) {
+                    ERS_FUNCTION_DuplicateSelectedModelAsLevelBlock(ActiveScene, Viewport, glm::vec3(0.0f, 0.0f, -1.0f));
+                }
+
+                ImGui::EndMenu();
             }
 
         ImGui::EndMenu();
