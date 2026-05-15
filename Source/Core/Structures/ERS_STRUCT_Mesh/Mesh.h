@@ -29,9 +29,9 @@
 struct ERS_STRUCT_Mesh {
 
     // OpenGL IDs
-    unsigned int VBO; /**<Vertex buffer object OpenGL ID.*/
-    unsigned int EBO; /**<OpenGL EBO Object ID*/
-    unsigned int VAO; /**<Vertex Array Object OpenGL Handle*/
+    unsigned int VBO = 0; /**<Vertex buffer object OpenGL ID.*/
+    unsigned int EBO = 0; /**<OpenGL EBO Object ID*/
+    unsigned int VAO = 0; /**<Vertex Array Object OpenGL Handle*/
 
     // Loading System
     std::vector<std::pair<std::string, std::string>> Loader_RequestedTextureInformation_; /**<Contains the file path for the original texture paired with the texture's type as identified by assimp.*/
@@ -40,19 +40,19 @@ struct ERS_STRUCT_Mesh {
 
     std::vector<ERS_STRUCT_Vertex> Vertices; /**<Array of Mesh Vertices*/
     std::vector<unsigned int> Indices; /**<Array of Mesh Vertex Indices*/
-    long NumberIndices; /**<Size of Indices Array*/
+    long NumberIndices = 0; /**<Size of Indices Array*/
 
     std::vector<int> TextureColorChannels_; /**<List Of Number Of Color Channels In Texture*/
 
-    bool HasTransparency_; /**<Indicates if this model has any transparent textures (detected by number of channels)*/
-    glm::mat4 ModelMatrix; /**<Model Matrix Given To The Shader When Rendering*/
+    bool HasTransparency_ = false; /**<Indicates if this model has any transparent textures (detected by number of channels)*/
+    glm::mat4 ModelMatrix = glm::mat4(1.0f); /**<Model Matrix Given To The Shader When Rendering*/
     
     // Renderer Settings
     int ShaderOverrideIndex_ = -1; /**<Updated by the renderer - determines if we need to overried the default viewport shader*/  
 
-    bool* CastDynamicShadows_; /**<Indicate if this model is to be rendered when generating the depth maps (dynamically)*/
-    bool* CastStaticShadows_; /**<Set if this model is rendered when building static depth maps*/
-    bool* ReceiveShadows_ ; /**<Determines if this model is to have shadows applied to it.*/
+    bool* CastDynamicShadows_ = nullptr; /**<Indicate if this model is to be rendered when generating the depth maps (dynamically)*/
+    bool* CastStaticShadows_ = nullptr; /**<Set if this model is rendered when building static depth maps*/
+    bool* ReceiveShadows_ = nullptr; /**<Determines if this model is to have shadows applied to it.*/
 
     bool* TreatMissingTexturesAsTransparent_ = nullptr; /**<Treats missing textures as transparent.*/ 
 
