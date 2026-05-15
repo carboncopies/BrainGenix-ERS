@@ -30,6 +30,7 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(ERS_STRUCT_SystemUtils* SystemUtils
     for (int i = 0; i < MaxModelLoadingThreads; i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Creating Worker Thread ") + std::to_string(i)).c_str(), 3);
         WorkerThreads_.push_back(std::thread(&ERS_CLASS_ModelLoader::WorkerThread, this, i));
+        ActiveWorkerCount_ += 1;
     }
 
     //SystemUtils_->Logger_->Log("Creating Reference Loading Thread", 5);
@@ -41,40 +42,31 @@ ERS_CLASS_ModelLoader::ERS_CLASS_ModelLoader(ERS_STRUCT_SystemUtils* SystemUtils
 ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
 
     SystemUtils_->Logger_->Log("ModelLoader Destructor Called", 6);
-    FreeImage_DeInitialise();
-
-
 
     // Shutdown Threads
     SystemUtils_->Logger_->Log("Sending Join Command To Worker Threads", 5);
-    BlockThread_.lock();
-    ExitThreads_ = true;
-    BlockThread_.unlock();
+    {
+        std::lock_guard<std::mutex> Lock(BlockThread_);
+        ExitThreads_ = true;
+    }
+    WorkQueueCondition_.notify_all();
+
+    {
+        std::unique_lock<std::mutex> Lock(BlockThread_);
+        bool WorkersStopped = WorkerShutdownCondition_.wait_for(Lock, std::chrono::seconds(2), [this]() {
+            return ActiveWorkerCount_ == 0;
+        });
+        if (!WorkersStopped) {
+            SystemUtils_->Logger_->Log("Model loading threads did not stop within 2 seconds. ERS will keep waiting for a clean shutdown instead of forcing termination.", 9);
+        }
+    }
 
     SystemUtils_->Logger_->Log("Joining Worker Threads", 6);
     for (int i = 0; (long)i < (long)WorkerThreads_.size(); i++) {
         SystemUtils_->Logger_->Log(std::string(std::string("Joining Worker Thread ") + std::to_string(i)).c_str(), 3);
-		if (WorkerThreads_[i].joinable()) {
-		
-			// Wait for the thread to finish for up to 10 seconds
-			for (int k = 0; k < 100 && WorkerThreads_[i].joinable(); ++k) {
-				if (WorkerThreads_[i].joinable()) 
-					WorkerThreads_[i].join();
-				else
-					break;
-				std::this_thread::sleep_for(std::chrono::milliseconds(1));
-			}			
-
-			//If the thread is still running, terminate it
-			if (WorkerThreads_[i].joinable()) {
-				WorkerThreads_[i].detach();
-
-
-			if (WorkerThreads_[i].joinable()) 
-				std::terminate();
-			}
-		}
-		std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        if (WorkerThreads_[i].joinable()) {
+            WorkerThreads_[i].join();
+        }
     }
     SystemUtils_->Logger_->Log("Finished Joining Worker Threads", 6);
 
@@ -87,6 +79,7 @@ ERS_CLASS_ModelLoader::~ERS_CLASS_ModelLoader() {
     // ModelRefrenceThread_.join();
     // SystemUtils_->Logger_->Log("Finished Joining Reference Loader Thread", 5);
 
+    FreeImage_DeInitialise();
 
 }
 
@@ -95,45 +88,34 @@ void ERS_CLASS_ModelLoader::WorkerThread(int WorkerThreadNumber) {
     std::string ThreadName = std::string("GLT-") + std::to_string(WorkerThreadNumber);
     SetThreadName(ThreadName);
 
-    bool ThreadShouldRun = true;
-    while (ThreadShouldRun) {
+    while (true) {
+        std::shared_ptr<ERS_STRUCT_Model> WorkItem;
+        long WorkID = -1;
 
-        // Acquire Check Lock
-        BlockThread_.lock();
-        if (ExitThreads_) {
-            ThreadShouldRun = false;
-            BlockThread_.unlock();
-        } else {
+        {
+            std::unique_lock<std::mutex> Lock(BlockThread_);
+            WorkQueueCondition_.wait(Lock, [this]() {
+                return ExitThreads_ || !WorkItems_.empty();
+            });
 
-            // Check If Items In Work Queue
-            int Size = WorkItems_.size();
-            if (Size > 0) {
-
-                // Get Item, Remove From Queue, Unlock
-                std::shared_ptr<ERS_STRUCT_Model> WorkItem = WorkItems_[0];
-                long WorkID = WorkIDs_[0];
-
-
-                WorkItems_.erase(WorkItems_.begin());
-                WorkIDs_.erase(WorkIDs_.begin());
-
-
-                BlockThread_.unlock();
-
-                // Process Item
-                LoadModel(WorkID, WorkItem);
-
-            } else {
-                
-                // No Work Items, Unlock Mutex, Sleep Thread
-                BlockThread_.unlock();
-                std::this_thread::sleep_for(std::chrono::milliseconds(20));
-
+            if (ExitThreads_) {
+                break;
             }
+
+            WorkItem = WorkItems_[0];
+            WorkID = WorkIDs_[0];
+            WorkItems_.erase(WorkItems_.begin());
+            WorkIDs_.erase(WorkIDs_.begin());
         }
 
-
+        LoadModel(WorkID, WorkItem);
     }
+
+    {
+        std::lock_guard<std::mutex> Lock(BlockThread_);
+        ActiveWorkerCount_ -= 1;
+    }
+    WorkerShutdownCondition_.notify_all();
 
 }
 
@@ -165,13 +147,12 @@ void ERS_CLASS_ModelLoader::AddModelToLoadingQueue(long AssetID, std::shared_ptr
     SystemUtils_->Logger_->Log(std::string(std::string("Adding Model '") + std::to_string(AssetID) + std::string("' To Load Queue")).c_str(), 4);
 
     // Add To Queue
-    BlockThread_.lock();
-
-    WorkIDs_.push_back(AssetID);
-    WorkItems_.push_back(Model);
-    
-
-    BlockThread_.unlock();
+    {
+        std::lock_guard<std::mutex> Lock(BlockThread_);
+        WorkIDs_.push_back(AssetID);
+        WorkItems_.push_back(Model);
+    }
+    WorkQueueCondition_.notify_one();
 
 }
 
