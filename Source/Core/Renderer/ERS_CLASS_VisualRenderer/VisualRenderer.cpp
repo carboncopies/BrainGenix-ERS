@@ -4,6 +4,154 @@
 
 #include <VisualRenderer.h>
 
+#include <algorithm>
+#include <cmath>
+#include <limits>
+
+namespace {
+
+glm::mat4 ERS_FUNCTION_GetModelBoundingBoxMatrix(ERS_STRUCT_Model* Model) {
+
+    glm::mat4 ModelMatrix = glm::mat4(1.0f);
+    ModelMatrix = glm::translate(ModelMatrix, Model->ModelPosition);
+    ModelMatrix = glm::rotate(ModelMatrix, glm::radians(Model->ModelRotation.z), glm::vec3(0, 0, 1));
+    ModelMatrix = glm::rotate(ModelMatrix, glm::radians(Model->ModelRotation.y), glm::vec3(0, 1, 0));
+    ModelMatrix = glm::rotate(ModelMatrix, glm::radians(Model->ModelRotation.x), glm::vec3(1, 0, 0));
+    ModelMatrix = glm::scale(ModelMatrix, Model->TrueModelScale * Model->BoxScale_);
+
+    return ModelMatrix;
+
+}
+
+bool ERS_FUNCTION_RayIntersectsUnitBox(glm::vec3 RayOrigin, glm::vec3 RayDirection, float& HitDistance) {
+
+    const float BoxMin = -0.5f;
+    const float BoxMax = 0.5f;
+    const float Epsilon = 0.000001f;
+
+    float MinimumDistance = 0.0f;
+    float MaximumDistance = std::numeric_limits<float>::max();
+
+    for (int Axis = 0; Axis < 3; Axis++) {
+        if (std::abs(RayDirection[Axis]) < Epsilon) {
+            if ((RayOrigin[Axis] < BoxMin) || (RayOrigin[Axis] > BoxMax)) {
+                return false;
+            }
+            continue;
+        }
+
+        float AxisMinDistance = (BoxMin - RayOrigin[Axis]) / RayDirection[Axis];
+        float AxisMaxDistance = (BoxMax - RayOrigin[Axis]) / RayDirection[Axis];
+
+        if (AxisMinDistance > AxisMaxDistance) {
+            std::swap(AxisMinDistance, AxisMaxDistance);
+        }
+
+        MinimumDistance = std::max(MinimumDistance, AxisMinDistance);
+        MaximumDistance = std::min(MaximumDistance, AxisMaxDistance);
+
+        if (MinimumDistance > MaximumDistance) {
+            return false;
+        }
+    }
+
+    HitDistance = MinimumDistance;
+    return MaximumDistance >= 0.0f;
+
+}
+
+bool ERS_FUNCTION_RayIntersectsModel(ERS_STRUCT_Model* Model, glm::vec3 RayOrigin, glm::vec3 RayDirection, float& HitDistance) {
+
+    const float Epsilon = 0.000001f;
+    glm::vec3 BoundingScale = Model->TrueModelScale * Model->BoxScale_;
+    if ((std::abs(BoundingScale.x) < Epsilon) || (std::abs(BoundingScale.y) < Epsilon) || (std::abs(BoundingScale.z) < Epsilon)) {
+        return false;
+    }
+
+    glm::mat4 ModelMatrix = ERS_FUNCTION_GetModelBoundingBoxMatrix(Model);
+    glm::mat4 InverseModelMatrix = glm::inverse(ModelMatrix);
+
+    glm::vec3 LocalOrigin = glm::vec3(InverseModelMatrix * glm::vec4(RayOrigin, 1.0f));
+    glm::vec3 LocalDirection = glm::normalize(glm::vec3(InverseModelMatrix * glm::vec4(RayDirection, 0.0f)));
+
+    float LocalHitDistance = 0.0f;
+    if (!ERS_FUNCTION_RayIntersectsUnitBox(LocalOrigin, LocalDirection, LocalHitDistance)) {
+        return false;
+    }
+
+    glm::vec3 LocalHitPosition = LocalOrigin + (LocalDirection * LocalHitDistance);
+    glm::vec3 WorldHitPosition = glm::vec3(ModelMatrix * glm::vec4(LocalHitPosition, 1.0f));
+    HitDistance = glm::length(WorldHitPosition - RayOrigin);
+
+    return true;
+
+}
+
+int ERS_FUNCTION_FindSceneObjectIndexForModel(ERS_STRUCT_Scene* Scene, unsigned long ModelIndex) {
+
+    for (unsigned long i = 0; i < Scene->SceneObjects_.size(); i++) {
+        if ((Scene->SceneObjects_[i].Type_ == std::string("Model")) && (Scene->SceneObjects_[i].Index_ == ModelIndex)) {
+            return i;
+        }
+    }
+
+    return -1;
+
+}
+
+void ERS_FUNCTION_SelectModelFromRay(ERS_STRUCT_Scene* Scene, glm::vec3 RayOrigin, glm::vec3 RayDirection) {
+
+    int SelectedSceneObject = -1;
+    float ClosestHitDistance = std::numeric_limits<float>::max();
+
+    for (unsigned long i = 0; i < Scene->Models.size(); i++) {
+        ERS_STRUCT_Model* Model = Scene->Models[i].get();
+        if (!Model->Enabled) {
+            continue;
+        }
+
+        float HitDistance = 0.0f;
+        if (ERS_FUNCTION_RayIntersectsModel(Model, RayOrigin, RayDirection, HitDistance) && (HitDistance < ClosestHitDistance)) {
+            int SceneObjectIndex = ERS_FUNCTION_FindSceneObjectIndexForModel(Scene, i);
+            if (SceneObjectIndex != -1) {
+                SelectedSceneObject = SceneObjectIndex;
+                ClosestHitDistance = HitDistance;
+            }
+        }
+    }
+
+    if (SelectedSceneObject != -1) {
+        Scene->SelectedObject = SelectedSceneObject;
+        Scene->HasSelectionChanged = true;
+    }
+
+}
+
+glm::vec3 ERS_FUNCTION_GetViewportRay(
+    int MousePositionX,
+    int MousePositionY,
+    int WindowTopLeftCornerX,
+    int WindowTopLeftCornerY,
+    int RenderWidth,
+    int RenderHeight,
+    glm::mat4 Projection,
+    glm::mat4 View) {
+
+    float MouseX = (float)(MousePositionX - WindowTopLeftCornerX);
+    float MouseY = (float)(MousePositionY - WindowTopLeftCornerY);
+
+    float NormalizedDeviceX = (2.0f * MouseX) / (float)RenderWidth - 1.0f;
+    float NormalizedDeviceY = 1.0f - (2.0f * MouseY) / (float)RenderHeight;
+
+    glm::vec4 RayClip = glm::vec4(NormalizedDeviceX, NormalizedDeviceY, -1.0f, 1.0f);
+    glm::vec4 RayEye = glm::inverse(Projection) * RayClip;
+    RayEye = glm::vec4(RayEye.x, RayEye.y, -1.0f, 0.0f);
+
+    return glm::normalize(glm::vec3(glm::inverse(View) * RayEye));
+
+}
+
+} // namespace
 
 
 ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, GLFWwindow* Window, Cursors3D* Cursors3D) {
@@ -395,6 +543,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         if (ImGui::IsKeyDown(341)) { // Bind to left control key
             EnableCameraMovement = true;
         }
+        bool SelectModelWithRay = EnableCameraMovement && ImGui::IsWindowFocused() && MouseInRange && ImGui::IsMouseClicked(0);
 
         bool EnableCursorCapture;
         if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | Viewport->WasSelected) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
@@ -439,7 +588,22 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         glm::mat4 Projection;
         glm::mat4 View;
         Viewport->Camera->GetMatrices(Projection, View);
-        
+
+        if (SelectModelWithRay && (RenderWidth > 0) && (RenderHeight > 0)) {
+            glm::vec3 RayOrigin = Viewport->Camera->GetPosition();
+            glm::vec3 RayDirection = ERS_FUNCTION_GetViewportRay(
+                MousePositionX,
+                MousePositionY,
+                WindowTopLeftCornerX,
+                WindowTopLeftCornerY,
+                RenderWidth,
+                RenderHeight,
+                Projection,
+                View
+                );
+
+            ERS_FUNCTION_SelectModelFromRay(Scene, RayOrigin, RayDirection);
+        }
 
 
 
@@ -833,4 +997,3 @@ ERS_STRUCT_Viewport* Viewport) {
         ShaderUniformData_->SpotLights_[i].LightSpaceMatrix_ = ActiveScene->SpotLights[i]->DepthMap.TransformationMatrix;
     }
 }
-
