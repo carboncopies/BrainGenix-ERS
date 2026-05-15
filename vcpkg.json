@@ -11,9 +11,8 @@
     "platform-folders",
     "ghc-filesystem",
     "infoware",
+    "bullet3",
     "lua",
-
     "bg-ers-iosubsystem"
-
   ]
 }
