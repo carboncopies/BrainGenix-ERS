@@ -4,6 +4,7 @@ cmake_minimum_required (VERSION 3.1...3.21)
 
 # Set Configuration Options
 option(ENABLE_BACKWARD "Build ERS With Backward to provide some stack trace information or not" ON)
+option(ENABLE_TRACY "Build ERS With Tracy profiling instrumentation enabled" OFF)
 
 
 # Set Dirs
@@ -73,6 +74,11 @@ find_package(bg-common-logger CONFIG REQUIRED)
 message(STATUS "Finding bg-ers-iosubsystem Package")
 find_package(bg-ers-iosubsystem CONFIG REQUIRED)
 
+if(ENABLE_TRACY)
+    message(STATUS "Finding Tracy Package")
+    find_package(Tracy CONFIG REQUIRED)
+endif()
+
 
 # Include Util CMake Scripts
 include(${CMAKE_UTIL_DIR}/ColorizeMessages.cmake)
@@ -120,6 +126,8 @@ add_subdirectory(${SRC_DIR}/Internal/LocalConfigLoader)
 message(STATUS "Configured Internal Library 'LocalConfigLoader'")
 add_subdirectory(${SRC_DIR}/Internal/GetExecutablePath)
 message(STATUS "Configured Internal Library 'GetExecutablePath'")
+add_subdirectory(${SRC_DIR}/Internal/Profiling)
+message(STATUS "Configured Internal Library 'Profiling'")
 
 ERSBuildLogger(${BoldGreen} "Finished Configuring Internal Libraries")
 
@@ -236,6 +244,7 @@ target_link_libraries("ERS"
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_RendererSettings
 
+    ERS_Profiling
     Renderer
 )
 target_include_directories("ERS" PRIVATE ${SRC_DIR})

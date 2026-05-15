@@ -3,6 +3,7 @@
 //======================================================================//
 
 #include <VisualRenderer.h>
+#include <Profiling.h>
 
 #include <algorithm>
 #include <cmath>
@@ -205,6 +206,7 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 }
 
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
+    ERS_PROFILE_NAMED_SCOPE("VisualRenderer::UpdateViewports");
 
     
 
@@ -450,6 +452,7 @@ void ERS_CLASS_VisualRenderer::SetScriptDebug(int Index, std::vector<std::string
 }
 
 void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager* SceneManager, float DeltaTime, bool DrawCursor) {
+    ERS_PROFILE_NAMED_SCOPE("VisualRenderer::UpdateViewport");
 
     //todo: check if is Viewport0. then check if the system is in running mode or editor mode. if it's both, then do the following:
     // on transition, store the current editor position / rotation of the camera

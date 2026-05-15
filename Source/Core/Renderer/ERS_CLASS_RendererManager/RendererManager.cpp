@@ -3,6 +3,7 @@
 //======================================================================//
 
 #include <RendererManager.h>
+#include <Profiling.h>
 
 
 // FIXME! MAKE MORE CLEAN LOOKING OR SOMETHING
@@ -194,6 +195,7 @@ void RendererManager::InitializeGLFW() {
 }
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
+    ERS_PROFILE_NAMED_SCOPE("RendererManager::UpdateLoop");
 
     // Log Any Issues
     ReportOpenGLErrors();
