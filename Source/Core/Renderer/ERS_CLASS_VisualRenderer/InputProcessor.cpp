@@ -4,7 +4,9 @@
 
 #include "InputProcessor.h"
 
+// cppcheck-suppress missingIncludeSystem
 #include <algorithm>
+// cppcheck-suppress missingIncludeSystem
 #include <cmath>
 
 
