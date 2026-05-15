@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 MD043 -->
+
 # C++ Filename Refactor Plan
 
 This note turns issue `BrainGenix-ERS#464` into a reviewable first pass.
