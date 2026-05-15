@@ -40,4 +40,4 @@ target_link_libraries(Menu_File
     ERS_CLASS_VisualRenderer
     )
 
-target_include_directories(Menu_File PUBLIC ./)
+target_include_directories(Menu_File PUBLIC ./ ${CMAKE_CURRENT_SOURCE_DIR}/..)

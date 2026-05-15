@@ -39,4 +39,4 @@ target_link_libraries(Menu_Debug
 
     )
 
-target_include_directories(Menu_Debug PUBLIC ./)
+target_include_directories(Menu_Debug PUBLIC ./ ${CMAKE_CURRENT_SOURCE_DIR}/..)

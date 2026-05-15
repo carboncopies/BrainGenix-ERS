@@ -50,4 +50,4 @@ target_link_libraries(Menu_Window
 
     )
 
-target_include_directories(Menu_Window PUBLIC ./)
+target_include_directories(Menu_Window PUBLIC ./ ${CMAKE_CURRENT_SOURCE_DIR}/..)

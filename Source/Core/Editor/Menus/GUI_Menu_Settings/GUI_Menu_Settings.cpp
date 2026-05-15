@@ -3,7 +3,9 @@
 //======================================================================//
 
 #include <GUI_Menu_Settings.h>
+#include <EditorLocalization.h>
 
+namespace Localization = ERS::Editor::Localization;
 
 GUI_Menu_Settings::GUI_Menu_Settings(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils, ERS_STRUCT_Windows* Windows) {
 
@@ -26,35 +28,44 @@ GUI_Menu_Settings::~GUI_Menu_Settings() {
 void GUI_Menu_Settings::Draw() {
 
     // File Menu
-    if (ImGui::BeginMenu("Settings")) {
+    if (ImGui::BeginMenu(Localization::Get(Localization::TextID::Settings))) {
 
         // Interface Config
-        ImGui::MenuItem("Color Theme", "", &Windows_->GUI_Window_ThemeSelector_->Enabled_);
-        ImGui::MenuItem("System Font", "", &Windows_->GUI_Window_FontSelector_->Enabled_);
-
-        ImGui::Separator();
-        if (ImGui::BeginMenu("Editor Settings")) {
-            ImGui::MenuItem("Editor Camera Settings", "", &Windows_->GUI_Window_EditorCameraSettings_->Enabled_);
+        ImGui::MenuItem(Localization::Get(Localization::TextID::ColorTheme), "", &Windows_->GUI_Window_ThemeSelector_->Enabled_);
+        ImGui::MenuItem(Localization::Get(Localization::TextID::SystemFont), "", &Windows_->GUI_Window_FontSelector_->Enabled_);
+        if (ImGui::BeginMenu(Localization::Get(Localization::TextID::Language))) {
+            for (int i = 0; i < Localization::GetLanguageCount(); i++) {
+                bool IsSelected = i == Localization::GetActiveLanguageIndex();
+                if (ImGui::MenuItem(Localization::GetLanguageName(i), "", IsSelected)) {
+                    Localization::SetActiveLanguageFromIndex(i);
+                }
+            }
         ImGui::EndMenu();
         }
 
         ImGui::Separator();
-        if (ImGui::BeginMenu("Engine Settings")) {
-            ImGui::MenuItem("Rendering Settings", "", &Windows_->GUI_Window_RenderingSettings_->Enabled_);
-            ImGui::MenuItem("Asset Streaming Settings", "", &Windows_->GUI_Window_AssetStreamingSettings_->Enabled_);
+        if (ImGui::BeginMenu(Localization::Get(Localization::TextID::EditorSettings))) {
+            ImGui::MenuItem(Localization::Get(Localization::TextID::EditorCameraSettings), "", &Windows_->GUI_Window_EditorCameraSettings_->Enabled_);
         ImGui::EndMenu();
         }
 
         ImGui::Separator();
-        if (ImGui::BeginMenu("Game Controllers")) {
+        if (ImGui::BeginMenu(Localization::Get(Localization::TextID::EngineSettings))) {
+            ImGui::MenuItem(Localization::Get(Localization::TextID::RenderingSettings), "", &Windows_->GUI_Window_RenderingSettings_->Enabled_);
+            ImGui::MenuItem(Localization::Get(Localization::TextID::AssetStreamingSettings), "", &Windows_->GUI_Window_AssetStreamingSettings_->Enabled_);
+        ImGui::EndMenu();
+        }
+
+        ImGui::Separator();
+        if (ImGui::BeginMenu(Localization::Get(Localization::TextID::GameControllers))) {
 
             // Refresh
-            if (ImGui::MenuItem("Detect New Controllers")) {
+            if (ImGui::MenuItem(Localization::Get(Localization::TextID::DetectNewControllers))) {
                 HIDUtils_->ControllerInputManager->DetectControllers();
             }
 
             // Open Settings MEnu
-            ImGui::MenuItem("Game Controller Settings", "", &Windows_->GUI_Window_ControllerSettings_->Enabled_);
+            ImGui::MenuItem(Localization::Get(Localization::TextID::GameControllerSettings), "", &Windows_->GUI_Window_ControllerSettings_->Enabled_);
 
         ImGui::EndMenu();
         }
