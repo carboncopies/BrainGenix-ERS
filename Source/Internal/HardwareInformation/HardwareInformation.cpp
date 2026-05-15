@@ -4,6 +4,9 @@
 
 #include <HardwareInformation.h>
 
+#include <algorithm>
+#include <cctype>
+
 
 
 ERS_HardwareInformation::ERS_HardwareInformation(BG::Common::Logger::LoggingSystem* Logger, YAML::Node SystemConfig) {
@@ -82,6 +85,28 @@ ERS_HardwareInformation::ERS_HardwareInformation(BG::Common::Logger::LoggingSyst
 
 
         }
+        std::string PreferredGPUSelectionReason;
+        int PreferredGPUIndex = SelectPreferredGPU(PreferredGPUSelectionReason);
+        if ((PreferredGPUIndex >= 0) && ((unsigned int)PreferredGPUIndex < HardwareInfo_.Static_.GPUDeviceIDs.size())) {
+            HardwareInfo_.Static_.HasPreferredGPU = true;
+            HardwareInfo_.Static_.PreferredGPUDeviceID = HardwareInfo_.Static_.GPUDeviceIDs[PreferredGPUIndex];
+            HardwareInfo_.Static_.PreferredGPUVendor = HardwareInfo_.Static_.GPUVendors[PreferredGPUIndex];
+            HardwareInfo_.Static_.PreferredGPUName = HardwareInfo_.Static_.GPUNames[PreferredGPUIndex];
+            HardwareInfo_.Static_.PreferredGPUSelectionReason = PreferredGPUSelectionReason;
+
+            Logger_->Log(std::string("Preferred GPU Selection: Device ")
+                + std::to_string(HardwareInfo_.Static_.PreferredGPUDeviceID)
+                + std::string(" [")
+                + HardwareInfo_.Static_.PreferredGPUVendor
+                + std::string("] ")
+                + HardwareInfo_.Static_.PreferredGPUName
+                + std::string(" (")
+                + PreferredGPUSelectionReason
+                + std::string(")"), 3);
+        } else {
+            Logger_->Log("No preferred GPU was selected from the current configuration.", 3);
+        }
+
 
     } else {
 
@@ -148,6 +173,77 @@ std::thread ERS_HardwareInformation::SpawnThread() {
 
 ERS_STRUCT_HardwareInfo ERS_HardwareInformation::GetHWInfo() {
     return HardwareInfo_;
+}
+
+
+bool ERS_HardwareInformation::StringContainsInsensitive(const std::string& Haystack, const std::string& Needle) const {
+    std::string HaystackLower = Haystack;
+    std::string NeedleLower = Needle;
+    std::transform(HaystackLower.begin(), HaystackLower.end(), HaystackLower.begin(), [](unsigned char Character) {
+        return (char)std::tolower(Character);
+    });
+    std::transform(NeedleLower.begin(), NeedleLower.end(), NeedleLower.begin(), [](unsigned char Character) {
+        return (char)std::tolower(Character);
+    });
+    return HaystackLower.find(NeedleLower) != std::string::npos;
+}
+
+int ERS_HardwareInformation::SelectPreferredGPU(std::string& SelectionReason) const {
+
+    if (HardwareInfo_.Static_.GPUDeviceIDs.empty()) {
+        SelectionReason = "No detected GPU devices";
+        return -1;
+    }
+
+    YAML::Node PreferredGPUDeviceIDNode = SystemConfiguration_["PreferredGPUDeviceID"];
+    if (PreferredGPUDeviceIDNode) {
+        int PreferredGPUDeviceID = PreferredGPUDeviceIDNode.as<int>();
+        for (unsigned int i = 0; i < HardwareInfo_.Static_.GPUDeviceIDs.size(); i++) {
+            if (HardwareInfo_.Static_.GPUDeviceIDs[i] == PreferredGPUDeviceID) {
+                SelectionReason = std::string("Matched PreferredGPUDeviceID=") + std::to_string(PreferredGPUDeviceID);
+                return (int)i;
+            }
+        }
+    }
+
+    YAML::Node PreferredGPUVendorNode = SystemConfiguration_["PreferredGPUVendor"];
+    if (PreferredGPUVendorNode) {
+        std::string PreferredGPUVendor = PreferredGPUVendorNode.as<std::string>();
+        for (unsigned int i = 0; i < HardwareInfo_.Static_.GPUVendors.size(); i++) {
+            if (StringContainsInsensitive(HardwareInfo_.Static_.GPUVendors[i], PreferredGPUVendor)) {
+                SelectionReason = std::string("Matched PreferredGPUVendor=") + PreferredGPUVendor;
+                return (int)i;
+            }
+        }
+    }
+
+    YAML::Node PreferredGPUNameNode = SystemConfiguration_["PreferredGPUNameContains"];
+    if (PreferredGPUNameNode) {
+        std::string PreferredGPUName = PreferredGPUNameNode.as<std::string>();
+        for (unsigned int i = 0; i < HardwareInfo_.Static_.GPUNames.size(); i++) {
+            if (StringContainsInsensitive(HardwareInfo_.Static_.GPUNames[i], PreferredGPUName)) {
+                SelectionReason = std::string("Matched PreferredGPUNameContains=") + PreferredGPUName;
+                return (int)i;
+            }
+        }
+    }
+
+    YAML::Node PreferDedicatedGPUNode = SystemConfiguration_["PreferDedicatedGPU"];
+    bool PreferDedicatedGPU = PreferDedicatedGPUNode ? PreferDedicatedGPUNode.as<bool>() : false;
+    if (PreferDedicatedGPU) {
+        for (unsigned int i = 0; i < HardwareInfo_.Static_.GPUVendors.size(); i++) {
+            std::string Vendor = HardwareInfo_.Static_.GPUVendors[i];
+            if (!StringContainsInsensitive(Vendor, "Intel")
+                && !StringContainsInsensitive(Vendor, "Microsoft")
+                && !StringContainsInsensitive(Vendor, "Unknown")) {
+                SelectionReason = "PreferDedicatedGPU matched the first non-integrated vendor";
+                return (int)i;
+            }
+        }
+    }
+
+    SelectionReason = "Defaulted to the first detected GPU";
+    return 0;
 }
 
 void ERS_HardwareInformation::DynamicInformationThread() {
