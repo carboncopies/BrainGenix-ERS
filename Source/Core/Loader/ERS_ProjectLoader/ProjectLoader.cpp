@@ -5,6 +5,97 @@
 #include <ProjectLoader.h>
 
 
+namespace {
+
+    ERS::Renderer::ShadowFilteringType LoadShadowFilteringType(int Value, ERS::Renderer::ShadowFilteringType Fallback) {
+
+        switch (Value) {
+            case ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED:
+            case ERS::Renderer::ERS_SHADOW_FILTERING_PCF:
+            case ERS::Renderer::ERS_SHADOW_FILTERING_POISSON_SAMPLING:
+            case ERS::Renderer::ERS_SHADOW_FILTERING_STRATIFIED_POISSON_SAMPLING:
+                return static_cast<ERS::Renderer::ShadowFilteringType>(Value);
+            default:
+                return Fallback;
+        }
+
+    }
+
+    ERS::Renderer::ShadowUpdateMode LoadShadowUpdateMode(int Value, ERS::Renderer::ShadowUpdateMode Fallback) {
+
+        switch (Value) {
+            case ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED:
+            case ERS::Renderer::ERS_SHADOW_UPDATE_MODE_RANDOM:
+            case ERS::Renderer::ERS_SHADOW_UPDATE_MODE_CONSECUTIVE:
+            case ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED:
+            case ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL:
+                return static_cast<ERS::Renderer::ShadowUpdateMode>(Value);
+            default:
+                return Fallback;
+        }
+
+    }
+
+    void LoadRendererSettings(const YAML::Node& RendererSettingsNode, ERS_STRUCT_RendererSettings* RendererSettings) {
+
+        if (!RendererSettingsNode || RendererSettings == nullptr) {
+            return;
+        }
+
+        if (RendererSettingsNode["ShadowMapX"]) {
+            RendererSettings->ShadowMapX_ = RendererSettingsNode["ShadowMapX"].as<int>();
+        }
+        if (RendererSettingsNode["ShadowMapY"]) {
+            RendererSettings->ShadowMapY_ = RendererSettingsNode["ShadowMapY"].as<int>();
+        }
+        if (RendererSettingsNode["ShadowFilteringType"]) {
+            RendererSettings->ShadowFilteringType_ = LoadShadowFilteringType(RendererSettingsNode["ShadowFilteringType"].as<int>(), RendererSettings->ShadowFilteringType_);
+        }
+        if (RendererSettingsNode["ShadowUpdateMode"]) {
+            RendererSettings->ShadowUpdateMode_ = LoadShadowUpdateMode(RendererSettingsNode["ShadowUpdateMode"].as<int>(), RendererSettings->ShadowUpdateMode_);
+        }
+        if (RendererSettingsNode["MaxShadowUpdatesPerFrame"]) {
+            RendererSettings->MaxShadowUpdatesPerFrame_ = RendererSettingsNode["MaxShadowUpdatesPerFrame"].as<int>();
+        }
+        if (RendererSettingsNode["ShadowFilterKernelSize"]) {
+            RendererSettings->ShadowFilterKernelSize_ = RendererSettingsNode["ShadowFilterKernelSize"].as<int>();
+        }
+        if (RendererSettingsNode["VRAMBudget"]) {
+            RendererSettings->VRAMBudget_ = RendererSettingsNode["VRAMBudget"].as<unsigned long long>();
+        }
+        if (RendererSettingsNode["RAMBudget"]) {
+            RendererSettings->RAMBudget_ = RendererSettingsNode["RAMBudget"].as<unsigned long long>();
+        }
+        if (RendererSettingsNode["WarningLowRAMBytes"]) {
+            RendererSettings->WarningLowRAMBytes = RendererSettingsNode["WarningLowRAMBytes"].as<unsigned long long>();
+        }
+        if (RendererSettingsNode["CriticalLowRAMBytes"]) {
+            RendererSettings->CriticalLowRAMBytes = RendererSettingsNode["CriticalLowRAMBytes"].as<unsigned long long>();
+        }
+        if (RendererSettingsNode["FatalLowRAMBytes"]) {
+            RendererSettings->FatalLowRAMBytes = RendererSettingsNode["FatalLowRAMBytes"].as<unsigned long long>();
+        }
+        if (RendererSettingsNode["TerminateLowRAMBytes"]) {
+            RendererSettings->TerminateLowRAMBytes = RendererSettingsNode["TerminateLowRAMBytes"].as<unsigned long long>();
+        }
+        if (RendererSettingsNode["WarningLowVRAMBytes"]) {
+            RendererSettings->WarningLowVRAMBytes = RendererSettingsNode["WarningLowVRAMBytes"].as<unsigned long long>();
+        }
+        if (RendererSettingsNode["CriticalLowVRAMBytes"]) {
+            RendererSettings->CriticalLowVRAMBytes = RendererSettingsNode["CriticalLowVRAMBytes"].as<unsigned long long>();
+        }
+        if (RendererSettingsNode["FatalLowVRAMBytes"]) {
+            RendererSettings->FatalLowVRAMBytes = RendererSettingsNode["FatalLowVRAMBytes"].as<unsigned long long>();
+        }
+        if (RendererSettingsNode["TerminateLowVRAMBytes"]) {
+            RendererSettings->TerminateLowVRAMBytes = RendererSettingsNode["TerminateLowVRAMBytes"].as<unsigned long long>();
+        }
+
+    }
+
+}
+
+
 ERS_CLASS_ProjectLoader::ERS_CLASS_ProjectLoader(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
@@ -57,6 +148,11 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
     } else {
         Project.StartPlayingOnLoad = false;
         SystemUtils_->Logger_->Log("Project Metadata Missing 'PlayOnLoad' Param, Defaulting to 'FALSE'", 7);
+    }
+
+    LoadRendererSettings(ProjectNode["RendererSettings"], &Project.RendererSettings);
+    if (SystemUtils_->RendererSettings_ != nullptr) {
+        *SystemUtils_->RendererSettings_ = Project.RendererSettings;
     }
 
 
