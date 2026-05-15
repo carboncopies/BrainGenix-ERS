@@ -9,6 +9,7 @@
 #include <vector>
 #include <thread>
 #include <chrono>
+#include <map>
 #include <mutex>
 #include <memory>
 
@@ -17,6 +18,7 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <SystemUtils.h>
 #include <Scene.h>
+#include <SceneSorter.h>
 #include <Camera.h>
 
 
@@ -86,26 +88,6 @@ private:
      * 
      */
     void CheckHardwareLimitations(ERS_STRUCT_Scene* Scene);
-
-    /**
-     * @brief Sorts the models in the given scene based on their distance from the camera.
-     * Returns a map containing the distance as well as the index in the model list for that model.
-     * 
-     * @param Scene 
-     * @param Camera 
-     * @return std::map<float, unsigned int> 
-     */
-    std::vector<std::pair<float, unsigned int>> SortModelsByDistanceFromCamera(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Camera* Camera);
-
-    /**
-     * @brief Sorts all models in the scene for every camera.
-     * Returns map of distances and model index sorted by distance for each camera.
-     * 
-     * @param Scene 
-     * @param Cameras 
-     * @return std::vector<std::map<float, unsigned int>> 
-     */
-    std::vector<std::vector<std::pair<float, unsigned int>>> SortModelsByDistanceFromCameras(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras);
 
     /**
      * @brief Generates a dictionary based on the camera's pointer indicating how many loads/unloads should be allowed for every camera

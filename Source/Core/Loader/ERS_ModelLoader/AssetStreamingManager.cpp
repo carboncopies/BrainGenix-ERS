@@ -34,7 +34,7 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
     }
 
     // Sort All Models Based On Distance From Each Camera
-    std::vector<std::vector<std::pair<float, unsigned int>>> DistancesFromCamera = SortModelsByDistanceFromCameras(Scene, Cameras);
+    std::vector<std::vector<std::pair<float, unsigned int>>> DistancesFromCamera = ERS_CLASS_SceneSorter::SortModelsByDistanceFromCameras(Scene, Cameras);
 
     std::map<unsigned int, int> CameraUpdateQuota = CalculateCameraMaxUpdates(10, Cameras);
     SortSceneModels(CameraUpdateQuota, DistancesFromCamera, Scene);
@@ -46,12 +46,15 @@ void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int
     // Iterate Over All Cameras, Make Recomendations From There
     for (unsigned int CameraIndex = 0; CameraIndex < CameraUpdatesQuota.size(); CameraIndex++) {
 
-        
         // Sort Models From Cameras
+        if (CameraIndex >= DistancesFromCamera.size()) {
+            break;
+        }
+
         unsigned int MaxCameraUpdates = CameraUpdatesQuota[CameraIndex];
         unsigned int CameraVRAMUpdates = 0;
         unsigned int CameraRAMUpdates = 0;
-        for (auto DistanceMapIterator = DistancesFromCamera[0].begin(); DistanceMapIterator != DistancesFromCamera[0].end(); ++DistanceMapIterator) {
+        for (auto DistanceMapIterator = DistancesFromCamera[CameraIndex].begin(); DistanceMapIterator != DistancesFromCamera[CameraIndex].end(); ++DistanceMapIterator) {
             
             // Get Parameters From Model Array
             float ModelDistance = DistanceMapIterator->first;
@@ -351,48 +354,6 @@ std::map<unsigned int, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxU
 
 }
 
-std::vector<std::vector<std::pair<float, unsigned int>>> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCameras(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras) {
-
-    std::vector<std::vector<std::pair<float, unsigned int>>> DistancesFromCamera;
-    for (unsigned int i = 0; i < Cameras.size(); i++) {
-        DistancesFromCamera.push_back(SortModelsByDistanceFromCamera(Scene, Cameras[i]));
-    }
-    return DistancesFromCamera;
-
-}
-
-std::vector<std::pair<float, unsigned int>> ERS_CLASS_AssetStreamingManager::SortModelsByDistanceFromCamera(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Camera* Camera) {
-
-    // Create Sorted List Of Distances Based On Position
-    std::vector<std::pair<float, unsigned int>> Distances;        
-    for (unsigned int i = 0; i < Scene->Models.size(); i++) {
-
-
-        float TotalDistance = glm::distance(Camera->GetPosition(), Scene->Models[i]->ModelPosition);
-  
-        glm::vec3 CubeBoundryBox = Scene->Models[i]->BoxScale_ * Scene->Models[i]->TrueModelScale;
-        float ApproxCubeBoundryDistance = CubeBoundryBox.x;
-        if (ApproxCubeBoundryDistance < CubeBoundryBox.y) {
-            ApproxCubeBoundryDistance = CubeBoundryBox.y;
-        } else if (ApproxCubeBoundryDistance < CubeBoundryBox.z) {
-            ApproxCubeBoundryDistance = CubeBoundryBox.z;
-        }
-        float Distance = TotalDistance - ApproxCubeBoundryDistance;
-
-        // Cap Distance At 0 - We don't want negative distance, (thats happens if the camera is inside the bounding box of the model)
-        Distance = std::max(0.0f, Distance);
-        Distances.push_back(std::make_pair(Distance, i));
-    }
-
-
-    std::vector<std::pair<float, unsigned int>> SortedDistances; 
-    for (std::pair<float, unsigned int> Entry : Distances) {
-        SortedDistances.push_back(std::make_pair(Entry.first, Entry.second));
-    }
-
-    return SortedDistances;
-}
-
 void ERS_CLASS_AssetStreamingManager::WorkerThread() {
     SystemUtils_->Logger_->Log("Asset Streaming Subsystem Sorting Thread Started", 3);
     while (true) {
@@ -421,6 +382,4 @@ void ERS_CLASS_AssetStreamingManager::SetCurrentScene(ERS_STRUCT_Scene* Scene) {
 void ERS_CLASS_AssetStreamingManager::SetCameraStructs(std::vector<ERS_STRUCT_Camera*> Cameras) {
     Cameras_ = Cameras;
 }
-
-
 
