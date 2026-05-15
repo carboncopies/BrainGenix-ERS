@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 MD043 -->
+
 # Apache Kafka Management Logging Sandbox
 
 This directory provides a first-pass local Kafka sandbox for BrainGenix-ERS management logging work.

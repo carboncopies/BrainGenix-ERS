@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import argparse
-import subprocess
+import subprocess  # nosec B404
 import sys
 import time
 from pathlib import Path
@@ -21,7 +21,7 @@ EXPECTED_OUTPUT = [
 
 def run_compose(args: list[str], check: bool = True, stdin_text: str | None = None) -> subprocess.CompletedProcess[str]:
     command = ["docker", "compose", *args]
-    return subprocess.run(
+    return subprocess.run(  # nosec B603
         command,
         cwd=ROOT,
         text=True,
