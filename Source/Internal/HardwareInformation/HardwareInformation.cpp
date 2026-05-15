@@ -102,6 +102,9 @@ ERS_HardwareInformation::ERS_HardwareInformation(BG::Common::Logger::LoggingSyst
     // Calculate Dynamic Info Refresh Rate Var
     DynamicInfoRefreshRate_ = (1 / UpdatesPerSecond) * 1000.0f;
 
+    // Populate dynamic hardware fields before other systems read them.
+    GetDynamicInformation();
+
     // Launch Thread
     Logger_->Log("Starting Dynamic Information Update Thread", 5);
     DynamicUpdateThread_ = SpawnThread();
