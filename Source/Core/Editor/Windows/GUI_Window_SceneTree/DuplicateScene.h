@@ -14,11 +14,15 @@
 // Internal Libraries (BG convention: use <> instead of "")
 #include <SceneManager.h>
 #include <Scene.h>
+#include <SystemUtils.h>
+#include <ProjectUtils.h>
 
 /**
  * @brief Duplicate the scene in the project
  * 
  * @param SceneManager 
- * @param SceneIndex 
+ * @param SystemUtils
+ * @param ProjectUtils
+ * @param SceneIndex
  */
-void GUI_Windowutil_DuplicateScene(ERS_CLASS_SceneManager* SceneManager, int SceneIndex);
+void GUI_Windowutil_DuplicateScene(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, int SceneIndex);

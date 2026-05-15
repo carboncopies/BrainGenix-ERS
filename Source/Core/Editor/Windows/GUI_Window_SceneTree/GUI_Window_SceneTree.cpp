@@ -111,7 +111,7 @@ void GUI_Window_SceneTree::Draw() {
                             Subwindow_SceneRenameModal_->Activate(SceneIndex);
                         }
                         if (ImGui::MenuItem("Duplicate")) {
-                            GUI_Windowutil_DuplicateScene(SceneManager_, SceneIndex); // FIXME: Will need to update how scenes are saved, as right now these will overwrite other scenes when saved. (Solution could be a scenes folder?)
+                            GUI_Windowutil_DuplicateScene(SceneManager_, SystemUtils_, ProjectUtils_, SceneIndex);
                         }
 
 
@@ -680,4 +680,3 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
 }
-
