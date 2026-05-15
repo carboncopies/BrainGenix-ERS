@@ -34,6 +34,8 @@ private:
     ERS_STRUCT_SystemUtils* SystemUtils_; /**<used to get access to system utilites like IOmanager, logger, etc.*/
     bool LastWindowState_ = false; /**<State of the wiundow last frame*/
 
+    std::string GetNewProjectTemplatePath();
+
 public:
 
     bool Enabled_ = false; /**<Show/hide the window*/

@@ -19,6 +19,7 @@ DatabasePassword: "" # FIX ME
 
 # File Loading Params
 DefaultProjectDirectory: "${DEFAULT_PROJECT_DIRECTORY}" # NOTE: PATH MUST END WITH A "/"
+NewProjectTemplateDirectory: "${NEW_PROJECT_TEMPLATE_DIRECTORY}" # NOTE: PATH MUST END WITH A "/"
 
 # Memory Settings
 OverrideRAM: False
