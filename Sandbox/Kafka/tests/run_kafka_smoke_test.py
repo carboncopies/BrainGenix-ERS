@@ -10,6 +10,10 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from management_log_publisher import load_events, publish_events  # noqa: E402
+
 TOPIC_NAME = "ers-management-logs"
 MESSAGE_FILE = ROOT / "messages" / "01_sample_management_logs.jsonl"
 EXPECTED_OUTPUT = [
@@ -71,20 +75,7 @@ def create_topic() -> None:
 
 
 def produce_messages() -> None:
-    run_compose(
-        [
-            "exec",
-            "-T",
-            "kafka",
-            "kafka-console-producer.sh",
-            "--topic",
-            TOPIC_NAME,
-            "--bootstrap-server",
-            "localhost:9092",
-        ],
-        check=True,
-        stdin_text=MESSAGE_FILE.read_text(),
-    )
+    publish_events(load_events(MESSAGE_FILE), topic=TOPIC_NAME)
 
 
 def consume_messages() -> str:

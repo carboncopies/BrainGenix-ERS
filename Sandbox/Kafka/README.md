@@ -11,6 +11,7 @@ It is intentionally separate from the current runtime engine path. The goal is t
 - `docker-compose.yml`: single-node Kafka sandbox pinned to the official `apache/kafka:4.2.0` image
 - `schemas/ers_management_log_event.schema.json`: first-pass JSON schema for management log events
 - `messages/01_sample_management_logs.jsonl`: newline-delimited sample events shaped around the current OpenGL log item fields plus a management envelope
+- `management_log_publisher.py`: reusable management log event builder, validator, and sandbox publisher
 - `tests/run_kafka_smoke_test.py`: repeatable smoke harness for topic creation, sample publish, and sample consume
 
 ## Prerequisites
@@ -43,10 +44,14 @@ docker compose exec kafka kafka-topics.sh \
 ## Publish Sample Management Log Events
 
 ```bash
-docker compose exec -T kafka kafka-console-producer.sh \
-  --topic ers-management-logs \
-  --bootstrap-server localhost:9092 \
-  < messages/01_sample_management_logs.jsonl
+python3 management_log_publisher.py \
+  --input messages/01_sample_management_logs.jsonl
+```
+
+To validate and print the event payload without requiring Docker:
+
+```bash
+python3 management_log_publisher.py --dry-run
 ```
 
 ## Consume The Topic
