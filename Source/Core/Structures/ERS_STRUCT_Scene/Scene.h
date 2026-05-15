@@ -5,6 +5,7 @@
 #pragma once
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <cstdint>
 #include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
@@ -59,6 +60,35 @@ struct ERS_STRUCT_Scene{
      * 
      */
     void IndexSceneObjects(); 
+
+
+    /**
+     * @brief Gets A Scene Object By SceneObjects_ Index.
+     *
+     * @param SceneObjectIndex
+     * @return ERS_STRUCT_SceneObject*
+     */
+    ERS_STRUCT_SceneObject* GetSceneObject(unsigned long SceneObjectIndex);
+    const ERS_STRUCT_SceneObject* GetSceneObject(unsigned long SceneObjectIndex) const;
+
+
+    /**
+     * @brief Gets The Currently Selected Scene Object.
+     *
+     * @return ERS_STRUCT_SceneObject*
+     */
+    ERS_STRUCT_SceneObject* GetSelectedSceneObject();
+    const ERS_STRUCT_SceneObject* GetSelectedSceneObject() const;
+
+
+    /**
+     * @brief Finds A Scene Object By Runtime Entity ID.
+     *
+     * @param EntityID
+     * @return ERS_STRUCT_SceneObject*
+     */
+    ERS_STRUCT_SceneObject* FindSceneObjectByEntityID(std::uint64_t EntityID);
+    const ERS_STRUCT_SceneObject* FindSceneObjectByEntityID(std::uint64_t EntityID) const;
 
 
 };
