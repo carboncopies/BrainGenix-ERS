@@ -4,7 +4,9 @@
 
 #include <HardwareInformation.h>
 
+// cppcheck-suppress missingIncludeSystem
 #include <algorithm>
+// cppcheck-suppress missingIncludeSystem
 #include <cctype>
 
 

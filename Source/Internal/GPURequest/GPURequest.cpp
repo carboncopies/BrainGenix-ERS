@@ -4,6 +4,7 @@
 
 #include <GPURequest.h>
 
+// cppcheck-suppress missingIncludeSystem
 #include <cstdlib>
 
 namespace {
