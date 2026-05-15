@@ -182,6 +182,19 @@ Depending on the type of object selected, the window will display different prop
   If some packages are missing on your distro, you'll have to substitute with whatever your distro uses. We try to include as many packages in our codebase as possible via superbuilds, but this isn't always possible or practical.
 
 
+## macOS:
+
+  macOS is not yet a primary development target, but there is now a first-pass setup helper for local native builds on the GitHub mirror path.
+
+  Install Homebrew first, then enter the `Tools` directory and run `bash SetupMacOS.sh` followed by `bash Build.sh [number_of_threads] [build_type]`.
+
+  Example:
+  `bash SetupMacOS.sh`
+  `bash Build.sh 4 Release`
+
+  This path is currently intended as an early portability/build-validation slice rather than a fully supported shipping workflow.
+
+
 ## Windows:
 
   At this time, we're not working on native Windows builds since we are working on cross-compiling for Windows platforms from Linux. This will allow us to simplify our build infrastructure significantly. Therefore, ***the following section is out of date and may not work!***
