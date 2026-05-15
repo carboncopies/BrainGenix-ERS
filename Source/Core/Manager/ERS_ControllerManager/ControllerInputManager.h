@@ -30,10 +30,10 @@ class ERS_CLASS_ControllerInputManager {
 private:
 
     ERS_STRUCT_SystemUtils* SystemUtils_;           /**<Pointer to SystemUtils Struct*/
+    std::vector<int>        InputDeviceIDs_;        /**<GLFW joystick IDs for connected input devices*/
     std::vector<bool>       IsControllerSupported_; /**<Indicate If Controller Is Supported Or Not*/
 
-    int NumberInputDevices_ = 0;    /**<Current Number Of "Joysticks" Connected*/
-    bool FirstFrame_        = true; /**<Only True On First Frame*/
+    int NumberInputDevices_ = 0; /**<Current Number Of "Joysticks" Connected*/
 
 
 
