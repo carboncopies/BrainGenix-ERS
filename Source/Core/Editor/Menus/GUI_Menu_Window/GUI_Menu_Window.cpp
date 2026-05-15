@@ -3,6 +3,7 @@
 //======================================================================//
 
 #include <GUI_Menu_Window.h>
+// cppcheck-suppress missingIncludeSystem
 #include <EditorLocalization.h>
 
 namespace Localization = ERS::Editor::Localization;
