@@ -6,6 +6,10 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <memory.h>
+#include <deque>
+#include <mutex>
+#include <string>
+#include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <yaml-cpp/yaml.h>
@@ -33,6 +37,11 @@
  */
 struct ERS_STRUCT_SystemUtils {
 
+    struct PopupWarning {
+        std::string Title;
+        std::string Message;
+    };
+
 
     std::vector<std::pair<std::string, std::string>> Arguments_; /**<Pair of key and value arguments used to launch the program*/
     std::string ArgumentString_; /**<String version of the argument pair*/
@@ -52,6 +61,25 @@ struct ERS_STRUCT_SystemUtils {
 
     int RenderWidth_ = 0; /**<Width of the display being rendered to (if using a window, this is the size of the window)*/
     int RenderHeight_ = 0; /**<Height of the display being rendered to (if using a window, this is the size of the window)*/
+    std::deque<PopupWarning> PopupWarnings_; /**<Queued warning dialogs waiting to be displayed by the GUI.*/
+    std::mutex PopupWarningsMutex_; /**<Protects PopupWarnings_ when warnings are queued from multiple systems.*/
+
+    inline void QueuePopupWarning(const std::string& Title, const std::string& Message) {
+        std::lock_guard<std::mutex> Lock(PopupWarningsMutex_);
+        PopupWarnings_.push_back({Title, Message});
+    }
+
+    inline bool HasPopupWarning() {
+        std::lock_guard<std::mutex> Lock(PopupWarningsMutex_);
+        return !PopupWarnings_.empty();
+    }
+
+    inline PopupWarning PopPopupWarning() {
+        std::lock_guard<std::mutex> Lock(PopupWarningsMutex_);
+        PopupWarning Warning = PopupWarnings_.front();
+        PopupWarnings_.pop_front();
+        return Warning;
+    }
     
 
 
