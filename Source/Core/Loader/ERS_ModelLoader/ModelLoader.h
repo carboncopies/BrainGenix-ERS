@@ -16,7 +16,9 @@
 #include <assert.h>
 #include <sys/stat.h>
 #include <stdlib.h>
+#include <condition_variable>
 #include <future>
+#include <mutex>
 #include <thread>
 #include <chrono>
 
@@ -82,10 +84,13 @@ private:
 
     std::mutex BlockThread_; /**<Block Threads From Doing Things*/
     std::mutex BlockRefThread_; /**<Lock the ref thread from modifying non-threadsafe vars*/
+    std::condition_variable WorkQueueCondition_; /**<Used to wake worker threads when new work arrives or shutdown begins.*/
+    std::condition_variable WorkerShutdownCondition_; /**<Used to detect when all workers have exited their loop.*/
 
     bool ExitThreads_ = false; /**<Set To True To Make Threads Quit*/
     bool EnableReferenceLoading_ = false; /**<Enable Or Disable Re-Using Assets Instead Of Reloading (Massive Performance Improvement When Enabled)*/
     bool ExitRefThread_ = false; /**Make ref matching thread exit*/
+    int ActiveWorkerCount_ = 0; /**<Tracks the number of loader workers still alive during shutdown.*/
 
 
     /**
