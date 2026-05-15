@@ -22,13 +22,13 @@
 struct ERS_STRUCT_Vertex {
 
     // Set Metadata
-    glm::vec3 Position;
-    glm::vec3 Normal;
-    glm::vec2 TexCoords;
-    glm::vec3 Tangent;
-    glm::vec3 Bitangent;
+    glm::vec3 Position = glm::vec3(0.0f);
+    glm::vec3 Normal = glm::vec3(0.0f);
+    glm::vec2 TexCoords = glm::vec2(0.0f);
+    glm::vec3 Tangent = glm::vec3(0.0f);
+    glm::vec3 Bitangent = glm::vec3(0.0f);
 
-    int BoneIDs[MAX_BONE_INFLUENCE];
-    float Weights[MAX_BONE_INFLUENCE];
+    int BoneIDs[MAX_BONE_INFLUENCE] = {0, 0, 0, 0};
+    float Weights[MAX_BONE_INFLUENCE] = {0.0f, 0.0f, 0.0f, 0.0f};
 
 };
