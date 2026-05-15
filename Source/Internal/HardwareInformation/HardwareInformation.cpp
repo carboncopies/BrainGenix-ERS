@@ -179,13 +179,17 @@ ERS_STRUCT_HardwareInfo ERS_HardwareInformation::GetHWInfo() {
 
 
 bool ERS_HardwareInformation::StringContainsInsensitive(const std::string& Haystack, const std::string& Needle) const {
+    if (Needle.empty()) {
+        return false;
+    }
+
     std::string HaystackLower = Haystack;
     std::string NeedleLower = Needle;
     std::transform(HaystackLower.begin(), HaystackLower.end(), HaystackLower.begin(), [](unsigned char Character) {
-        return (char)std::tolower(Character);
+        return static_cast<char>(std::tolower(Character));
     });
     std::transform(NeedleLower.begin(), NeedleLower.end(), NeedleLower.begin(), [](unsigned char Character) {
-        return (char)std::tolower(Character);
+        return static_cast<char>(std::tolower(Character));
     });
     return HaystackLower.find(NeedleLower) != std::string::npos;
 }
@@ -200,10 +204,12 @@ int ERS_HardwareInformation::SelectPreferredGPU(std::string& SelectionReason) co
     YAML::Node PreferredGPUDeviceIDNode = SystemConfiguration_["PreferredGPUDeviceID"];
     if (PreferredGPUDeviceIDNode) {
         int PreferredGPUDeviceID = PreferredGPUDeviceIDNode.as<int>();
-        for (unsigned int i = 0; i < HardwareInfo_.Static_.GPUDeviceIDs.size(); i++) {
-            if (HardwareInfo_.Static_.GPUDeviceIDs[i] == PreferredGPUDeviceID) {
-                SelectionReason = std::string("Matched PreferredGPUDeviceID=") + std::to_string(PreferredGPUDeviceID);
-                return (int)i;
+        if (PreferredGPUDeviceID >= 0) {
+            for (unsigned int i = 0; i < HardwareInfo_.Static_.GPUDeviceIDs.size(); i++) {
+                if (HardwareInfo_.Static_.GPUDeviceIDs[i] == PreferredGPUDeviceID) {
+                    SelectionReason = std::string("Matched PreferredGPUDeviceID=") + std::to_string(PreferredGPUDeviceID);
+                    return (int)i;
+                }
             }
         }
     }
@@ -211,10 +217,12 @@ int ERS_HardwareInformation::SelectPreferredGPU(std::string& SelectionReason) co
     YAML::Node PreferredGPUVendorNode = SystemConfiguration_["PreferredGPUVendor"];
     if (PreferredGPUVendorNode) {
         std::string PreferredGPUVendor = PreferredGPUVendorNode.as<std::string>();
-        for (unsigned int i = 0; i < HardwareInfo_.Static_.GPUVendors.size(); i++) {
-            if (StringContainsInsensitive(HardwareInfo_.Static_.GPUVendors[i], PreferredGPUVendor)) {
-                SelectionReason = std::string("Matched PreferredGPUVendor=") + PreferredGPUVendor;
-                return (int)i;
+        if (!PreferredGPUVendor.empty()) {
+            for (unsigned int i = 0; i < HardwareInfo_.Static_.GPUVendors.size(); i++) {
+                if (StringContainsInsensitive(HardwareInfo_.Static_.GPUVendors[i], PreferredGPUVendor)) {
+                    SelectionReason = std::string("Matched PreferredGPUVendor=") + PreferredGPUVendor;
+                    return (int)i;
+                }
             }
         }
     }
@@ -222,10 +230,12 @@ int ERS_HardwareInformation::SelectPreferredGPU(std::string& SelectionReason) co
     YAML::Node PreferredGPUNameNode = SystemConfiguration_["PreferredGPUNameContains"];
     if (PreferredGPUNameNode) {
         std::string PreferredGPUName = PreferredGPUNameNode.as<std::string>();
-        for (unsigned int i = 0; i < HardwareInfo_.Static_.GPUNames.size(); i++) {
-            if (StringContainsInsensitive(HardwareInfo_.Static_.GPUNames[i], PreferredGPUName)) {
-                SelectionReason = std::string("Matched PreferredGPUNameContains=") + PreferredGPUName;
-                return (int)i;
+        if (!PreferredGPUName.empty()) {
+            for (unsigned int i = 0; i < HardwareInfo_.Static_.GPUNames.size(); i++) {
+                if (StringContainsInsensitive(HardwareInfo_.Static_.GPUNames[i], PreferredGPUName)) {
+                    SelectionReason = std::string("Matched PreferredGPUNameContains=") + PreferredGPUName;
+                    return (int)i;
+                }
             }
         }
     }

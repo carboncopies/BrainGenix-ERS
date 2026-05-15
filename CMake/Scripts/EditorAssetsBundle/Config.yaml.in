@@ -9,6 +9,12 @@ ShowEditorDebugMenu: True
 EnableLogFile: True
 LogFilePathPrefix: Log  # Note that ERS will add the date/time and extension to this
 
+# GPU Selection Settings
+PreferDedicatedGPU: True
+PreferredGPUDeviceID: -1
+PreferredGPUVendor: ""
+PreferredGPUNameContains: ""
+
 # Database Loading Settings #
 UseDatabaseLoading: False
 DatabaseHost: "127.0.0.1" # FIX ME
