@@ -66,6 +66,7 @@ private:
     int         WindowWidth_  = 0;       /**<GLFW Window Width Varaible*/
     int         WindowHeight_ = 0;       /**<GLFW Window Height Varaible*/
     const char* WindowTitle_  = nullptr; /**<GLFW Window Title Variable*/
+    bool        OffscreenRendering_ = false; /**<Run the main GLFW context as a hidden off-screen window.*/
 
 
     /**
@@ -112,6 +113,14 @@ public:
      * 
      */
     ~RendererManager();
+
+    /**
+     * @brief Return whether the renderer is running without a visible window.
+     *
+     * @return true
+     * @return false
+     */
+    bool IsOffscreenRendering() const { return OffscreenRendering_; }
 
     /**
      * @brief Called by the main loop, updates all rendered outputs.
