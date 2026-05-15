@@ -1,0 +1,53 @@
+name: macOS Build
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+      - ".gitmodules"
+      - "CMake/**"
+      - "CMakeLists.txt"
+      - "Source/**"
+      - "ThirdParty/**"
+      - "Tools/**"
+  push:
+    branches:
+      - master
+    paths:
+      - ".github/workflows/**"
+      - ".gitmodules"
+      - "CMake/**"
+      - "CMakeLists.txt"
+      - "Source/**"
+      - "ThirdParty/**"
+      - "Tools/**"
+
+permissions:
+  contents: read
+
+jobs:
+  build-macos13:
+    name: Build (macOS 13)
+    runs-on: macos-13
+    timeout-minutes: 120
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install build dependencies
+        working-directory: Tools
+        run: bash SetupMacOS.sh
+
+      - name: Build ERS
+        working-directory: Tools
+        run: bash Build.sh 2 Release
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: BrainGenix-ERS-macos13
+          path: |
+            Build/
+            Binaries/
