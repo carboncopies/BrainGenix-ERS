@@ -16,6 +16,7 @@ set(CMAKE_FIND_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/FindUtils")
 set(CMAKE_SCRIPTS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake/Scripts")
 set(CMAKE_UTILS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/CMake")
 set(CMAKE_ASSETS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/EditorAssets")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_FIND_UTILS_DIR}")
 SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 set(PROJECT_BUILD_DIR ${CMAKE_CURRENT_BINARY_DIR})
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
@@ -88,6 +89,7 @@ include(${CMAKE_SCRIPTS_DIR}/CompileTimeStamp/CompileTimeStamp.cmake)
 # Include Package Addition Scripts
 include(${CMAKE_BUILD_UTILS_DIR}/Backward.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Threads.cmake)
+include(${CMAKE_BUILD_UTILS_DIR}/OpenXR.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/Glad.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/GLM.cmake)
 include(${CMAKE_BUILD_UTILS_DIR}/ImGui.cmake)
@@ -238,6 +240,7 @@ target_link_libraries("ERS"
 
     Renderer
 )
+target_link_libraries("ERS" ERS_OpenXR)
 target_include_directories("ERS" PRIVATE ${SRC_DIR})
 
 # Run Configuration On EditorAssetBundle
