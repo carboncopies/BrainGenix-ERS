@@ -19,6 +19,7 @@
 struct ERS_STRUCT_PointLight {
 
     std::string UserDefinedName; /**Name of the light assigned by user*/
+    std::string SceneTreeGroup_; /**<Optional editor-only scene tree group name*/
     
     float Intensity; /**<Intensity of the light*/
     float MaxDistance; /**<Distance After Which This Light No Longer Affects The Scene*/

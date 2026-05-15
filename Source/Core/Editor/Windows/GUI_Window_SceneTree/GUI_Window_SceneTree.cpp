@@ -4,6 +4,11 @@
 
 #include <GUI_Window_SceneTree.h>
 
+// Standard Libraries (BG convention: use <> instead of "")
+#include <algorithm>
+#include <cstring>
+#include <map>
+
 GUI_Window_SceneTree::GUI_Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, Cursors3D* Cursors3D) {
 
     SceneManager_ = SceneManager;
@@ -33,6 +38,123 @@ GUI_Window_SceneTree::GUI_Window_SceneTree(ERS_CLASS_SceneManager* SceneManager,
 GUI_Window_SceneTree::~GUI_Window_SceneTree() {
 
 
+}
+
+std::string GUI_Window_SceneTree::GetSceneTreeGroup(ERS_STRUCT_Scene* Scene, unsigned long SceneObjectIndex) {
+
+    if (Scene == nullptr || SceneObjectIndex >= Scene->SceneObjects_.size()) {
+        return "";
+    }
+
+    ERS_STRUCT_SceneObject* SceneObject = &Scene->SceneObjects_[SceneObjectIndex];
+    unsigned long ObjectIndex = SceneObject->Index_;
+
+    if (SceneObject->Type_ == "Model" && ObjectIndex < Scene->Models.size()) {
+        return Scene->Models[ObjectIndex]->SceneTreeGroup_;
+    } else if (SceneObject->Type_ == "PointLight" && ObjectIndex < Scene->PointLights.size()) {
+        return Scene->PointLights[ObjectIndex]->SceneTreeGroup_;
+    } else if (SceneObject->Type_ == "DirectionalLight" && ObjectIndex < Scene->DirectionalLights.size()) {
+        return Scene->DirectionalLights[ObjectIndex]->SceneTreeGroup_;
+    } else if (SceneObject->Type_ == "SpotLight" && ObjectIndex < Scene->SpotLights.size()) {
+        return Scene->SpotLights[ObjectIndex]->SceneTreeGroup_;
+    } else if (SceneObject->Type_ == "SceneCamera" && ObjectIndex < Scene->SceneCameras.size()) {
+        return Scene->SceneCameras[ObjectIndex]->SceneTreeGroup_;
+    }
+
+    return "";
+}
+
+void GUI_Window_SceneTree::SetSceneTreeGroup(ERS_STRUCT_Scene* Scene, unsigned long SceneObjectIndex, std::string GroupName) {
+
+    if (Scene == nullptr || SceneObjectIndex >= Scene->SceneObjects_.size()) {
+        return;
+    }
+
+    ERS_STRUCT_SceneObject* SceneObject = &Scene->SceneObjects_[SceneObjectIndex];
+    unsigned long ObjectIndex = SceneObject->Index_;
+
+    if (SceneObject->Type_ == "Model" && ObjectIndex < Scene->Models.size()) {
+        Scene->Models[ObjectIndex]->SceneTreeGroup_ = GroupName;
+    } else if (SceneObject->Type_ == "PointLight" && ObjectIndex < Scene->PointLights.size()) {
+        Scene->PointLights[ObjectIndex]->SceneTreeGroup_ = GroupName;
+    } else if (SceneObject->Type_ == "DirectionalLight" && ObjectIndex < Scene->DirectionalLights.size()) {
+        Scene->DirectionalLights[ObjectIndex]->SceneTreeGroup_ = GroupName;
+    } else if (SceneObject->Type_ == "SpotLight" && ObjectIndex < Scene->SpotLights.size()) {
+        Scene->SpotLights[ObjectIndex]->SceneTreeGroup_ = GroupName;
+    } else if (SceneObject->Type_ == "SceneCamera" && ObjectIndex < Scene->SceneCameras.size()) {
+        Scene->SceneCameras[ObjectIndex]->SceneTreeGroup_ = GroupName;
+    }
+
+    Scene->HasSelectionChanged = true;
+}
+
+void GUI_Window_SceneTree::ActivateSceneTreeGroupEditor(ERS_STRUCT_Scene* Scene, int SceneIndex, unsigned long SceneObjectIndex) {
+
+    GroupEditSceneIndex_ = SceneIndex;
+    GroupEditSceneObjectIndex_ = SceneObjectIndex;
+
+    std::string ExistingGroup = GetSceneTreeGroup(Scene, SceneObjectIndex);
+    std::strncpy(SceneTreeGroupBuffer_, ExistingGroup.c_str(), sizeof(SceneTreeGroupBuffer_));
+    SceneTreeGroupBuffer_[sizeof(SceneTreeGroupBuffer_) - 1] = '\0';
+
+    GroupEditEnabled_ = true;
+    GroupEditFirstFrame_ = true;
+}
+
+void GUI_Window_SceneTree::DrawSceneTreeGroupContextItems(ERS_STRUCT_Scene* Scene, int SceneIndex, unsigned long SceneObjectIndex) {
+
+    std::string CurrentGroup = GetSceneTreeGroup(Scene, SceneObjectIndex);
+    if (!CurrentGroup.empty()) {
+        ImGui::Text("Group: %s", CurrentGroup.c_str());
+    }
+
+    if (ImGui::MenuItem("Set Scene Tree Group...")) {
+        ActivateSceneTreeGroupEditor(Scene, SceneIndex, SceneObjectIndex);
+    }
+    if (!CurrentGroup.empty() && ImGui::MenuItem("Clear Scene Tree Group")) {
+        SetSceneTreeGroup(Scene, SceneObjectIndex, "");
+    }
+}
+
+void GUI_Window_SceneTree::DrawSceneTreeGroupEditor() {
+
+    if (GroupEditEnabled_) {
+    ImGui::Begin("Set Scene Tree Group", &GroupEditEnabled_, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoCollapse);
+
+        ImGui::SetWindowFocus();
+
+        if (GroupEditFirstFrame_) {
+            ImGui::SetKeyboardFocusHere(0);
+            GroupEditFirstFrame_ = false;
+        }
+
+        ImGui::SetItemDefaultFocus();
+        ImGui::InputTextWithHint("Group", "Enter Scene Tree Group", SceneTreeGroupBuffer_, sizeof(SceneTreeGroupBuffer_));
+
+        ImGui::Separator();
+
+        if (ImGui::Button("Apply", ImVec2(120, 0))) {
+            if (GroupEditSceneIndex_ >= 0 && (unsigned long)GroupEditSceneIndex_ < SceneManager_->Scenes_.size()) {
+                SetSceneTreeGroup(SceneManager_->Scenes_[GroupEditSceneIndex_].get(), GroupEditSceneObjectIndex_, SceneTreeGroupBuffer_);
+            }
+            GroupEditEnabled_ = false;
+        }
+
+        ImGui::SameLine();
+        if (ImGui::Button("Clear", ImVec2(120, 0))) {
+            if (GroupEditSceneIndex_ >= 0 && (unsigned long)GroupEditSceneIndex_ < SceneManager_->Scenes_.size()) {
+                SetSceneTreeGroup(SceneManager_->Scenes_[GroupEditSceneIndex_].get(), GroupEditSceneObjectIndex_, "");
+            }
+            GroupEditEnabled_ = false;
+        }
+
+        ImGui::SameLine();
+        if (ImGui::Button("Cancel", ImVec2(120, 0)) || ImGui::IsKeyPressed(GLFW_KEY_ESCAPE)) {
+            GroupEditEnabled_ = false;
+        }
+
+    ImGui::End();
+    }
 }
 
 void GUI_Window_SceneTree::Draw() {
@@ -179,6 +301,7 @@ void GUI_Window_SceneTree::Draw() {
     Subwindow_DeleteDirectionalLight_->Draw();
     Subwindow_DeleteSpotLight_->Draw();
     Subwindow_ModelReplaceModal_->Draw();
+    DrawSceneTreeGroupEditor();
 
 }
 
@@ -228,6 +351,49 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
 
+    // Draw Custom Scene Tree Groups
+    std::map<std::string, std::vector<unsigned long>> SceneTreeGroups;
+    for (unsigned long i = 0; i < Scene->SceneObjects_.size(); i++) {
+        std::string GroupName = GetSceneTreeGroup(Scene, i);
+        if (!GroupName.empty()) {
+            SceneTreeGroups[GroupName].push_back(i);
+        }
+    }
+
+    if (!SceneTreeGroups.empty()) {
+        bool GroupsTree = ImGui::TreeNodeEx("Groups", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_DefaultOpen);
+        if (GroupsTree) {
+            for (auto const& Group : SceneTreeGroups) {
+                ImGui::PushID(Group.first.c_str());
+                bool GroupTree = ImGui::TreeNodeEx("SceneTreeGroup", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow, "%s (%lu)", Group.first.c_str(), Group.second.size());
+                if (GroupTree) {
+                    for (unsigned long SceneObjectIndex : Group.second) {
+                        const char* ObjectName = Scene->SceneObjects_[SceneObjectIndex].Label_.c_str();
+                        ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+                        if ((unsigned long)SelectedSceneObjectIndex == SceneObjectIndex) {
+                            TreeFlags |= ImGuiTreeNodeFlags_Selected;
+                        }
+
+                        ImGui::TreeNodeEx((void*)(intptr_t)SceneObjectIndex, TreeFlags, "%s", ObjectName);
+                        if (ImGui::IsItemClicked()) {
+                            Scene->SelectedObject = SceneObjectIndex;
+                            Scene->HasSelectionChanged = true;
+                        }
+
+                        if (ImGui::BeginPopupContextItem()) {
+                            DrawSceneTreeGroupContextItems(Scene, SceneIndex, SceneObjectIndex);
+                            ImGui::EndPopup();
+                        }
+                    }
+                    ImGui::TreePop();
+                }
+                ImGui::PopID();
+            }
+            ImGui::TreePop();
+        }
+    }
+
+
     // Draw Model Entries
     bool ModelTree = ImGui::TreeNodeEx("Models", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow);
 
@@ -265,7 +431,7 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                 }
 
                 // Next, Sort List Of Model Names
-                sort(ModelNames.begin(), ModelNames.end());
+                std::sort(ModelNames.begin(), ModelNames.end());
 
                 // Then, Re-Order Based On Sorted Model Name List
                 std::vector<std::shared_ptr<ERS_STRUCT_Model>> SortedList;
@@ -302,7 +468,6 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
             unsigned long IndexInSceneObjects = ModelIndexes[i];
 
-
             const char* ObjectName = Scene->SceneObjects_[IndexInSceneObjects].Label_.c_str();
             ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
             if ((unsigned long)SelectedSceneObjectIndex == IndexInSceneObjects) {
@@ -310,14 +475,11 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             }
             ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
 
-
             // If User Clicks Node, Update Object Index
             if (ImGui::IsItemClicked()) {
                 Scene->SelectedObject = IndexInSceneObjects;
                 Scene->HasSelectionChanged = true;
             }
-
-
 
             // Drag/Drop Target
             long PayloadID;
@@ -326,9 +488,9 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                 if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
                     memcpy(&PayloadID, Payload->Data, sizeof(long));
                     SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
-                    
+
                     // Check If Already In Vector
-                    bool Contains = false; 
+                    bool Contains = false;
                     for (unsigned long x = 0; x < Scene->Models[i]->AttachedScriptIndexes_.size(); x++) {
                         if (PayloadID ==  Scene->Models[i]->AttachedScriptIndexes_[x]) {
                             SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'Model', Already Attached").c_str(), 0);
@@ -344,7 +506,6 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
             ImGui::EndDragDropTarget();
             }
-
 
             // Context Menu
             if (ImGui::BeginPopupContextItem()) {
@@ -373,14 +534,14 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
                 }
                 ImGui::Separator();
+                DrawSceneTreeGroupContextItems(Scene, SceneIndex, IndexInSceneObjects);
+                ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
                     Subwindow_DeleteModel_->DeleteModel(SceneIndex, i);
                 }
 
             ImGui::EndPopup();
             }
-
-
         }
 
     ImGui::TreePop();
@@ -448,6 +609,8 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                 if (ImGui::MenuItem("Duplicate")) {
                     GUI_Windowutil_DuplicatePointLight(SceneManager_, SceneIndex, i);
                 }
+                ImGui::Separator();
+                DrawSceneTreeGroupContextItems(Scene, SceneIndex, IndexInSceneObjects);
                 ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
                     Subwindow_DeletePointLight_->DeletePointLight(SceneIndex, i);
@@ -519,6 +682,8 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     GUI_Windowutil_DuplicateDirectionalLight(SceneManager_, SceneIndex, i);
                 }
                 ImGui::Separator();
+                DrawSceneTreeGroupContextItems(Scene, SceneIndex, IndexInSceneObjects);
+                ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
                     Subwindow_DeleteDirectionalLight_->DeleteDirectionalLight(SceneIndex, i);
                 }
@@ -589,6 +754,8 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                     GUI_Windowutil_DuplicateSpotLight(SceneManager_, SceneIndex, i);
                 }
                 ImGui::Separator();
+                DrawSceneTreeGroupContextItems(Scene, SceneIndex, IndexInSceneObjects);
+                ImGui::Separator();
                 if (ImGui::MenuItem("Delete")) {
                     Subwindow_DeleteSpotLight_->DeleteSpotLight(SceneIndex, i);
                 }
@@ -658,19 +825,11 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             }
 
 
-            // // Context Menu
-            // if (ImGui::BeginPopupContextItem()) {
-
-            //     if (ImGui::MenuItem("Rename")) {
-            //         Subwindow_SceneCameraRenameModal_->Activate(SceneIndex, i);
-            //     }
-            //     ImGui::Separator();
-            //     if (ImGui::MenuItem("Delete")) {
-            //         Subwindow_DeleteSceneCamera_->DeleteSceneCamera(SceneIndex, i);
-            //     }
-
-            // ImGui::EndPopup();
-            // }
+            // Context Menu
+            if (ImGui::BeginPopupContextItem(std::string(std::string("SceneCamera")+std::to_string(i)).c_str())) {
+                DrawSceneTreeGroupContextItems(Scene, SceneIndex, IndexInSceneObjects);
+                ImGui::EndPopup();
+            }
 
 
         }
@@ -680,4 +839,3 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
 
 
 }
-

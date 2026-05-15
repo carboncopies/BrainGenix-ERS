@@ -6,6 +6,7 @@
 
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <string>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glad/glad.h>
@@ -58,6 +59,11 @@ private:
     ERS_STRUCT_ProjectUtils* ProjectUtils_; /**<ProjectUtils Pointer*/
     Cursors3D* Cursors3D_; /**<Pointer to Cursors3D Instance*/
     bool FirstFrame_ = true; /**<Bool Indicating if It's the first frame*/
+    char SceneTreeGroupBuffer_[128] = "";
+    bool GroupEditEnabled_ = false;
+    bool GroupEditFirstFrame_ = false;
+    int GroupEditSceneIndex_ = -1;
+    unsigned long GroupEditSceneObjectIndex_ = 0;
 
 
 
@@ -88,6 +94,48 @@ private:
      * @param SceneIndex
      */
     void DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex);
+
+    /**
+     * @brief Draw menu actions for assigning scene tree groups.
+     *
+     * @param Scene
+     * @param SceneIndex
+     * @param SceneObjectIndex
+     */
+    void DrawSceneTreeGroupContextItems(ERS_STRUCT_Scene* Scene, int SceneIndex, unsigned long SceneObjectIndex);
+
+    /**
+     * @brief Open the scene tree group editor for a scene object.
+     *
+     * @param Scene
+     * @param SceneIndex
+     * @param SceneObjectIndex
+     */
+    void ActivateSceneTreeGroupEditor(ERS_STRUCT_Scene* Scene, int SceneIndex, unsigned long SceneObjectIndex);
+
+    /**
+     * @brief Draw the scene tree group editor.
+     *
+     */
+    void DrawSceneTreeGroupEditor();
+
+    /**
+     * @brief Get the group string for a scene object.
+     *
+     * @param Scene
+     * @param SceneObjectIndex
+     * @return std::string
+     */
+    std::string GetSceneTreeGroup(ERS_STRUCT_Scene* Scene, unsigned long SceneObjectIndex);
+
+    /**
+     * @brief Set the group string for a scene object.
+     *
+     * @param Scene
+     * @param SceneObjectIndex
+     * @param GroupName
+     */
+    void SetSceneTreeGroup(ERS_STRUCT_Scene* Scene, unsigned long SceneObjectIndex, std::string GroupName);
 
 
 

@@ -38,6 +38,9 @@ bool ERS_FUNCTION_DecodeSceneV6(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
         Success &= ERS_FUNCTION_GetBool       (Logger, Item, "TreatMissingTexturesAsTransparent", Model.TreatMissingTexturesAsTransparent_ );
         Success &= ERS_FUNCTION_GetLong       (Logger, Item, "ShaderOverrideIndex",               Model.ShaderOverrideIndex_               );
         Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",                         Model.Name                               );
+        if (Item["SceneTreeGroup"]) {
+            Success &= ERS_FUNCTION_GetString (Logger, Item, "SceneTreeGroup",                    Model.SceneTreeGroup_                    );
+        }
         Success &= ERS_FUNCTION_GetLongVector (Logger, Item, "AttachedScripts",                   Model.AttachedScriptIndexes_             );
         Success &= ERS_FUNCTION_GetInt        (Logger, Item, "ModelMinLOD",                       Model.UserLimitedMinLOD_                 );
         Success &= ERS_FUNCTION_GetInt        (Logger, Item, "ModelMaxLOD",                       Model.UserLimitedMaxLOD_                 );
@@ -57,6 +60,9 @@ bool ERS_FUNCTION_DecodeSceneV6(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
         YAML::Node Item = PointLights[i];
         ERS_STRUCT_PointLight Light;
         Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",            Light.UserDefinedName         );
+        if (Item["SceneTreeGroup"]) {
+            Success &= ERS_FUNCTION_GetString (Logger, Item, "SceneTreeGroup",       Light.SceneTreeGroup_         );
+        }
         Success &= ERS_FUNCTION_GetVec3Color  (Logger, Item, "Color",                Light.Color                   );
         Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "Pos",                  Light.Pos                     );
         Success &= ERS_FUNCTION_GetFloat      (Logger, Item, "Intensity",            Light.Intensity               );
@@ -71,6 +77,9 @@ bool ERS_FUNCTION_DecodeSceneV6(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
         YAML::Node Item = SpotLights[i];
         ERS_STRUCT_SpotLight Light;
         Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",            Light.UserDefinedName         );
+        if (Item["SceneTreeGroup"]) {
+            Success &= ERS_FUNCTION_GetString (Logger, Item, "SceneTreeGroup",       Light.SceneTreeGroup_         );
+        }
         Success &= ERS_FUNCTION_GetVec3Color  (Logger, Item, "Color",                Light.Color                   );
         Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "Pos",                  Light.Pos                     );
         Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "Rot",                  Light.Rot                     );
@@ -89,6 +98,9 @@ bool ERS_FUNCTION_DecodeSceneV6(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
         YAML::Node Item = DirectionalLights[i];
         ERS_STRUCT_DirectionalLight Light;
         Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",            Light.UserDefinedName         );
+        if (Item["SceneTreeGroup"]) {
+            Success &= ERS_FUNCTION_GetString (Logger, Item, "SceneTreeGroup",       Light.SceneTreeGroup_         );
+        }
         Success &= ERS_FUNCTION_GetVec3Color  (Logger, Item, "Color",                Light.Color                   );
         Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "Pos",                  Light.Pos                     );
         Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "Rot",                  Light.Rot                     );
@@ -105,6 +117,9 @@ bool ERS_FUNCTION_DecodeSceneV6(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
         YAML::Node Item = SceneCameras[i];
         ERS_STRUCT_SceneCamera Camera;
         Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",            Camera.UserDefinedName_       );
+        if (Item["SceneTreeGroup"]) {
+            Success &= ERS_FUNCTION_GetString (Logger, Item, "SceneTreeGroup",       Camera.SceneTreeGroup_        );
+        }
         Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "Pos",                  Camera.Pos_                   );
         Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "Rot",                  Camera.Rot_                   );
         Success &= ERS_FUNCTION_GetFloat      (Logger, Item, "NearClip",             Camera.NearClip_              );
@@ -129,5 +144,4 @@ bool ERS_FUNCTION_DecodeSceneV6(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     Scene->IsSceneLoaded = Success;
     return Success;
 }
-
 

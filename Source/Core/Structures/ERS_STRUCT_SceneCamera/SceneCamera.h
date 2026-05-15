@@ -28,6 +28,7 @@ struct ERS_STRUCT_SceneCamera {
     float             FarClip_               = 100.0f; /**<Farthest distance before geometry is called*/
     std::vector<long> AttachedScriptIndexes_;          /**<Indices of scripts that are attached to this camera*/
     std::string       UserDefinedName_;                /**<Name that appears in the editor's scene tree*/
+    std::string       SceneTreeGroup_;                 /**<Optional editor-only scene tree group name*/
 
     // Internal Camera State Information
     float FOV_               = 70.0f; /**<Field of view in degrees*/

@@ -67,6 +67,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
         Output << YAML::Key << "AssetName" << YAML::Value << InputScene->Models[i]->Name;
         Output << YAML::Key << "AssetType" << YAML::Value << "Model";
         Output << YAML::Key << "AssetID" << YAML::Value << InputScene->Models[i]->AssetID;
+        Output << YAML::Key << "SceneTreeGroup" << YAML::Value << InputScene->Models[i]->SceneTreeGroup_;
 
 
         Output << YAML::Key << "AssetPositionX" << YAML::Value << InputScene->Models[i]->ModelPosition[0];
@@ -119,6 +120,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
         Output << YAML::Key << "AssetName" << YAML::Value << InputScene->DirectionalLights[i]->UserDefinedName;
         Output << YAML::Key << "AssetType" << YAML::Value << "DirectionalLight";
+        Output << YAML::Key << "SceneTreeGroup" << YAML::Value << InputScene->DirectionalLights[i]->SceneTreeGroup_;
 
 
         Output << YAML::Key << "ColorRed" << YAML::Value << InputScene->DirectionalLights[i]->Color[0];
@@ -161,6 +163,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
         Output << YAML::Key << "AssetName" << YAML::Value << InputScene->PointLights[i]->UserDefinedName;
         Output << YAML::Key << "AssetType" << YAML::Value << "PointLight";
+        Output << YAML::Key << "SceneTreeGroup" << YAML::Value << InputScene->PointLights[i]->SceneTreeGroup_;
 
 
         Output << YAML::Key << "ColorRed" << YAML::Value << InputScene->PointLights[i]->Color[0];
@@ -203,6 +206,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
         Output << YAML::Key << "AssetName" << YAML::Value << InputScene->SpotLights[i]->UserDefinedName;
         Output << YAML::Key << "AssetType" << YAML::Value << "SpotLight";
+        Output << YAML::Key << "SceneTreeGroup" << YAML::Value << InputScene->SpotLights[i]->SceneTreeGroup_;
 
 
         Output << YAML::Key << "ColorRed" << YAML::Value << InputScene->SpotLights[i]->Color[0];
@@ -256,6 +260,7 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
 
         Output << YAML::Key << "AssetName" << YAML::Value << SceneCamera->UserDefinedName_;
         Output << YAML::Key << "AssetType" << YAML::Value << "SceneCamera";
+        Output << YAML::Key << "SceneTreeGroup" << YAML::Value << SceneCamera->SceneTreeGroup_;
 
         Output << YAML::Key << "PosX" << YAML::Value << SceneCamera->Pos_[0];
         Output << YAML::Key << "PosY" << YAML::Value << SceneCamera->Pos_[1];
@@ -296,4 +301,3 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
     return std::string(Output.c_str());
 
 }
-

@@ -5,6 +5,7 @@
 #pragma once
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <string>
 #include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
@@ -73,6 +74,7 @@ struct ERS_STRUCT_Model {
     bool TexturesBeingPushed = false; /**<Used to set if the system is already pushing textures*/
 
     std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
+    std::string SceneTreeGroup_; /**<Optional editor-only scene tree group name*/
 
     double LoadingStartTime_     = 0.0f; /**<Time that the loading started*/
     double LoadingFinishTime_    = 0.0f; /**<Time When Loading Was Completed*/
@@ -210,6 +212,4 @@ struct ERS_STRUCT_Model {
 
 
 };
-
-
 

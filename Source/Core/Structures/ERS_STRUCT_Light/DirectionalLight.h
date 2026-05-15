@@ -18,6 +18,7 @@
 struct ERS_STRUCT_DirectionalLight {
 
     std::string UserDefinedName; /**Name of the light assigned by user*/
+    std::string SceneTreeGroup_; /**<Optional editor-only scene tree group name*/
     
     std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
 
