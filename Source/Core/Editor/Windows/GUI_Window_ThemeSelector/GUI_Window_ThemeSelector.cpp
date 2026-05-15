@@ -28,33 +28,7 @@ void GUI_Window_ThemeSelector::Draw() {
 
             if (Visible) {
 
-                // Put Radio Buttons Here
-                ImGui::BeginChild("Theme Selector", ImVec2(250, 250), true);
-
-                    static int ThemeSelector = 0;
-                    for (int i = 0; (long)i < (long)ThemeManager_->ThemeNames_.size(); i++) {
-
-                        ImGui::RadioButton(ThemeManager_->ThemeNames_[i].c_str(), &ThemeSelector, i);
-
-                    }
-                    
-
-                ImGui::EndChild();
-
-
-                ImGui::Separator();
-
-
-                // Reload Button
-                if (ImGui::Button("Reload Themes")) {
-                    ThemeManager_->LoadThemes();
-                }
-                ImGui::SameLine();
-
-                // Apply Button
-                if (ImGui::Button("Apply")) {
-                    ThemeManager_->ApplyThemes(ThemeSelector);
-                }
+                ThemeManager_->CreateThemeMenu();
                 ImGui::SameLine();
 
                 // Close Button

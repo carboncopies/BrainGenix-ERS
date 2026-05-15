@@ -77,7 +77,6 @@ public:
      * @brief Create the theme menu
      * 
      */
-    //FIXME: MOVE MENU UPDATE FUNCTION OUT OF GUP INTO THIS FUNCTION!!!!
     void CreateThemeMenu();
 
     /**

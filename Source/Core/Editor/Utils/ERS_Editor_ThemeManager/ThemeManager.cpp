@@ -14,9 +14,10 @@ ERS_CLASS_ThemeManager::ERS_CLASS_ThemeManager(BG::Common::Logger::LoggingSystem
     LoadThemes();
 
     // Default To Dark Mode
-    int Index;
-    for (Index = 0; (long)Index < (long)ThemeNames_.size(); Index++) {
-        if (ThemeNames_[Index] == "Dark") {
+    int Index = 0;
+    for (int i = 0; (long)i < (long)ThemeNames_.size(); i++) {
+        if (ThemeNames_[i] == "Dark") {
+            Index = i;
             break;
         }
     }
@@ -52,8 +53,8 @@ void ERS_CLASS_ThemeManager::ApplyThemes(const char* ThemeName) {
 
 void ERS_CLASS_ThemeManager::LoadThemes() {
 
-    ThemeNames_ = *new std::vector<std::string>;
-    ThemeFiles_ = *new std::vector<YAML::Node>;
+    ThemeNames_.clear();
+    ThemeFiles_.clear();
 
     // Create List Of Files
     for (const auto &Entry : ghc::filesystem::directory_iterator(std::string(ThemePath_))) {
@@ -82,6 +83,39 @@ void ERS_CLASS_ThemeManager::LoadThemes() {
 
 }
 
+void ERS_CLASS_ThemeManager::CreateThemeMenu() {
+
+    static int ThemeSelector = 0;
+    if (ThemeSelector >= static_cast<int>(ThemeNames_.size())) {
+        ThemeSelector = ThemeNames_.empty() ? 0 : static_cast<int>(ThemeNames_.size()) - 1;
+    }
+
+    ImGui::BeginChild("Theme Selector", ImVec2(250, 250), true);
+
+        for (int i = 0; (long)i < (long)ThemeNames_.size(); i++) {
+
+            ImGui::RadioButton(ThemeNames_[i].c_str(), &ThemeSelector, i);
+
+        }
+
+    ImGui::EndChild();
+
+    ImGui::Separator();
+
+    if (ImGui::Button("Reload Themes")) {
+        LoadThemes();
+        if (ThemeSelector >= static_cast<int>(ThemeNames_.size())) {
+            ThemeSelector = ThemeNames_.empty() ? 0 : static_cast<int>(ThemeNames_.size()) - 1;
+        }
+    }
+    ImGui::SameLine();
+
+    if (ImGui::Button("Apply")) {
+        ApplyThemes(ThemeSelector);
+    }
+
+}
+
 ImVec4 ERS_CLASS_ThemeManager::ReadColor(const char* NodeName, YAML::Node Target) {
 
      Logger_->Log(std::string(std::string("Reading Theme For Value: '") + std::string(NodeName) + std::string("'")).c_str(), 1);
@@ -103,6 +137,11 @@ ImVec4 ERS_CLASS_ThemeManager::ReadColor(const char* NodeName, YAML::Node Target
 }
 
 void ERS_CLASS_ThemeManager::ApplyThemes(int ThemeID) {
+
+    if (ThemeID < 0 || static_cast<long>(ThemeID) >= static_cast<long>(ThemeNames_.size()) || static_cast<long>(ThemeID) >= static_cast<long>(ThemeFiles_.size())) {
+        Logger_->Log("Invalid Theme ID, Skipping", 5);
+        return;
+    }
 
     // Get Theme Name
     std::string ThemeName = ThemeNames_[ThemeID];
@@ -229,4 +268,3 @@ void ERS_CLASS_ThemeManager::ApplyThemes(int ThemeID) {
     Style.Colors[ImGuiCol_DockingEmptyBg]        = ReadColor("DockingEmptyBackground", ThemeNode);
     Style.Colors[ImGuiCol_Separator]        = ReadColor("SeperatorColor", ThemeNode);
 }
-
