@@ -23,6 +23,30 @@ GUI_Window_AssetExplorer::~GUI_Window_AssetExplorer() {
 }
 
 
+void GUI_Window_AssetExplorer::AddModelToActiveScene(long AssetID) {
+
+    if (ProjectUtils_ == nullptr || ProjectUtils_->SceneManager_ == nullptr || ProjectUtils_->SceneLoader_ == nullptr) {
+        SystemUtils_->Logger_->Log("Could Not Add Model From Asset Explorer, Project Utils Are Not Ready", 7);
+        return;
+    }
+
+    int ActiveSceneIndex = ProjectUtils_->SceneManager_->ActiveScene_;
+    if (ActiveSceneIndex < 0 || ActiveSceneIndex >= static_cast<int>(ProjectUtils_->SceneManager_->Scenes_.size())) {
+        SystemUtils_->Logger_->Log("Could Not Add Model From Asset Explorer, Active Scene Index Is Invalid", 7);
+        return;
+    }
+
+    ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ActiveSceneIndex].get();
+    if (Scene == nullptr) {
+        SystemUtils_->Logger_->Log("Could Not Add Model From Asset Explorer, Active Scene Is Null", 7);
+        return;
+    }
+
+    ProjectUtils_->SceneLoader_->AddModel(Scene, AssetID);
+
+}
+
+
 void GUI_Window_AssetExplorer::Draw() {
 
     if (Enabled_) {
@@ -33,7 +57,6 @@ void GUI_Window_AssetExplorer::Draw() {
 
 
         // TODO: Add "selectables" in advanced mode which list all assetids and what they do. perhaps oculd be like this: ID (One-letter-abbreviation for what it does) or an icon if we're feeling fancy
-        // add the option to import assets from the explorer into the active scene
         // add the normal mode which only shows ers assets and has names rather than ids
         // add a system to have files/folder abstractions which enables the user to organize their assets under folders, implement drag/drop with this.
 
@@ -69,6 +92,15 @@ void GUI_Window_AssetExplorer::Draw() {
                             bool Selected = ImGui::Selectable(DisplayName.c_str(), Key == SelectedModelIndex_);
                             if (Selected) {
                                 SelectedModelIndex_ = Key;
+                            }
+
+                            if (ImGui::BeginPopupContextItem()) {
+
+                                if (ImGui::MenuItem("Add To Active Scene")) {
+                                    AddModelToActiveScene(static_cast<long>(Key));
+                                }
+
+                            ImGui::EndPopup();
                             }
 
                             // Drag+Drop Source

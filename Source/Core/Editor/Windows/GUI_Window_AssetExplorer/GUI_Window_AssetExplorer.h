@@ -40,6 +40,8 @@ private:
     unsigned long SelectedModelIndex_ = 0; /**<Index Of Selected Model*/
     unsigned long SelectedScriptIndex_ = 0; /**<Index of selected script*/
 
+    void AddModelToActiveScene(long AssetID);
+
 public:
 
     bool Enabled_ = true; /**<Is Popup Enabled*/
