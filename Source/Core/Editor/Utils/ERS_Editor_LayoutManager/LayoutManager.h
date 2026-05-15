@@ -8,12 +8,13 @@
 
 // Standard Libraries (BG convention: use <> instead of "")
 #include <string>
-#include <filesystem>
 #include <imgui.h>
 #include <fstream>
 #include <map>
+#include <vector>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
+#include <ghc/filesystem.hpp>
 #include <yaml-cpp/yaml.h>
 
 // Internal Libraries (BG convention: use <> instead of "")
@@ -62,7 +63,7 @@ public:
      * @param WindowManager
      * @param LayoutDirectory
      */
-    ERS_CLASS_LayoutManager(BG::Common::Logger::LoggingSystem* Logger, const char* LayoutDirectory = "EditorAssets/Layouts/");
+    ERS_CLASS_LayoutManager(BG::Common::Logger::LoggingSystem* Logger, const char* LayoutDirectory = "EditorAssets/Configuration/Layouts/");
 
     /**
      * @brief Destroy the Layout Manager object

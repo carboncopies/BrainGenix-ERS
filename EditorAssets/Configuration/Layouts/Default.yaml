@@ -3,4 +3,5 @@
 # All other window info is stored in the associated .ini file.                                            #
 ###########################################################################################################
 
-
+DisplayName: Default
+ImGuiIniPath: ../../DefaultLayout/imgui.ini

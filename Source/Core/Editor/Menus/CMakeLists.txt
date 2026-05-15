@@ -5,5 +5,6 @@
 # Add Menu Entries
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Menu_File)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Menu_Window)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Menu_Layout)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Menu_Debug)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/GUI_Menu_Settings)

@@ -28,6 +28,7 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, Cu
     ThemeManager_ = std::make_unique<ERS_CLASS_ThemeManager>(SystemUtils_->Logger_.get());
     FontManager_ = std::make_unique<ERS_CLASS_FontManager>(SystemUtils_->Logger_.get());
     UserProfileManager_ = std::make_unique<ERS_CLASS_UserProfileManager>(SystemUtils_->Logger_.get());
+    LayoutManager_ = std::make_unique<ERS_CLASS_LayoutManager>(SystemUtils_->Logger_.get());
 
     // Load User Profile
     ThemeManager_->ApplyThemes(UserProfileManager_->GetUserColorProfile().c_str());
@@ -47,6 +48,7 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, Cu
     SystemUtils_->Logger_->Log("Initializing Editor Menus", 5);
     Menu_File_ = std::make_unique<GUI_Menu_File>(SystemUtils_, SceneManager_, ProjectUtils_, WindowManager_->GetWindowsStruct());
     Menu_Window_ = std::make_unique<GUI_Menu_Window>(SystemUtils_, WindowManager_->GetWindowsStruct(), VisualRenderer_);
+    Menu_Layout_ = std::make_unique<GUI_Menu_Layout>(SystemUtils_, LayoutManager_.get());
     Menu_Debug_ = std::make_unique<GUI_Menu_Debug>(SystemUtils_, WindowManager_->GetWindowsStruct(), WindowManager_.get());
     Menu_Settings_ = std::make_unique<GUI_Menu_Settings>(SystemUtils_, HIDUtils_, WindowManager_->GetWindowsStruct());
 
@@ -100,6 +102,7 @@ void GUISystem::UpdateGUI() {
 
         Menu_File_->Draw();
         Menu_Window_->Draw();
+        Menu_Layout_->Draw();
         Menu_Settings_->Draw();
         Menu_Debug_->Draw();
 

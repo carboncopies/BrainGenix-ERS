@@ -30,6 +30,7 @@
 #include <ThemeManager.h>
 #include <FontManager.h>
 #include <UserProfileManager.h>
+#include <LayoutManager.h>
 #include <3DCursor.h>
 #include <WindowManager.h>
 
@@ -37,6 +38,7 @@
 
 #include <GUI_Menu_File.h>
 #include <GUI_Menu_Window.h>
+#include <GUI_Menu_Layout.h>
 #include <GUI_Menu_Debug.h>
 #include <GUI_Menu_Settings.h>
 
@@ -63,6 +65,7 @@ private:
 
     std::unique_ptr<ERS_CLASS_FontManager>        FontManager_;        /**<Pointer To FontManager Instance*/
     std::unique_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
+    std::unique_ptr<ERS_CLASS_LayoutManager>      LayoutManager_;      /**<Pointer To Layout Manager Instance*/
     std::unique_ptr<ERS_CLASS_WindowManager>      WindowManager_;      /**<Class owning all gui windows*/
     
 public:
@@ -72,6 +75,7 @@ public:
     // Menu Items
     std::unique_ptr<GUI_Menu_File>     Menu_File_;     /**<Editor Menu Entry*/
     std::unique_ptr<GUI_Menu_Window>   Menu_Window_;   /**<Editor Menu Entry*/
+    std::unique_ptr<GUI_Menu_Layout>   Menu_Layout_;   /**<Editor Menu Entry*/
     std::unique_ptr<GUI_Menu_Debug>    Menu_Debug_;    /**<Editor Menu Entry*/
     std::unique_ptr<GUI_Menu_Settings> Menu_Settings_; /**<Editor Menu Entry*/
 

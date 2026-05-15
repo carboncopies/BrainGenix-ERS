@@ -36,6 +36,7 @@ target_link_libraries(VisualEditor
     ERS_Editor_ThemeManager
     ERS_Editor_FontManager
     ERS_Editor_UserProfileManager
+    ERS_Editor_LayoutManager
     ERS_Editor_3DCursor
     ERS_Editor_WindowManager
 
@@ -43,6 +44,7 @@ target_link_libraries(VisualEditor
 
     Menu_File
     Menu_Window
+    Menu_Layout
     Menu_Debug
     Menu_Settings
 
