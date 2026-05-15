@@ -5,6 +5,34 @@
 #include <MeshRenderer.h>
 
 
+namespace {
+
+    float ERS_FUNCTION_GetMeshDistanceSquared(ERS_STRUCT_Mesh* Mesh, glm::vec3 CameraPosition) {
+
+        glm::vec3 MeshPosition = glm::vec3(Mesh->ModelMatrix[3]);
+        glm::vec3 DistanceVector = MeshPosition - CameraPosition;
+        return glm::dot(DistanceVector, DistanceVector);
+
+    }
+
+    void ERS_FUNCTION_SortTransparentMeshes(std::vector<ERS_STRUCT_Mesh*>* TransparentMeshes, glm::vec3 CameraPosition) {
+
+        for (unsigned long i = 0; i < TransparentMeshes->size(); i++) {
+            for (unsigned long j = i + 1; j < TransparentMeshes->size(); j++) {
+                float DistanceI = ERS_FUNCTION_GetMeshDistanceSquared((*TransparentMeshes)[i], CameraPosition);
+                float DistanceJ = ERS_FUNCTION_GetMeshDistanceSquared((*TransparentMeshes)[j], CameraPosition);
+                if (DistanceJ > DistanceI) {
+                    ERS_STRUCT_Mesh* SwapMesh = (*TransparentMeshes)[i];
+                    (*TransparentMeshes)[i] = (*TransparentMeshes)[j];
+                    (*TransparentMeshes)[j] = SwapMesh;
+                }
+            }
+        }
+
+    }
+
+}
+
 
 ERS_CLASS_MeshRenderer::ERS_CLASS_MeshRenderer(ERS_STRUCT_SystemUtils* SystemUtils) {
 
@@ -27,6 +55,7 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
     std::vector<ERS_STRUCT_Mesh*> OpaqueMeshes;
     std::vector<ERS_STRUCT_Mesh*> TransparentMeshes;
     ERS_FUNCTION_MeshTransparencySort(&OpaqueMeshes, &TransparentMeshes, Scene);
+    ERS_FUNCTION_SortTransparentMeshes(&TransparentMeshes, ShaderUniformInfo.CameraPosition_);
 
     // Setup Variables To Handle Shader Switching
     int CurrentShaderIndex = DefaultShaderIndex;
@@ -71,13 +100,6 @@ void ERS_CLASS_MeshRenderer::RenderScene(ERS_STRUCT_Scene* Scene, ERS_STRUCT_Ope
         ERS_FUNCTION_DrawMesh(TransparentMeshes[i], OpenGLDefaults, Shader);
     }
 
-
-    // TODO: Update rendering process
-    // should be based around the idea that the models are used to get the meshes to be rendered
-    // the meshes are then compiled into two lists to be rendered
-    // firstly, there are opaque meshes which are rendered normally (With the depth testing enabled)
-    // next, there's the transparent meshes which are sorted by distance on another thread while the opaque meshes are rendering
-    // then, these are rendered via depth peeling.
 
     // A later method would be to implement support for OIT or something fancy like that but this will work for now.  
 
