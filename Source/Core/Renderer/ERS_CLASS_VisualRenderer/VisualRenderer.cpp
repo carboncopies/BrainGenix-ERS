@@ -659,6 +659,11 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
                 Position = Scene->SceneCameras[Index]->Pos_;        
                 Rotation = Scene->SceneCameras[Index]->Rot_;    
                 HasRotation = true;    
+            } else if (Scene->SceneObjects_[SelectedObject].Type_ == std::string("AudioSource")) {
+                unsigned long Index = Scene->SceneObjects_[SelectedObject].Index_;
+                Position = Scene->AudioSources[Index]->Pos;
+                Rotation = Scene->AudioSources[Index]->Rot;
+                HasRotation = true;
             }
 
 

@@ -17,6 +17,7 @@
 #include <DirectionalLight.h>
 #include <SceneObject.h>
 #include <SceneCamera.h>
+#include <AudioSource.h>
 
 
 
@@ -37,6 +38,7 @@ struct ERS_STRUCT_Scene{
     std::vector<std::shared_ptr<ERS_STRUCT_DirectionalLight>> DirectionalLights; /**<List of spot lights*/
     std::vector<std::shared_ptr<ERS_STRUCT_PointLight>> PointLights; /**<List of spot lights*/
     std::vector<std::shared_ptr<ERS_STRUCT_SceneCamera>> SceneCameras; /**<Vector containing the scene's camera objects*/
+    std::vector<std::shared_ptr<ERS_STRUCT_AudioSource>> AudioSources; /**<Vector containing scene audio source objects*/
     int ActiveSceneCameraIndex = -1; /**<Index of the active scene camera in the SceneCameras array. Is -1 if there are no active cameras*/
     std::vector<ERS_STRUCT_SceneObject> SceneObjects_; /**<Vector containing the type of the scene object*/
 

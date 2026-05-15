@@ -24,6 +24,7 @@ target_link_libraries(ERS_SceneWriter
     bg-common-logger
     ERS_STRUCT_Model
     ERS_STRUCT_Scene
+    ERS_STRUCT_AudioSource
     ERS_STRUCT_Mesh
     ERS_STRUCT_Texture
 
@@ -32,4 +33,3 @@ target_link_libraries(ERS_SceneWriter
     )
 
 target_include_directories(ERS_SceneWriter PUBLIC ./)
-

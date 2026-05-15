@@ -83,6 +83,7 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_STRUCT_Viewport
     ERS_STRUCT_Shader
     ERS_STRUCT_Model
+    ERS_STRUCT_AudioSource
     ERS_STRUCT_DepthMap
     ERS_STRUCT_Scene
     ERS_STRUCT_ProjectUtils
@@ -93,4 +94,3 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     )
 
 target_include_directories(ERS_CLASS_VisualRenderer PUBLIC ./)
-

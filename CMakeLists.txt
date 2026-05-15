@@ -148,6 +148,7 @@ add_subdirectory(${SRC_DIR}/Core/Renderer/ERS_CLASS_VisualRenderer)
 
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Camera)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_SceneCamera)
+add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_AudioSource)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_HumanInputDeviceUtils)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Mesh)
 add_subdirectory(${SRC_DIR}/Core/Structures/ERS_STRUCT_Model)

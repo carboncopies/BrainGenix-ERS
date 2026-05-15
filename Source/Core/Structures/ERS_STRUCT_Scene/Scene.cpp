@@ -52,6 +52,15 @@ void ERS_STRUCT_Scene::IndexSceneObjects() {
         SceneObject.Label_ = std::string("[C] ") + SceneCameras[i]->UserDefinedName_;
         SceneObjects_.push_back(SceneObject);
     }
+
+    // Add Audio Sources
+    for (unsigned long i = 0; i < AudioSources.size(); i++) {
+        ERS_STRUCT_SceneObject SceneObject;
+        SceneObject.Type_ = std::string("AudioSource");
+        SceneObject.Index_ = i;
+        SceneObject.Label_ = std::string("[A] ") + AudioSources[i]->UserDefinedName;
+        SceneObjects_.push_back(SceneObject);
+    }
     
 
 }

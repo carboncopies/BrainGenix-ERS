@@ -59,6 +59,7 @@ target_link_libraries(GUI_Window_SceneTree
     ERS_STRUCT_SystemUtils
     ERS_STRUCT_ProjectUtils
     ERS_STRUCT_SceneObject
+    ERS_STRUCT_AudioSource
 
     bg-common-logger
     

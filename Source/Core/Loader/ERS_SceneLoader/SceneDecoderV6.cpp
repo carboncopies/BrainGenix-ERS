@@ -13,7 +13,7 @@ bool ERS_FUNCTION_DecodeSceneV6(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     BG::Common::Logger::LoggingSystem* Logger = SystemUtils->Logger_.get();
 
     // Grab Metadata
-    std::vector<YAML::Node> Models, PointLights, SpotLights, DirectionalLights, SceneCameras;
+    std::vector<YAML::Node> Models, PointLights, SpotLights, DirectionalLights, SceneCameras, AudioSources;
     Success &= ERS_FUNCTION_GetLong       (Logger, SceneData, "SceneFormatVersion", Scene->SceneFormatVersion      );
     Success &= ERS_FUNCTION_GetString     (Logger, SceneData, "SceneName",          Scene->SceneName               );
     Success &= ERS_FUNCTION_GetInt        (Logger, SceneData, "ActiveCameraIndex",  Scene->ActiveSceneCameraIndex  );
@@ -22,6 +22,9 @@ bool ERS_FUNCTION_DecodeSceneV6(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     Success &= ERS_FUNCTION_GetNodeVector (Logger, SceneData, "SpotLights",         SpotLights                     );
     Success &= ERS_FUNCTION_GetNodeVector (Logger, SceneData, "DirectionalLights",  DirectionalLights              );
     Success &= ERS_FUNCTION_GetNodeVector (Logger, SceneData, "SceneCameras",       SceneCameras                   );
+    if (SceneData["AudioSources"]) {
+        Success &= ERS_FUNCTION_GetNodeVector(Logger, SceneData, "AudioSources", AudioSources);
+    }
 
 
     for (unsigned int i = 0; i < Models.size(); i++) {
@@ -118,6 +121,23 @@ bool ERS_FUNCTION_DecodeSceneV6(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
     }
 
+    for (unsigned int i = 0; i < AudioSources.size(); i++) {
+
+        YAML::Node Item = AudioSources[i];
+        ERS_STRUCT_AudioSource AudioSource;
+        Success &= ERS_FUNCTION_GetString     (Logger, Item, "AssetName",       AudioSource.UserDefinedName        );
+        Success &= ERS_FUNCTION_GetLong       (Logger, Item, "AudioAssetID",    AudioSource.AudioAssetID           );
+        Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "Pos",             AudioSource.Pos                    );
+        Success &= ERS_FUNCTION_GetVec3       (Logger, Item, "Rot",             AudioSource.Rot                    );
+        Success &= ERS_FUNCTION_GetFloat      (Logger, Item, "Gain",            AudioSource.Gain                   );
+        Success &= ERS_FUNCTION_GetFloat      (Logger, Item, "MaxDistance",     AudioSource.MaxDistance            );
+        Success &= ERS_FUNCTION_GetBool       (Logger, Item, "Looping",         AudioSource.Looping                );
+        Success &= ERS_FUNCTION_GetBool       (Logger, Item, "Autoplay",        AudioSource.Autoplay               );
+        Success &= ERS_FUNCTION_GetLongVector (Logger, Item, "AttachedScripts", AudioSource.AttachedScriptIndexes_ );
+        Scene->AudioSources.push_back(std::make_shared<ERS_STRUCT_AudioSource>(AudioSource));
+
+    }
+
 
 
     // Indicate Scene Is Loaded
@@ -129,5 +149,4 @@ bool ERS_FUNCTION_DecodeSceneV6(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
     Scene->IsSceneLoaded = Success;
     return Success;
 }
-
 

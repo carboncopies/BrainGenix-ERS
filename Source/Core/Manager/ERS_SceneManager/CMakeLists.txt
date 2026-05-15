@@ -26,6 +26,7 @@ target_link_libraries(ERS_SceneManager
 
     ERS_STRUCT_Shader
     ERS_STRUCT_Scene
+    ERS_STRUCT_AudioSource
     ERS_STRUCT_LocRotScale
     ERS_STRUCT_OpenGLDefaults  
     )

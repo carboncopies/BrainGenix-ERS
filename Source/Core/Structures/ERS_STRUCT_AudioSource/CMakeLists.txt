@@ -4,29 +4,24 @@
 
 
 # Create Library (Name Should Be Parent Dir Name)
-add_library(ERS_STRUCT_Scene
+add_library(ERS_STRUCT_AudioSource
 
             # Add Source Files (.cpp)
-            "Scene.cpp"
+            "AudioSource.cpp"
 
             # Add Header Files (.h)
-            "Scene.h"
-            
+            "AudioSource.h"
+
             ${BACKWARD_ENABLE}
             )
 
 # Link 3rd Party Libs
-target_link_libraries(ERS_STRUCT_Scene
-    yaml-cpp
+target_link_libraries(ERS_STRUCT_AudioSource
+    glm
     )
 
 # Link Internal Libs
-target_link_libraries(ERS_STRUCT_Scene
-    ERS_STRUCT_Model
-    ERS_STRUCT_Light
-    ERS_STRUCT_SceneObject
-    ERS_STRUCT_SceneCamera
-    ERS_STRUCT_AudioSource
+target_link_libraries(ERS_STRUCT_AudioSource
     )
 
-target_include_directories(ERS_STRUCT_Scene PUBLIC ./)
+target_include_directories(ERS_STRUCT_AudioSource PUBLIC ./)

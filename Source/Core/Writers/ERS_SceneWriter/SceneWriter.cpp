@@ -283,6 +283,43 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
     }
     Output << YAML::EndMap;
 
+    //---- Write Audio Sources ----//
+    Output << YAML::Key << "AudioSources";
+    Output << YAML::Key << YAML::BeginMap;
+    for (int i = 0; (long)i < (long)InputScene->AudioSources.size(); i++) {
+
+        ERS_STRUCT_AudioSource* AudioSource = InputScene->AudioSources[i].get();
+
+        Output << YAML::Key << i;
+        Output << YAML::BeginMap;
+
+        Output << YAML::Key << "AssetName" << YAML::Value << AudioSource->UserDefinedName;
+        Output << YAML::Key << "AssetType" << YAML::Value << "AudioSource";
+        Output << YAML::Key << "AudioAssetID" << YAML::Value << AudioSource->AudioAssetID;
+
+        Output << YAML::Key << "PosX" << YAML::Value << AudioSource->Pos[0];
+        Output << YAML::Key << "PosY" << YAML::Value << AudioSource->Pos[1];
+        Output << YAML::Key << "PosZ" << YAML::Value << AudioSource->Pos[2];
+        Output << YAML::Key << "RotX" << YAML::Value << AudioSource->Rot[0];
+        Output << YAML::Key << "RotY" << YAML::Value << AudioSource->Rot[1];
+        Output << YAML::Key << "RotZ" << YAML::Value << AudioSource->Rot[2];
+
+        Output << YAML::Key << "Gain" << YAML::Value << AudioSource->Gain;
+        Output << YAML::Key << "MaxDistance" << YAML::Value << AudioSource->MaxDistance;
+        Output << YAML::Key << "Looping" << YAML::Value << AudioSource->Looping;
+        Output << YAML::Key << "Autoplay" << YAML::Value << AudioSource->Autoplay;
+
+        Output<<YAML::Key<<"AttachedScripts";
+        Output<<YAML::Key<<YAML::BeginMap;
+        for (unsigned long x = 0; x < AudioSource->AttachedScriptIndexes_.size(); x++) {
+            Output<<YAML::Key<<x<<YAML::Value<<AudioSource->AttachedScriptIndexes_[x];
+        }
+        Output<<YAML::EndMap;
+
+        Output << YAML::EndMap;
+    }
+    Output << YAML::EndMap;
+
 
     Output << YAML::EndMap;
 
@@ -296,4 +333,3 @@ std::string SceneWriter::ProcessScene(ERS_STRUCT_Scene* InputScene) {
     return std::string(Output.c_str());
 
 }
-

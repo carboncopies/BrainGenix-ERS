@@ -44,14 +44,22 @@ void ERS_CLASS_SceneManager::UpdateLocRotScale(glm::vec3 Pos, glm::vec3 Rot, glm
     } else if (selectedObject.Type_ == "PointLight") {
         unsigned long Index = selectedObject.Index_;
         Scenes_[ActiveScene_]->PointLights[Index]->Pos = Pos;
-    } else if (selectedObject.Type_ == "DirectionalLight" || selectedObject.Type_ == "SpotLight") {
+    } else if (selectedObject.Type_ == "DirectionalLight") {
         unsigned long Index = selectedObject.Index_;
         Scenes_[ActiveScene_]->DirectionalLights[Index]->Pos = Pos;
         Scenes_[ActiveScene_]->DirectionalLights[Index]->Rot = Rot;
+    } else if (selectedObject.Type_ == "SpotLight") {
+        unsigned long Index = selectedObject.Index_;
+        Scenes_[ActiveScene_]->SpotLights[Index]->Pos = Pos;
+        Scenes_[ActiveScene_]->SpotLights[Index]->Rot = Rot;
     } else if (selectedObject.Type_ == "SceneCamera") {
         unsigned long Index = selectedObject.Index_;
         Scenes_[ActiveScene_]->SceneCameras[Index]->Pos_ = Pos;
         Scenes_[ActiveScene_]->SceneCameras[Index]->Rot_ = Rot;
+    } else if (selectedObject.Type_ == "AudioSource") {
+        unsigned long Index = selectedObject.Index_;
+        Scenes_[ActiveScene_]->AudioSources[Index]->Pos = Pos;
+        Scenes_[ActiveScene_]->AudioSources[Index]->Rot = Rot;
     }
 }
 

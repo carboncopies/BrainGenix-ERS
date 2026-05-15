@@ -76,6 +76,7 @@ public:
     void AddSpotLight(ERS_CLASS_ShadowMaps* ShadowMaps);
     void AddScene();
     void AddSceneCamera();
+    void AddAudioSource();
     
 
 };

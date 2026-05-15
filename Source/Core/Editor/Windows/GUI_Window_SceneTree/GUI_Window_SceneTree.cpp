@@ -200,6 +200,8 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     std::vector<unsigned long> SpotLightIndexes; // stores the index of the associated element in the Models list from the sceneobjects list
     std::vector<ERS_STRUCT_SceneObject> SceneCameras;
     std::vector<unsigned long> SceneCameraIndexes; // stores the index of the associated element in the SceneCamera list
+    std::vector<ERS_STRUCT_SceneObject> AudioSources;
+    std::vector<unsigned long> AudioSourceIndexes; // stores the index of the associated element in the AudioSources list
 
 
     for (unsigned long i = 0; i < Scene->SceneObjects_.size(); i++) {
@@ -219,6 +221,9 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
         } else if (Scene->SceneObjects_[i].Type_ == "SceneCamera") {
             SceneCameras.push_back(Scene->SceneObjects_[i]);
             SceneCameraIndexes.push_back(i);
+        } else if (Scene->SceneObjects_[i].Type_ == "AudioSource") {
+            AudioSources.push_back(Scene->SceneObjects_[i]);
+            AudioSourceIndexes.push_back(i);
         }
 
     }
@@ -678,6 +683,58 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
     ImGui::TreePop();
     }
 
+    // Draw Audio Source Entries
+    bool AudioSourceTree = ImGui::TreeNodeEx("Audio Sources", ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_OpenOnArrow);
+    if (AudioSourceTree) {
+
+        unsigned int AudioSourceListSize = Scene->AudioSources.size();
+        for (unsigned int i = 0; i < AudioSourceListSize; i++) {
+
+            unsigned long IndexInSceneObjects = AudioSourceIndexes[i];
+
+            const char* ObjectName = Scene->SceneObjects_[IndexInSceneObjects].Label_.c_str();
+            ImGuiTreeNodeFlags TreeFlags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen;
+            if ((unsigned long)SelectedSceneObjectIndex == IndexInSceneObjects) {
+                TreeFlags |= ImGuiTreeNodeFlags_Selected;
+            }
+            ImGui::TreeNodeEx((void*)(intptr_t)i, TreeFlags, "%s", ObjectName);
+
+            // If User Clicks Node, Update Object Index
+            if (ImGui::IsItemClicked()) {
+                Scene->SelectedObject = IndexInSceneObjects;
+                Scene->HasSelectionChanged = true;
+            }
+
+            // Drag/Drop Target
+            long PayloadID;
+            if (ImGui::BeginDragDropTarget()) {
+
+                if (const ImGuiPayload* Payload = ImGui::AcceptDragDropPayload("PAYLOAD_ASSET_SCRIPT_ID")) {
+                    memcpy(&PayloadID, Payload->Data, sizeof(long));
+                    SystemUtils_->Logger_->Log(std::string("Window_SceneTree Recieved Drag Drop Payload 'PAYLOAD_ASSET_SCRIPT_ID' With Value '") + std::to_string(PayloadID) + std::string("'"), 0);
+
+                    // Check If Already In Vector
+                    bool Contains = false;
+                    for (unsigned long x = 0; x < Scene->AudioSources[i]->AttachedScriptIndexes_.size(); x++) {
+                        if (PayloadID ==  Scene->AudioSources[i]->AttachedScriptIndexes_[x]) {
+                            SystemUtils_->Logger_->Log(std::string("Window_SceneTree Error Assigning Payload 'PAYLOAD_ASSET_SCRIPT_ID' To 'AudioSource', Already Attached").c_str(), 0);
+                            Contains = true;
+                            break;
+                        }
+                    }
+
+                    if (!Contains) {
+                        Scene->AudioSources[i]->AttachedScriptIndexes_.push_back(PayloadID);
+                    }
+                }
+
+            ImGui::EndDragDropTarget();
+            }
+
+        }
+
+    ImGui::TreePop();
+    }
+
 
 }
-

@@ -335,6 +335,38 @@ void GUI_Window_ObjectProperties::Draw() {
 
                     }
 
+                } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("AudioSource")) {
+
+                    unsigned long Index = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Index_;
+                    if (ImGui::CollapsingHeader("Audio Source Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
+
+                        ERS_STRUCT_AudioSource* AudioSource = SceneManager_->Scenes_[SceneManager_->ActiveScene_]->AudioSources[Index].get();
+
+                        long long AudioAssetID = AudioSource->AudioAssetID;
+                        if (ImGui::InputScalar("Audio Asset ID", ImGuiDataType_S64, &AudioAssetID)) {
+                            AudioSource->AudioAssetID = AudioAssetID;
+                        }
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Asset ID of the source audio clip. Playback support is not implemented yet.");
+
+                        ImGui::DragFloat("Gain", &AudioSource->Gain, 0.05f, 0.0f, 64.0f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Playback gain multiplier reserved for the audio renderer.");
+
+                        ImGui::DragFloat("MaxDistance", &AudioSource->MaxDistance, 0.5f, 0.0f, 65535.0f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Distance after which the source should be inaudible.");
+
+                        ImGui::Checkbox("Looping", &AudioSource->Looping);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Reserved playback flag for looping audio.");
+
+                        ImGui::Checkbox("Autoplay", &AudioSource->Autoplay);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Reserved playback flag for scene-start playback.");
+
+                    }
+
                 }
 
 
@@ -353,6 +385,8 @@ void GUI_Window_ObjectProperties::Draw() {
                         ScriptIndices_ = &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SpotLights[Index]->AttachedScriptIndexes_;     
                     } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("SceneCamera")) {
                         ScriptIndices_ = &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneCameras[Index]->AttachedScriptIndexes_;     
+                    } else if (SceneManager_->Scenes_[SceneManager_->ActiveScene_]->SceneObjects_[SelectedSceneObject].Type_ == std::string("AudioSource")) {
+                        ScriptIndices_ = &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->AudioSources[Index]->AttachedScriptIndexes_;
                     }
 
                     // Draw List Box

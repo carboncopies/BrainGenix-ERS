@@ -123,6 +123,20 @@ void ERS_CLASS_ViewportMenu::AddSceneCamera() {
 
 }
 
+void ERS_CLASS_ViewportMenu::AddAudioSource() {
+
+    std::shared_ptr<ERS_STRUCT_AudioSource> AudioSource = std::make_shared<ERS_STRUCT_AudioSource>();
+    ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+
+    AudioSource->UserDefinedName = "New Audio Source";
+    AudioSource->Gain = 1.0f;
+    AudioSource->MaxDistance = 20.0f;
+
+    Scene->AudioSources.push_back(AudioSource);
+    Scene->IndexSceneObjects();
+
+}
+
 
 void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_ShadowMaps* ShadowMaps) {
 
@@ -395,6 +409,10 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             
             if (ImGui::MenuItem("Camera")) {
                 AddSceneCamera();
+            }
+
+            if (ImGui::MenuItem("Audio Source")) {
+                AddAudioSource();
             }
 
         ImGui::EndMenu();
