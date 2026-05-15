@@ -32,6 +32,7 @@ struct ERS_STRUCT_RendererSettings {
     ERS::Renderer::ShadowUpdateMode ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED;
     int MaxShadowUpdatesPerFrame_ = 5;
     int ShadowFilterKernelSize_ = 2;
+    bool RefreshStaticShadowMaps_ = true;
     
     unsigned long long VRAMBudget_ = 0;
     unsigned long long RAMBudget_ = 0;

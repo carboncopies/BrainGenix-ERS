@@ -35,8 +35,10 @@ GUI_Window_RenderingSettings::GUI_Window_RenderingSettings(ERS_STRUCT_SystemUtil
         SelectedShadowUpdates_ = 2;
     } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED) {
         SelectedShadowUpdates_ = 3;
-    } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL) {
+    } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_STATIC) {
         SelectedShadowUpdates_ = 4;
+    } else if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL) {
+        SelectedShadowUpdates_ = 5;
     }
 
 
@@ -75,6 +77,7 @@ void GUI_Window_RenderingSettings::Draw() {
                     "SHADOW_UPDATE_MODE_RANDOM",
                     "SHADOW_UPDATE_MODE_CONSECUTIVE",
                     "SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED",
+                    "SHADOW_UPDATE_MODE_STATIC",
                     "SHADOW_UPDATE_MODE_ALL"
                 };
 
@@ -155,13 +158,14 @@ void GUI_Window_RenderingSettings::Draw() {
                 ImGui::InputInt("Shadow Filter Kernel Size", &Settings->ShadowFilterKernelSize_);
 
                 ImGui::Combo("Shadow Filtering", &SelectedShadowFiltering_, ShadowFilteringNames, 4);
-                ImGui::Combo("Shadow Update Mode", &SelectedShadowUpdates_, ShadowUpdateNames, 5);
+                ImGui::Combo("Shadow Update Mode", &SelectedShadowUpdates_, ShadowUpdateNames, 6);
                 
                 // Handle Apply Button
                 Apply = ImGui::Button("Apply");
                 if (Apply) {
                     Settings->ShadowMapX_ = DepthMapResolution_;
                     Settings->ShadowMapY_ = DepthMapResolution_;
+                    Settings->RefreshStaticShadowMaps_ = true;
 
                     if (SelectedShadowFiltering_ == 0) {
                         Settings->ShadowFilteringType_ = ERS::Renderer::ERS_SHADOW_FILTERING_DISABLED;
@@ -182,6 +186,8 @@ void GUI_Window_RenderingSettings::Draw() {
                     } else if (SelectedShadowUpdates_ == 3) {
                         Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED;
                     } else if (SelectedShadowUpdates_ == 4) {
+                        Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_STATIC;
+                    } else if (SelectedShadowUpdates_ == 5) {
                         Settings->ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL;
                     }
 
