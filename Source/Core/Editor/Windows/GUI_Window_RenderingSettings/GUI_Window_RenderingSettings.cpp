@@ -92,6 +92,17 @@ void GUI_Window_RenderingSettings::Draw() {
                 ImGui::ColorEdit4("Background Clear Color", (float*)&ClearColor_);
                 ImGui::NewLine();
 
+                // Adaptive Motion Blur Settings
+                ImGui::Separator();
+                ImGui::TextColored(ImVec4(0.2f, 0.8f, 0.2f, 1.0f), "Adaptive Motion Blur");
+                ImGui::Separator();
+
+                ImGui::Checkbox("Enable Motion Blur", &Settings->MotionBlurEnabled_);
+                ImGui::DragFloat("Motion Blur Strength", &Settings->MotionBlurStrength_, 0.01f, 0.0f, 2.0f);
+                ImGui::DragFloat("Reference Framerate", &Settings->MotionBlurReferenceFrameRate_, 1.0f, 1.0f, 240.0f);
+                ImGui::DragFloat("Maximum Blend", &Settings->MotionBlurMaxBlend_, 0.01f, 0.0f, 0.95f);
+                ImGui::NewLine();
+
 
                 // Framerate Settings
                 ImGui::Separator();

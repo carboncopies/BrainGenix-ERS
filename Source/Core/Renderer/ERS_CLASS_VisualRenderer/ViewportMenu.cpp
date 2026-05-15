@@ -157,6 +157,7 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
 
             ImGui::MenuItem("Gamma Correction", nullptr, &Viewport->GammaCorrection);
             ImGui::MenuItem("HDR", nullptr, &Viewport->HDREnabled_);
+            ImGui::MenuItem("Adaptive Motion Blur", nullptr, &Viewport->MotionBlurEnabled_);
 
 
         ImGui::EndMenu();
