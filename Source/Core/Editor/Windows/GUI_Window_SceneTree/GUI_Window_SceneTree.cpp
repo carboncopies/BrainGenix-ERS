@@ -5,8 +5,11 @@
 #include <GUI_Window_SceneTree.h>
 
 // Standard Libraries (BG convention: use <> instead of "")
+// cppcheck-suppress missingIncludeSystem
 #include <algorithm>
+// cppcheck-suppress missingIncludeSystem
 #include <cstring>
+// cppcheck-suppress missingIncludeSystem
 #include <map>
 
 GUI_Window_SceneTree::GUI_Window_SceneTree(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, Cursors3D* Cursors3D) {
@@ -374,7 +377,7 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
                             TreeFlags |= ImGuiTreeNodeFlags_Selected;
                         }
 
-                        ImGui::TreeNodeEx((void*)(intptr_t)SceneObjectIndex, TreeFlags, "%s", ObjectName);
+                        ImGui::TreeNodeEx(reinterpret_cast<void*>(static_cast<intptr_t>(SceneObjectIndex)), TreeFlags, "%s", ObjectName);
                         if (ImGui::IsItemClicked()) {
                             Scene->SelectedObject = SceneObjectIndex;
                             Scene->HasSelectionChanged = true;
