@@ -3,6 +3,8 @@ WindowEnabled: True
 WindowWidth: 1920
 WindowHeight: 1080
 WindowTitle: "BrainGenix-ERS"
+OffscreenRendering: False
+OffscreenContextAPI: Native # Set to EGL to request an EGL OpenGL context when OffscreenRendering is true
 
 # System Settings
 ShowEditorDebugMenu: True

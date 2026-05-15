@@ -65,8 +65,9 @@ private:
     // Control Values
     int         WindowWidth_  = 0;       /**<GLFW Window Width Varaible*/
     int         WindowHeight_ = 0;       /**<GLFW Window Height Varaible*/
-    const char* WindowTitle_  = nullptr; /**<GLFW Window Title Variable*/
+    std::string WindowTitle_;            /**<GLFW Window Title Variable*/
     bool        OffscreenRendering_ = false; /**<Run the main GLFW context as a hidden off-screen window.*/
+    bool        UseEGLContext_ = false; /**<Request an EGL OpenGL context for off-screen rendering.*/
 
 
     /**
@@ -121,6 +122,14 @@ public:
      * @return false
      */
     bool IsOffscreenRendering() const { return OffscreenRendering_; }
+
+    /**
+     * @brief Return whether the renderer requested an EGL context.
+     *
+     * @return true
+     * @return false
+     */
+    bool IsUsingEGLContext() const { return UseEGLContext_; }
 
     /**
      * @brief Called by the main loop, updates all rendered outputs.
