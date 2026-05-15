@@ -4,6 +4,35 @@
 
 #include <GUI_Window_AssetExplorer.h>
 
+namespace {
+
+std::string ERS_FUNCTION_GetAssetTypeAbbreviation(const std::string& AssetType) {
+
+    if (AssetType.empty() || AssetType == "Undefined") {
+        return "?";
+    }
+
+    return AssetType.substr(0, 1);
+
+}
+
+std::string ERS_FUNCTION_GetAssetIDDisplayName(unsigned long AssetID, const std::string& AssetType, const std::string& FileName) {
+
+    std::string DisplayName = std::to_string(AssetID) + std::string(" (") + ERS_FUNCTION_GetAssetTypeAbbreviation(AssetType) + std::string(")");
+    if (!FileName.empty()) {
+        DisplayName += std::string(" ") + FileName;
+    } else if (!AssetType.empty() && AssetType != "Undefined") {
+        DisplayName += std::string(" ") + AssetType;
+    } else {
+        DisplayName += std::string(" Unknown");
+    }
+
+    return DisplayName;
+
+}
+
+}
+
 
 GUI_Window_AssetExplorer::GUI_Window_AssetExplorer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils) {
 
@@ -32,7 +61,6 @@ void GUI_Window_AssetExplorer::Draw() {
         ImGui::SetWindowSize(ImVec2(300,600), ImGuiCond_FirstUseEver);
 
 
-        // TODO: Add "selectables" in advanced mode which list all assetids and what they do. perhaps oculd be like this: ID (One-letter-abbreviation for what it does) or an icon if we're feeling fancy
         // add the option to import assets from the explorer into the active scene
         // add the normal mode which only shows ers assets and has names rather than ids
         // add a system to have files/folder abstractions which enables the user to organize their assets under folders, implement drag/drop with this.
@@ -157,21 +185,20 @@ void GUI_Window_AssetExplorer::Draw() {
                         ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Asset ID");
                         ImGui::Separator();
 
-                        // Update Asset ID Selection List
-                        int ListLengthDelta = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size() - AssetIDSelectionList_.size();
-                        if (ListLengthDelta > 0) {
-                            for (int i = 0; i < ListLengthDelta; i++) {
-                                AssetIDSelectionList_.push_back(false);
-                            }
-                        } else if (ListLengthDelta < 0) {
-                            for (int i = 0; i < abs(ListLengthDelta); i++) {
-                                AssetIDSelectionList_.pop_back();
-                            }
+                        std::vector<unsigned long>& UsedAssetIDs = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_;
+                        AssetIDSelectionList_.resize(UsedAssetIDs.size(), false);
+                        if (!UsedAssetIDs.empty() && LastSelectedIndex_ >= UsedAssetIDs.size()) {
+                            LastSelectedIndex_ = UsedAssetIDs.size() - 1;
                         }
 
                         // Iterate Through All Indexed Assets, List In Child Window
-                        for (int i = 0; i < (long)SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_.size(); i++) {
-                            bool ItemSelected = ImGui::Selectable(std::to_string(SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[i]).c_str(), AssetIDSelectionList_[i]);
+                        for (unsigned long i = 0; i < UsedAssetIDs.size(); i++) {
+                            unsigned long AssetID = UsedAssetIDs[i];
+                            std::string AssetType = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[AssetID];
+                            std::string FileName = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetFileName_[AssetID];
+                            std::string DisplayName = ERS_FUNCTION_GetAssetIDDisplayName(AssetID, AssetType, FileName);
+
+                            bool ItemSelected = ImGui::Selectable(DisplayName.c_str(), AssetIDSelectionList_[i]);
                             if (ItemSelected) {
                                 AssetIDSelectionList_[i] = !AssetIDSelectionList_[i];
                                 LastSelectedIndex_ = i;
@@ -187,17 +214,21 @@ void GUI_Window_AssetExplorer::Draw() {
                         ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Description");
                         ImGui::Separator();
 
-                        // Add Type
-                        long SelectedID = SystemUtils_->ERS_IOSubsystem_->UsedAssetIDs_[LastSelectedIndex_];
-                        const char* AssetType = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[SelectedID].c_str();
-                        ImGui::Text("Type: %s", AssetType);
+                        if (UsedAssetIDs.empty()) {
+                            ImGui::Text("No assets indexed.");
+                        } else {
+                            // Add Type
+                            long SelectedID = UsedAssetIDs[LastSelectedIndex_];
+                            const char* AssetType = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetTypeName_[SelectedID].c_str();
+                            ImGui::Text("Type: %s", AssetType);
 
-                        // Add Dates
-                        const char* AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetCreationDate_[SelectedID].c_str();
-                        ImGui::Text("Date Created: %s", AssetCreationDate);
+                            // Add Dates
+                            const char* AssetCreationDate = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetCreationDate_[SelectedID].c_str();
+                            ImGui::Text("Date Created: %s", AssetCreationDate);
 
-                        const char* AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetModificationDate_[SelectedID].c_str();
-                        ImGui::Text("Type: %s", AssetModificationDate);
+                            const char* AssetModificationDate = SystemUtils_->ERS_IOSubsystem_->AssetIndexIOManager_->AssetModificationDate_[SelectedID].c_str();
+                            ImGui::Text("Date Modified: %s", AssetModificationDate);
+                        }
 
 
                     ImGui::EndChild();
