@@ -104,6 +104,7 @@ ERS_HardwareInformation::ERS_HardwareInformation(BG::Common::Logger::LoggingSyst
 
     // Launch Thread
     Logger_->Log("Starting Dynamic Information Update Thread", 5);
+    DynamicInfoThreadActive_ = true;
     DynamicUpdateThread_ = SpawnThread();
 
 }
@@ -115,28 +116,25 @@ ERS_HardwareInformation::~ERS_HardwareInformation() {
 
     // Shut Down Dynamic Update Thread
     Logger_->Log("Stopping Dynamic Update Thread", 5);
-    ShouldDynamicInfoThreadRun_ = false;
-	if (DynamicUpdateThread_.joinable()) {
-		// Wait for the thread to finish for up to 10 seconds
-		for (int i = 0; i < 100 && DynamicUpdateThread_.joinable(); ++i) {
-			if (DynamicUpdateThread_.joinable()) 
-				DynamicUpdateThread_.join();
-			else
-				break;
-			
-			std::this_thread::sleep_for(std::chrono::milliseconds(100));
-		}
+    {
+        std::lock_guard<std::mutex> Lock(DynamicInfoThreadMutex_);
+        ShouldDynamicInfoThreadRun_ = false;
+    }
+    DynamicInfoThreadCondition_.notify_all();
 
-		//If the thread is still running, terminate it
-		if (DynamicUpdateThread_.joinable()) {
-			DynamicUpdateThread_.detach();
-			
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
-			
-		if (DynamicUpdateThread_.joinable()) 
-			std::terminate();
-		}
-	}	
+    {
+        std::unique_lock<std::mutex> Lock(DynamicInfoThreadMutex_);
+        bool ThreadStopped = DynamicInfoThreadCondition_.wait_for(Lock, std::chrono::seconds(2), [this]() {
+            return !DynamicInfoThreadActive_;
+        });
+        if (!ThreadStopped) {
+            Logger_->Log("Dynamic hardware information thread did not stop within 2 seconds. ERS will keep waiting for a clean shutdown instead of forcing termination.", 9);
+        }
+    }
+
+    if (DynamicUpdateThread_.joinable()) {
+        DynamicUpdateThread_.join();
+    }
 }
 
 
@@ -155,15 +153,26 @@ void ERS_HardwareInformation::DynamicInformationThread() {
     // Name Thread
     SetThreadName("SysInfo");
 
-    while (ShouldDynamicInfoThreadRun_) {
+    while (true) {
 
         // Get Dynamic Info
         GetDynamicInformation();
 
-        // Wait For The WaitTime
-        std::this_thread::sleep_for(std::chrono::milliseconds((int)DynamicInfoRefreshRate_));
+        std::unique_lock<std::mutex> Lock(DynamicInfoThreadMutex_);
+        DynamicInfoThreadCondition_.wait_for(Lock, std::chrono::milliseconds((int)DynamicInfoRefreshRate_), [this]() {
+            return !ShouldDynamicInfoThreadRun_;
+        });
+        if (!ShouldDynamicInfoThreadRun_) {
+            break;
+        }
 
     }
+
+    {
+        std::lock_guard<std::mutex> Lock(DynamicInfoThreadMutex_);
+        DynamicInfoThreadActive_ = false;
+    }
+    DynamicInfoThreadCondition_.notify_all();
 
 }
 
