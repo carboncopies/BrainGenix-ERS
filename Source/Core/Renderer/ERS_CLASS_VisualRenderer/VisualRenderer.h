@@ -42,6 +42,7 @@
 #include <Viewport.h>
 #include <Shader.h>
 #include <Model.h>
+#include <ControllerInputManager.h>
 #include <OpenGLDefaults.h>
 #include <ProjectUtils.h>
 #include <ShaderUniformData.h>
@@ -66,6 +67,7 @@ private:
     Cursors3D*                 Cursors3D_          = nullptr; /**<Setup 3D Cursor Class*/
     ERS_STRUCT_OpenGLDefaults* OpenGLDefaults_     = nullptr; /**<Pointer acquired from renderermanager*/
     ERS_STRUCT_ProjectUtils*   ProjectUtils_       = nullptr; /**<Project Utils pointer, used to get info about scripts*/
+    ERS_CLASS_ControllerInputManager* ControllerInputManager_ = nullptr; /**<Controller state used by viewport controls*/
     ERS_STRUCT_Shader*         DepthMapShader_     = nullptr; /**<Depth Map Shader Pointer*/
     ERS_STRUCT_Shader*         CubemapDepthShader_ = nullptr; /**<Cubemap Depth Shader*/
     
@@ -89,6 +91,7 @@ public:
 
     bool   CaptureCursor_  = false; /**<Indicate if cursor should be captured*/
     int    CaptureIndex_   = 0;     /**<Index where cursor was captured*/
+    int    ControllerCaptureIndex_ = -1; /**<Index where controller input is routed*/
     int    DefaultShader_  = 0;     /**<Index of default shader program to be used*/
     int    SelectedScript_ = -1;    /**<Set the selected script index*/
     double RunTime_        = -1.0f; /**<Number of seconds since start of "play" mode. (other mode is editor mode)*/
@@ -139,7 +142,7 @@ public:
      * @param Window 
      * @param Cursors3D 
      */
-    ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, GLFWwindow* Window, Cursors3D* Cursors3D);
+    ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, GLFWwindow* Window, Cursors3D* Cursors3D, ERS_CLASS_ControllerInputManager* ControllerInputManager = nullptr);
 
     /**
      * @brief Destroy the Visual Renderer object

@@ -154,13 +154,14 @@ glm::vec3 ERS_FUNCTION_GetViewportRay(
 } // namespace
 
 
-ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, GLFWwindow* Window, Cursors3D* Cursors3D) {
+ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_ProjectUtils* ProjectUtils, GLFWwindow* Window, Cursors3D* Cursors3D, ERS_CLASS_ControllerInputManager* ControllerInputManager) {
 
     SystemUtils->Logger_->Log("Populating Renderer Member Pointers", 5);
     SystemUtils_ = SystemUtils;
     ProjectUtils_ = ProjectUtils;
     Window_ = Window;
     Cursors3D_ = Cursors3D;
+    ControllerInputManager_ = ControllerInputManager;
 
     SystemUtils_->Logger_->Log("Initializing MeshRenderer Class", 5);
     MeshRenderer_ = std::make_unique<ERS_CLASS_MeshRenderer>(SystemUtils_);
@@ -251,6 +252,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     glEnable(GL_DEPTH_TEST);
     CaptureCursor_ = false;
     CaptureIndex_ = -1;
+    ControllerCaptureIndex_ = -1;
     FrameNumber_++;
 
     
@@ -291,11 +293,16 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
             CaptureEnabled = true;
         }
 
+        bool ControllerCaptureEnabled = false;
+        if ((ControllerCaptureIndex_ == i) && (!Cursors3D_->IsUsing())) {
+            ControllerCaptureEnabled = true;
+        }
+
 
 
         // Update Viewport Camera/Position/Etc.
         if (IsEditorMode_ || i != 0) {
-            InputProcessorInstance->Process(DeltaTime, CaptureEnabled);
+            InputProcessorInstance->Process(DeltaTime, CaptureEnabled, ControllerCaptureEnabled);
         } else {
             CaptureEnabled = false;
         }
@@ -559,6 +566,12 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         } else {
             EnableCursorCapture = false;
             Viewport->WasSelected = false;
+        }
+
+        if (EnableCameraMovement && ImGui::IsWindowFocused() && Viewport->Processor->HasControllerInput()) {
+            if (IsEditorMode_ || Index != 0) {
+                ControllerCaptureIndex_ = Index;
+            }
         }
 
 
@@ -830,7 +843,7 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
 
     // Create Input Processor
     SystemUtils_->Logger_->Log("Creating New Input Processor", 4);
-    Viewport->Processor = std::make_unique<ERS_CLASS_InputProcessor>(Viewport->Camera.get(), Window_);
+    Viewport->Processor = std::make_unique<ERS_CLASS_InputProcessor>(Viewport->Camera.get(), Window_, ControllerInputManager_);
 
     // Create Framebuffer
     unsigned int FramebufferObject;

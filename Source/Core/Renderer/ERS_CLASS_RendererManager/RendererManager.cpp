@@ -26,7 +26,11 @@ RendererManager::RendererManager(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT
     InitializeGLFW();
 
     SystemUtils_->Logger_->Log("Instantiating Renderers", 5);
-    VisualRenderer_ = std::make_unique<ERS_CLASS_VisualRenderer>(SystemUtils_, ProjectUtils_, Window_, Cursors3D_.get());
+    ERS_CLASS_ControllerInputManager* ControllerInputManager = nullptr;
+    if (HIDUtils_ != nullptr) {
+        ControllerInputManager = HIDUtils_->ControllerInputManager.get();
+    }
+    VisualRenderer_ = std::make_unique<ERS_CLASS_VisualRenderer>(SystemUtils_, ProjectUtils_, Window_, Cursors3D_.get(), ControllerInputManager);
     LoadEditorData();
     VisualRenderer_->SetOpenGLDefaults(OpenGLDefaults_.get());
 
