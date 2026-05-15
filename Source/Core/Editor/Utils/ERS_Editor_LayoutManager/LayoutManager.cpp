@@ -4,6 +4,7 @@
 
 #include <LayoutManager.h>
 
+// cppcheck-suppress missingIncludeSystem
 #include <sstream>
 
 
