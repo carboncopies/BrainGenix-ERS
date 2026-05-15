@@ -17,11 +17,11 @@ void ERS_STRUCT_Mesh::SetupMesh() {
     
     // Populate Vertex Buffer
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, Vertices.size() * sizeof(ERS_STRUCT_Vertex), &Vertices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, Vertices.size() * sizeof(ERS_STRUCT_Vertex), Vertices.empty() ? nullptr : Vertices.data(), GL_STATIC_DRAW);
 
     // Populate Element Buffer
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, Indices.size() * sizeof(unsigned int), &Indices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, Indices.size() * sizeof(unsigned int), Indices.empty() ? nullptr : Indices.data(), GL_STATIC_DRAW);
 
 
     // Set Vertex Attribute Pointers
