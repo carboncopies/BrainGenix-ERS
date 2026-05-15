@@ -347,11 +347,11 @@ void GUI_Window_ObjectProperties::Draw() {
                             AudioSource->AudioAssetID = AudioAssetID;
                         }
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Asset ID of the source audio clip. Playback support is not implemented yet.");
+                        ImGui::HelpMarker("Asset ID of a PCM WAV audio clip.");
 
                         ImGui::DragFloat("Gain", &AudioSource->Gain, 0.05f, 0.0f, 64.0f);
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Playback gain multiplier reserved for the audio renderer.");
+                        ImGui::HelpMarker("Playback gain multiplier used by the runtime audio renderer.");
 
                         ImGui::DragFloat("MaxDistance", &AudioSource->MaxDistance, 0.5f, 0.0f, 65535.0f);
                         ImGui::SameLine();
@@ -359,11 +359,11 @@ void GUI_Window_ObjectProperties::Draw() {
 
                         ImGui::Checkbox("Looping", &AudioSource->Looping);
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Reserved playback flag for looping audio.");
+                        ImGui::HelpMarker("Loop this source during runtime playback.");
 
                         ImGui::Checkbox("Autoplay", &AudioSource->Autoplay);
                         ImGui::SameLine();
-                        ImGui::HelpMarker("Reserved playback flag for scene-start playback.");
+                        ImGui::HelpMarker("Begin playback when the scene enters play mode.");
 
                     }
 

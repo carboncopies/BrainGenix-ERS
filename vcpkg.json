@@ -8,6 +8,7 @@
     "freeimage",
     "meshoptimizer",
     "glfw3",
+    "openal-soft",
     "platform-folders",
     "ghc-filesystem",
     "infoware",

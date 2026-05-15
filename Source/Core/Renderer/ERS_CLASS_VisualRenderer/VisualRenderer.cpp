@@ -165,6 +165,9 @@ ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* Syste
     SystemUtils_->Logger_->Log("Initializing MeshRenderer Class", 5);
     MeshRenderer_ = std::make_unique<ERS_CLASS_MeshRenderer>(SystemUtils_);
 
+    SystemUtils_->Logger_->Log("Initializing Audio Playback Subsystem", 5);
+    AudioPlaybackSystem_ = std::make_unique<ERS_CLASS_AudioPlaybackSystem>(SystemUtils_);
+
     SystemUtils_->Logger_->Log("Initializing Viewport Overlay Subsystem", 5);
     ViewportOverlay_ = std::make_unique<ERS_CLASS_ViewportOverlay>(SystemUtils_, ProjectUtils_);
 
@@ -434,6 +437,22 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
             }
         }
 
+    }
+
+    if (AudioPlaybackSystem_ != nullptr) {
+        if (LastEditorMode_ && !IsEditorMode_) {
+            AudioPlaybackSystem_->StartScenePlayback(Scene);
+        }
+
+        if (!IsEditorMode_ && Viewports_.size() > 0) {
+            AudioPlaybackSystem_->Update(Scene, Viewports_[0]->Camera.get());
+        }
+
+        if (!LastEditorMode_ && IsEditorMode_) {
+            AudioPlaybackSystem_->StopScenePlayback();
+        }
+
+        LastEditorMode_ = IsEditorMode_;
     }
 
     // Reset Selected Script

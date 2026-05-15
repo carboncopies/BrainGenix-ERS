@@ -14,6 +14,7 @@ add_library(ERS_CLASS_VisualRenderer
             "MeshRenderer.cpp"
             "DepthMaps.cpp"
             "ShadowMaps.cpp"
+            "AudioPlaybackSystem.cpp"
             "ViewportOverlay.cpp"
             "ViewportMenu.cpp"
             "BoundingBoxRenderer.cpp"
@@ -37,6 +38,7 @@ add_library(ERS_CLASS_VisualRenderer
             "MeshRenderer.h"
             "DepthMaps.h"
             "ShadowMaps.h"
+            "AudioPlaybackSystem.h"
             "ViewportOverlay.h"
             "ViewportMenu.h"
             "BoundingBoxRenderer.h"
@@ -64,6 +66,17 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     glfw
     IMGUI
     )
+
+if(TARGET OpenAL::OpenAL)
+    target_link_libraries(ERS_CLASS_VisualRenderer
+        OpenAL::OpenAL
+        )
+else()
+    target_link_libraries(ERS_CLASS_VisualRenderer
+        ${OPENAL_LIBRARY}
+        )
+    target_include_directories(ERS_CLASS_VisualRenderer PRIVATE ${OPENAL_INCLUDE_DIR})
+endif()
 
 # Link Internal Libs
 target_link_libraries(ERS_CLASS_VisualRenderer

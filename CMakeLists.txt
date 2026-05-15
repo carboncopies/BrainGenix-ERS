@@ -56,6 +56,9 @@ find_package(meshoptimizer CONFIG REQUIRED)
 message(STATUS "Finding glfw3 Package")
 find_package(glfw3 CONFIG REQUIRED)
 
+message(STATUS "Finding OpenAL Package")
+find_package(OpenAL REQUIRED)
+
 message(STATUS "Finding platform-folders Package")
 find_package(platform_folders CONFIG REQUIRED)
 
