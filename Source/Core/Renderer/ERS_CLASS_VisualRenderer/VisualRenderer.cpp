@@ -734,7 +734,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
             if (MotionBlurBlend > 0.0f) {
                 ImGui::GetWindowDrawList()->AddImage(
-                    (void*)(intptr_t)Viewport->MotionBlurHistoryTextureObject,
+                    reinterpret_cast<void*>(static_cast<intptr_t>(Viewport->MotionBlurHistoryTextureObject)),
                     ImGui::GetCursorScreenPos(),
                     ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x, ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
                     ImVec2(0, 1),
