@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 MD043 -->
+
 # Apache Cassandra Sandbox
 
 This directory provides a first-pass local Cassandra sandbox for BrainGenix-ERS data-model experiments.
