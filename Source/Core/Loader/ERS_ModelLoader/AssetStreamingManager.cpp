@@ -243,10 +243,10 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
         std::map<float, unsigned int> ModelDistances = DistancesFromCamera[x];
         int NumberUpdates = 0;
 
-        for (unsigned int i = 0; i < ModelDistances.size(); i++) {
+        for (auto ModelDistanceIterator = ModelDistances.begin(); ModelDistanceIterator != ModelDistances.end(); ++ModelDistanceIterator) {
 
 
-            ERS_STRUCT_Model* CurrentModel = Scene->Models[ModelDistances[i]].get();
+            ERS_STRUCT_Model* CurrentModel = Scene->Models[ModelDistanceIterator->second].get();
             if (NumberUpdates >= CameraUpdatesQuota[x]) {
                 break;
             }
@@ -291,9 +291,9 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
         std::map<float, unsigned int> ModelDistances = DistancesFromCamera[x];
         int NumberUpdates = 0;
 
-        for (unsigned int i = 0; i < ModelDistances.size(); i++) {
+        for (auto ModelDistanceIterator = ModelDistances.begin(); ModelDistanceIterator != ModelDistances.end(); ++ModelDistanceIterator) {
 
-            ERS_STRUCT_Model* CurrentModel = Scene->Models[ModelDistances[i]].get();
+            ERS_STRUCT_Model* CurrentModel = Scene->Models[ModelDistanceIterator->second].get();
             if (NumberUpdates >= CameraUpdatesQuota[x]) {
                 break;
             }
@@ -421,5 +421,4 @@ void ERS_CLASS_AssetStreamingManager::SetCurrentScene(ERS_STRUCT_Scene* Scene) {
 void ERS_CLASS_AssetStreamingManager::SetCameraStructs(std::vector<ERS_STRUCT_Camera*> Cameras) {
     Cameras_ = Cameras;
 }
-
 
