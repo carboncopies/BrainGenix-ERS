@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD013 MD043 -->
+
 # BrainGenix-ERS Management API Sandbox
 
 This directory contains a first-pass management API sandbox for `BrainGenix-ERS#472`.

@@ -29,8 +29,8 @@ RUNTIME_INFO = {
 }
 PROJECT_SUMMARY = {
     "name": "Example Project",
-    "root": "/tmp/BrainGenix-ERS-Example",
-    "exportDirectory": "/tmp/BrainGenix-ERS-Export",
+    "root": "/tmp/BrainGenix-ERS-Example",  # nosec B108
+    "exportDirectory": "/tmp/BrainGenix-ERS-Export",  # nosec B108
     "includeBinary": True,
     "includeConfig": True,
 }
@@ -79,7 +79,8 @@ def _accepted_action(action_name: str) -> dict[str, str]:
 class ManagementAPIHandler(BaseHTTPRequestHandler):
     server_version = "BrainGenixERSManagementAPISandbox/0.1"
 
-    def log_message(self, fmt: str, *args: Any) -> None:
+    def log_message(self, format: str, *args: Any) -> None:  # pylint: disable=redefined-builtin
+        del format, args
         return
 
     def _write_json(self, status_code: int, payload: dict[str, Any]) -> None:

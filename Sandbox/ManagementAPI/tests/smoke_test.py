@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import json
 import socket
-import subprocess
+import subprocess  # nosec B404
 import sys
 import time
 from pathlib import Path
@@ -34,13 +34,13 @@ def _request(url: str, method: str = "GET", body: dict[str, Any] | None = None) 
         data = json.dumps(body).encode("utf-8")
         headers["Content-Type"] = "application/json"
     req = Request(url, data=data, method=method, headers=headers)
-    with urlopen(req, timeout=5) as response:
+    with urlopen(req, timeout=5) as response:  # nosec B310
         return json.loads(response.read().decode("utf-8"))
 
 
 def main() -> int:
     port = _free_port()
-    process = subprocess.Popen(
+    process = subprocess.Popen(  # nosec B603
         [sys.executable, str(SERVER), "--host", "127.0.0.1", "--port", str(port)],
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
