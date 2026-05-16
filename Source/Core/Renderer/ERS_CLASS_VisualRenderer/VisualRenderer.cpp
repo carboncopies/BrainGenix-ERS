@@ -204,13 +204,61 @@ void ERS_CLASS_VisualRenderer::SetOpenGLDefaults(ERS_STRUCT_OpenGLDefaults* Defa
 
 }
 
+void ERS_CLASS_VisualRenderer::StoreEditorViewportCameraState() {
+
+    if (Viewports_.empty() || (Viewports_[0]->Camera == nullptr)) {
+        return;
+    }
+
+    ERS_STRUCT_Camera* Camera = Viewports_[0]->Camera.get();
+    StoredEditorCameraPosition_ = Camera->GetPosition();
+    StoredEditorCameraRotation_ = Camera->GetRotation();
+    StoredEditorCameraFOV_ = Camera->GetFOV();
+    Camera->GetClipBoundires(StoredEditorCameraNearClip_, StoredEditorCameraFarClip_);
+    StoredEditorCameraPriority_ = Camera->GetStreamingPriority();
+    HasStoredEditorCameraState_ = true;
+
+}
+
+void ERS_CLASS_VisualRenderer::RestoreEditorViewportCameraState() {
+
+    if (!HasStoredEditorCameraState_ || Viewports_.empty() || (Viewports_[0]->Camera == nullptr)) {
+        return;
+    }
+
+    ERS_STRUCT_Camera* Camera = Viewports_[0]->Camera.get();
+    Camera->SetPosition(StoredEditorCameraPosition_);
+    Camera->SetRotation(StoredEditorCameraRotation_);
+    Camera->SetFOV(StoredEditorCameraFOV_);
+    Camera->SetClipBoundries(StoredEditorCameraNearClip_, StoredEditorCameraFarClip_);
+    Camera->SetStreamingPriority(StoredEditorCameraPriority_);
+    Camera->Update();
+
+    if (Viewports_[0]->Processor != nullptr) {
+        Viewports_[0]->Processor->SetPosition(StoredEditorCameraPosition_);
+        Viewports_[0]->Processor->SetRotation(StoredEditorCameraRotation_);
+        Viewports_[0]->Processor->SetFOV(StoredEditorCameraFOV_);
+        Viewports_[0]->Processor->SetClipBoundries(StoredEditorCameraNearClip_, StoredEditorCameraFarClip_);
+        Viewports_[0]->Processor->SetForceUpdate();
+    }
+
+}
+
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
 
     
 
-    // Apply Scene Camera Transforms
+    // Handle editor/play camera transitions before play mode overwrites viewport 0.
     ERS_STRUCT_Scene* Scene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
-    if (!IsEditorMode_ && Scene->ActiveSceneCameraIndex != -1) {
+    if (LastEditorMode_ && !IsEditorMode_) {
+        StoreEditorViewportCameraState();
+    } else if (!LastEditorMode_ && IsEditorMode_) {
+        RestoreEditorViewportCameraState();
+    }
+    LastEditorMode_ = IsEditorMode_;
+
+    // Apply Scene Camera Transforms
+    if (!IsEditorMode_ && Scene->ActiveSceneCameraIndex != -1 && !Viewports_.empty()) {
         ERS_STRUCT_Camera* Camera = Viewports_[0]->Camera.get();
         ERS_STRUCT_SceneCamera* SceneCamera = Scene->SceneCameras[Scene->ActiveSceneCameraIndex].get();
         if (SceneCamera->EnforceAspectRatio_) {
@@ -450,11 +498,6 @@ void ERS_CLASS_VisualRenderer::SetScriptDebug(int Index, std::vector<std::string
 }
 
 void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager* SceneManager, float DeltaTime, bool DrawCursor) {
-
-    //todo: check if is Viewport0. then check if the system is in running mode or editor mode. if it's both, then do the following:
-    // on transition, store the current editor position / rotation of the camera
-    // update the camera's position/rot to the scene's active scenecamera position/rot 
-    // disable user input directly through the editor system (the user will have to handle this via the scripting system)
 
     // Get Vars
     ERS_STRUCT_Viewport* Viewport = Viewports_[Index].get();

@@ -77,6 +77,15 @@ private:
 
     long int FrameNumber_               = 0; /**<Frame counter, starts at 0*/
     int      ActiveViewportCursorIndex_ = 0; /**<The index of the viewport which the gizmo is being interacted with*/
+    bool     LastEditorMode_             = true;  /**<Editor/play mode state observed during the previous viewport update.*/
+    bool     HasStoredEditorCameraState_ = false; /**<True when viewport 0 editor camera state can be restored after play mode.*/
+
+    glm::vec3 StoredEditorCameraPosition_ = glm::vec3(0.0f); /**<Viewport 0 editor camera position before play mode.*/
+    glm::vec3 StoredEditorCameraRotation_ = glm::vec3(0.0f); /**<Viewport 0 editor camera rotation before play mode.*/
+    float     StoredEditorCameraFOV_      = 70.0f;           /**<Viewport 0 editor camera FOV before play mode.*/
+    float     StoredEditorCameraNearClip_ = 0.01f;           /**<Viewport 0 editor camera near clip before play mode.*/
+    float     StoredEditorCameraFarClip_  = 100.0f;          /**<Viewport 0 editor camera far clip before play mode.*/
+    int       StoredEditorCameraPriority_ = 1;               /**<Viewport 0 editor camera streaming priority before play mode.*/
 
 
 public:
@@ -100,7 +109,7 @@ private:
 
     /**
      * @brief Resize a viewport of specified index to the set width and height
-     * 
+     *
      * @param Index 
      * @param Width 
      * @param Height 
@@ -109,7 +118,7 @@ private:
 
     /**
      * @brief Update the shader used
-     * 
+     *
      * @param DeltaTime 
      * @param RenderWidth 
      * @param RenderHeight 
@@ -120,12 +129,24 @@ private:
 
     /**
      * @brief Updates a specific vieport of given index (should be used in update viepowrts function)
-     * 
+     *
      * @param Index 
      * @param SceneManager 
      * @param DeltaTime 
      */
     void UpdateViewport(int Index, ERS_CLASS_SceneManager* SceneManager, float DeltaTime, bool DrawCursor = true);
+
+    /**
+     * @brief Stores viewport 0's editor camera state before play mode applies a scene camera.
+     *
+     */
+    void StoreEditorViewportCameraState();
+
+    /**
+     * @brief Restores viewport 0's editor camera state after leaving play mode.
+     *
+     */
+    void RestoreEditorViewportCameraState();
 
 
 
