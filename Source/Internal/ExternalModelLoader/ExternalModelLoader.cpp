@@ -92,14 +92,21 @@ std::pair<std::string, std::string> FindTextureMatches(ERS_STRUCT_Mesh* Mesh, st
 void ExternalModelLoader::DetectBoundingBox(ERS_STRUCT_Model* Model) {
 
     // Calculate Bounding Box
-    glm::vec3 ModelMinXYZ = Model->Meshes[0].Vertices[0].Position;
-    glm::vec3 ModelMaxXYZ = Model->Meshes[0].Vertices[0].Position;
+    bool HasVertex = false;
+    glm::vec3 ModelMinXYZ = glm::vec3(0.0f);
+    glm::vec3 ModelMaxXYZ = glm::vec3(0.0f);
     for (unsigned int MeshIndex = 0; MeshIndex < Model->Meshes.size(); MeshIndex++) {
 
         for (unsigned int VertIndex = 0; VertIndex < Model->Meshes[MeshIndex].Vertices.size(); VertIndex++) {
 
             // Get Mesh Min/Max
             glm::vec3 VertPos = Model->Meshes[MeshIndex].Vertices[VertIndex].Position;
+            if (!HasVertex) {
+                ModelMinXYZ = VertPos;
+                ModelMaxXYZ = VertPos;
+                HasVertex = true;
+                continue;
+            }
 
             // Check If Larger/Smaller Than Model Min/Max
             if (VertPos.x < ModelMinXYZ.x) {
@@ -123,6 +130,14 @@ void ExternalModelLoader::DetectBoundingBox(ERS_STRUCT_Model* Model) {
 
         }
     }
+
+    if (!HasVertex) {
+        Model->BoxScale_ = glm::vec3(0.025f);
+        Model->BoxOffset_ = glm::vec3(0.0f);
+        SystemUtils_->Logger_->Log("Imported model has no vertices; using minimum bounding box", 4);
+        return;
+    }
+
     Model->BoxScale_ = ModelMaxXYZ - ModelMinXYZ;
     Model->BoxOffset_ = (Model->BoxScale_ / 2.0f) + ModelMinXYZ;
 
