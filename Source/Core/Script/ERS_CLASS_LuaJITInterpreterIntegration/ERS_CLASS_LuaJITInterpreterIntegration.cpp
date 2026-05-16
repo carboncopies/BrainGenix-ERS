@@ -2,6 +2,7 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
+#include <algorithm>
 #include <ERS_CLASS_LuaJITInterpreterIntegration.h>
 
 ERS_CLASS_LuaJITInterpreterIntegration::ERS_CLASS_LuaJITInterpreterIntegration(BG::Common::Logger::LoggingSystem* Logger)
@@ -133,6 +134,20 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     lua_setglobal(L,"ScaleZ");
     lua_pushnumber(L, Model->Enabled);
     lua_setglobal(L,"Enabled");
+    lua_pushnumber(L, Model->TextureLevelInRAM_);
+    lua_setglobal(L, "TextureLevelInRAM");
+    lua_pushnumber(L, Model->TextureLevelInVRAM_);
+    lua_setglobal(L, "TextureLevelInVRAM");
+    lua_pushnumber(L, Model->TargetTextureLevelRAM);
+    lua_setglobal(L, "TargetTextureLevelRAM");
+    lua_pushnumber(L, Model->TargetTextureLevelVRAM);
+    lua_setglobal(L, "TargetTextureLevelVRAM");
+    lua_pushnumber(L, Model->UserLimitedMinLOD_);
+    lua_setglobal(L, "MinTextureLOD");
+    lua_pushnumber(L, Model->UserLimitedMaxLOD_);
+    lua_setglobal(L, "MaxTextureLOD");
+    lua_pushnumber(L, Model->MaxTextureLevel_);
+    lua_setglobal(L, "ModelMaxTextureLOD");
 
 
     // Load the Lua script
@@ -160,6 +175,16 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteSceneCameraScript(std::strin
     Model->ModelRotation.z = (float)lua_tonumber(L, -1);
     lua_getglobal(L, "Enabled");
     Model->Enabled= (float)lua_tonumber(L, -1);
+    lua_getglobal(L, "MinTextureLOD");
+    Model->UserLimitedMinLOD_ = std::max(-1, (int)lua_tonumber(L, -1));
+    lua_getglobal(L, "MaxTextureLOD");
+    Model->UserLimitedMaxLOD_ = std::max(Model->UserLimitedMinLOD_, std::min(Model->MaxTextureLevel_, (int)lua_tonumber(L, -1)));
+    lua_getglobal(L, "TargetTextureLevelRAM");
+    Model->TargetTextureLevelRAM = std::max(0, std::min(Model->UserLimitedMaxLOD_, (int)lua_tonumber(L, -1)));
+    Model->TargetTextureLevelRAM = std::max(Model->UserLimitedMinLOD_, Model->TargetTextureLevelRAM);
+    lua_getglobal(L, "TargetTextureLevelVRAM");
+    Model->TargetTextureLevelVRAM = std::max(0, std::min(Model->UserLimitedMaxLOD_, (int)lua_tonumber(L, -1)));
+    Model->TargetTextureLevelVRAM = std::max(Model->UserLimitedMinLOD_, Model->TargetTextureLevelVRAM);
 
     lua_close(L);
     return true;
