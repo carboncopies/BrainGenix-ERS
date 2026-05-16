@@ -1,0 +1,50 @@
+openapi: 3.0.3
+info:
+  title: BrainGenix-ERS Management API
+  version: 0.1.0-sandbox
+  description: First-pass management API contract for BrainGenix-ERS.
+servers:
+  - url: http://127.0.0.1:8765
+paths:
+  /healthz:
+    get:
+      summary: Probe the management endpoint.
+      responses:
+        '200':
+          description: Healthy response.
+  /v1/runtime:
+    get:
+      summary: Return coarse runtime metadata.
+      responses:
+        '200':
+          description: Runtime metadata returned.
+  /v1/projects/current:
+    get:
+      summary: Return the currently loaded project summary.
+      responses:
+        '200':
+          description: Current project returned.
+  /v1/scenes/current/summary:
+    get:
+      summary: Return a compact summary of the current scene.
+      responses:
+        '200':
+          description: Scene summary returned.
+  /v1/logs/opengl:
+    get:
+      summary: Return recent OpenGL debug log items.
+      responses:
+        '200':
+          description: OpenGL log items returned.
+  /v1/rendering/shadow-maps/refresh:
+    post:
+      summary: Request a one-shot shadow map refresh.
+      responses:
+        '202':
+          description: Refresh action accepted.
+  /v1/projects/export:
+    post:
+      summary: Request a project export operation.
+      responses:
+        '202':
+          description: Export action accepted.
