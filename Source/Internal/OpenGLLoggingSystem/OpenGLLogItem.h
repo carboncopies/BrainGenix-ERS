@@ -1,6 +1,3 @@
-// ToDO: then add to project struct, then update project loader/writer with this info. Then check trello board for other related tasks like live ediitng.
-
-
 //======================================================================//
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
@@ -18,7 +15,7 @@
 
 
 /**
- * @brief Struct containing renderer settings.
+ * @brief Struct containing one OpenGL debug log item.
  * 
  */
 struct ERS_OpenGLLogItem {
