@@ -106,6 +106,7 @@ int main(int NumArguments, char** ArguemntValues) {
         SystemUtils->Logger_.get(),
         *SystemUtils->LocalSystemConfiguration_.get()
     );
+    ERS_FUNCTION_ApplyGPUSelectionRequest(SystemUtils->Logger_.get(), SystemUtils->ERS_HardwareInformation_->GetHWInfo());
 
    /* SystemUtils->ERS_CLASS_PythonInterpreterIntegration_ = std::make_unique<ERS_CLASS_PythonInterpreterIntegration>(
         SystemUtils->Logger_.get()
