@@ -3,7 +3,9 @@
 //======================================================================//
 
 #include <DuplicateScene.h>
+// cppcheck-suppress missingIncludeSystem
 #include <ProjectUtils.h>
+// cppcheck-suppress missingIncludeSystem
 #include <SystemUtils.h>
 
 
