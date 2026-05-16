@@ -4,12 +4,18 @@
 
 #include "InputProcessor.h"
 
+// cppcheck-suppress missingIncludeSystem
+#include <algorithm>
+// cppcheck-suppress missingIncludeSystem
+#include <cmath>
+
 
 // Constructor / Destructor
-ERS_CLASS_InputProcessor::ERS_CLASS_InputProcessor(ERS_STRUCT_Camera* Camera, GLFWwindow *Window) {
+ERS_CLASS_InputProcessor::ERS_CLASS_InputProcessor(ERS_STRUCT_Camera* Camera, GLFWwindow *Window, ERS_CLASS_ControllerInputManager* ControllerInputManager) {
 
     Camera_ = Camera;
     Window_ = Window;
+    ControllerInputManager_ = ControllerInputManager;
     //FramebufferManager_ = FramebufferManager;
 
 }
@@ -34,16 +40,17 @@ void ERS_CLASS_InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
     }
 
 }
-void ERS_CLASS_InputProcessor::Process(float DeltaTime, bool CaptureEnabled) {
+void ERS_CLASS_InputProcessor::Process(float DeltaTime, bool CaptureEnabled, bool ControllerCaptureEnabled) {
 
     // Update Internal State
-    ProcessKeyboardInput (DeltaTime, CaptureEnabled);
-    UpdateFramebuffer    ();
-    UpdateMouse          (CaptureEnabled);
-    ProcessMouseScroll   (CaptureEnabled);
+    ProcessKeyboardInput   (DeltaTime, CaptureEnabled);
+    ProcessControllerInput (DeltaTime, ControllerCaptureEnabled);
+    UpdateFramebuffer      ();
+    UpdateMouse            (CaptureEnabled);
+    ProcessMouseScroll     (CaptureEnabled);
 
     // Update Associated Camera
-    if (CaptureEnabled || ForceUpdate_) {
+    if (CaptureEnabled || ControllerCaptureEnabled || ForceUpdate_) {
         ForceUpdate_ = false;
         Camera_->SetPosition      (Position_);
         Camera_->SetRotation      (Orientation_);
@@ -51,6 +58,40 @@ void ERS_CLASS_InputProcessor::Process(float DeltaTime, bool CaptureEnabled) {
         Camera_->SetClipBoundries (NearClip_, FarClip_);
         Camera_->Update           ();
     }
+
+}
+bool ERS_CLASS_InputProcessor::HasControllerInput() {
+
+    if (ControllerInputManager_ == nullptr) {
+        return false;
+    }
+
+    for (std::size_t i = 0; i < ControllerInputManager_->ControllerStates_.size(); i++) {
+        GLFWgamepadstate State = ControllerInputManager_->ControllerStates_[i];
+
+        bool HasStickInput =
+            (std::abs(State.axes[GLFW_GAMEPAD_AXIS_LEFT_X]) > ControllerDeadZone_) ||
+            (std::abs(State.axes[GLFW_GAMEPAD_AXIS_LEFT_Y]) > ControllerDeadZone_) ||
+            (std::abs(State.axes[GLFW_GAMEPAD_AXIS_RIGHT_X]) > ControllerDeadZone_) ||
+            (std::abs(State.axes[GLFW_GAMEPAD_AXIS_RIGHT_Y]) > ControllerDeadZone_);
+        bool HasTriggerInput =
+            (NormalizeTrigger(State.axes[GLFW_GAMEPAD_AXIS_LEFT_TRIGGER]) > ControllerDeadZone_) ||
+            (NormalizeTrigger(State.axes[GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER]) > ControllerDeadZone_);
+        bool HasButtonInput =
+            (State.buttons[GLFW_GAMEPAD_BUTTON_LEFT_BUMPER] == GLFW_PRESS) ||
+            (State.buttons[GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER] == GLFW_PRESS);
+
+        if (HasStickInput || HasTriggerInput || HasButtonInput) {
+            return true;
+        }
+    }
+
+    return false;
+
+}
+void ERS_CLASS_InputProcessor::SetControllerInputManager(ERS_CLASS_ControllerInputManager* ControllerInputManager) {
+
+    ControllerInputManager_ = ControllerInputManager;
 
 }
 void ERS_CLASS_InputProcessor::UpdateFramebuffer() {
@@ -81,6 +122,66 @@ void ERS_CLASS_InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
     }
 
 }
+void ERS_CLASS_InputProcessor::ProcessControllerInput(float DeltaTime, bool ControllerCaptureEnabled) {
+
+    if (!ControllerCaptureEnabled || ControllerInputManager_ == nullptr) {
+        return;
+    }
+
+    for (std::size_t i = 0; i < ControllerInputManager_->ControllerStates_.size(); i++) {
+        GLFWgamepadstate State = ControllerInputManager_->ControllerStates_[i];
+
+        float LeftX = ApplyControllerDeadZone(State.axes[GLFW_GAMEPAD_AXIS_LEFT_X]);
+        float LeftY = ApplyControllerDeadZone(State.axes[GLFW_GAMEPAD_AXIS_LEFT_Y]);
+        float RightX = ApplyControllerDeadZone(State.axes[GLFW_GAMEPAD_AXIS_RIGHT_X]);
+        float RightY = ApplyControllerDeadZone(State.axes[GLFW_GAMEPAD_AXIS_RIGHT_Y]);
+        float LeftTrigger = ApplyControllerDeadZone(NormalizeTrigger(State.axes[GLFW_GAMEPAD_AXIS_LEFT_TRIGGER]));
+        float RightTrigger = ApplyControllerDeadZone(NormalizeTrigger(State.axes[GLFW_GAMEPAD_AXIS_RIGHT_TRIGGER]));
+
+        if (LeftY < 0.0f) {
+            ProcessKey(FORWARD, DeltaTime, std::abs(LeftY));
+        } else if (LeftY > 0.0f) {
+            ProcessKey(BACKWARD, DeltaTime, LeftY);
+        }
+
+        if (LeftX < 0.0f) {
+            ProcessKey(LEFT, DeltaTime, std::abs(LeftX));
+        } else if (LeftX > 0.0f) {
+            ProcessKey(RIGHT, DeltaTime, LeftX);
+        }
+
+        if (State.buttons[GLFW_GAMEPAD_BUTTON_RIGHT_BUMPER] == GLFW_PRESS) {
+            RightTrigger = 1.0f;
+        }
+        if (State.buttons[GLFW_GAMEPAD_BUTTON_LEFT_BUMPER] == GLFW_PRESS) {
+            LeftTrigger = 1.0f;
+        }
+
+        if (RightTrigger > 0.0f) {
+            ProcessKey(UP, DeltaTime, RightTrigger);
+        }
+        if (LeftTrigger > 0.0f) {
+            ProcessKey(DOWN, DeltaTime, LeftTrigger);
+        }
+
+        Orientation_.y += RightX * ControllerLookSensitivity_ * DeltaTime;
+        Orientation_.p += RightY * ControllerLookSensitivity_ * DeltaTime;
+
+        if (ConstrainPitch_) {
+            if (Orientation_.p > 89.0f) {
+                Orientation_.p = 89.0f;
+            }
+            if (Orientation_.p < -89.0f) {
+                Orientation_.p = -89.0f;
+            }
+        }
+
+        if ((LeftX != 0.0f) || (LeftY != 0.0f) || (RightX != 0.0f) || (RightY != 0.0f) || (LeftTrigger != 0.0f) || (RightTrigger != 0.0f)) {
+            break;
+        }
+    }
+
+}
 void ERS_CLASS_InputProcessor::ProcessKeyboardInput(float DeltaTime, bool WindowCaptureEnabled) {
 
 
@@ -103,7 +204,7 @@ void ERS_CLASS_InputProcessor::ProcessKeyboardInput(float DeltaTime, bool Window
     }
 
 }
-void ERS_CLASS_InputProcessor::ProcessKey(CameraMovement Direction, float DeltaTime) {
+void ERS_CLASS_InputProcessor::ProcessKey(CameraMovement Direction, float DeltaTime, float Amount) {
 
     // Calculate Movement Direction Vectors
     glm::mat4 Perspective, ViewMatrix;
@@ -114,7 +215,7 @@ void ERS_CLASS_InputProcessor::ProcessKey(CameraMovement Direction, float DeltaT
     Front  = -glm::normalize(glm::vec3(ViewMatrix[0][2], ViewMatrix[1][2], ViewMatrix[2][2]));
 
     // Calculate Velocity
-    float Velocity = MovementSpeed_ * DeltaTime;
+    float Velocity = MovementSpeed_ * DeltaTime * Amount;
 
     // Update Position(s)
     if (Direction == FORWARD)
@@ -129,6 +230,23 @@ void ERS_CLASS_InputProcessor::ProcessKey(CameraMovement Direction, float DeltaT
         Position_ += Up     * Velocity;
     if (Direction == DOWN)
         Position_ -= Up     * Velocity;
+
+}
+float ERS_CLASS_InputProcessor::ApplyControllerDeadZone(float Value) {
+
+    float Magnitude = std::abs(Value);
+    if (Magnitude <= ControllerDeadZone_) {
+        return 0.0f;
+    }
+
+    float Scaled = (Magnitude - ControllerDeadZone_) / (1.0f - ControllerDeadZone_);
+    return (Value < 0.0f) ? -Scaled : Scaled;
+
+}
+float ERS_CLASS_InputProcessor::NormalizeTrigger(float Value) {
+
+    float Normalized = (Value + 1.0f) * 0.5f;
+    return std::max(0.0f, std::min(1.0f, Normalized));
 
 }
 void ERS_CLASS_InputProcessor::FramebufferSizeCallback(int Width, int Height) {

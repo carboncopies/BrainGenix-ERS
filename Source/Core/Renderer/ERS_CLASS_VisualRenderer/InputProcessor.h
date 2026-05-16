@@ -4,6 +4,9 @@
 
 #pragma once
 
+// Standard Libraries (BG convention: use <> instead of "")
+#include <cstddef>
+
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glad/glad.h>
 
@@ -17,6 +20,7 @@
 #include <BG/Common/Logger/Logger.h>
 
 #include <Camera.h>
+#include <ControllerInputManager.h>
 
 
 /**
@@ -38,6 +42,8 @@ private:
     
     float MovementSpeed_     = 0.2f;   /**<Current Movement Speed            */
     float MouseSensitivity_  = 0.05f;  /**<Mouse sensitivity multiplier      */
+    float ControllerLookSensitivity_ = 80.0f; /**<Controller look sensitivity in degrees per second*/
+    float ControllerDeadZone_ = 0.18f;        /**<Minimum controller axis magnitude used by viewport controls*/
     bool  ConstrainPitch_    = true;   /**<Limit the camera to +- 89 degrees */
 
     float NearClip_          = 0.01f;  /**<Closest distance before geometry is culled.*/
@@ -50,11 +56,12 @@ private:
 
     ERS_STRUCT_Camera* Camera_; /**<Pointer To EditorCamera Instance */
     GLFWwindow*        Window_; /**<Pointer To Window Surface        */
+    ERS_CLASS_ControllerInputManager* ControllerInputManager_ = nullptr; /**<Controller state provider*/
 
 
     /**
      * @brief Callback for the framebuffer size (window resize events)
-     * 
+     *
      * @param Width 
      * @param Height 
      */
@@ -62,7 +69,7 @@ private:
 
     /**
      * @brief Callback for mouse position (X,Y)
-     * 
+     *
      * @param XPos 
      * @param YPos 
      */
@@ -106,12 +113,37 @@ private:
     void ProcessKeyboardInput(float DeltaTime, bool WindowCaptureEnabled);
 
     /**
+     * @brief Processes controller input for the editor camera.
+     *
+     * @param DeltaTime Frame time used to ensure speed isn't tied to framerate
+     * @param ControllerCaptureEnabled
+     */
+    void ProcessControllerInput(float DeltaTime, bool ControllerCaptureEnabled);
+
+    /**
      * @brief Processes key input for the editor camera.
-     * 
+     *
      * @param Direction Direction currently being pressed.
      * @param DeltaTime Frame time used to ensure speed isn't tied to framerate
+     * @param Amount Analog input amount from 0.0 to 1.0
      */
-    void ProcessKey(CameraMovement Direction, float DeltaTime);
+    void ProcessKey(CameraMovement Direction, float DeltaTime, float Amount = 1.0f);
+
+    /**
+     * @brief Apply controller dead zone and normalize remaining travel.
+     *
+     * @param Value Axis value
+     * @return float Normalized axis value
+     */
+    float ApplyControllerDeadZone(float Value);
+
+    /**
+     * @brief Convert GLFW trigger axis value to a normalized 0.0-1.0 value.
+     *
+     * @param Value Trigger axis value
+     * @return float Normalized trigger value
+     */
+    float NormalizeTrigger(float Value);
 
 
 
@@ -124,7 +156,7 @@ public:
      * 
      * @param Camera 
      */
-    ERS_CLASS_InputProcessor(ERS_STRUCT_Camera* Camera, GLFWwindow* Window);
+    ERS_CLASS_InputProcessor(ERS_STRUCT_Camera* Camera, GLFWwindow* Window, ERS_CLASS_ControllerInputManager* ControllerInputManager = nullptr);
 
     /**
      * @brief Destroy the Input Processor object
@@ -141,8 +173,23 @@ public:
      * 
      * @param DeltaTime 
      * @param WindowCaptureEnabled 
+     * @param ControllerCaptureEnabled
      */
-    void Process(float DeltaTime, bool WindowCaptureEnabled);
+    void Process(float DeltaTime, bool WindowCaptureEnabled, bool ControllerCaptureEnabled = false);
+
+    /**
+     * @brief Returns true when a controller has viewport navigation input active.
+     *
+     * @return bool
+     */
+    bool HasControllerInput();
+
+    /**
+     * @brief Set the controller input manager used for viewport navigation.
+     *
+     * @param ControllerInputManager
+     */
+    void SetControllerInputManager(ERS_CLASS_ControllerInputManager* ControllerInputManager);
 
 
     /**
