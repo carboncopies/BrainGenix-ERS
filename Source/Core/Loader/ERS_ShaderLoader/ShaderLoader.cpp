@@ -5,6 +5,21 @@
 #include <ShaderLoader.h>
 
 
+namespace {
+
+std::string ShaderTextFromAssetData(const BG::ERS::IOSubsystem::IOData& AssetData) {
+
+    if (AssetData.Data == nullptr || AssetData.Size_B == 0) {
+        return "";
+    }
+
+    return std::string(reinterpret_cast<const char*>(AssetData.Data.get()), AssetData.Size_B);
+
+}
+
+}
+
+
 ERS_CLASS_ShaderLoader::ERS_CLASS_ShaderLoader(ERS_STRUCT_SystemUtils* SystemUtils) {
 
     SystemUtils_ = SystemUtils;
@@ -90,27 +105,27 @@ void ERS_CLASS_ShaderLoader::LoadShaderFromAsset(ERS_STRUCT_Shader* ShaderStruct
 
     if (GeometryID != -1) {
         SystemUtils_->ERS_IOSubsystem_->ReadAsset(GeometryID, GeometryData.get());
-        GeometryText = std::string((const char*)GeometryData->Data.get());
+        GeometryText = ShaderTextFromAssetData(*GeometryData);
     }
 
     if (ComputeID != -1) {
         SystemUtils_->ERS_IOSubsystem_->ReadAsset(ComputeID, ComputeData.get());
-        ComputeText = std::string((const char*)ComputeData->Data.get());
+        ComputeText = ShaderTextFromAssetData(*ComputeData);
     }
 
     if (TCID != -1) {
         SystemUtils_->ERS_IOSubsystem_->ReadAsset(TCID, TCData.get());
-        TCText = std::string((const char*)TCData->Data.get());
+        TCText = ShaderTextFromAssetData(*TCData);
     }
 
     if (TEID != -1) {
         SystemUtils_->ERS_IOSubsystem_->ReadAsset(TEID, TEData.get());
-        TEText = std::string((const char*)TEData->Data.get());
+        TEText = ShaderTextFromAssetData(*TEData);
     }
 
 
-    std::string VertexText = std::string((const char*)VertexData->Data.get());
-    std::string FragmentText = std::string((const char*)FragmentData->Data.get());
+    std::string VertexText = ShaderTextFromAssetData(*VertexData);
+    std::string FragmentText = ShaderTextFromAssetData(*FragmentData);
 
 
     // Return Compiled Shader
