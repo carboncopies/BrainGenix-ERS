@@ -21,6 +21,20 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
     ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_HardwareInformation_->GetHWInfo();
 
     YAML::Node SystemConfig = *SystemUtils_->LocalSystemConfiguration_;
+    auto ApplyMemoryMargin = [this](const std::string& ResourceName, unsigned long long TotalBytes, long long MarginBytes) -> unsigned long long {
+        if (MarginBytes < 0) {
+            SystemUtils_->Logger_->Log("Ignoring Negative " + ResourceName + " Margin Of " + std::to_string(MarginBytes) + " Bytes", 4);
+            return TotalBytes;
+        }
+
+        unsigned long long MarginBytesUnsigned = static_cast<unsigned long long>(MarginBytes);
+        if (MarginBytesUnsigned >= TotalBytes) {
+            SystemUtils_->Logger_->Log(ResourceName + " Margin Of " + std::to_string(MarginBytes) + " Bytes Exceeds Detected Capacity Of " + std::to_string(TotalBytes) + " Bytes, Clamping Budget To 0", 4);
+            return 0;
+        }
+
+        return TotalBytes - MarginBytesUnsigned;
+    };
 
     // RAM
     if (SystemConfig["OverrideRAM"].as<bool>()) {
@@ -34,10 +48,10 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
 
         // Update The Internal System RAM Limit After Adding The Margin
         SystemUtils_->Logger_->Log("Reading Configuration File For RAM Margin", 4);
-        long RAMMargin = SystemConfig["RAMMarginBytes"].as<long long>();
+        long long RAMMargin = SystemConfig["RAMMarginBytes"].as<long long>();
         SystemUtils_->Logger_->Log(std::string("Adding RAM Margin Of ") + std::to_string(RAMMargin) + " Bytes", 4);
 
-        TotalSystemRAM_ -= RAMMargin;
+        TotalSystemRAM_ = ApplyMemoryMargin("RAM", TotalSystemRAM_, RAMMargin);
 
     }
     
@@ -55,10 +69,10 @@ ERS_CLASS_AssetStreamingSystemResourceMonitor::ERS_CLASS_AssetStreamingSystemRes
 
         // Update The Internal System VRAM Limit After Adding The Margin
         SystemUtils_->Logger_->Log("Reading Configuration File For VRAM Margin", 4);
-        long VRAMMargin = SystemConfig["VRAMMarginBytes"].as<long long>();
+        long long VRAMMargin = SystemConfig["VRAMMarginBytes"].as<long long>();
         SystemUtils_->Logger_->Log(std::string("Adding VRAM Margin Of ") + std::to_string(VRAMMargin) + " Bytes", 4);
 
-        TotalSystemVRAM_ -= VRAMMargin;
+        TotalSystemVRAM_ = ApplyMemoryMargin("VRAM", TotalSystemVRAM_, VRAMMargin);
 
     } else {
         TotalSystemVRAM_ = SystemConfig["VRAMSizeBytes"].as<long long>();
