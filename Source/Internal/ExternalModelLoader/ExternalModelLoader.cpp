@@ -421,6 +421,10 @@ ERS_STRUCT_Mesh ExternalModelLoader::ProcessMesh(ERS_STRUCT_ModelWriterData &Dat
         // Hold Vertex Data
         ERS_STRUCT_Vertex Vertex;
         glm::vec3 Vector;
+        Vertex.Normal = glm::vec3(0.0f);
+        Vertex.TexCoords = glm::vec2(0.0f, 0.0f);
+        Vertex.Tangent = glm::vec3(0.0f);
+        Vertex.Bitangent = glm::vec3(0.0f);
 
 
         Vector.x = Mesh->mVertices[i].x;
@@ -444,7 +448,9 @@ ERS_STRUCT_Mesh ExternalModelLoader::ProcessMesh(ERS_STRUCT_ModelWriterData &Dat
             Vec.x = Mesh->mTextureCoords[0][i].x;
             Vec.y = Mesh->mTextureCoords[0][i].y;
             Vertex.TexCoords = Vec;
+        }
 
+        if (Mesh->HasTangentsAndBitangents()) {
             // Tangent
             Vector.x = Mesh->mTangents[i].x;
             Vector.y = Mesh->mTangents[i].y;
@@ -456,9 +462,6 @@ ERS_STRUCT_Mesh ExternalModelLoader::ProcessMesh(ERS_STRUCT_ModelWriterData &Dat
             Vector.y = Mesh->mBitangents[i].y;
             Vector.z = Mesh->mBitangents[i].z;
             Vertex.Bitangent = Vector;
-
-        } else {
-            Vertex.TexCoords = glm::vec2(0.0f, 0.0f);
         }
 
         OutputMesh.Vertices.push_back(Vertex);
