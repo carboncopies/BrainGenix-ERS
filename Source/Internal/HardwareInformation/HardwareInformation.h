@@ -1,6 +1,10 @@
 #pragma once
 
 // Standard Libraries (BG convention: use <> instead of "")
+// cppcheck-suppress missingIncludeSystem
+#include <atomic>
+// cppcheck-suppress missingIncludeSystem
+#include <mutex>
 #include <thread>
 #include <chrono>
 
@@ -31,6 +35,7 @@ class ERS_HardwareInformation {
         // Class Instances
         BG::Common::Logger::LoggingSystem* Logger_; /**<Instance Of Logging System*/
         ERS_STRUCT_HardwareInfo HardwareInfo_; /**<Internal Hardware Information Struct*/
+        std::mutex HardwareInfoMutex_; /**<Guards access to hardware info shared with the update thread*/
 
         // Config
         YAML::Node SystemConfiguration_; /**MSystem Configuration*/
@@ -49,7 +54,7 @@ class ERS_HardwareInformation {
 
         // Control Vars
         float DynamicInfoRefreshRate_; /*<Set Number Of ms To wait until next dynamic info refresh*/
-        bool ShouldDynamicInfoThreadRun_ = true; /**<Control Variable For Dynamic Info Thread*/
+        std::atomic_bool ShouldDynamicInfoThreadRun_ = true; /**<Control Variable For Dynamic Info Thread*/
 
         std::thread DynamicUpdateThread_; /**<Dynamic Update Thread*/
 
