@@ -44,14 +44,14 @@ void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene
 void ERS_CLASS_AssetStreamingManager::SortSceneModels(std::map<unsigned int, int> CameraUpdatesQuota, std::vector<std::vector<std::pair<float, unsigned int>>> DistancesFromCamera, ERS_STRUCT_Scene* Scene) {
 
     // Iterate Over All Cameras, Make Recomendations From There
-    for (unsigned int CameraIndex = 0; CameraIndex < CameraUpdatesQuota.size(); CameraIndex++) {
+    for (unsigned int CameraIndex = 0; CameraIndex < CameraUpdatesQuota.size() && CameraIndex < DistancesFromCamera.size(); CameraIndex++) {
 
         
         // Sort Models From Cameras
         unsigned int MaxCameraUpdates = CameraUpdatesQuota[CameraIndex];
         unsigned int CameraVRAMUpdates = 0;
         unsigned int CameraRAMUpdates = 0;
-        for (auto DistanceMapIterator = DistancesFromCamera[0].begin(); DistanceMapIterator != DistancesFromCamera[0].end(); ++DistanceMapIterator) {
+        for (auto DistanceMapIterator = DistancesFromCamera[CameraIndex].begin(); DistanceMapIterator != DistancesFromCamera[CameraIndex].end(); ++DistanceMapIterator) {
             
             // Get Parameters From Model Array
             float ModelDistance = DistanceMapIterator->first;
@@ -243,10 +243,10 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
         std::map<float, unsigned int> ModelDistances = DistancesFromCamera[x];
         int NumberUpdates = 0;
 
-        for (unsigned int i = 0; i < ModelDistances.size(); i++) {
+        for (auto ModelDistanceIterator = ModelDistances.begin(); ModelDistanceIterator != ModelDistances.end(); ++ModelDistanceIterator) {
 
 
-            ERS_STRUCT_Model* CurrentModel = Scene->Models[ModelDistances[i]].get();
+            ERS_STRUCT_Model* CurrentModel = Scene->Models[ModelDistanceIterator->second].get();
             if (NumberUpdates >= CameraUpdatesQuota[x]) {
                 break;
             }
@@ -258,7 +258,7 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
                 // Calculate Total Texture Size For Next Level
                 int NextLevelTextureSize = 0;
                 for (unsigned int z = 0; z < CurrentModel->Textures_Loaded.size(); z++) {
-                    NextLevelTextureSize += CurrentModel->Textures_Loaded[i].TextureLevels[CurrentLevel].LevelMemorySizeBytes;
+                    NextLevelTextureSize += CurrentModel->Textures_Loaded[z].TextureLevels[CurrentLevel].LevelMemorySizeBytes;
                 }
 
                 // Check If Will Fit In Mem
@@ -291,9 +291,9 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
         std::map<float, unsigned int> ModelDistances = DistancesFromCamera[x];
         int NumberUpdates = 0;
 
-        for (unsigned int i = 0; i < ModelDistances.size(); i++) {
+        for (auto ModelDistanceIterator = ModelDistances.begin(); ModelDistanceIterator != ModelDistances.end(); ++ModelDistanceIterator) {
 
-            ERS_STRUCT_Model* CurrentModel = Scene->Models[ModelDistances[i]].get();
+            ERS_STRUCT_Model* CurrentModel = Scene->Models[ModelDistanceIterator->second].get();
             if (NumberUpdates >= CameraUpdatesQuota[x]) {
                 break;
             }
@@ -305,7 +305,7 @@ std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfMode
                 // Calculate Total Texture Size For Next Level
                 int NextLevelTextureSize = 0;
                 for (unsigned int z = 0; z < CurrentModel->Textures_Loaded.size(); z++) {
-                    NextLevelTextureSize += CurrentModel->Textures_Loaded[i].TextureLevels[CurrentLevel].LevelMemorySizeBytes;
+                    NextLevelTextureSize += CurrentModel->Textures_Loaded[z].TextureLevels[CurrentLevel].LevelMemorySizeBytes;
                 }
 
                 // Check If Will Fit In Mem
@@ -337,7 +337,7 @@ std::map<unsigned int, int> ERS_CLASS_AssetStreamingManager::CalculateCameraMaxU
     // Calculate Percentage Of Total Updates Each Camera Should Have
     std::vector<float> CameraUpdatePercentages;
     for (unsigned int i = 0; i < Cameras.size(); i++) {
-        CameraUpdatePercentages.push_back(Cameras[i]->GetStreamingPriority() / TotalCameraPriorities);
+        CameraUpdatePercentages.push_back(static_cast<float>(Cameras[i]->GetStreamingPriority()) / static_cast<float>(TotalCameraPriorities));
     }
 
     // Convert Update Percentages Into Actual Update Totals
@@ -421,6 +421,3 @@ void ERS_CLASS_AssetStreamingManager::SetCurrentScene(ERS_STRUCT_Scene* Scene) {
 void ERS_CLASS_AssetStreamingManager::SetCameraStructs(std::vector<ERS_STRUCT_Camera*> Cameras) {
     Cameras_ = Cameras;
 }
-
-
-
