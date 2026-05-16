@@ -63,6 +63,9 @@ void ERS_CLASS_ShadowMaps::DeallocateLightMaps() {
 void ERS_CLASS_ShadowMaps::GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* DepthMaps, std::vector<glm::vec3>* LightPositions) {
 
     ERS_STRUCT_Scene* ActiveScene = ProjectUtils_->SceneManager_->Scenes_[ProjectUtils_->SceneManager_->ActiveScene_].get();
+    ERS_STRUCT_RendererSettings* Settings = SystemUtils_->RendererSettings_.get();
+    bool ShadowUpdatesDisabled = Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED;
+    bool StaticShadowUpdateMode = Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_STATIC;
 
     for (unsigned int i = 0; i < ActiveScene->PointLights.size(); i++) {
         if (ActiveScene->PointLights[i]->CastsShadows_) {
@@ -71,6 +74,7 @@ void ERS_CLASS_ShadowMaps::GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* Depth
             if (!ActiveScene->PointLights[i]->DepthMap.Initialized) {
                 ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex = ERS_CLASS_DepthMaps_->AllocateDepthMapIndexCubemap();
                 ActiveScene->PointLights[i]->DepthMap.Initialized = true;
+                ActiveScene->PointLights[i]->DepthMap.ToBeUpdated = true;
             }
 
 
@@ -92,6 +96,7 @@ void ERS_CLASS_ShadowMaps::GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* Depth
             // Check If Light Has DepthMap
             if (!ActiveScene->SpotLights[i]->DepthMap.Initialized) {
                 ActiveScene->SpotLights[i]->DepthMap = ERS_CLASS_DepthMaps_->GenerateDepthMap2D();   
+                ActiveScene->SpotLights[i]->DepthMap.ToBeUpdated = true;
             }
 
             DepthMaps->push_back(&ActiveScene->SpotLights[i]->DepthMap);
@@ -105,16 +110,21 @@ void ERS_CLASS_ShadowMaps::GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* Depth
         }
     }
 
-    // All Directional Lights Will Be Updated
     for (unsigned int i = 0; i < ActiveScene->DirectionalLights.size(); i++) {
         if (ActiveScene->DirectionalLights[i]->CastsShadows_) {
 
             // Check If Light Has DepthMap
+            bool DepthMapInitialized = ActiveScene->DirectionalLights[i]->DepthMap.Initialized;
             if (!ActiveScene->DirectionalLights[i]->DepthMap.Initialized) {
                 ActiveScene->DirectionalLights[i]->DepthMap = ERS_CLASS_DepthMaps_->GenerateDepthMap2D();   
+                ActiveScene->DirectionalLights[i]->DepthMap.ToBeUpdated = true;
             }
 
-            ActiveScene->DirectionalLights[i]->DepthMap.ToBeUpdated = true;
+            if (ShadowUpdatesDisabled) {
+                ActiveScene->DirectionalLights[i]->DepthMap.ToBeUpdated = false;
+            } else if (!StaticShadowUpdateMode || !DepthMapInitialized || Settings->RefreshStaticShadowMaps_) {
+                ActiveScene->DirectionalLights[i]->DepthMap.ToBeUpdated = true;
+            }
         } else if (ActiveScene->DirectionalLights[i]->DepthMap.Initialized) {
             
             // Free The Light Index If Not Enabled
@@ -133,12 +143,35 @@ void ERS_CLASS_ShadowMaps::PrioritizeDepthMaps(std::vector<ERS_STRUCT_DepthMap*>
 
 
     // Skip Handling An Update If No Lights Are To Be Updated Here
+    if (DepthMaps.size() == 0) {
+        return;
+    }
+
+    if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
+        for (unsigned int i = 0; i < DepthMaps.size(); i++) {
+            DepthMaps[i]->ToBeUpdated = false;
+        }
+        return;
+    }
+
+    if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_STATIC) {
+        if (SystemUtils_->RendererSettings_->RefreshStaticShadowMaps_) {
+            for (unsigned int i = 0; i < DepthMaps.size(); i++) {
+                DepthMaps[i]->ToBeUpdated = true;
+            }
+        }
+        return;
+    }
+
+    if (DepthMaps.size() == 1) { // Handle Edge Case Where One Light Breaks The Random Number Generator
+        DepthMaps[0]->ToBeUpdated = true;
+        return;
+    }
+
     if (DepthMaps.size() > 1) {
 
         // Tell The Depth Map Update System Which Depth Maps To Update
-        if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISABLED) {
-            // Do Nothing As All Updates Are Disabled
-        } else if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL) {
+        if (UpdateMode == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_ALL) {
 
             for (unsigned int i = 0; i < DepthMaps.size(); i++) {
 
@@ -196,14 +229,18 @@ void ERS_CLASS_ShadowMaps::PrioritizeDepthMaps(std::vector<ERS_STRUCT_DepthMap*>
 
         }
 
-    } else if (DepthMaps.size() == 1) { // Handle Edge Case Where One Light Breaks The Random Number Generator
-        DepthMaps[0]->ToBeUpdated = true;
     }
 
 
 }
 
 void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, ERS_STRUCT_Shader* CubemapDepthShader, glm::vec3 CameraPosition) {
+
+    ERS_STRUCT_RendererSettings* Settings = SystemUtils_->RendererSettings_.get();
+    if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_STATIC
+        && (Settings->ShadowMapX_ != ERS_CLASS_DepthMaps_->DepthTextureArrayWidth_ || Settings->ShadowMapY_ != ERS_CLASS_DepthMaps_->DepthTextureArrayHeight_)) {
+        Settings->RefreshStaticShadowMaps_ = true;
+    }
 
     // Get Updated Info From Renderer Settings
     ERS_CLASS_DepthMaps_->CheckSettings();
@@ -218,5 +255,9 @@ void ERS_CLASS_ShadowMaps::UpdateShadowMaps(ERS_STRUCT_Shader* DepthMapShader, E
 
     // Update All Depth Maps
     ERS_CLASS_DepthMaps_->UpdateDepthMaps(DepthMapShader, CubemapDepthShader);
+
+    if (Settings->ShadowUpdateMode_ == ERS::Renderer::ERS_SHADOW_UPDATE_MODE_STATIC) {
+        Settings->RefreshStaticShadowMaps_ = false;
+    }
 
 }
