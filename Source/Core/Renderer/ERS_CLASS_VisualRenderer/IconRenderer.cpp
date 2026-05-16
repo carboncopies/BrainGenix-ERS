@@ -71,12 +71,6 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
         glm::mat4 NewModelMatrix = glm::translate(IconRendererModelArray_, LightPosition);
 
 
-        // FIXME: Make Lights a "Billboard" So they Rotate Towards The Camera
-
-        // glm::vec3 ModelRotation = glm::normalize(CameraPosition - LightPosition);
-        // NewModelMatrix = glm::rotate(NewModelMatrix, ModelRotation.x, glm::vec3(1, 0, 0));
-        // NewModelMatrix = glm::rotate(NewModelMatrix, ModelRotation.y, glm::vec3(0, 1, 0));
-        // NewModelMatrix = glm::rotate(NewModelMatrix, ModelRotation.z, glm::vec3(0, 0, 1));
         NewModelMatrix = glm::scale(NewModelMatrix, glm::vec3(IconRendererScale_));
 
         IconRendererShader_->SetMat4("model", NewModelMatrix);
@@ -87,8 +81,6 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
 
         IconRendererShader_->SetFloat("BillboardSize", IconRendererScale_);
         IconRendererShader_->SetVec3("BillboardPosition", LightPosition);
-        
-        //IconRendererShader_->SetVec3("BillboardRotation", Scene->PointLights[i]->Pos);
         
         glUniform1i(glGetUniformLocation(IconRendererShader_->ShaderProgram_, "IconTexture"), 0);
         glActiveTexture(GL_TEXTURE0);
@@ -106,9 +98,6 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
         glm::vec3 LightPosition = Scene->DirectionalLights[i]->Pos;
         glm::mat4 NewModelMatrix = glm::translate(IconRendererModelArray_, LightPosition);
 
-
-        // FIXME: Make Lights a "Billboard" So they Rotate Towards The Camera
-        // glm::vec3 ModelRotation = glm::normalize(CameraPosition - LightPosition);
 
         glm::vec3 LampRotation = Scene->DirectionalLights[i]->Rot;
         NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.x, glm::vec3(1, 0, 0));
@@ -143,9 +132,6 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
         glm::mat4 NewModelMatrix = glm::translate(IconRendererModelArray_, LightPosition);
 
 
-        // FIXME: Make Lights a "Billboard" So they Rotate Towards The Camera
-        // glm::vec3 ModelRotation = glm::normalize(CameraPosition - LightPosition);
-
         glm::vec3 LampRotation = Scene->SpotLights[i]->Rot;
         NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.x, glm::vec3(1, 0, 0));
         NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.y, glm::vec3(0, 1, 0));
@@ -175,12 +161,8 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
     // Draw All Cameras
     for (int i = 0; (long)i < (long)Scene->SceneCameras.size(); i++) {
 
-        glm::vec3 CameraPosition = Scene->SceneCameras[i]->Pos_;
-        glm::mat4 NewModelMatrix = glm::translate(IconRendererModelArray_, CameraPosition);
-
-
-        // FIXME: Make Lights a "Billboard" So they Rotate Towards The Camera
-        // glm::vec3 ModelRotation = glm::normalize(CameraPosition - LightPosition);
+        glm::vec3 SceneCameraPosition = Scene->SceneCameras[i]->Pos_;
+        glm::mat4 NewModelMatrix = glm::translate(IconRendererModelArray_, SceneCameraPosition);
 
         glm::vec3 LampRotation = Scene->SceneCameras[i]->Rot_;
         NewModelMatrix = glm::rotate(NewModelMatrix, LampRotation.x, glm::vec3(1, 0, 0));
@@ -195,7 +177,7 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
         IconRendererShader_->SetVec3("CameraPosition", CameraPosition);
 
         IconRendererShader_->SetFloat("BillboardSize", IconRendererScale_);
-        IconRendererShader_->SetVec3("BillboardPosition", CameraPosition);
+        IconRendererShader_->SetVec3("BillboardPosition", SceneCameraPosition);
         IconRendererShader_->SetVec3("BillboardRotation", LampRotation);
         
         glUniform1i(glGetUniformLocation(IconRendererShader_->ShaderProgram_, "IconTexture"), 0);
@@ -212,4 +194,3 @@ void ERS_CLASS_IconRenderer::Draw(ERS_STRUCT_Camera* Camera, ERS_CLASS_SceneMana
 
 
 }
-
