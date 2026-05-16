@@ -115,7 +115,7 @@ ERS_HardwareInformation::~ERS_HardwareInformation() {
 
     // Shut Down Dynamic Update Thread
     Logger_->Log("Stopping Dynamic Update Thread", 5);
-    ShouldDynamicInfoThreadRun_ = false;
+    ShouldDynamicInfoThreadRun_.store(false);
 	if (DynamicUpdateThread_.joinable()) {
 		// Wait for the thread to finish for up to 10 seconds
 		for (int i = 0; i < 100 && DynamicUpdateThread_.joinable(); ++i) {
@@ -147,6 +147,7 @@ std::thread ERS_HardwareInformation::SpawnThread() {
 }
 
 ERS_STRUCT_HardwareInfo ERS_HardwareInformation::GetHWInfo() {
+    std::lock_guard<std::mutex> Lock(HardwareInfoMutex_);
     return HardwareInfo_;
 }
 
@@ -155,7 +156,7 @@ void ERS_HardwareInformation::DynamicInformationThread() {
     // Name Thread
     SetThreadName("SysInfo");
 
-    while (ShouldDynamicInfoThreadRun_) {
+    while (ShouldDynamicInfoThreadRun_.load()) {
 
         // Get Dynamic Info
         GetDynamicInformation();
@@ -171,6 +172,8 @@ void ERS_HardwareInformation::GetDynamicInformation() {
 
     // Get Memory Info
     const auto MemoryInfo = iware::system::memory();
+
+    std::lock_guard<std::mutex> Lock(HardwareInfoMutex_);
     HardwareInfo_.Dynamic_.PhysicalMemoryCapacity = MemoryInfo.physical_total;
     HardwareInfo_.Dynamic_.PhysicalMemoryFree = MemoryInfo.physical_available;
     HardwareInfo_.Dynamic_.SwapCapacity = MemoryInfo.virtual_total;
