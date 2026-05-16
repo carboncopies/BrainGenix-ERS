@@ -182,6 +182,18 @@ Depending on the type of object selected, the window will display different prop
   If some packages are missing on your distro, you'll have to substitute with whatever your distro uses. We try to include as many packages in our codebase as possible via superbuilds, but this isn't always possible or practical.
 
 
+## First-Pass Superbuild:
+
+  There is now an early superbuild entrypoint under `Superbuild/` for experimenting with the build-system refactor path without replacing the existing root build yet.
+
+  After running the normal dependency setup, enter `Tools` and run `bash BuildSuperbuild.sh [number_of_threads] [build_type]`.
+
+  Example:
+  `bash BuildSuperbuild.sh 4 Release`
+
+  This currently wraps the existing root project through CMake `ExternalProject` and is meant as scaffolding for the larger build-system refactor, not as the only supported build path.
+
+
 ## Windows:
 
   At this time, we're not working on native Windows builds since we are working on cross-compiling for Windows platforms from Linux. This will allow us to simplify our build infrastructure significantly. Therefore, ***the following section is out of date and may not work!***
