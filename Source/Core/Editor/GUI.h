@@ -60,6 +60,9 @@ private:
     ERS_CLASS_SceneManager*           SceneManager_   = nullptr; /**<Scene Manager Instance Pointer*/
     ERS_CLASS_VisualRenderer*         VisualRenderer_ = nullptr; /**<Pointer to visual renderer for viewport modification*/
     ERS_STRUCT_HumanInputDeviceUtils* HIDUtils_       = nullptr; /**<Pointer To Human Device Utils Struct*/
+    std::string ActiveWarningTitle_   = "ERS Warning"; /**<Title of the popup warning currently displayed.*/
+    std::string ActiveWarningMessage_; /**<Body of the popup warning currently displayed.*/
+    bool WarningPopupOpen_            = false; /**<Tracks if a warning popup is currently active.*/
 
     std::unique_ptr<ERS_CLASS_FontManager>        FontManager_;        /**<Pointer To FontManager Instance*/
     std::unique_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/
@@ -114,4 +117,8 @@ public:
      * 
      */
     void DeferredFrameUpdate();
+
+private:
+
+    void UpdateWarningPopup();
 };

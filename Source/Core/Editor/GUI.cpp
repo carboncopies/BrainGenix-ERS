@@ -109,6 +109,7 @@ void GUISystem::UpdateGUI() {
 
     // Updates all the windows, draws their content if enabled
     WindowManager_->UpdateAllWindows();
+    UpdateWarningPopup();
 
 
 }
@@ -126,4 +127,36 @@ void GUISystem::UpdateFrame() {
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     
+}
+
+void GUISystem::UpdateWarningPopup() {
+
+    if (!WarningPopupOpen_ && SystemUtils_->HasPopupWarning()) {
+        ERS_STRUCT_SystemUtils::PopupWarning Warning = SystemUtils_->PopPopupWarning();
+        ActiveWarningTitle_ = Warning.Title.empty() ? "ERS Warning" : Warning.Title;
+        ActiveWarningMessage_ = Warning.Message;
+        WarningPopupOpen_ = true;
+        ImGui::OpenPopup("ERS Warning");
+    }
+
+    bool KeepOpen = WarningPopupOpen_;
+    if (ImGui::BeginPopupModal("ERS Warning", &KeepOpen, ImGuiWindowFlags_AlwaysAutoResize)) {
+        ImGui::Text("%s", ActiveWarningTitle_.c_str());
+        ImGui::Separator();
+        ImGui::TextWrapped("%s", ActiveWarningMessage_.c_str());
+        ImGui::Spacing();
+
+        if (ImGui::Button("Acknowledge")) {
+            WarningPopupOpen_ = false;
+            ActiveWarningTitle_ = "ERS Warning";
+            ActiveWarningMessage_.clear();
+            ImGui::CloseCurrentPopup();
+        }
+
+        ImGui::EndPopup();
+    } else if (!KeepOpen) {
+        WarningPopupOpen_ = false;
+        ActiveWarningTitle_ = "ERS Warning";
+        ActiveWarningMessage_.clear();
+    }
 }
