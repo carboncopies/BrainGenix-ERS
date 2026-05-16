@@ -2,6 +2,9 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
+// cppcheck-suppress missingIncludeSystem
+#include <algorithm>
+
 #include <ModelMetadataDecoderManager.h>
 
 
@@ -37,17 +40,11 @@ bool ERS_FUNCTION_DecodeModelMetadata(YAML::Node Metadata, ERS_STRUCT_Model* Mod
     // Sort All Texture Levels
     for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
 
-        ERS_STRUCT_Texture* Texture = &Model->Textures_[TextureIndex];
-        std::vector<ERS_STRUCT_TextureLevel> InputTextureLevels = Texture->TextureLevels;
-        std::vector<ERS_STRUCT_TextureLevel> OutputTextureLevels;
-        for (unsigned int TextureLevelIndex = 0; TextureLevelIndex < Texture->TextureLevels.size(); TextureLevelIndex++) {
-            for (unsigned int i = 0; i < InputTextureLevels.size(); i++) {
-                if (InputTextureLevels[i].Level == (int)TextureLevelIndex) {
-                    OutputTextureLevels.push_back(InputTextureLevels[i]);
-                }
-            }
-        }
-        Texture->TextureLevels = OutputTextureLevels;
+        auto& TextureLevels = Model->Textures_[TextureIndex].TextureLevels;
+        std::stable_sort(TextureLevels.begin(), TextureLevels.end(),
+            [](const ERS_STRUCT_TextureLevel& A, const ERS_STRUCT_TextureLevel& B) {
+                return A.Level < B.Level;
+            });
     }
 
     return Status;
