@@ -15,10 +15,15 @@
 #include <SceneManager.h>
 #include <Scene.h>
 
+struct ERS_STRUCT_ProjectUtils;
+struct ERS_STRUCT_SystemUtils;
+
 /**
  * @brief Duplicate the scene in the project
  * 
  * @param SceneManager 
+ * @param ProjectUtils
+ * @param SystemUtils
  * @param SceneIndex 
  */
-void GUI_Windowutil_DuplicateScene(ERS_CLASS_SceneManager* SceneManager, int SceneIndex);
+void GUI_Windowutil_DuplicateScene(ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_SystemUtils* SystemUtils, int SceneIndex);
