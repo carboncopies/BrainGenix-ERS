@@ -11,6 +11,32 @@ namespace Module {
 
 
 
+#ifndef __APPLE__
+static std::string GetWhereAmIPath(int (*PathGetter)(char*, int, int*), bool ReturnDirectory) {
+    int DirectoryNameLength = 0;
+    int Length = PathGetter(nullptr, 0, &DirectoryNameLength);
+    if (Length <= 0) {
+        return "Unable To Get Binary Path";
+    }
+
+    std::string Path(static_cast<size_t>(Length), '\0');
+    Length = PathGetter(&Path[0], Length, &DirectoryNameLength);
+    if (Length <= 0) {
+        return "Unable To Get Binary Path";
+    }
+
+    Path.resize(static_cast<size_t>(Length));
+    if (ReturnDirectory) {
+        if (DirectoryNameLength <= 0) {
+            return "";
+        }
+        Path.resize(static_cast<size_t>(DirectoryNameLength));
+    }
+
+    return Path;
+}
+#endif
+
 
 
 std::string GetExecutablePath() {
@@ -23,15 +49,7 @@ std::string GetExecutablePath() {
         return std::string(buf);
     #else
 
-        char* Path = NULL;
-        int Length, DirectoryNameLength;
-        Length = wai_getExecutablePath(Path, 0, &DirectoryNameLength);
-        
-        if (Path == NULL) {
-            return "Unable To Get Binary Path";
-        }
-
-        return std::string(Path);
+        return GetWhereAmIPath(wai_getExecutablePath, false);
     #endif
 }
 
@@ -45,16 +63,7 @@ std::string GetExecutableDirectory() {
         return std::string(buf).substr(0, std::string(buf).find_last_of("/"));
     #else
 
-        char* Path = NULL;
-        int Length, DirectoryNameLength;
-        Length = wai_getModulePath(Path, 0, &DirectoryNameLength);
-        
-
-        if (Path == NULL) {
-            return "Unable To Get Binary Path";
-        }
-
-        return std::string(Path);
+        return GetWhereAmIPath(wai_getExecutablePath, true);
     #endif
 }
 
