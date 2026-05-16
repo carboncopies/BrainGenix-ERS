@@ -54,10 +54,28 @@ void GUI_Window_ControllerSettings::Draw() {
 
                     // Active Selected Controller Dropdown
                     int NumberControllers = HIDUtils_->ControllerInputManager->NumberControllers_;
+                    if (NumberControllers > (int)HIDUtils_->ControllerInputManager->ControllerStates_.size()) {
+                        NumberControllers = (int)HIDUtils_->ControllerInputManager->ControllerStates_.size();
+                    }
+                    if (NumberControllers > (int)HIDUtils_->ControllerInputManager->ControllerNames_.size()) {
+                        NumberControllers = (int)HIDUtils_->ControllerInputManager->ControllerNames_.size();
+                    }
+                    if (NumberControllers > 16) {
+                        NumberControllers = 16;
+                    }
+                    if (NumberControllers <= 0) {
+                        SelectedController_ = 0;
+                    } else if (SelectedController_ >= NumberControllers) {
+                        SelectedController_ = NumberControllers - 1;
+                    } else if (SelectedController_ < 0) {
+                        SelectedController_ = 0;
+                    }
                     for (int i = 0; i < NumberControllers; i++) {
                         ControllerNames_[i] = HIDUtils_->ControllerInputManager->ControllerNames_[i].c_str();
                     }
-                    ImGui::Combo("Selected Controller", &SelectedController_, ControllerNames_, NumberControllers, NumberControllers);
+                    if (NumberControllers > 0) {
+                        ImGui::Combo("Selected Controller", &SelectedController_, ControllerNames_, NumberControllers, NumberControllers);
+                    }
                     ImGui::Separator();
 
 
@@ -146,8 +164,12 @@ void GUI_Window_ControllerSettings::Draw() {
 
 
                     // Update Controller Dropdown List And Index
-                    if ((long)SelectedControllerProfile_ > (long)ControllerSettings->size()) {
+                    if (ControllerSettings->size() == 0) {
+                        SelectedControllerProfile_ = 0;
+                    } else if ((long)SelectedControllerProfile_ >= (long)ControllerSettings->size()) {
                         SelectedControllerProfile_ = (int)ControllerSettings->size() - 1;
+                    } else if (SelectedControllerProfile_ < 0) {
+                        SelectedControllerProfile_ = 0;
                     }
 
                     for (int i = 0; (long)i < (long)ControllerSettings->size(); i++) {
@@ -159,7 +181,9 @@ void GUI_Window_ControllerSettings::Draw() {
                         if (ImGui::Button("Delete Profile")) {
                             ProjectUtils_->ProjectManager_->Project_.ControllerSettings->erase(ProjectUtils_->ProjectManager_->Project_.ControllerSettings->begin() + SelectedControllerProfile_);
                             ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.erase(ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.begin() + SelectedControllerProfile_);
-                            SelectedControllerProfile_--;
+                            if (SelectedControllerProfile_ > 0) {
+                                SelectedControllerProfile_--;
+                            }
                         }
                     }
                     if (ControllerSettings->size() < 128) {
@@ -170,7 +194,9 @@ void GUI_Window_ControllerSettings::Draw() {
                         }
                     }
                     ImGui::SameLine();
-                    ImGui::Combo("Selected Controller Profile", &SelectedControllerProfile_, ControllerProfileNames_, ControllerSettings->size(),  ControllerSettings->size());
+                    if (ControllerSettings->size() > 0) {
+                        ImGui::Combo("Selected Controller Profile", &SelectedControllerProfile_, ControllerProfileNames_, ControllerSettings->size(),  ControllerSettings->size());
+                    }
 
                     ImGui::Separator();
 
