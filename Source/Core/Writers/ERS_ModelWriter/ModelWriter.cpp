@@ -371,10 +371,11 @@ void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data, bool Fl
     IOData.Size_B = Metadata.size();
     memcpy(IOData.Data.get(), Metadata.c_str(), Metadata.size());
 
-    // Set Metadata (FIXME: Save Modification Date + Creation Date Here!)
+    // Set Metadata
     IOData.AssetTypeName = "Model";
     IOData.AssetFileName = Data.ModelFileName;
     IOData.AssetCreationDate = IOSubsystem_->GetCurrentTime();
+    IOData.AssetModificationDate = IOData.AssetCreationDate;
 
     long MetadataID = IOSubsystem_->AllocateAssetID();
     Logger_->Log(std::string(std::string("Assigning ID '") + std::to_string(MetadataID) + std::string("' To Model Metadata")).c_str(), 4);
@@ -382,5 +383,4 @@ void ERS_CLASS_ModelWriter::WriteModel(ERS_STRUCT_ModelWriterData &Data, bool Fl
     IOSubsystem_->WriteAsset(MetadataID, &IOData);
 
 }
-
 
