@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+      - ".gitmodules"
+      - "CMake/**"
+      - "CMakeLists.txt"
+      - "CI/**"
+      - "Docs/**"
+      - "Source/**"
+      - "ThirdParty/**"
+      - "Tools/**"
+  push:
+    branches:
+      - master
+    paths:
+      - ".github/workflows/**"
+      - ".gitmodules"
+      - "CMake/**"
+      - "CMakeLists.txt"
+      - "CI/**"
+      - "Docs/**"
+      - "Source/**"
+      - "ThirdParty/**"
+      - "Tools/**"
+
+permissions:
+  contents: read
+
+jobs:
+  build-ubuntu2204:
+    name: Build (Ubuntu 22.04)
+    runs-on: ubuntu-22.04
+    timeout-minutes: 90
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install build dependencies
+        working-directory: Tools
+        run: bash Setup.sh
+
+      - name: Build ERS
+        working-directory: Tools
+        run: bash Build.sh 2
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: BrainGenix-ERS-ubuntu2204
+          path: |
+            Build/
+            Binaries/
+
+  doxygen:
+    name: Doxygen
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install doxygen
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen
+
+      - name: Generate docs
+        working-directory: Tools/Docs
+        run: bash GenerateDoxygen.sh
+
+      - name: Upload doxygen artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: BrainGenix-ERS-doxygen
+          path: Docs/Doxygen/Generated/
