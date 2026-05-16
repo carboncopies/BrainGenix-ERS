@@ -20,47 +20,47 @@
 struct ERS_STRUCT_ControllerSettings {
 
     // Controller Settings Name
-    std::string SettingsProfileName; /**<Name of this profile. Shows in dropdown menu*/
-    std::string ControllerName; /**<Name of the controller to apply this profile to*/
+    std::string SettingsProfileName = "Default Layout"; /**<Name of this profile. Shows in dropdown menu*/
+    std::string ControllerName = "*"; /**<Name of the controller to apply this profile to*/
 
     // Joystick Settings
-    float MinThresholdJoystickLeftX; /**<Minimum value from joystick to be considered a value*/
-    float MinThresholdJoystickLeftY; /**<Minimum value from joystick to be considered a value*/
-    float MinThresholdJoystickRightX; /**<Minimum value from joystick to be considered a value*/
-    float MinThresholdJoystickRightY; /**<Minimum value from joystick to be considered a value*/
+    float MinThresholdJoystickLeftX = 0.0f; /**<Minimum value from joystick to be considered a value*/
+    float MinThresholdJoystickLeftY = 0.0f; /**<Minimum value from joystick to be considered a value*/
+    float MinThresholdJoystickRightX = 0.0f; /**<Minimum value from joystick to be considered a value*/
+    float MinThresholdJoystickRightY = 0.0f; /**<Minimum value from joystick to be considered a value*/
 
-    float MaxThresholdJoystickLeftX; /**<Maximum value from joystick before JS is fully on*/
-    float MaxThresholdJoystickLeftY; /**<Minimum value from joystick to be considered a value*/
-    float MaxThresholdJoystickRightX; /**<Minimum value from joystick to be considered a value*/
-    float MaxThresholdJoystickRightY; /**<Minimum value from joystick to be considered a value*/
+    float MaxThresholdJoystickLeftX = 1.0f; /**<Maximum value from joystick before JS is fully on*/
+    float MaxThresholdJoystickLeftY = 1.0f; /**<Minimum value from joystick to be considered a value*/
+    float MaxThresholdJoystickRightX = 1.0f; /**<Minimum value from joystick to be considered a value*/
+    float MaxThresholdJoystickRightY = 1.0f; /**<Minimum value from joystick to be considered a value*/
 
-    float JoystickLeftXGain; /**<Joystick Gain*/
-    float JoystickLeftYGain; /**<Joystick Gain*/
-    float JoystickRightXGain; /**<Joystick Gain*/
-    float JoystickRightYGain; /**<Joystick Gain*/
+    float JoystickLeftXGain = 1.0f; /**<Joystick Gain*/
+    float JoystickLeftYGain = 1.0f; /**<Joystick Gain*/
+    float JoystickRightXGain = 1.0f; /**<Joystick Gain*/
+    float JoystickRightYGain = 1.0f; /**<Joystick Gain*/
 
     // Trigger Settings
-    float MinThresholdTriggerLeft; /**<Minimum value from trigger to be considered valid, all values below this are discarded*/
-    float MinThresholdTriggerRight; /**<Minimum value from trigger to be considered valid, all values below this are discarded*/
+    float MinThresholdTriggerLeft = 0.0f; /**<Minimum value from trigger to be considered valid, all values below this are discarded*/
+    float MinThresholdTriggerRight = 0.0f; /**<Minimum value from trigger to be considered valid, all values below this are discarded*/
     
-    float MaxThresholdTriggerLeft; /**<Max value for trigger to be fully pressed*/
-    float MaxThresholdTriggerRight; /**<Max value for trigger to be fully pressed*/
+    float MaxThresholdTriggerLeft = 1.0f; /**<Max value for trigger to be fully pressed*/
+    float MaxThresholdTriggerRight = 1.0f; /**<Max value for trigger to be fully pressed*/
 
     // Button Remap
-    int TriangleButtonIndex; /**<Button Index*/
-    int SquareButtonIndex; /**<Button Index*/
-    int CrossButtonIndex; /**<Button Index*/
-    int CircleButtonIndex;/**<Button Index*/
-    int BackButtonIndex; /**<Button Index*/
-    int OptionsButtonIndex; /**<Button Index*/
-    int MenuButtonIndex; /**<Button Index*/
-    int JoystickRightButtonIndex; /**<Button Index*/
-    int JoystickLeftButtonIndex; /**<Button Index*/
-    int LeftBumperButtonIndex; /**<Button Index*/
-    int RightBumperButtonIndex; /**<Button Index*/
-    int DPADUpButtonIndex; /**<Button Index*/
-    int DPADDownButtonIndex; /**<Button Index*/
-    int DPADLeftButtonIndex; /**<Button Index*/
-    int DPADRightButtonIndex; /**<Button Index*/
+    int TriangleButtonIndex = 3; /**<Button Index*/
+    int SquareButtonIndex = 2; /**<Button Index*/
+    int CrossButtonIndex = 0; /**<Button Index*/
+    int CircleButtonIndex = 1;/**<Button Index*/
+    int BackButtonIndex = 6; /**<Button Index*/
+    int OptionsButtonIndex = 8; /**<Button Index*/
+    int MenuButtonIndex = 7; /**<Button Index*/
+    int JoystickRightButtonIndex = 10; /**<Button Index*/
+    int JoystickLeftButtonIndex = 9; /**<Button Index*/
+    int LeftBumperButtonIndex = 4; /**<Button Index*/
+    int RightBumperButtonIndex = 5; /**<Button Index*/
+    int DPADUpButtonIndex = 11; /**<Button Index*/
+    int DPADDownButtonIndex = 12; /**<Button Index*/
+    int DPADLeftButtonIndex = 13; /**<Button Index*/
+    int DPADRightButtonIndex = 14; /**<Button Index*/
 
 };

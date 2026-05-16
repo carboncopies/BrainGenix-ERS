@@ -52,12 +52,7 @@ public:
     std::vector<ERS_STRUCT_ControllerSettings> ControllerSettings_;          /**<List of controller settings for each controller*/
     std::vector<ERS_STRUCT_ControllerSettings> AvailableControllerProfiles_; /**<List of different loaded profiles. Will try to pick based on correct one automatically*/
 
-    // TODO: add system to apply correct controller profile by name
-    // add system to write controller profiles
-    // add window to configure profiles
-    // add option to add profiles, delete them
-    // add optin to save profiles in config window
-    // add to project files, so they load with the system
+    // TODO: apply matching controller profiles by name once input remapping consumes these settings.
 
 public:
 

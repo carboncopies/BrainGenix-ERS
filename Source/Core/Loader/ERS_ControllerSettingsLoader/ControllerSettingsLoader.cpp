@@ -57,7 +57,7 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(ERS_STRUCT_Contr
 
         ControllerSettings->MinThresholdJoystickLeftX = SettingsData["MinThresholdJoystickLeftX"].as<float>();
         ControllerSettings->MinThresholdJoystickLeftY = SettingsData["MinThresholdJoystickLeftY"].as<float>();
-        ControllerSettings->MinThresholdJoystickRightX = SettingsData["MinThresholdJoystickLeftX"].as<float>();
+        ControllerSettings->MinThresholdJoystickRightX = SettingsData["MinThresholdJoystickRightX"].as<float>();
         ControllerSettings->MinThresholdJoystickRightY = SettingsData["MinThresholdJoystickRightY"].as<float>();
 
         ControllerSettings->MaxThresholdJoystickLeftX = SettingsData["MaxThresholdJoystickLeftX"].as<float>();
@@ -65,6 +65,18 @@ bool ERS_CLASS_ControllerSettingsLoader::LoadControllerSettings(ERS_STRUCT_Contr
         ControllerSettings->MaxThresholdJoystickRightX = SettingsData["MaxThresholdJoystickRightX"].as<float>();
         ControllerSettings->MaxThresholdJoystickRightY = SettingsData["MaxThresholdJoystickRightY"].as<float>();
 
+        if (SettingsData["MinThresholdTriggerLeft"]) {
+            ControllerSettings->MinThresholdTriggerLeft = SettingsData["MinThresholdTriggerLeft"].as<float>();
+        }
+        if (SettingsData["MinThresholdTriggerRight"]) {
+            ControllerSettings->MinThresholdTriggerRight = SettingsData["MinThresholdTriggerRight"].as<float>();
+        }
+        if (SettingsData["MaxThresholdTriggerLeft"]) {
+            ControllerSettings->MaxThresholdTriggerLeft = SettingsData["MaxThresholdTriggerLeft"].as<float>();
+        }
+        if (SettingsData["MaxThresholdTriggerRight"]) {
+            ControllerSettings->MaxThresholdTriggerRight = SettingsData["MaxThresholdTriggerRight"].as<float>();
+        }
 
         ControllerSettings->JoystickLeftButtonIndex = SettingsData["JoystickLeftButtonIndex"].as<int>();
         ControllerSettings->JoystickRightButtonIndex = SettingsData["JoystickRightButtonIndex"].as<int>();
