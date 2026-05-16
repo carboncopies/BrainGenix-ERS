@@ -20,6 +20,28 @@ GUI_Window_NewProject::~GUI_Window_NewProject() {
 }
 
 
+std::string GUI_Window_NewProject::GetNewProjectTemplatePath() {
+
+    std::string FallbackTemplatePath = "EditorAssets/Projects/NewProject/";
+    if (SystemUtils_ == nullptr || SystemUtils_->LocalSystemConfiguration_ == nullptr) {
+        return FallbackTemplatePath;
+    }
+
+    YAML::Node TemplatePath = (*SystemUtils_->LocalSystemConfiguration_)["NewProjectTemplateDirectory"];
+    if (!TemplatePath) {
+        return FallbackTemplatePath;
+    }
+
+    std::string ConfiguredPath = TemplatePath.as<std::string>();
+    if (ConfiguredPath == "") {
+        return FallbackTemplatePath;
+    }
+
+    return ConfiguredPath;
+
+}
+
+
 void GUI_Window_NewProject::Draw() {
 
     if (Enabled_ && !LastWindowState_) {
@@ -40,45 +62,53 @@ void GUI_Window_NewProject::Draw() {
                 Path += "/";
                 SystemUtils_->Logger_->Log(std::string("Creating New Project In Target Directory '") + Path + "'", 5);
     
-                // TodO add system to get project dir from config file,
-                // then have it iterate over all files, copying them to the new selected path
-                // finally, have the system load that
-                // check for bugs and edge-cases
-
-                std::string DefualtProjectPath = "EditorAssets/Projects/NewProject/";
-                std::string CurrentExecutablePath = ghc::filesystem::current_path().u8string();
-
-                for (const auto &Entry : ghc::filesystem::recursive_directory_iterator(DefualtProjectPath)) {
-
-                    // Get The Current Absolute Path To File, As Well As It's Filename
-                    std::string PathRelativeName{Entry.path().u8string()};
-                    std::string File = CurrentExecutablePath + "/" + PathRelativeName;
-                    std::string FileName = PathRelativeName.substr(PathRelativeName.find_last_of("/"), sizeof(PathRelativeName));
-
-                    SystemUtils_->Logger_->Log(std::string("Copying File '") + File + "' To New Project Directory", 4);
-                    ghc::filesystem::copy_file(File, Path + FileName);
-
+                ghc::filesystem::path TemplateProjectPath(GetNewProjectTemplatePath());
+                if (TemplateProjectPath.is_relative()) {
+                    TemplateProjectPath = ghc::filesystem::current_path() / TemplateProjectPath;
                 }
 
+                ghc::filesystem::path TargetProjectPath(Path);
+                bool ProjectTemplateCopied = false;
 
-                std::string Command;
-#if defined(_WIN32)
-                Command += "start /B ";
-#elif defined(__APPLE__)
-                Command += "./";
-#else
-                Command += "./";
-#endif
-                Command += "ERS -ProjectDirectory ";
-                Command += '"' + Path + '"' + " &";
-                int Status = std::system(Command.c_str());
-
-                // Quit System
-                if (Status != -1) {
-                    SystemUtils_->Logger_->Log("Shutting Down This Editor Window Now, Launching Editor For That Project", 5);
-                    *SystemUtils_->SystemShouldRun_ = false;
+                if (!ghc::filesystem::exists(TemplateProjectPath) || !ghc::filesystem::is_directory(TemplateProjectPath)) {
+                    SystemUtils_->Logger_->Log(std::string("Could Not Create New Project, Template Directory Does Not Exist: '") + TemplateProjectPath.u8string() + "'", 8);
                 } else {
-                    SystemUtils_->Logger_->Log("Failed To Launch New ERS Instance!", 8);
+                    ProjectTemplateCopied = true;
+                    for (const auto &Entry : ghc::filesystem::recursive_directory_iterator(TemplateProjectPath)) {
+                        if (!ghc::filesystem::is_regular_file(Entry.path())) {
+                            continue;
+                        }
+
+                        ghc::filesystem::path RelativePath = ghc::filesystem::relative(Entry.path(), TemplateProjectPath);
+                        ghc::filesystem::path TargetFile = TargetProjectPath / RelativePath;
+                        ghc::filesystem::create_directories(TargetFile.parent_path());
+                        SystemUtils_->Logger_->Log(std::string("Copying File '") + Entry.path().u8string() + "' To New Project Directory", 4);
+                        ghc::filesystem::copy_file(Entry.path(), TargetFile);
+
+                    }
+                }
+
+                if (ProjectTemplateCopied) {
+
+                    std::string Command;
+#if defined(_WIN32)
+                    Command += "start /B ";
+#elif defined(__APPLE__)
+                    Command += "./";
+#else
+                    Command += "./";
+#endif
+                    Command += "ERS -ProjectDirectory ";
+                    Command += '"' + Path + '"' + " &";
+                    int Status = std::system(Command.c_str());
+
+                    // Quit System
+                    if (Status != -1) {
+                        SystemUtils_->Logger_->Log("Shutting Down This Editor Window Now, Launching Editor For That Project", 5);
+                        *SystemUtils_->SystemShouldRun_ = false;
+                    } else {
+                        SystemUtils_->Logger_->Log("Failed To Launch New ERS Instance!", 8);
+                    }
                 }
 
             }
@@ -95,4 +125,3 @@ void GUI_Window_NewProject::Draw() {
 
 
 }
-
