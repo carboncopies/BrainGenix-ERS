@@ -10,6 +10,60 @@
 
 namespace {
 
+constexpr int ERS_RENDERER_MAX_DIRECTIONAL_LIGHTS = 2;
+constexpr int ERS_RENDERER_MAX_POINT_LIGHTS = 32;
+constexpr int ERS_RENDERER_MAX_SPOT_LIGHTS = 16;
+
+template<class LightVector>
+std::vector<unsigned long> ERS_FUNCTION_GetStrongestLightIndexes(const LightVector& Lights, int Limit) {
+
+    std::vector<unsigned long> Indexes;
+    if (Limit <= 0) {
+        return Indexes;
+    }
+
+    for (unsigned long i = 0; i < Lights.size(); i++) {
+        Indexes.push_back(i);
+    }
+
+    std::stable_sort(Indexes.begin(), Indexes.end(), [&Lights](unsigned long A, unsigned long B) {
+        return Lights[A]->Intensity > Lights[B]->Intensity;
+    });
+
+    if (Indexes.size() > static_cast<unsigned long>(Limit)) {
+        Indexes.resize(static_cast<unsigned long>(Limit));
+    }
+
+    return Indexes;
+
+}
+
+template<class LightVector>
+std::vector<unsigned long> ERS_FUNCTION_GetNearestLightIndexes(const LightVector& Lights, glm::vec3 ReferencePosition, int Limit) {
+
+    std::vector<unsigned long> Indexes;
+    if (Limit <= 0) {
+        return Indexes;
+    }
+
+    for (unsigned long i = 0; i < Lights.size(); i++) {
+        Indexes.push_back(i);
+    }
+
+    std::stable_sort(Indexes.begin(), Indexes.end(), [&Lights, ReferencePosition](unsigned long A, unsigned long B) {
+        glm::vec3 DistanceA = Lights[A]->Pos - ReferencePosition;
+        glm::vec3 DistanceB = Lights[B]->Pos - ReferencePosition;
+        return glm::dot(DistanceA, DistanceA) < glm::dot(DistanceB, DistanceB);
+    });
+
+    if (Indexes.size() > static_cast<unsigned long>(Limit)) {
+        Indexes.resize(static_cast<unsigned long>(Limit));
+    }
+
+    return Indexes;
+
+}
+
 glm::mat4 ERS_FUNCTION_GetModelBoundingBoxMatrix(ERS_STRUCT_Model* Model) {
 
     glm::mat4 ModelMatrix = glm::mat4(1.0f);
@@ -976,67 +1030,60 @@ ERS_STRUCT_Viewport* Viewport) {
     ShaderUniformData_->DepthMapArray_ = ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureArrayID_;
     ShaderUniformData_->DepthCubemapArray_ = ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureCubemapArrayID_;
 
-    // ---- SEND LIGHTING INFORMATION TO SHADERS ---- //
-    // NOTE: Due to limitations with shaders, the maximum number of lights is as follows (per object) 
-    // Directional lights: 4
-    // Point Lights: 32
-    // Spot Lights: 16
-    // TO DO BELOW:
-    // When these limitations are reached, ERS will remove the lights that are farthest from the object
-
-    // Prepare To Handle Lights
-    //const int DirectionalLightLimit = 4;
-    //const int PointLightLimit = 64;
-    //const int SpotLightLimit = 32;
-
-
     ERS_STRUCT_Scene* ActiveScene = SceneManager->Scenes_[SceneManager->ActiveScene_].get();
 
-
-    // ~-------------------------------------------------------------------!!!!!!!!!!!!!!!FIXME: IMPLEMENT SYSTEM TO USE THE LIGHTS CLOSEST TO THE OBJECT !!!!!!!!!!!!!!!!!!!!!~----------------------------------- //
-
+    // Clamp viewport-wide light uploads to the fixed-size shader arrays.
+    std::vector<unsigned long> DirectionalLightIndexes = ERS_FUNCTION_GetStrongestLightIndexes(
+        ActiveScene->DirectionalLights, ERS_RENDERER_MAX_DIRECTIONAL_LIGHTS);
+    std::vector<unsigned long> PointLightIndexes = ERS_FUNCTION_GetNearestLightIndexes(
+        ActiveScene->PointLights, ShaderUniformData_->CameraPosition_, ERS_RENDERER_MAX_POINT_LIGHTS);
+    std::vector<unsigned long> SpotLightIndexes = ERS_FUNCTION_GetNearestLightIndexes(
+        ActiveScene->SpotLights, ShaderUniformData_->CameraPosition_, ERS_RENDERER_MAX_SPOT_LIGHTS);
 
     // Directional Lights
-    int NumberDirectionalLights = ActiveScene->DirectionalLights.size();
+    int NumberDirectionalLights = static_cast<int>(DirectionalLightIndexes.size());
     ShaderUniformData_->NumberDirectionalLights_ = NumberDirectionalLights;
     for (int i = 0; i < NumberDirectionalLights; i++) {
+        unsigned long LightIndex = DirectionalLightIndexes[i];
         ShaderUniformData_->DirectionalLights_.push_back(ERS_STRUCT_ShaderUniformDataDirectionalLight());
-        ShaderUniformData_->DirectionalLights_[i].Direction_         = ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->DirectionalLights[i]->Rot);
-        ShaderUniformData_->DirectionalLights_[i].Color_             = ActiveScene->DirectionalLights[i]->Color;
-        ShaderUniformData_->DirectionalLights_[i].Intensity_         = ActiveScene->DirectionalLights[i]->Intensity;
-        ShaderUniformData_->DirectionalLights_[i].MaxDistance_       = ActiveScene->DirectionalLights[i]->MaxDistance;
-        ShaderUniformData_->DirectionalLights_[i].CastsShadows_      = ActiveScene->DirectionalLights[i]->CastsShadows_;
-        ShaderUniformData_->DirectionalLights_[i].DepthMapIndex_     = ActiveScene->DirectionalLights[i]->DepthMap.DepthMapTextureIndex;
-        ShaderUniformData_->DirectionalLights_[i].LightSpaceMatrix_  = ActiveScene->DirectionalLights[i]->DepthMap.TransformationMatrix;
+        ShaderUniformData_->DirectionalLights_[i].Direction_         = ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->DirectionalLights[LightIndex]->Rot);
+        ShaderUniformData_->DirectionalLights_[i].Color_             = ActiveScene->DirectionalLights[LightIndex]->Color;
+        ShaderUniformData_->DirectionalLights_[i].Intensity_         = ActiveScene->DirectionalLights[LightIndex]->Intensity;
+        ShaderUniformData_->DirectionalLights_[i].MaxDistance_       = ActiveScene->DirectionalLights[LightIndex]->MaxDistance;
+        ShaderUniformData_->DirectionalLights_[i].CastsShadows_      = ActiveScene->DirectionalLights[LightIndex]->CastsShadows_;
+        ShaderUniformData_->DirectionalLights_[i].DepthMapIndex_     = ActiveScene->DirectionalLights[LightIndex]->DepthMap.DepthMapTextureIndex;
+        ShaderUniformData_->DirectionalLights_[i].LightSpaceMatrix_  = ActiveScene->DirectionalLights[LightIndex]->DepthMap.TransformationMatrix;
     }
 
     // Point Lights
-    int NumberPointLights = ActiveScene->PointLights.size();
+    int NumberPointLights = static_cast<int>(PointLightIndexes.size());
     ShaderUniformData_->NumberPointLights_ = NumberPointLights;
     for (int i = 0; i < NumberPointLights; i++) {
+        unsigned long LightIndex = PointLightIndexes[i];
         ShaderUniformData_->PointLights_.push_back(ERS_STRUCT_ShaderUniformDataPointLight());
-        ShaderUniformData_->PointLights_[i].Position_           = ActiveScene->PointLights[i]->Pos;
-        ShaderUniformData_->PointLights_[i].Intensity_          = ActiveScene->PointLights[i]->Intensity;
-        ShaderUniformData_->PointLights_[i].Color_              = ActiveScene->PointLights[i]->Color;
-        ShaderUniformData_->PointLights_[i].MaxDistance_        = ActiveScene->PointLights[i]->MaxDistance;
-        ShaderUniformData_->PointLights_[i].CastsShadows_       = ActiveScene->PointLights[i]->CastsShadows_;
-        ShaderUniformData_->PointLights_[i].DepthCubemapIndex_  = ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex;
+        ShaderUniformData_->PointLights_[i].Position_           = ActiveScene->PointLights[LightIndex]->Pos;
+        ShaderUniformData_->PointLights_[i].Intensity_          = ActiveScene->PointLights[LightIndex]->Intensity;
+        ShaderUniformData_->PointLights_[i].Color_              = ActiveScene->PointLights[LightIndex]->Color;
+        ShaderUniformData_->PointLights_[i].MaxDistance_        = ActiveScene->PointLights[LightIndex]->MaxDistance;
+        ShaderUniformData_->PointLights_[i].CastsShadows_       = ActiveScene->PointLights[LightIndex]->CastsShadows_;
+        ShaderUniformData_->PointLights_[i].DepthCubemapIndex_  = ActiveScene->PointLights[LightIndex]->DepthMap.DepthMapTextureIndex;
     }
 
     // Spot Lights
-    int NumberSpotLights = ActiveScene->SpotLights.size();
+    int NumberSpotLights = static_cast<int>(SpotLightIndexes.size());
     ShaderUniformData_->NumberSpotLights_ = NumberSpotLights;
     for (int i = 0; i < NumberSpotLights; i++) {
+        unsigned long LightIndex = SpotLightIndexes[i];
         ShaderUniformData_->SpotLights_.push_back(ERS_STRUCT_ShaderUniformDataSpotLight());
-        ShaderUniformData_->SpotLights_[i].Position_ = ActiveScene->SpotLights[i]->Pos;
-        ShaderUniformData_->SpotLights_[i].Direction_ = ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->SpotLights[i]->Rot);
-        ShaderUniformData_->SpotLights_[i].Intensity_ = ActiveScene->SpotLights[i]->Intensity;
-        ShaderUniformData_->SpotLights_[i].CutOff_ = 1.0f - (ActiveScene->SpotLights[i]->CutOff * (0.01745329 / 4));
-        ShaderUniformData_->SpotLights_[i].RollOff_ = glm::radians(ActiveScene->SpotLights[i]->Rolloff);
-        ShaderUniformData_->SpotLights_[i].Color_ = ActiveScene->SpotLights[i]->Color;
-        ShaderUniformData_->SpotLights_[i].MaxDistance_ = ActiveScene->SpotLights[i]->MaxDistance;
-        ShaderUniformData_->SpotLights_[i].CastsShadows_ = ActiveScene->SpotLights[i]->CastsShadows_;
-        ShaderUniformData_->SpotLights_[i].DepthMapIndex_ = ActiveScene->SpotLights[i]->DepthMap.DepthMapTextureIndex;
-        ShaderUniformData_->SpotLights_[i].LightSpaceMatrix_ = ActiveScene->SpotLights[i]->DepthMap.TransformationMatrix;
+        ShaderUniformData_->SpotLights_[i].Position_ = ActiveScene->SpotLights[LightIndex]->Pos;
+        ShaderUniformData_->SpotLights_[i].Direction_ = ERS_FUNCTION_ConvertRotationToFrontVector(ActiveScene->SpotLights[LightIndex]->Rot);
+        ShaderUniformData_->SpotLights_[i].Intensity_ = ActiveScene->SpotLights[LightIndex]->Intensity;
+        ShaderUniformData_->SpotLights_[i].CutOff_ = 1.0f - (ActiveScene->SpotLights[LightIndex]->CutOff * (0.01745329 / 4));
+        ShaderUniformData_->SpotLights_[i].RollOff_ = glm::radians(ActiveScene->SpotLights[LightIndex]->Rolloff);
+        ShaderUniformData_->SpotLights_[i].Color_ = ActiveScene->SpotLights[LightIndex]->Color;
+        ShaderUniformData_->SpotLights_[i].MaxDistance_ = ActiveScene->SpotLights[LightIndex]->MaxDistance;
+        ShaderUniformData_->SpotLights_[i].CastsShadows_ = ActiveScene->SpotLights[LightIndex]->CastsShadows_;
+        ShaderUniformData_->SpotLights_[i].DepthMapIndex_ = ActiveScene->SpotLights[LightIndex]->DepthMap.DepthMapTextureIndex;
+        ShaderUniformData_->SpotLights_[i].LightSpaceMatrix_ = ActiveScene->SpotLights[LightIndex]->DepthMap.TransformationMatrix;
     }
 }
