@@ -128,6 +128,11 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
     double ModelRotX, ModelRotY, ModelRotZ;
     double ModelScaleX, ModelScaleY, ModelScaleZ;
     bool Successful = true;
+    auto AddWritebackError = [ErrorMessageString](std::string ErrorMessage) {
+        if (ErrorMessageString != nullptr) {
+            ErrorMessageString->push_back(ErrorMessage);
+        }
+    };
 
     try {
         ModelPosX = ModelModule.attr("PosX").cast<double>();
@@ -135,7 +140,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
         ModelPosZ = ModelModule.attr("PosZ").cast<double>();
         Model->SetPosition(glm::vec3(ModelPosX, ModelPosY, ModelPosZ));
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Model Position CAST_ERROR");
+        AddWritebackError("Model Position CAST_ERROR");
         Successful = false;
     }
     try {
@@ -144,7 +149,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
         ModelRotZ = ModelModule.attr("RotZ").cast<double>();
         Model->SetRotation(glm::vec3(ModelRotX, ModelRotY, ModelRotZ));
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Model Rotation CAST_ERROR");
+        AddWritebackError("Model Rotation CAST_ERROR");
         Successful = false;
     }
     try {
@@ -153,14 +158,14 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
         ModelScaleZ = ModelModule.attr("ScaleZ").cast<double>();
         Model->SetScale(glm::vec3(ModelScaleX, ModelScaleY, ModelScaleZ));
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Model Scale CAST_ERROR");
+        AddWritebackError("Model Scale CAST_ERROR");
         Successful = false;
     }
 
     try {
         Model->Enabled = ModelModule.attr("Enabled").cast<bool>(); 
     } catch (pybind11::cast_error const&) {
-        ErrorMessageString->push_back("Model Enable CAST_ERROR");
+        AddWritebackError("Model Enable CAST_ERROR");
         Successful = false;
     }
 
@@ -172,7 +177,7 @@ bool ERS_CLASS_PythonInterpreterIntegration::ExecuteModelScript(std::string Scri
 
 
     // Return Status
-    return true;
+    return Successful;
     
 
 }
