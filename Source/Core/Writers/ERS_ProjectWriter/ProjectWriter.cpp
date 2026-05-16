@@ -151,7 +151,7 @@ bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, lo
         ProjectEmitter<<YAML::Key<<"FragmentID"<<YAML::Value<<ProjectPointer->ShaderPrograms[i].FragmentID;
         ProjectEmitter<<YAML::Key<<"GeometryID"<<YAML::Value<<ProjectPointer->ShaderPrograms[i].GeometryID;
         ProjectEmitter<<YAML::Key<<"ComputeID"<<YAML::Value<<ProjectPointer->ShaderPrograms[i].ComputeID;
-        ProjectEmitter<<YAML::Key<<"TessContolID"<<YAML::Value<<ProjectPointer->ShaderPrograms[i].TCID;
+        ProjectEmitter<<YAML::Key<<"TessControlID"<<YAML::Value<<ProjectPointer->ShaderPrograms[i].TCID;
         ProjectEmitter<<YAML::Key<<"TessEvalID"<<YAML::Value<<ProjectPointer->ShaderPrograms[i].TEID;
         ProjectEmitter<<YAML::EndMap;
     }

@@ -13,8 +13,9 @@ GUI_Window_ShaderEditor::GUI_Window_ShaderEditor(ERS_STRUCT_SystemUtils* SystemU
     SystemUtils_->Logger_->Log("Initializing GUI ShaderEditor Window", 4);
 
 
-    Editors_.push_back(std::make_shared<TextEditor>());
-    Editors_.push_back(std::make_shared<TextEditor>());
+    for (int i = 0; i < ShaderStageCount_; i++) {
+        Editors_.push_back(std::make_shared<TextEditor>());
+    }
     
     ReloadEditorText();
 
@@ -97,19 +98,96 @@ GUI_Window_ShaderEditor::~GUI_Window_ShaderEditor() {
 
 void GUI_Window_ShaderEditor::ReloadEditorText() {
 
-    // Load Vertex Shader
-    std::unique_ptr<BG::ERS::IOSubsystem::IOData> Data = std::make_unique<BG::ERS::IOSubsystem::IOData>();
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID, Data.get());
-    std::string VertexText = std::string((const char*)Data->Data.get());
-
-    // Load Fragment Shader
-    SystemUtils_->ERS_IOSubsystem_->ReadAsset(ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID, Data.get());
-    std::string  FragmentText = std::string((const char*)Data->Data.get());
-
-    // Set Editor Text
-    Editors_[0]->SetText(VertexText);
-    Editors_[1]->SetText(FragmentText);
+    for (int Stage = 0; Stage < ShaderStageCount_; Stage++) {
+        Editors_[Stage]->SetText(ReadShaderText(GetStageAssetID(Stage)));
+    }
     Editor_ = Editors_[Mode_];
+
+}
+
+const char* GUI_Window_ShaderEditor::GetStageName(int Stage) const {
+
+    switch (Stage) {
+        case 0:
+            return "Vertex";
+        case 1:
+            return "Fragment";
+        case 2:
+            return "Geometry";
+        case 3:
+            return "Compute";
+        case 4:
+            return "Tess Control";
+        case 5:
+            return "Tess Eval";
+        default:
+            return "Unknown";
+    }
+
+}
+
+long GUI_Window_ShaderEditor::GetStageAssetID(int Stage) const {
+
+    const ERS_STRUCT_ShaderProgramAssetIDs& ShaderProgram = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_];
+    switch (Stage) {
+        case 0:
+            return ShaderProgram.VertexID;
+        case 1:
+            return ShaderProgram.FragmentID;
+        case 2:
+            return ShaderProgram.GeometryID;
+        case 3:
+            return ShaderProgram.ComputeID;
+        case 4:
+            return ShaderProgram.TCID;
+        case 5:
+            return ShaderProgram.TEID;
+        default:
+            return -1;
+    }
+
+}
+
+void GUI_Window_ShaderEditor::SetStageAssetID(int Stage, long AssetID) {
+
+    ERS_STRUCT_ShaderProgramAssetIDs& ShaderProgram = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_];
+    switch (Stage) {
+        case 0:
+            ShaderProgram.VertexID = AssetID;
+            break;
+        case 1:
+            ShaderProgram.FragmentID = AssetID;
+            break;
+        case 2:
+            ShaderProgram.GeometryID = AssetID;
+            break;
+        case 3:
+            ShaderProgram.ComputeID = AssetID;
+            break;
+        case 4:
+            ShaderProgram.TCID = AssetID;
+            break;
+        case 5:
+            ShaderProgram.TEID = AssetID;
+            break;
+        default:
+            break;
+    }
+
+}
+
+std::string GUI_Window_ShaderEditor::ReadShaderText(long AssetID) {
+
+    if (AssetID == -1) {
+        return "";
+    }
+
+    std::unique_ptr<BG::ERS::IOSubsystem::IOData> Data = std::make_unique<BG::ERS::IOSubsystem::IOData>();
+    SystemUtils_->ERS_IOSubsystem_->ReadAsset(AssetID, Data.get());
+    if ((Data->Data == nullptr) || (Data->Size_B == 0)) {
+        return "";
+    }
+    return std::string(reinterpret_cast<const char*>(Data->Data.get()), Data->Size_B);
 
 }
 
@@ -126,6 +204,24 @@ void GUI_Window_ShaderEditor::SaveShader(std::string ShaderText, long AssetID) {
     // Write To Storage
     SystemUtils_->ERS_IOSubsystem_->WriteAsset(AssetID, Data.get());
 
+
+}
+
+void GUI_Window_ShaderEditor::SaveShaderStage(int Stage) {
+
+    std::string ShaderText = Editors_[Stage]->GetText();
+    long AssetID = GetStageAssetID(Stage);
+    if ((Stage > 1) && ShaderText.empty()) {
+        SetStageAssetID(Stage, -1);
+        return;
+    }
+
+    if (AssetID == -1) {
+        AssetID = SystemUtils_->ERS_IOSubsystem_->AllocateAssetID();
+        SetStageAssetID(Stage, AssetID);
+    }
+
+    SaveShader(ShaderText, AssetID);
 
 }
 
@@ -202,6 +298,8 @@ void GUI_Window_ShaderEditor::DrawEditorWindow() {
                         // Save To Disk, So Opening It Works
                         SaveShader(NewShaderVertexText_,   ShaderProgram.VertexID);
                         SaveShader(NewshaderFragmentText_, ShaderProgram.FragmentID);
+                        SelectedShaderProgramIndex_ = ProjectUtils_->ProjectManager_->Project_.ShaderPrograms.size() - 1;
+                        ReloadEditorText();
 
                     }
 
@@ -227,16 +325,13 @@ void GUI_Window_ShaderEditor::DrawEditorWindow() {
                     // Save Options
                     ImGui::Separator();
                     if (ImGui::MenuItem("Save")) {
-                        if (Mode_ == 0) {
-                            SaveShader(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
-                        } else {
-                            SaveShader(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
-                        }
+                        SaveShaderStage(Mode_);
                     }
 
                     if (ImGui::MenuItem("Save All")) {
-                        SaveShader(Editors_[0]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].VertexID);
-                        SaveShader(Editors_[1]->GetText(), ProjectUtils_->ProjectManager_->Project_.ShaderPrograms[SelectedShaderProgramIndex_].FragmentID);
+                        for (int Stage = 0; Stage < ShaderStageCount_; Stage++) {
+                            SaveShaderStage(Stage);
+                        }
                     }
 
 
@@ -294,19 +389,14 @@ void GUI_Window_ShaderEditor::DrawEditorWindow() {
 
                 // Vertex/Fragment Mode Selector
                 if (ImGui::BeginMenu("Mode")) {
-                    
-                    if (ImGui::MenuItem("Vertex", nullptr, (Mode_==0))) {
-                        Mode_ = 0;
-                        Editor_ = Editors_[Mode_];
-                        Editor_->Render("Shader Editor");
-                    }
 
-                    if (ImGui::MenuItem("Fragment", nullptr, (Mode_==1))) {
-                        Mode_ = 1;
-                        Editor_ = Editors_[Mode_];
-                        Editor_->Render("Shader Editor");
+                    for (int Stage = 0; Stage < ShaderStageCount_; Stage++) {
+                        if (ImGui::MenuItem(GetStageName(Stage), nullptr, (Mode_ == Stage))) {
+                            Mode_ = Stage;
+                            Editor_ = Editors_[Mode_];
+                            Editor_->Render("Shader Editor");
+                        }
                     }
-
 
                 ImGui::EndMenu();
                 }
@@ -333,9 +423,29 @@ void GUI_Window_ShaderEditor::DrawToolsWindow() {
     // Compile Shader Object
     std::string VertexText = Editors_[0]->GetText();
     std::string FragmentText = Editors_[1]->GetText();
+    std::string GeometryText = Editors_[2]->GetText();
+    std::string ComputeText = Editors_[3]->GetText();
+    std::string TCText = Editors_[4]->GetText();
+    std::string TEText = Editors_[5]->GetText();
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->ResetProgram();
     std::string VertexLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileVertexShader(VertexText.c_str());
     std::string FragmentLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileFragmentShader(FragmentText.c_str());
+    std::string GeometryLog;
+    std::string ComputeLog;
+    std::string TCLog;
+    std::string TELog;
+    if (!GeometryText.empty()) {
+        GeometryLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileGeometryShader(GeometryText.c_str());
+    }
+    if (!ComputeText.empty()) {
+        ComputeLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileComputeShader(ComputeText.c_str());
+    }
+    if (!TCText.empty()) {
+        TCLog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileTCShader(TCText.c_str());
+    }
+    if (!TEText.empty()) {
+        TELog = VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CompileTEShader(TEText.c_str());
+    }
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->CreateShaderProgram(SystemUtils_->Logger_.get(), false);
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->DisplayName = "Preview Shader";
     VisualRenderer_->Shaders_[VisualRenderer_->Shaders_.size() - 1]->InternalName = "Preview Shader";
@@ -346,6 +456,14 @@ void GUI_Window_ShaderEditor::DrawToolsWindow() {
         ShaderLog = VertexLog;
     } else if (Mode_ == 1) {
         ShaderLog = FragmentLog;
+    } else if (Mode_ == 2) {
+        ShaderLog = GeometryLog;
+    } else if (Mode_ == 3) {
+        ShaderLog = ComputeLog;
+    } else if (Mode_ == 4) {
+        ShaderLog = TCLog;
+    } else if (Mode_ == 5) {
+        ShaderLog = TELog;
     }
 
     // Set Default Window Size
@@ -359,5 +477,3 @@ void GUI_Window_ShaderEditor::DrawToolsWindow() {
      ImGui::End();
 
 }
-
-

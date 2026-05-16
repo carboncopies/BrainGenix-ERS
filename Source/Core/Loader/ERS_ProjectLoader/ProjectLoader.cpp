@@ -104,6 +104,8 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
 
         if (it->second["TessControlID"]) {
             Program.TCID = it->second["TessControlID"].as<long>();
+        } else if (it->second["TessContolID"]) {
+            Program.TCID = it->second["TessContolID"].as<long>();
         } else {
             Program.TCID = -1;
         }

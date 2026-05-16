@@ -40,6 +40,17 @@ ERS_STRUCT_Shader::~ERS_STRUCT_Shader() {
 void ERS_STRUCT_Shader::ResetProgram() {
 
     glDeleteProgram(ShaderProgram_);
+    ShaderProgram_ = 0;
+    VertexShader = 0;
+    FragmentShader = 0;
+    GeometryShader = 0;
+    ComputeShader = 0;
+    TCShader = 0;
+    TEShader = 0;
+    HasGeometryShader = false;
+    HasComputeShader = false;
+    HasTCShader = false;
+    HasTEShader = false;
 
 }
 
