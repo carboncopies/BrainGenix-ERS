@@ -3,7 +3,10 @@
 //======================================================================//
 
 #include <OpenGLDebug.h>
+// cppcheck-suppress missingIncludeSystem
+#include <EditorLocalization.h>
 
+namespace Localization = ERS::Editor::Localization;
 
 ERS_CLASS_OpenGLDebug::ERS_CLASS_OpenGLDebug(ERS_STRUCT_SystemUtils* SystemUtils) {
 
@@ -26,14 +29,14 @@ ERS_CLASS_OpenGLDebug::~ERS_CLASS_OpenGLDebug() {
 
 void ERS_CLASS_OpenGLDebug::DrawMenu() {
 
-    if (ImGui::MenuItem("Debugging Enabled", "", &DebugEnabled_)) {
+    if (ImGui::MenuItem(Localization::Get(Localization::TextID::DebuggingEnabled), "", &DebugEnabled_)) {
         ERS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
     }
 
     ImGui::Separator();
 
     // Source Submenu
-    if (ImGui::BeginMenu("GL Sources")) {
+    if (ImGui::BeginMenu(Localization::Get(Localization::TextID::GLSources))) {
 
         if (ImGui::MenuItem("GL_DEBUG_SOURCE_API", "", &ERS_OpenGLLoggingSystem_->LogSourceApi_)) {
             ERS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
@@ -58,7 +61,7 @@ void ERS_CLASS_OpenGLDebug::DrawMenu() {
     }
 
     // Type Submenu
-    if (ImGui::BeginMenu("GL Types")) {
+    if (ImGui::BeginMenu(Localization::Get(Localization::TextID::GLTypes))) {
 
         if (ImGui::MenuItem("GL_DEBUG_TYPE_ERROR", "", &ERS_OpenGLLoggingSystem_->LogTypeError_)) {
             ERS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);
@@ -92,7 +95,7 @@ void ERS_CLASS_OpenGLDebug::DrawMenu() {
     }
 
     // Severity Submenu
-    if (ImGui::BeginMenu("GL Severity")) {
+    if (ImGui::BeginMenu(Localization::Get(Localization::TextID::GLSeverity))) {
 
         if (ImGui::MenuItem("GL_DEBUG_SEVERITY_HIGH", "", &ERS_OpenGLLoggingSystem_->LogSeverityHigh_)) {
             ERS_OpenGLLoggingSystem_->SetCollectionStatus(DebugEnabled_);

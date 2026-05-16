@@ -3,7 +3,10 @@
 //======================================================================//
 
 #include <GUI_Menu_Debug.h>
+// cppcheck-suppress missingIncludeSystem
+#include <EditorLocalization.h>
 
+namespace Localization = ERS::Editor::Localization;
 
 // Constructor
 GUI_Menu_Debug::GUI_Menu_Debug(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Windows* Windows, ERS_CLASS_WindowManager* WindowManager) {
@@ -37,20 +40,20 @@ void GUI_Menu_Debug::Draw() {
     if (DebugMenuEnabled_) {
 
         // Debug Menu
-        if (ImGui::BeginMenu("Debug")) {
+        if (ImGui::BeginMenu(Localization::Get(Localization::TextID::Debug))) {
 
 
             // Debugging Tools Menu
-            if (ImGui::MenuItem("ImGui Demo Window")) {
+            if (ImGui::MenuItem(Localization::Get(Localization::TextID::ImGuiDemoWindow))) {
                 ShowImGuiDemoWindow_ = !ShowImGuiDemoWindow_;
             }
 
             // Test Editor
-            ImGui::MenuItem("Test Editor Window", "", &Windows_->GUI_Window_TestEditor_->Enabled_);
+            ImGui::MenuItem(Localization::Get(Localization::TextID::TestEditorWindow), "", &Windows_->GUI_Window_TestEditor_->Enabled_);
 
 
             // Segfault Button
-            if (ImGui::MenuItem("Induce Segmentation Fault")) {
+            if (ImGui::MenuItem(Localization::Get(Localization::TextID::InduceSegmentationFault))) {
                 int* ThisWillCrash = nullptr;
                 int Something = *ThisWillCrash;
                 Something++;
@@ -61,9 +64,9 @@ void GUI_Menu_Debug::Draw() {
             ImGui::Separator();
 
             // Window Manager Debug stuff - show, hide, toggle windows.
-            if (ImGui::BeginMenu("Window Manager Debugging")) {
+            if (ImGui::BeginMenu(Localization::Get(Localization::TextID::WindowManagerDebugging))) {
 
-                if (ImGui::MenuItem("Show All Windows")) {
+                if (ImGui::MenuItem(Localization::Get(Localization::TextID::ShowAllWindows))) {
 
                     std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
                     for (unsigned int i = 0; i < WindowNames.size(); i++) {
@@ -75,7 +78,7 @@ void GUI_Menu_Debug::Draw() {
 
                 }
 
-                if (ImGui::MenuItem("Hide All Windows")) {
+                if (ImGui::MenuItem(Localization::Get(Localization::TextID::HideAllWindows))) {
 
                     std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
                     for (unsigned int i = 0; i < WindowNames.size(); i++) {
@@ -87,7 +90,7 @@ void GUI_Menu_Debug::Draw() {
 
                 }
 
-                if (ImGui::MenuItem("Invert Window States")) {
+                if (ImGui::MenuItem(Localization::Get(Localization::TextID::InvertWindowStates))) {
 
                     std::vector<std::string> WindowNames = WindowManager_->GetWindowNames();
                     for (unsigned int i = 0; i < WindowNames.size(); i++) {
@@ -107,7 +110,7 @@ void GUI_Menu_Debug::Draw() {
 
 
             // OpenGL Debug Submenu
-            if (ImGui::BeginMenu("OpenGL Debugging")) {
+            if (ImGui::BeginMenu(Localization::Get(Localization::TextID::OpenGLDebugging))) {
                 ERS_CLASS_OpenGLDebug_->DrawMenu();
             ImGui::EndMenu();
             }

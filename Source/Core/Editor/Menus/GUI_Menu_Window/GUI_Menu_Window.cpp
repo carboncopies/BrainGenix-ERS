@@ -3,7 +3,10 @@
 //======================================================================//
 
 #include <GUI_Menu_Window.h>
+// cppcheck-suppress missingIncludeSystem
+#include <EditorLocalization.h>
 
+namespace Localization = ERS::Editor::Localization;
 
 GUI_Menu_Window::GUI_Menu_Window(ERS_STRUCT_SystemUtils* SystemUtils, ERS_STRUCT_Windows* Windows,  ERS_CLASS_VisualRenderer* VisualRendererInstance) {
 
@@ -25,37 +28,37 @@ GUI_Menu_Window::~GUI_Menu_Window() {
 void GUI_Menu_Window::Draw() {
 
     // Window Menu
-    if (ImGui::BeginMenu("Window")) {
+    if (ImGui::BeginMenu(Localization::Get(Localization::TextID::Window))) {
 
 
 
         // Add Windows Menu
-        if (ImGui::BeginMenu("Windows")) {
+        if (ImGui::BeginMenu(Localization::Get(Localization::TextID::Windows))) {
 
             // Add Scene Tree Editor Window
-            ImGui::MenuItem("Scene Tree", "", &Windows_->GUI_Window_SceneTree_->Enabled_);
-            ImGui::MenuItem("System Log", "", &Windows_->GUI_Window_SystemLog_->Enabled_);
-            ImGui::MenuItem("Asset Explorer", "", &Windows_->GUI_Window_AssetExplorer_->Enabled_);
-            ImGui::MenuItem("Object Properties", "", &Windows_->GUI_Window_ObjectProperties_->Enabled_);
+            ImGui::MenuItem(Localization::Get(Localization::TextID::SceneTree), "", &Windows_->GUI_Window_SceneTree_->Enabled_);
+            ImGui::MenuItem(Localization::Get(Localization::TextID::SystemLog), "", &Windows_->GUI_Window_SystemLog_->Enabled_);
+            ImGui::MenuItem(Localization::Get(Localization::TextID::AssetExplorer), "", &Windows_->GUI_Window_AssetExplorer_->Enabled_);
+            ImGui::MenuItem(Localization::Get(Localization::TextID::ObjectProperties), "", &Windows_->GUI_Window_ObjectProperties_->Enabled_);
 
             // Framerate Widgets
-            if (ImGui::BeginMenu("Framerate")) {
+            if (ImGui::BeginMenu(Localization::Get(Localization::TextID::Framerate))) {
 
                 // Framerate Related Tools
-                ImGui::MenuItem("Framerate Counter", "", &Windows_->GUI_Window_FramerateCounter_->Enabled_);
-                ImGui::MenuItem("Framerate Histogram", "", &Windows_->GUI_Window_FramerateHistogram_->Enabled_);
-                ImGui::MenuItem("Framerate Graph", "", &Windows_->GUI_Window_FramerateGraph_->Enabled_);
-                ImGui::MenuItem("Framerate Plot", "", &Windows_->GUI_Window_FrameratePlot_->Enabled_);
-                ImGui::MenuItem("Frame Latency Graph", "", &Windows_->GUI_Window_FrameLatencyGraph_->Enabled_);
+                ImGui::MenuItem(Localization::Get(Localization::TextID::FramerateCounter), "", &Windows_->GUI_Window_FramerateCounter_->Enabled_);
+                ImGui::MenuItem(Localization::Get(Localization::TextID::FramerateHistogram), "", &Windows_->GUI_Window_FramerateHistogram_->Enabled_);
+                ImGui::MenuItem(Localization::Get(Localization::TextID::FramerateGraph), "", &Windows_->GUI_Window_FramerateGraph_->Enabled_);
+                ImGui::MenuItem(Localization::Get(Localization::TextID::FrameratePlot), "", &Windows_->GUI_Window_FrameratePlot_->Enabled_);
+                ImGui::MenuItem(Localization::Get(Localization::TextID::FrameLatencyGraph), "", &Windows_->GUI_Window_FrameLatencyGraph_->Enabled_);
 
             ImGui::EndMenu();
             }
 
             // System Resource Widgets
-            if (ImGui::BeginMenu("System Resources")) {
+            if (ImGui::BeginMenu(Localization::Get(Localization::TextID::SystemResources))) {
 
                 // Framerate Related Tools
-                ImGui::MenuItem("RAM", "", &Windows_->GUI_Window_RAMGraph_->Enabled_);
+                ImGui::MenuItem(Localization::Get(Localization::TextID::RAM), "", &Windows_->GUI_Window_RAMGraph_->Enabled_);
 
             ImGui::EndMenu();
             }
@@ -67,14 +70,14 @@ void GUI_Menu_Window::Draw() {
         }
 
         // Viewport Menu
-        if (ImGui::BeginMenu("Viewport")) {
+        if (ImGui::BeginMenu(Localization::Get(Localization::TextID::Viewport))) {
 
             // Viewport Options
-            if (ImGui::MenuItem("Add Viewport")) {
+            if (ImGui::MenuItem(Localization::Get(Localization::TextID::AddViewport))) {
                 VisualRenderer_->CreateViewport();
             }
 
-            if (ImGui::MenuItem("Remove Viewport")) {
+            if (ImGui::MenuItem(Localization::Get(Localization::TextID::RemoveViewport))) {
                 if (VisualRenderer_->Viewports_.size() > 0) {
                     VisualRenderer_->DeleteViewport(VisualRenderer_->Viewports_.size()-1);
                 }
@@ -85,8 +88,8 @@ void GUI_Menu_Window::Draw() {
         ImGui::EndMenu();
         }
 
-        ImGui::MenuItem("Script Editor", "", &Windows_->GUI_Window_ScriptEditor_->Enabled_);
-        ImGui::MenuItem("Shader Editor", "", &Windows_->GUI_Window_ShaderEditor_->Enabled_);
+        ImGui::MenuItem(Localization::Get(Localization::TextID::ScriptEditor), "", &Windows_->GUI_Window_ScriptEditor_->Enabled_);
+        ImGui::MenuItem(Localization::Get(Localization::TextID::ShaderEditor), "", &Windows_->GUI_Window_ShaderEditor_->Enabled_);
 
 
     ImGui::EndMenu();

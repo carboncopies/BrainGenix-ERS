@@ -32,4 +32,4 @@ target_link_libraries(Menu_Settings
 
     )
 
-target_include_directories(Menu_Settings PUBLIC ./)
+target_include_directories(Menu_Settings PUBLIC ./ ${CMAKE_CURRENT_SOURCE_DIR}/..)

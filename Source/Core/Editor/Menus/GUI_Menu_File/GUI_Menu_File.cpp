@@ -3,7 +3,10 @@
 //======================================================================//
 
 #include <GUI_Menu_File.h>
+// cppcheck-suppress missingIncludeSystem
+#include <EditorLocalization.h>
 
+namespace Localization = ERS::Editor::Localization;
 
 GUI_Menu_File::GUI_Menu_File(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_Windows* Windows) {
 
@@ -28,15 +31,15 @@ GUI_Menu_File::~GUI_Menu_File() {
 void GUI_Menu_File::Draw() {
 
     // File Menu
-    if (ImGui::BeginMenu("File")) {
+    if (ImGui::BeginMenu(Localization::Get(Localization::TextID::File))) {
 
-        ImGui::MenuItem("New", "", &Windows_->GUI_Window_NewProject_->Enabled_);
-        ImGui::MenuItem("Open", "", &Windows_->GUI_Window_OpenProject_->Enabled_);
+        ImGui::MenuItem(Localization::Get(Localization::TextID::New), "", &Windows_->GUI_Window_NewProject_->Enabled_);
+        ImGui::MenuItem(Localization::Get(Localization::TextID::Open), "", &Windows_->GUI_Window_OpenProject_->Enabled_);
         ImGui::Separator();
 
 
         ImGui::Separator();
-        if (ImGui::MenuItem("Save")) {
+        if (ImGui::MenuItem(Localization::Get(Localization::TextID::Save))) {
 
             SystemUtils_->Logger_->Log("Saving Project Data", 4);
             ProjectUtils_->ProjectManager_->WriteProject(1);
@@ -51,18 +54,18 @@ void GUI_Menu_File::Draw() {
             }
         }
 
-        ImGui::MenuItem("Project Settings", "", &Windows_->GUI_Window_ProjectSettings_->Enabled_);
-        ImGui::MenuItem("About", "", &Windows_->GUI_Window_About_->Enabled_);
+        ImGui::MenuItem(Localization::Get(Localization::TextID::ProjectSettings), "", &Windows_->GUI_Window_ProjectSettings_->Enabled_);
+        ImGui::MenuItem(Localization::Get(Localization::TextID::About), "", &Windows_->GUI_Window_About_->Enabled_);
 
         ImGui::Separator();
 
-        ImGui::MenuItem("Import Model", "", &Windows_->GUI_Window_ImportModel_->Enabled_);
-        ImGui::MenuItem("Import Models In Directory", "", &Windows_->GUI_Window_ImportModelDirectory_->Enabled_);
+        ImGui::MenuItem(Localization::Get(Localization::TextID::ImportModel), "", &Windows_->GUI_Window_ImportModel_->Enabled_);
+        ImGui::MenuItem(Localization::Get(Localization::TextID::ImportModelsInDirectory), "", &Windows_->GUI_Window_ImportModelDirectory_->Enabled_);
 
         ImGui::Separator();
 
         // Exit Options
-        if (ImGui::MenuItem("Exit")) {
+        if (ImGui::MenuItem(Localization::Get(Localization::TextID::Exit))) {
             *SystemUtils_->SystemShouldRun_ = false;
         }
 
