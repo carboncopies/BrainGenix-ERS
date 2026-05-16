@@ -4,6 +4,16 @@
 
 #include <GUI_Window_ProjectSettings.h>
 
+#include <algorithm>
+#include <cstring>
+
+template <size_t Size>
+static void CopyProjectString(char (&Destination)[Size], const std::string& Source) {
+    static_assert(Size > 0, "Project settings buffers must not be empty");
+    std::strncpy(Destination, Source.c_str(), Size - 1);
+    Destination[Size - 1] = '\0';
+}
+
 
 GUI_Window_ProjectSettings::GUI_Window_ProjectSettings(ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_STRUCT_SystemUtils* SystemUtils) {
 
@@ -29,12 +39,12 @@ void GUI_Window_ProjectSettings::Draw() {
         if (Visible) {
  
             // Copy Project Info Into Vars ImGui Can Understand
-            strcpy(ProjectNameBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectName.c_str());
-            strcpy(ProjectCreationDateBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectCreationDate.c_str());
-            strcpy(ProjectModificationDateBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectModificationDate.c_str());
-            strcpy(ProjectDescriptionBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectDescription.c_str());
-            strcpy(ProjectLicenseNameBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectLicense.c_str());
-            strcpy(ProjectVersionBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectVersion.c_str());
+            CopyProjectString(ProjectNameBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectName);
+            CopyProjectString(ProjectCreationDateBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectCreationDate);
+            CopyProjectString(ProjectModificationDateBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectModificationDate);
+            CopyProjectString(ProjectDescriptionBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectDescription);
+            CopyProjectString(ProjectLicenseNameBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectLicense);
+            CopyProjectString(ProjectVersionBuffer, ProjectUtils_->ProjectManager_->Project_.ProjectVersion);
             IsProjectFree = !ProjectUtils_->ProjectManager_->Project_.IsLicenseProprietary;
 
 
@@ -83,10 +93,14 @@ void GUI_Window_ProjectSettings::Draw() {
 
             // Populate Dropdown Menu
             ImGui::Separator();
-            for (int i = 0; (long)i < (long)ProjectUtils_->SceneManager_->Scenes_.size(); i++) {
+            int SceneCount = static_cast<int>(std::min<size_t>(ProjectUtils_->SceneManager_->Scenes_.size(), 1024));
+            for (int i = 0; i < SceneCount; i++) {
                 ProjectScenes[i] = ProjectUtils_->SceneManager_->Scenes_[i]->SceneName.c_str();
             }
-            ImGui::Combo("Default Scene", &ProjectUtils_->ProjectManager_->Project_.DefaultScene, ProjectScenes, ProjectUtils_->SceneManager_->Scenes_.size());
+            if ((SceneCount == 0) || (ProjectUtils_->ProjectManager_->Project_.DefaultScene < 0) || (ProjectUtils_->ProjectManager_->Project_.DefaultScene >= SceneCount)) {
+                ProjectUtils_->ProjectManager_->Project_.DefaultScene = 0;
+            }
+            ImGui::Combo("Default Scene", &ProjectUtils_->ProjectManager_->Project_.DefaultScene, ProjectScenes, SceneCount);
             ImGui::SameLine();
             ImGui::HelpMarker("Set what scene is opened when the project is opened both for editing and as the distributed version.");
 
