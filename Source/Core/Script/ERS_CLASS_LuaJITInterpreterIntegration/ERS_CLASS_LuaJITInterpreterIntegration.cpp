@@ -184,7 +184,7 @@ lua_State* L = luaL_newstate();
     lua_pushnumber(L, PointLight->Color.g);
     lua_setglobal(L, "ColorG");
     lua_pushnumber(L, PointLight->Color.b);
-    lua_setglobal(L, "ColoarB");
+    lua_setglobal(L, "ColorB");
     lua_pushnumber(L, PointLight->Intensity);
     lua_setglobal(L, "Intensity");
     lua_pushnumber(L, PointLight->MaxDistance);
@@ -247,7 +247,7 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteDirectionalLightScript(std::
     lua_pushnumber(L, DirectionalLight->Color.g);
     lua_setglobal(L, "ColorG");
     lua_pushnumber(L, DirectionalLight->Color.b);
-    lua_setglobal(L, "ColoarB");
+    lua_setglobal(L, "ColorB");
     lua_pushnumber(L, DirectionalLight->Intensity);
     lua_setglobal(L, "Intensity");
     lua_pushnumber(L, DirectionalLight->MaxDistance);
@@ -316,7 +316,7 @@ bool ERS_CLASS_LuaJITInterpreterIntegration::ExecuteSpotLightScript(std::string 
     lua_pushnumber(L, SpotLight->Color.g);
     lua_setglobal(L, "ColorG");
     lua_pushnumber(L, SpotLight->Color.b);
-    lua_setglobal(L, "ColoarB");
+    lua_setglobal(L, "ColorB");
     lua_pushnumber(L, SpotLight->Intensity);
     lua_setglobal(L, "Intensity");
     lua_pushnumber(L, SpotLight->MaxDistance);
