@@ -31,7 +31,10 @@ ERS_STRUCT_Scene ERS_CLASS_SceneLoader::ProcessScene(long AssetID) {
 
 
     // Load Then Process Scene
-    std::string SceneDataString = std::string((const char*)SceneData->Data.get());
+    std::string SceneDataString;
+    if (SceneData->Data != nullptr && SceneData->Size_B > 0) {
+        SceneDataString.assign(reinterpret_cast<const char*>(SceneData->Data.get()), SceneData->Size_B);
+    }
     YAML::Node SceneNode = YAML::Load(SceneDataString);
 
     return ProcessScene(SceneNode, AssetID);
