@@ -499,7 +499,10 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, unsi
 
     // Create Data Holders
     ERS_STRUCT_Mesh OutputMesh;
-    OutputMesh = Model->Meshes[Model->NumMeshes_];
+    bool HasMetadataMeshSlot = Model->NumMeshes_ < (int)Model->Meshes.size();
+    if (HasMetadataMeshSlot) {
+        OutputMesh = Model->Meshes[Model->NumMeshes_];
+    }
 
 
 
@@ -578,7 +581,11 @@ ERS_STRUCT_Mesh ERS_CLASS_ModelLoader::ProcessMesh(ERS_STRUCT_Model* Model, unsi
 
 
     // Return Populated Mesh
-    Model->Meshes[Model->NumMeshes_] = OutputMesh;
+    if (HasMetadataMeshSlot) {
+        Model->Meshes[Model->NumMeshes_] = OutputMesh;
+    } else {
+        Model->Meshes.push_back(OutputMesh);
+    }
     Model->NumMeshes_++;
 
     return OutputMesh;
