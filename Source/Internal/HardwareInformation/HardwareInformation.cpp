@@ -31,7 +31,7 @@ ERS_HardwareInformation::ERS_HardwareInformation(BG::Common::Logger::LoggingSyst
     HardwareInfo_.Static_.CPUArchitecture = std::string(architecture_name(iware::cpu::architecture()));
     HardwareInfo_.Static_.CPUEndianness = std::string(endianness_name(iware::cpu::endianness()));
     HardwareInfo_.Static_.CPUModelName = std::string(iware::cpu::model_name());
-    HardwareInfo_.Static_.CPUModelName = std::string(iware::cpu::vendor_id());
+    HardwareInfo_.Static_.CPUVendorID = std::string(iware::cpu::vendor_id());
 
     Logger_->Log(std::string(std::string("Physical CPU Cores: ") + std::to_string(HardwareInfo_.Static_.CPUPhysicalCores)).c_str(), 4);
     Logger_->Log(std::string(std::string("Logical CPU Cores: ") + std::to_string(HardwareInfo_.Static_.CPULogicalCores)).c_str(), 4);
