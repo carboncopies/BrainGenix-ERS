@@ -10,16 +10,16 @@ namespace ERS {
 namespace Module {
 
 
-bool TryWorkingPath(std::string Path) {
+bool TryWorkingPath(std::string Path, YAML::Node& Configuration) {
 
     // Enter Folder
     chdir(Path.c_str());
 
     // Check If Good
     try {
-        YAML::LoadFile("Config.yaml");
+        Configuration = YAML::LoadFile("Config.yaml");
         return true;
-    } catch (YAML::BadFile&) {
+    } catch (const YAML::Exception&) {
         return false;
     }
 
@@ -64,17 +64,13 @@ void ChuckErrorAndGiveUp() {
 bool LoadLocalConfiguration(std::string Path, YAML::Node& Configuration) {
 
     // Try a bunch of differet paths, chuck an error at the end and give up
-    if (TryWorkingPath(".")) {
-        Configuration = YAML::LoadFile("Config.yaml");
+    if (TryWorkingPath(".", Configuration)) {
         return true;
-    } else if (TryWorkingPath("../Resources")) {
-        Configuration = YAML::LoadFile("Config.yaml");
+    } else if (TryWorkingPath("../Resources", Configuration)) {
         return true;
-    } else if (TryWorkingPath(GetExecutableDirectory())) {
-        Configuration = YAML::LoadFile("Config.yaml");
+    } else if (TryWorkingPath(GetExecutableDirectory(), Configuration)) {
         return true;
-    } else if (TryWorkingPath("../Resources")) {
-        Configuration = YAML::LoadFile("Config.yaml");
+    } else if (TryWorkingPath("../Resources", Configuration)) {
         return true;
     } else {
         ChuckErrorAndGiveUp();
