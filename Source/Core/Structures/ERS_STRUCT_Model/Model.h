@@ -34,7 +34,7 @@ struct ERS_STRUCT_Model {
     std::string Directory;
     std::string Name = "Name Not Assigned";
     long ShaderOverrideIndex_ = -1; /**<If not -1, This indicates that the model is requesting a custom shader, and the value is the index of the shader in the system*/
-    long AssetID;
+    long AssetID = -1;
     int NumMeshes_ = 0; /**<Number of loaded meshes*/
 
     
@@ -64,8 +64,8 @@ struct ERS_STRUCT_Model {
     int TargetTextureLevelRAM = 0; /**<Used in preliminary sorting to determine how much this needs to be loaded*/
 
     // Bounding Box Info
-    glm::vec3 BoxScale_;  /**<Bounding Box Size In Local Space (Multiply By Object's scale value to get true size)*/
-    glm::vec3 BoxOffset_; /**<Offset the center of the box so it's synced with the center of the model*/
+    glm::vec3 BoxScale_ = glm::vec3(1.0f);  /**<Bounding Box Size In Local Space (Multiply By Object's scale value to get true size)*/
+    glm::vec3 BoxOffset_ = glm::vec3(0.0f); /**<Offset the center of the box so it's synced with the center of the model*/
 
 
     // Texture Streaming System
@@ -96,8 +96,8 @@ struct ERS_STRUCT_Model {
     bool GammaCorrection = false;
     bool IsTemplateModel = false; /**<This indicates if the model is a the "master" copy of instanced models.*/
 
-    long MetadataID; /**<Asset ID containing the YAML string with the model's info*/
-    long ModelDataID; /**<Asset ID containing the 3d model file used by the asset*/
+    long MetadataID = -1; /**<Asset ID containing the YAML string with the model's info*/
+    long ModelDataID = -1; /**<Asset ID containing the 3d model file used by the asset*/
     
     std::vector<long> TextureIDs;
     
@@ -210,6 +210,5 @@ struct ERS_STRUCT_Model {
 
 
 };
-
 
 
