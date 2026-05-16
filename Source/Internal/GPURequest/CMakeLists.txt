@@ -21,6 +21,9 @@ target_link_libraries(ERS_GPURequest
 
 # Link Internal Libs
 target_link_libraries(ERS_GPURequest
+    ERS_STRUCT_HardwareInfo
+    bg-common-logger
     )
+
 
 target_include_directories(ERS_GPURequest PUBLIC ./)
