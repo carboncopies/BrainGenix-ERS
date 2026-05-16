@@ -4,6 +4,11 @@
 
 #include <RendererManager.h>
 
+// cppcheck-suppress missingIncludeSystem
+#include <algorithm>
+// cppcheck-suppress missingIncludeSystem
+#include <cctype>
+
 
 void ErrorCallback(int ErrorCode, const char* ErrorString) {
     const char* Message = ErrorString != nullptr ? ErrorString : "No error message provided";
@@ -158,11 +163,37 @@ void RendererManager::InitializeGLFW() {
     SystemUtils_->Logger_->Log("Read Configuration File For 'WindowHeight' Parameter", 1);
     WindowHeight_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowHeight"].as<int>();
     SystemUtils_->Logger_->Log("Read Configuration File For 'WindowTitle' Parameter", 1);
-    WindowTitle_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowTitle"].as<std::string>().c_str();
+    WindowTitle_ = (*SystemUtils_->LocalSystemConfiguration_)["WindowTitle"].as<std::string>();
+
+    YAML::Node OffscreenRenderingNode = (*SystemUtils_->LocalSystemConfiguration_)["OffscreenRendering"];
+    OffscreenRendering_ = OffscreenRenderingNode ? OffscreenRenderingNode.as<bool>() : false;
+
+    YAML::Node OffscreenContextAPINode = (*SystemUtils_->LocalSystemConfiguration_)["OffscreenContextAPI"];
+    std::string OffscreenContextAPI = OffscreenContextAPINode ? OffscreenContextAPINode.as<std::string>() : std::string("Native");
+    std::transform(OffscreenContextAPI.begin(), OffscreenContextAPI.end(), OffscreenContextAPI.begin(), [](unsigned char Character) {
+        return static_cast<char>(std::tolower(Character));
+    });
+    UseEGLContext_ = OffscreenRendering_ && (OffscreenContextAPI == "egl");
+
+    if (OffscreenRendering_) {
+        SystemUtils_->Logger_->Log("Offscreen rendering enabled, creating the main GLFW context as a hidden window", 3);
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        glfwWindowHint(GLFW_FOCUS_ON_SHOW, GLFW_FALSE);
+
+        if (UseEGLContext_) {
+#ifdef GLFW_EGL_CONTEXT_API
+            glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
+            SystemUtils_->Logger_->Log("Requesting an EGL OpenGL context for off-screen rendering", 3);
+#else
+            UseEGLContext_ = false;
+            SystemUtils_->Logger_->Log("This GLFW build does not expose GLFW_EGL_CONTEXT_API; falling back to the native OpenGL context API", 7);
+#endif
+        }
+    }
 
     // Create Window Object
     glfwSetErrorCallback(ErrorCallback);
-    Window_ = glfwCreateWindow(WindowWidth_, WindowHeight_, WindowTitle_, NULL, NULL);
+    Window_ = glfwCreateWindow(WindowWidth_, WindowHeight_, WindowTitle_.c_str(), NULL, NULL);
     if (Window_ == NULL) {
         glfwTerminate();
     }
@@ -170,7 +201,15 @@ void RendererManager::InitializeGLFW() {
 
     // Bring Window To Front, Unlock Framerate So Our Framerate System Is Used
     glfwMakeContextCurrent(Window_);
-    glfwSwapInterval(1);
+    if (OffscreenRendering_) {
+        glfwSwapInterval(0);
+        std::string ContextMessage = UseEGLContext_
+            ? std::string("Running renderer without presenting a visible GLFW window using an EGL context")
+            : std::string("Running renderer without presenting a visible GLFW window using the native context API");
+        SystemUtils_->Logger_->Log(ContextMessage.c_str(), 3);
+    } else {
+        glfwSwapInterval(1);
+    }
 
 
 
