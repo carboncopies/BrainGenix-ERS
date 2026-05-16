@@ -3,6 +3,8 @@
 //======================================================================//
 
 #include <VisualRenderer.h>
+// cppcheck-suppress missingIncludeSystem
+#include <Profiling.h>
 
 #include <algorithm>
 #include <cmath>
@@ -300,6 +302,7 @@ void ERS_CLASS_VisualRenderer::RestoreEditorViewportCameraState() {
 }
 
 void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneManager* SceneManager) {
+    ERS_PROFILE_NAMED_SCOPE("VisualRenderer::UpdateViewports");
 
     
 
@@ -559,6 +562,7 @@ void ERS_CLASS_VisualRenderer::SetScriptDebug(int Index, std::vector<std::string
 }
 
 void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager* SceneManager, float DeltaTime, bool DrawCursor) {
+    ERS_PROFILE_NAMED_SCOPE("VisualRenderer::UpdateViewport");
 
     // Get Vars
     ERS_STRUCT_Viewport* Viewport = Viewports_[Index].get();

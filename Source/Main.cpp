@@ -47,8 +47,9 @@
 //#include <PythonInterpreterIntegration.h>
 #include <ERS_CLASS_LuaJITInterpreterIntegration.h>
 
-
 #include <GetExecutablePath.h>
+// cppcheck-suppress missingIncludeSystem
+#include <Profiling.h>
 
 
 //
@@ -176,6 +177,7 @@ int main(int NumArguments, char** ArguemntValues) {
 
     // Enter Main Loop
     while (*SystemUtils->SystemShouldRun_) {
+        ERS_PROFILE_NAMED_SCOPE("Main Loop");
 
         // Calculate Frametime
         float CurrentTime = glfwGetTime();
@@ -198,6 +200,7 @@ int main(int NumArguments, char** ArguemntValues) {
 
         // End Frame
         SystemUtils->FramerateManager_->DelayUntilNextFrame();
+        ERS_PROFILE_FRAME_MARK();
 
     }
 

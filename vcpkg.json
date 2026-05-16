@@ -12,6 +12,7 @@
     "ghc-filesystem",
     "infoware",
     "lua",
+    "tracy",
 
     "bg-ers-iosubsystem"
 

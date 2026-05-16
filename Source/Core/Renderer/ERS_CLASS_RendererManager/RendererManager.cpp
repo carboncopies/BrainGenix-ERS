@@ -3,6 +3,8 @@
 //======================================================================//
 
 #include <RendererManager.h>
+// cppcheck-suppress missingIncludeSystem
+#include <Profiling.h>
 
 // cppcheck-suppress missingIncludeSystem
 #include <algorithm>
@@ -237,6 +239,7 @@ void RendererManager::InitializeGLFW() {
 }
 
 void RendererManager::UpdateLoop(float DeltaTime) { 
+    ERS_PROFILE_NAMED_SCOPE("RendererManager::UpdateLoop");
 
     // Log Any Issues
     ReportOpenGLErrors();

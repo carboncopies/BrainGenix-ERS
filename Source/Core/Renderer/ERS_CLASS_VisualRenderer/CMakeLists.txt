@@ -91,6 +91,7 @@ target_link_libraries(ERS_CLASS_VisualRenderer
     ERS_STRUCT_ShaderUniformData
     ERS_ControllerInputManager
 
+    ERS_Profiling
     )
 
 target_include_directories(ERS_CLASS_VisualRenderer PUBLIC ./)

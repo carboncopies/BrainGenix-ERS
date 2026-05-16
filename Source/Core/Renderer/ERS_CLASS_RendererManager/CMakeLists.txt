@@ -43,6 +43,7 @@ target_link_libraries(Renderer
     ERS_STRUCT_HumanInputDeviceUtils
     ERS_STRUCT_OpenGLDefaults
 
+    ERS_Profiling
     ERS_VersioningSystem
     )
 
