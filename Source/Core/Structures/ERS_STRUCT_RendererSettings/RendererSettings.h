@@ -33,6 +33,12 @@ struct ERS_STRUCT_RendererSettings {
     int MaxShadowUpdatesPerFrame_ = 5;
     int ShadowFilterKernelSize_ = 2;
     bool RefreshStaticShadowMaps_ = true;
+
+    // Motion Blur Settings
+    bool MotionBlurEnabled_ = false;
+    float MotionBlurStrength_ = 0.25f;
+    float MotionBlurReferenceFrameRate_ = 60.0f;
+    float MotionBlurMaxBlend_ = 0.85f;
     
     unsigned long long VRAMBudget_ = 0;
     unsigned long long RAMBudget_ = 0;

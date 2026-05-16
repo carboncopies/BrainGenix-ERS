@@ -34,6 +34,7 @@ struct ERS_STRUCT_Viewport {
     bool LightIcons                    = true;  /**<Draw or don't draw the light icons*/
     bool GammaCorrection               = true;  /**<Enable/disable gamma correction*/
     bool HDREnabled_                   = true;  /**<Indicate if hdr should be used or not*/
+    bool MotionBlurEnabled_            = true;  /**<Enable adaptive temporal motion blur for this viewport*/
     bool ShowBoundingBox_              = true;  /**<Draw the bounding boxes or don't*/
  
     bool WireframeBoundingBoxes_       = true;  /**<Set bounding boxes to opaque or wireframe*/
@@ -68,6 +69,9 @@ struct ERS_STRUCT_Viewport {
     unsigned int FramebufferObject;      /**<FBO OpenGL ID*/
     unsigned int FramebufferColorObject; /**<FBCO OpenGL ID*/
     unsigned int RenderbufferObject;     /**<RBO OpenGL ID*/
+    unsigned int MotionBlurHistoryTextureObject; /**<Texture containing the previous viewport frame*/
+    bool MotionBlurHistoryReady_ = false; /**<Indicates if the history texture contains a valid previous frame*/
+    bool MotionBlurFrameReady_ = false; /**<Indicates if the viewport framebuffer has rendered at least one frame*/
 
     int Width  = 1; /**<Viewport Width*/
     int Height = 1; /**<Viewport Height*/

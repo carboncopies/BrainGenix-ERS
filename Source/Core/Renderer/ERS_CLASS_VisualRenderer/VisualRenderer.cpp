@@ -243,6 +243,7 @@ ERS_CLASS_VisualRenderer::~ERS_CLASS_VisualRenderer() {
 
         glDeleteFramebuffers(1, &Viewports_[i]->FramebufferObject);
         glDeleteTextures(1, &Viewports_[i]->FramebufferColorObject);
+        glDeleteTextures(1, &Viewports_[i]->MotionBlurHistoryTextureObject);
         glDeleteRenderbuffers(1, &Viewports_[i]->RenderbufferObject);
 
     }
@@ -682,12 +683,21 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
         glViewport(0, 0, RenderWidth, RenderHeight);
         glScissor(0, 0, RenderWidth, RenderHeight);
 
+        ERS_STRUCT_RendererSettings* RendererSettings = SystemUtils_->RendererSettings_.get();
 
         // Resize Viewport If Needed
         if ((RenderWidth != Viewport->Width) || (RenderHeight != Viewport->Height)) {
             ResizeViewport(Index, RenderWidth, RenderHeight);
         }
 
+        // Copy Last Frame To Motion Blur History Before This Frame Clears The FBO
+        if (RendererSettings->MotionBlurEnabled_ && Viewport->MotionBlurEnabled_ && Viewport->MotionBlurFrameReady_) {
+            glBindFramebuffer(GL_FRAMEBUFFER, Viewport->FramebufferObject);
+            glReadBuffer(GL_COLOR_ATTACHMENT0);
+            glBindTexture(GL_TEXTURE_2D, Viewport->MotionBlurHistoryTextureObject);
+            glCopyTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 0, 0, RenderWidth, RenderHeight);
+            Viewport->MotionBlurHistoryReady_ = true;
+        }
 
         // Bind To Framebuffer
         glBindFramebuffer(GL_FRAMEBUFFER, Viewport->FramebufferObject);
@@ -827,6 +837,27 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
             ImVec2(0, 1),
             ImVec2(1, 0)
         );
+        if (RendererSettings->MotionBlurEnabled_ && Viewport->MotionBlurEnabled_ && Viewport->MotionBlurHistoryReady_) {
+            float MotionBlurBlend = RendererSettings->MotionBlurStrength_ * DeltaTime * RendererSettings->MotionBlurReferenceFrameRate_;
+            if (MotionBlurBlend < 0.0f) {
+                MotionBlurBlend = 0.0f;
+            }
+            if (MotionBlurBlend > RendererSettings->MotionBlurMaxBlend_) {
+                MotionBlurBlend = RendererSettings->MotionBlurMaxBlend_;
+            }
+
+            if (MotionBlurBlend > 0.0f) {
+                ImGui::GetWindowDrawList()->AddImage(
+                    reinterpret_cast<void*>(static_cast<intptr_t>(Viewport->MotionBlurHistoryTextureObject)),
+                    ImGui::GetCursorScreenPos(),
+                    ImVec2(ImGui::GetCursorScreenPos().x + ImGui::GetWindowSize().x, ImGui::GetCursorScreenPos().y + ImGui::GetWindowSize().y),
+                    ImVec2(0, 1),
+                    ImVec2(1, 0),
+                    ImGui::ColorConvertFloat4ToU32(ImVec4(1.0f, 1.0f, 1.0f, MotionBlurBlend))
+                );
+            }
+        }
+        Viewport->MotionBlurFrameReady_ = true;
 
 
         // Draw 3D Cursor
@@ -879,6 +910,11 @@ void ERS_CLASS_VisualRenderer::ResizeViewport(int Index, int Width, int Height) 
     glBindTexture(GL_TEXTURE_2D, Viewports_[Index]->FramebufferColorObject);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
 
+    glBindTexture(GL_TEXTURE_2D, Viewports_[Index]->MotionBlurHistoryTextureObject);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, Width, Height, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    Viewports_[Index]->MotionBlurHistoryReady_ = false;
+    Viewports_[Index]->MotionBlurFrameReady_ = false;
+
 
     // Update RBO Size
     glBindRenderbuffer(GL_RENDERBUFFER, Viewports_[Index]->RenderbufferObject);
@@ -894,6 +930,7 @@ void ERS_CLASS_VisualRenderer::DeleteViewport(int Index) {
     // Cleanup OpenGL Objects
     glDeleteFramebuffers(1, &Viewports_[Index]->FramebufferObject);
     glDeleteTextures(1, &Viewports_[Index]->FramebufferColorObject);
+    glDeleteTextures(1, &Viewports_[Index]->MotionBlurHistoryTextureObject);
     glDeleteRenderbuffers(1, &Viewports_[Index]->RenderbufferObject);
 
     // Delete Viewport Struct
@@ -967,6 +1004,16 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     Viewport->FramebufferColorObject = FramebufferColorObject;
+
+    // Create Motion Blur History Texture
+    unsigned int MotionBlurHistoryTextureObject;
+    SystemUtils_->Logger_->Log("Creating Motion Blur History Texture", 4);
+    glGenTextures(1, &MotionBlurHistoryTextureObject);
+    glBindTexture(GL_TEXTURE_2D, MotionBlurHistoryTextureObject);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 800, 800, 0, GL_RGB, GL_UNSIGNED_BYTE, NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    Viewport->MotionBlurHistoryTextureObject = MotionBlurHistoryTextureObject;
 
 
     // Attach Texture To Framebuffer
