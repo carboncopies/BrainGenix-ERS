@@ -13,23 +13,26 @@ ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUt
     SystemUtils_->Logger_->Log("Initializing Automatic Texture Loading Subsystem", 5);
 
     // If Threads Is Left To Autodetect, Use That
+    int TargetLoaderThreads = (int)Threads;
     if (Threads <= 0) {
 
         // Check If Config Has Param
         if ((*SystemUtils_->LocalSystemConfiguration_)["TextureLoaderThreadCount"]) {
             SystemUtils_->Logger_->Log("Using Config File To Set Number Of Texture Loader Threads", 4);
-            Threads = (*SystemUtils_->LocalSystemConfiguration_)["TextureLoaderThreadCount"].as<int>();
+            TargetLoaderThreads = (*SystemUtils_->LocalSystemConfiguration_)["TextureLoaderThreadCount"].as<int>();
         } else {
             SystemUtils_->Logger_->Log("Autodetecting Number Of Threads To Use", 4);
-            Threads = std::thread::hardware_concurrency() - 2;
-            if (Threads < 2) {
-                Threads = 2;
+            unsigned int DetectedHardwareThreads = std::thread::hardware_concurrency();
+            if (DetectedHardwareThreads <= 2) {
+                TargetLoaderThreads = 2;
                 SystemUtils_->Logger_->Log("Less Than Two CPUs Detected, Will Use Two Threads Regardless, However Frame Drops May Happen", 6);
+            } else {
+                TargetLoaderThreads = (int)DetectedHardwareThreads - 2;
             }
         }
     }
 
-    SetNumLoaderThreads(Threads);
+    SetNumLoaderThreads(TargetLoaderThreads);
     SetNumStreamerThreads(1);
     SetupPusherThreads();
     SetupLoaderThreads();
@@ -843,10 +846,10 @@ int ERS_CLASS_AsyncTextureUpdater::GetNumStreamerThreads() {
     return NumPusherThreads_;
 }
 void ERS_CLASS_AsyncTextureUpdater::SetNumLoaderThreads(int NumThreads) {
-    NumLoaderThreads_ = NumThreads;
+    NumLoaderThreads_ = NumThreads < 1 ? 1 : NumThreads;
 }
 void ERS_CLASS_AsyncTextureUpdater::SetNumStreamerThreads(int NumThreads) {
-    NumPusherThreads_ = NumThreads;
+    NumPusherThreads_ = NumThreads < 1 ? 1 : NumThreads;
 }
 void ERS_CLASS_AsyncTextureUpdater::SetupPusherThreads() {
 

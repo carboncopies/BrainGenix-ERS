@@ -23,7 +23,8 @@ GUI_Window_AssetStreamingSettings::GUI_Window_AssetStreamingSettings(ERS_STRUCT_
     VRAMWarningMiB_ = SystemUtils_->RendererSettings_->WarningLowVRAMBytes / 1048576;
     RAMWarningMiB_  = SystemUtils_->RendererSettings_->WarningLowRAMBytes  / 1048576;
 
-    MaxThreads_ = std::thread::hardware_concurrency();
+    unsigned int DetectedHardwareThreads = std::thread::hardware_concurrency();
+    MaxThreads_ = DetectedHardwareThreads == 0 ? 1 : (int)DetectedHardwareThreads;
 
 }
 
