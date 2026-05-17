@@ -123,6 +123,7 @@ uniform bool HasShininess;
 uniform bool ReceiveShadows_;
 uniform int ShadowFilterType_;
 uniform int ShadowFilterKernelSize_;
+uniform int DebugShadowMode_; // 0=off, 1=dir shadow depth, 2=point shadow depth, 3=shadow factor, 4=normals
 
 // Get Lighting Info
 uniform int NumberDirectionalLights;
@@ -214,110 +215,102 @@ float PCFSampler(float Bias, vec3 ProjCoords, int Index, float CurrentDepth, int
 }
 
 float PCFSamplerCubemap(float BiasedCurrentDepth, vec3 TexCoords3D, int Index, float ViewDistance, int SampleSize) {
-
     float shadow = 0.0;
-
-    int samples = SampleSize*SampleSize;
-    float diskRadius = 0.01f;//(1.0 + (viewDistance / far_plane)) / 25.0;
-    for(int i = 0; i < samples; ++i)
-    {
+    float texelSize = 1.0 / float(textureSize(DepthMapCubeArray, 0).x);
+    float diskRadius = BiasedCurrentDepth * float(SampleSize) * 1.57 * texelSize;
+    int samples = min(SampleSize * 8 + 4, 20);
+    for(int i = 0; i < samples; ++i) {
         float closestDepth = texture(DepthMapCubeArray, vec4(TexCoords3D + SampleOffsetDirections[i] * diskRadius, Index)).r;
-        closestDepth *= ViewDistance;   // undo mapping [0;1]
+        closestDepth *= ViewDistance;
         if(BiasedCurrentDepth > closestDepth)
             shadow += 1.0;
     }
     shadow /= float(samples);
-
     return shadow;
 }
 
 
 float PoissonSampler(float Bias, vec3 ProjCoords, int Index, float CurrentDepth, int SampleSize) {
-
-    float shadow = 0.0f;
-    vec2 texelSize = 1.0f / textureSize(DepthMapArray, 0).xy;
-
-    for(int x = -SampleSize; x <= SampleSize; ++x)
-    {
-        for(int y = -SampleSize; y <= SampleSize; ++y)
-        {
-            vec2 TexCoords2D = ProjCoords.xy + (vec2(x, y) * texelSize);
-            int index = int(x*y)%16;
-            float pcfDepth = texture(DepthMapArray, vec3(TexCoords2D + PoissonDisk[index]/700.0f, Index)).r;
-            shadow += CurrentDepth - Bias > pcfDepth ? 1.0f : 0.0f;  
-        }
+    float shadow = 0.0;
+    vec2 texelSize = 1.0 / textureSize(DepthMapArray, 0).xy;
+    float radius = texelSize.x * float(SampleSize) * 3.0;
+    float angle = random(vec3(gl_FragCoord.xy, float(FrameNumber)), Index) * 2.0 * PI;
+    float s = sin(angle), c = cos(angle);
+    mat2 rot = mat2(c, -s, s, c);
+    for(int i = 0; i < 16; ++i) {
+        vec2 offset = rot * (PoissonDisk[i] * radius);
+        float pcfDepth = texture(DepthMapArray, vec3(ProjCoords.xy + offset, Index)).r;
+        shadow += CurrentDepth - Bias > pcfDepth ? 1.0 : 0.0;
     }
-    shadow /= (SampleSize*2)*(SampleSize*2);
+    shadow /= 16.0;
     return shadow;
-
 }
 
 float PoissonSamplerCube(float BiasedCurrentDepth, vec3 TexCoords3D, int Index, float ViewDistance, int SampleSize) {
-
     float shadow = 0.0;
-
-    int samples = SampleSize*SampleSize;
-
-
-    for(int i = 0; i < samples; ++i)
-    {
-
-        vec3 PoissonOffset = vec3(Poisson3D[i%16]/150.0f);
-        float closestDepth = texture(DepthMapCubeArray, vec4(TexCoords3D + PoissonOffset, Index)).r;
-        closestDepth *= ViewDistance;   // undo mapping [0;1]
+    float texelSize = 1.0 / float(textureSize(DepthMapCubeArray, 0).x);
+    float diskRadius = BiasedCurrentDepth * float(SampleSize) * 1.57 * texelSize;
+    float angle = random(vec3(gl_FragCoord.xy, float(FrameNumber)), Index) * 2.0 * PI;
+    float s = sin(angle), c = cos(angle);
+    vec3 n = normalize(TexCoords3D);
+    vec3 up = abs(n.z) < 0.999 ? vec3(0,0,1) : vec3(1,0,0);
+    vec3 t = normalize(cross(up, n));
+    vec3 b = cross(n, t);
+    int samples = min(SampleSize * 8 + 4, 16);
+    for(int i = 0; i < samples; ++i) {
+        vec3 offset = (Poisson3D[i].x * (c*t - s*b) + Poisson3D[i].y * (s*t + c*b) + Poisson3D[i].z * n) * diskRadius;
+        float closestDepth = texture(DepthMapCubeArray, vec4(TexCoords3D + offset, Index)).r;
+        closestDepth *= ViewDistance;
         if(BiasedCurrentDepth > closestDepth)
             shadow += 1.0;
     }
     shadow /= float(samples);
-
-
     return shadow;
-
 }
 
 
 float StratifiedPoissonSampler(float Bias, vec3 ProjCoords, int Index, float CurrentDepth, int SampleSize) {
-    float shadow = 0.0f;
-    vec2 texelSize = 1.0f / textureSize(DepthMapArray, 0).xy;
-
-    for(int x = -SampleSize; x <= SampleSize; ++x)
-    {
-        for(int y = -SampleSize; y <= SampleSize; ++y)
-        {
-            
-            vec2 TexCoords2D = ProjCoords.xy + (vec2(x, y) * texelSize);
-
-            int index = int(6.0f*random(floor(gl_FragCoord.yxz*1000.0f), int(ProjCoords.x*ProjCoords.y)));
-            float pcfDepth = texture(DepthMapArray, vec3(TexCoords2D + PoissonDisk[index]/1000.0f, Index)).r;
-            //pcfDepth = texture(DepthMapArray, vec3(TexCoords2D, Index)).r;
-            shadow += CurrentDepth - Bias > pcfDepth ? 1.0f : 0.0f;  
-        }
+    float shadow = 0.0;
+    vec2 texelSize = 1.0 / textureSize(DepthMapArray, 0).xy;
+    float radius = texelSize.x * float(SampleSize) * 3.0;
+    float baseAngle = random(vec3(gl_FragCoord.xy, float(FrameNumber)), Index) * 2.0 * PI;
+    float s = sin(baseAngle), c = cos(baseAngle);
+    mat2 rot = mat2(c, -s, s, c);
+    for(int i = 0; i < 16; ++i) {
+        float jitter = random(vec3(gl_FragCoord.xy, float(FrameNumber)), i);
+        float a = baseAngle + jitter * 0.5;
+        float sc = sin(a), cc = cos(a);
+        mat2 rot2 = mat2(cc, -sc, sc, cc);
+        vec2 offset = rot2 * (PoissonDisk[i] * radius);
+        float pcfDepth = texture(DepthMapArray, vec3(ProjCoords.xy + offset, Index)).r;
+        shadow += CurrentDepth - Bias > pcfDepth ? 1.0 : 0.0;
     }
-    shadow /= (SampleSize*2)*(SampleSize*2);
+    shadow /= 16.0;
     return shadow;
 }
 
 
 float StratifiedPoissonSamplerCube(float BiasedCurrentDepth, vec3 TexCoords3D, int Index, float ViewDistance, int SampleSize) {
-
     float shadow = 0.0;
-
-    int samples = SampleSize*SampleSize;
-    for(int i = 0; i < samples; ++i)
-    {
-        int PoissonIndex = int(6.0f*random(floor(gl_FragCoord.yxz*1000.0f), int(i)))%16;
-        vec3 PoissonOffset = vec3(Poisson3D[PoissonIndex]/250.0f);
-        float closestDepth = texture(DepthMapCubeArray, vec4(TexCoords3D + PoissonOffset, Index)).r;
-        closestDepth *= ViewDistance;   // undo mapping [0;1]
+    float texelSize = 1.0 / float(textureSize(DepthMapCubeArray, 0).x);
+    float diskRadius = BiasedCurrentDepth * float(SampleSize) * 1.57 * texelSize;
+    vec3 n = normalize(TexCoords3D);
+    vec3 up = abs(n.z) < 0.999 ? vec3(0,0,1) : vec3(1,0,0);
+    vec3 t = normalize(cross(up, n));
+    vec3 b = cross(n, t);
+    int samples = min(SampleSize * 8 + 4, 16);
+    for(int i = 0; i < samples; ++i) {
+        float jitter = random(vec3(gl_FragCoord.xy, float(FrameNumber)), i);
+        float a = jitter * 2.0 * PI;
+        float sc = sin(a), cc = cos(a);
+        vec3 offset = (Poisson3D[i].x * (cc*t - sc*b) + Poisson3D[i].y * (sc*t + cc*b) + Poisson3D[i].z * n) * diskRadius;
+        float closestDepth = texture(DepthMapCubeArray, vec4(TexCoords3D + offset, Index)).r;
+        closestDepth *= ViewDistance;
         if(BiasedCurrentDepth > closestDepth)
             shadow += 1.0;
     }
     shadow /= float(samples);
-
-
     return shadow;
-
-
 }
 
 
@@ -357,7 +350,9 @@ float ShadowCalculation(STRUCT_PointLight Light)
         BiasMax = 0.01;
     }
     
-    float Bias = max(0.00 * (1.0 - dot(Object.Normal, normalize(fragToLight))), BiasMax);
+    float NoL = dot(normalize(Object.Normal), normalize(fragToLight));
+    float texelWorldSize = currentDepth * 1.57 / float(textureSize(DepthMapCubeArray, 0).x);
+    float Bias = max(texelWorldSize * (1.0 - NoL), texelWorldSize * 0.5);
 
 
     // Select Correct Filter Based On Selection Uniform
@@ -374,9 +369,6 @@ float ShadowCalculation(STRUCT_PointLight Light)
         return 0.0f; // Return Failure, All Black)
     }
     
-    // display closestDepth as debug (to visualize depth cubemap)
-    // FragColor = vec4(vec3(closestDepth / Light.MaxDistance), 1.0);    
-        
     return 1.0f - Shadow;
 }
 
@@ -405,24 +397,26 @@ float ShadowCalculation(STRUCT_DirectionalLight Light)
     // check whether current frag pos is in shadow
     //vec3 LightDir = normalize(L - Object.FragPos);
     
-    float Bias = max(0.00 * (1.0 - dot(Object.Normal, Light.Direction)), 0.0025);
+    float Bias = max(0.001 * (1.0 - dot(normalize(Object.Normal), normalize(-Light.Direction))), 0.0005);
     
-    //float Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
-    float Shadow = PCFSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, 2);
-    //float Shadow = ShadowPCFRandom(Bias, projCoords, Index, currentDepth, 1);
+    float Shadow;
+    if (ShadowFilterType_ == 0) {
+        Shadow = currentDepth - Bias > closestDepth  ? 1.0 : 0.0;
+    } else if (ShadowFilterType_ == 1) {
+        Shadow = PCFSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, ShadowFilterKernelSize_);
+    } else if (ShadowFilterType_ == 2) {
+        Shadow = PoissonSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, ShadowFilterKernelSize_);
+    } else if (ShadowFilterType_ == 3) {
+        Shadow = StratifiedPoissonSampler(Bias, projCoords, Light.DepthMapIndex, currentDepth, ShadowFilterKernelSize_);
+    } else {
+        return 0.0f;
+    }
     
     if (projCoords.z > 1.0) {
         Shadow = 0.0f;
     }
 
-    if (Shadow > 1.0f) {
-        Shadow = 1.0f;
-    } else if (Shadow < 0.0f) {
-        Shadow = 0.0f;
-    }
-
-
-    return 1.0f - Shadow;
+    return clamp(1.0f - Shadow, 0.0f, 1.0f);
 }
 
 
@@ -467,7 +461,7 @@ float ShadowCalculation(STRUCT_SpotLight Light)
         BiasMax = 0.00025;
     }
     
-    float Bias = max(0.00 * (1.0 - dot(Object.Normal, LightDir)), BiasMax);//0.00225);
+    float Bias = max(0.005 * (1.0 - dot(normalize(Object.Normal), LightDir)), BiasMax);//0.00225);
     
     
     // Select Correct Filter Based On Selection Uniform
@@ -503,28 +497,14 @@ float ShadowCalculation(STRUCT_SpotLight Light)
 
 
 
-vec3 GetNormalFromMap(sampler2D Normal) {
-
-    // Ensure That Textures Are Present/Valid, If Not, Provide Fallback
-    vec3 SampledColor = texture(Normal, Object.TexCoords).xyz;
-    if (!HasNormals || (SampledColor == vec3(0.0f))) {
-    SampledColor = vec3(0.5f, 0.5f, 1.0f);
-    }
-
-    // Use Texture Data To Calculate Normal Data
-    vec3 TangentNormal = SampledColor * 2.0f - 1.0f;
-
-    vec3 Q1 = dFdx(Object.WorldPos);
-    vec3 Q2 = dFdy(Object.WorldPos);
-    vec2 st1 = dFdx(Object.TexCoords);
-    vec2 st2 = dFdy(Object.TexCoords);
-
-    vec3 N = normalize(Object.Normal);
-    vec3 T = normalize(Q1*st2.t - Q2*st1.t);
-    vec3 B = -normalize(cross(N, T));
-    mat3 TBN = mat3(T,B,N);
-
-    return normalize(TBN * TangentNormal);
+vec3 GetNormalFromMap() {
+    if (!HasNormals)
+        return normalize(Object.Normal);
+    vec3 sampled = texture(texture_normals1, Object.TexCoords).rgb;
+    if (sampled == vec3(0.0))
+        return normalize(Object.Normal);
+    vec3 tangentNormal = sampled * 2.0 - 1.0;
+    return normalize(Object.TBN * tangentNormal);
 }
 
 
@@ -610,7 +590,7 @@ STRUCT_SampledData SetSampledData() {
 
     // Handle Normal Textures
     if (HasNormals) {
-        SampledData.Normal = GetNormalFromMap(texture_normals1);
+        SampledData.Normal = GetNormalFromMap();
     } else {
         SampledData.Normal = vec3(0.5f, 0.5f, 0.5f);
     }
@@ -741,16 +721,7 @@ vec3 PBRSpotLight(STRUCT_SpotLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT
 
 
 vec3 PBRDirectionalLight(STRUCT_DirectionalLight Light, vec3 ViewDir, vec3 Reflectance, STRUCT_SampledData Model) {
-    
-    vec3 LightDirectionVector = normalize(-Light.Direction);
-    vec3 ReflectionDirectionVector = reflect(-LightDirectionVector, Model.Normal);
-
-    // Diffuse/Specular Components
-    float Diffuse = max(dot(Model.Normal, LightDirectionVector), 0.0f);
-    float Specular = pow(max(dot(ViewDir, ReflectionDirectionVector), 0.0f), Model.Roughness);
-
-    // calculate per-light radiance
-    vec3 L = normalize(Light.Direction);
+    vec3 L = normalize(-Light.Direction);
     vec3 H = normalize(ViewDir + L);
     vec3 radiance = Light.Color * Light.Intensity;
 
@@ -784,6 +755,15 @@ vec3 PBRDirectionalLight(STRUCT_DirectionalLight Light, vec3 ViewDir, vec3 Refle
 }
 
 
+vec3 ACESFilm(vec3 x) {
+    float a = 2.51;
+    float b = 0.03;
+    float c = 2.43;
+    float d = 0.59;
+    float e = 0.14;
+    return clamp((x * (a * x + b)) / (x * (c * x + d) + e), 0.0, 1.0);
+}
+
 void main() {
 
     // Get Model Parameters
@@ -814,28 +794,49 @@ void main() {
         Lo += PBRSpotLight(SpotLights[i], ViewDir, Reflectance, Model);
     }
 
-    // ambient lighting (note that the next IBL tutorial will replace 
-    // this ambient lighting with environment lighting).
-    vec4 Ambient = vec4(0.03) * Model.Albedo * Model.AO;
-    vec4 Color = Ambient + vec4(Lo, Model.Albedo.a);
+    vec3 Ambient = vec3(0.03) * Model.Albedo.rgb * Model.AO;
+    vec3 Color = Ambient + Lo;
 
-
-    // Add Emissive Texture
     if (HasEmissive) {
-        Color.rgb += Model.Emissive;
+        Color += Model.Emissive;
     }
 
-    // Apply Gamma Correction
-    if (HDREnabled_) {
-        vec3 Mapped = vec3(1.0f) - exp(-Color.xyz * Exposure_);
-        FragColor = GammaCorrectResult(vec4(Mapped, Color.a), GammaCorrectionEnabled_);
-    } else {
-        FragColor = GammaCorrectResult(Color, GammaCorrectionEnabled_);
+    if (DebugShadowMode_ == 1 && NumberDirectionalLights > 0) {
+        vec4 fragPosLightSpace = DirectionalLights[0].LightSpaceMatrix * vec4(Object.FragPos, 1.0f);
+        vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w * 0.5f + 0.5f;
+        if (projCoords.z > 1.0) {
+            FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+        } else {
+            float depth = texture(DepthMapArray, vec3(projCoords.xy, DirectionalLights[0].DepthMapIndex)).r;
+            FragColor = vec4(vec3(depth), 1.0);
+        }
+        return;
     }
-    
-    
-    
-    //FragColor = vec4(vec3(1.0f - ShadowCalculation(Object.FragPosLightSpace, DirectionalLights[0].Direction)), 1.0f);
+    if (DebugShadowMode_ == 2 && NumberPointLights > 0) {
+        vec3 fragToLight = Object.FragPos - PointLights[0].Position;
+        float depth = texture(DepthMapCubeArray, vec4(fragToLight, PointLights[0].DepthCubemapIndex)).r;
+        FragColor = vec4(vec3(depth), 1.0);
+        return;
+    }
+    if (DebugShadowMode_ == 3 && NumberDirectionalLights > 0) {
+        float shadow = ShadowCalculation(DirectionalLights[0]);
+        FragColor = vec4(vec3(shadow), 1.0);
+        return;
+    }
+    if (DebugShadowMode_ == 4 && NumberPointLights > 0) {
+        float shadow = ShadowCalculation(PointLights[0]);
+        FragColor = vec4(vec3(shadow), 1.0);
+        return;
+    }
+    if (DebugShadowMode_ == 5) {
+        FragColor = vec4(Model.Normal * 0.5 + 0.5, 1.0);
+        return;
+    }
+
+    if (HDREnabled_) {
+        Color = ACESFilm(Color * Exposure_);
+    }
+    FragColor = GammaCorrectResult(vec4(Color, Model.Albedo.a), GammaCorrectionEnabled_);
 }
 
 

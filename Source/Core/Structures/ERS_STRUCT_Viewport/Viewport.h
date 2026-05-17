@@ -36,6 +36,7 @@ struct ERS_STRUCT_Viewport {
     bool HDREnabled_                   = true;  /**<Indicate if hdr should be used or not*/
     bool MotionBlurEnabled_            = true;  /**<Enable adaptive temporal motion blur for this viewport*/
     bool ShowBoundingBox_              = true;  /**<Draw the bounding boxes or don't*/
+    int DebugShadowMode_               = 0;     /**<Debug shadow visualization: 0=off, 1=dir depth, 2=point depth, 3=dir shadow factor, 4=point shadow factor, 5=normals*/
  
     bool WireframeBoundingBoxes_       = true;  /**<Set bounding boxes to opaque or wireframe*/
     bool DisableBoundingBoxDepthTest_  = true;  /**<Disable Bounding Box Depth Test Or Not*/

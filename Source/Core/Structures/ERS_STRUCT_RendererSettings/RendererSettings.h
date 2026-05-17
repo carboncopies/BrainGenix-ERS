@@ -24,14 +24,16 @@
 struct ERS_STRUCT_RendererSettings {
 
     // Shadow Map Settings
-    int ShadowMapX_ = 2048;
-    int ShadowMapY_ = 2048;
+    int ShadowMapX_ = 1024;
+    int ShadowMapY_ = 1024;
+    int ShadowMapCubemapX_ = 512;
+    int ShadowMapCubemapY_ = 512;
 
     // Set Shadow Update Settings
     ERS::Renderer::ShadowFilteringType ShadowFilteringType_ = ERS::Renderer::ERS_SHADOW_FILTERING_POISSON_SAMPLING;
     ERS::Renderer::ShadowUpdateMode ShadowUpdateMode_ = ERS::Renderer::ERS_SHADOW_UPDATE_MODE_DISTANCE_PRIORITIZED;
-    int MaxShadowUpdatesPerFrame_ = 5;
-    int ShadowFilterKernelSize_ = 2;
+    int MaxShadowUpdatesPerFrame_ = 2;
+    int ShadowFilterKernelSize_ = 1;
     bool RefreshStaticShadowMaps_ = true;
 
     // Motion Blur Settings

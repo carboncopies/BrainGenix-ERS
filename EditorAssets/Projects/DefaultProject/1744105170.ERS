@@ -1,4 +1,4 @@
-SceneName: Untitled Scene
+SceneName: Shadow Test Scene
 SceneFormatVersion: 1
 SceneData:
   0:
@@ -21,16 +21,66 @@ SceneData:
     AttachedScripts:
       {}
   1:
-    AssetName: New Point Light
+    AssetName: Sun
+    AssetType: DirectionalLight
+    ColorRed: 1
+    ColorGreen: 0.95
+    ColorBlue: 0.8
+    PosX: 0
+    PosY: 5
+    PosZ: 0
+    RotX: 50
+    RotY: 30
+    RotZ: 0
+    Intensity: 1.5
+    MaxDistance: 100
+    CastShadows: true
+    AttachedScripts:
+      {}
+  2:
+    AssetName: Warm Point Light
     AssetType: PointLight
+    ColorRed: 1
+    ColorGreen: 0.6
+    ColorBlue: 0.3
+    PosX: 1.5
+    PosY: 1.0
+    PosZ: 0.5
+    Intensity: 2
+    MaxDistance: 15
+    CastShadows: true
+    AttachedScripts:
+      {}
+  3:
+    AssetName: Cool Point Light
+    AssetType: PointLight
+    ColorRed: 0.3
+    ColorGreen: 0.6
+    ColorBlue: 1
+    PosX: -1.5
+    PosY: 1.0
+    PosZ: -0.5
+    Intensity: 2
+    MaxDistance: 15
+    CastShadows: false
+    AttachedScripts:
+      {}
+  4:
+    AssetName: Spot Light
+    AssetType: SpotLight
     ColorRed: 1
     ColorGreen: 1
     ColorBlue: 1
-    PosX: 0.5
-    PosY: 0.400000036
-    PosZ: -0.200000003
-    Intensity: 1
+    PosX: 0
+    PosY: 2
+    PosZ: 2
+    RotX: 45
+    RotY: 0
+    RotZ: 0
+    Intensity: 3
     MaxDistance: 20
-    CastShadows: true
+    CutOff: 30
+    RollOff: 5
+    CastShadows: false
     AttachedScripts:
       {}

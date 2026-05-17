@@ -28,6 +28,7 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
     // Set Shadow Info
     Shader->SetInt("ShadowFilterType_",                          Data.ShadowFilterType_);
     Shader->SetInt("ShadowFilterKernelSize_",                    Data.ShadowFilterKernelSize_);
+    Shader->SetInt("DebugShadowMode_",                           Data.DebugShadowMode_);
 
     // Bind To Shadow Maps
     glUniform1i(glGetUniformLocation(Shader->ShaderProgram_, "DepthMapArray"), 8);

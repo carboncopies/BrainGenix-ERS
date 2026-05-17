@@ -1091,6 +1091,7 @@ ERS_STRUCT_Viewport* Viewport) {
     }
     ShaderUniformData_->ShadowFilterType_ = ShadowFilterType;
     ShaderUniformData_->ShadowFilterKernelSize_ = SystemUtils_->RendererSettings_->ShadowFilterKernelSize_;
+    ShaderUniformData_->DebugShadowMode_ = Viewport->DebugShadowMode_;
     ShaderUniformData_->DepthMapArray_ = ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureArrayID_;
     ShaderUniformData_->DepthCubemapArray_ = ShadowMaps_->ERS_CLASS_DepthMaps_->DepthTextureCubemapArrayID_;
 

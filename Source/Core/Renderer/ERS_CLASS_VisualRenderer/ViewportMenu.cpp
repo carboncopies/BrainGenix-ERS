@@ -219,6 +219,17 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
             ImGui::MenuItem("HDR", nullptr, &Viewport->HDREnabled_);
             ImGui::MenuItem("Adaptive Motion Blur", nullptr, &Viewport->MotionBlurEnabled_);
 
+            ImGui::Separator();
+
+            if (ImGui::BeginMenu("Debug Shadow Mode")) {
+                if (ImGui::MenuItem("Off", nullptr, Viewport->DebugShadowMode_ == 0)) Viewport->DebugShadowMode_ = 0;
+                if (ImGui::MenuItem("Dir Light Shadow Depth", nullptr, Viewport->DebugShadowMode_ == 1)) Viewport->DebugShadowMode_ = 1;
+                if (ImGui::MenuItem("Point Light Shadow Depth", nullptr, Viewport->DebugShadowMode_ == 2)) Viewport->DebugShadowMode_ = 2;
+                if (ImGui::MenuItem("Dir Light Shadow Factor", nullptr, Viewport->DebugShadowMode_ == 3)) Viewport->DebugShadowMode_ = 3;
+                if (ImGui::MenuItem("Point Light Shadow Factor", nullptr, Viewport->DebugShadowMode_ == 4)) Viewport->DebugShadowMode_ = 4;
+                if (ImGui::MenuItem("World Normals", nullptr, Viewport->DebugShadowMode_ == 5)) Viewport->DebugShadowMode_ = 5;
+                ImGui::EndMenu();
+            }
 
         ImGui::EndMenu();
         }

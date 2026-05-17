@@ -96,6 +96,7 @@ struct ERS_STRUCT_ShaderUniformData {
     // Shadow Info
     int ShadowFilterType_;
     int ShadowFilterKernelSize_;
+    int DebugShadowMode_;
     unsigned int DepthMapArray_;
     unsigned int DepthCubemapArray_;
 

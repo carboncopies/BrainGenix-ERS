@@ -71,13 +71,18 @@ void ERS_CLASS_ShadowMaps::GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* Depth
         if (ActiveScene->PointLights[i]->CastsShadows_) {
 
             // Check If Light Has DepthMap
-            if (!ActiveScene->PointLights[i]->DepthMap.Initialized) {
+            bool DepthMapInitialized = ActiveScene->PointLights[i]->DepthMap.Initialized;
+            if (!DepthMapInitialized) {
                 ActiveScene->PointLights[i]->DepthMap.DepthMapTextureIndex = ERS_CLASS_DepthMaps_->AllocateDepthMapIndexCubemap();
                 ActiveScene->PointLights[i]->DepthMap.Initialized = true;
                 ActiveScene->PointLights[i]->DepthMap.ToBeUpdated = true;
             }
 
-
+            if (ShadowUpdatesDisabled) {
+                ActiveScene->PointLights[i]->DepthMap.ToBeUpdated = false;
+            } else if (!StaticShadowUpdateMode || !DepthMapInitialized || Settings->RefreshStaticShadowMaps_) {
+                ActiveScene->PointLights[i]->DepthMap.ToBeUpdated = true;
+            }
 
             DepthMaps->push_back(&ActiveScene->PointLights[i]->DepthMap);
             LightPositions->push_back(ActiveScene->PointLights[i]->Pos);
@@ -94,8 +99,15 @@ void ERS_CLASS_ShadowMaps::GetDepthMaps(std::vector<ERS_STRUCT_DepthMap*>* Depth
         if (ActiveScene->SpotLights[i]->CastsShadows_) {
 
             // Check If Light Has DepthMap
-            if (!ActiveScene->SpotLights[i]->DepthMap.Initialized) {
+            bool DepthMapInitialized = ActiveScene->SpotLights[i]->DepthMap.Initialized;
+            if (!DepthMapInitialized) {
                 ActiveScene->SpotLights[i]->DepthMap = ERS_CLASS_DepthMaps_->GenerateDepthMap2D();   
+                ActiveScene->SpotLights[i]->DepthMap.ToBeUpdated = true;
+            }
+
+            if (ShadowUpdatesDisabled) {
+                ActiveScene->SpotLights[i]->DepthMap.ToBeUpdated = false;
+            } else if (!StaticShadowUpdateMode || !DepthMapInitialized || Settings->RefreshStaticShadowMaps_) {
                 ActiveScene->SpotLights[i]->DepthMap.ToBeUpdated = true;
             }
 
