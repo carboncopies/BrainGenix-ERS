@@ -118,6 +118,18 @@ void GUI_Window_ObjectProperties::Draw() {
                         ImGui::SameLine();
                         ImGui::HelpMarker("Sets the distance after which the scene is no longer affected by this light source.");
 
+                        ImGui::DragFloat("Rolloff Constant", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffConstant, 0.01f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Constant term of the light attenuation equation, attenuation = 1/(Kc + Kl*d + Kq*d^2). Default of 1 causes no attenuation.");
+
+                        ImGui::DragFloat("Rolloff Linear", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffLinear, 0.01f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Linear term of the light attenuation equation, attenuation = 1/(Kc + Kl*d + Kq*d^2). Default of 0 disables the linear term.");
+
+                        ImGui::DragFloat("Rolloff Quadratic", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->RolloffQuadratic, 0.01f);
+                        ImGui::SameLine();
+                        ImGui::HelpMarker("Quadratic term of the light attenuation equation, attenuation = 1/(Kc + Kl*d + Kq*d^2). Default of 0 disables the quadratic term.");
+
                         ImGui::Checkbox("Cast Shadows", &SceneManager_->Scenes_[SceneManager_->ActiveScene_]->PointLights[Index]->CastsShadows_);
                         ImGui::SameLine();
                         ImGui::HelpMarker("Allows or disallows this light from creating shadows on the scene.");

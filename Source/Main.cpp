@@ -44,7 +44,6 @@
 #include <ProjectUtils.h>
 #include <RendererSettings.h>
 
-//#include <PythonInterpreterIntegration.h>
 #include <ERS_CLASS_LuaJITInterpreterIntegration.h>
 
 #include <GetExecutablePath.h>
@@ -55,11 +54,11 @@
 //
 //-----------------------------------------------------------------------------------------------------
 //
-// FIXME: Add proper lighting system (phong and more advanced (and shadow maps))
-// FIXME: implement animations (character deformations)
-// FIXME: implement offscreen rendering
-// FIXME: add other features to this list later, (audio rendering, ray tracing, etc.)
-// FIXME: Update this card with more info as needed!
+// NOTE: A dynamic shadow mapped lighting system exists (point, directional and spot lights,
+// with filtering and selectable update modes).
+// NOTE: A headless/hidden-window run mode exists, enabled via the '-Headless true' argument.
+// NOTE: Long-horizon features (animations/character deformations, offscreen render targets,
+// audio, ray tracing) are tracked in Docs/GoalProgress.md.
 //
 //-----------------------------------------------------------------------------------------------------
 //
@@ -109,15 +108,9 @@ int main(int NumArguments, char** ArguemntValues) {
     );
     ERS_FUNCTION_ApplyGPUSelectionRequest(SystemUtils->Logger_.get(), SystemUtils->ERS_HardwareInformation_->GetHWInfo());
 
-   /* SystemUtils->ERS_CLASS_PythonInterpreterIntegration_ = std::make_unique<ERS_CLASS_PythonInterpreterIntegration>(
-        SystemUtils->Logger_.get()
-    );*/
     SystemUtils->ERS_CLASS_LuaJITInterpreterIntegration_ = std::make_unique<ERS_CLASS_LuaJITInterpreterIntegration>(
         SystemUtils->Logger_.get()
     );
-    //Testing LuaScript
-    ERS_CLASS_LuaJITInterpreterIntegration lua_interpreter( SystemUtils->Logger_.get());
-    lua_interpreter.Test_Script();
 
     SystemUtils->RendererSettings_ = std::make_unique<ERS_STRUCT_RendererSettings>();
 

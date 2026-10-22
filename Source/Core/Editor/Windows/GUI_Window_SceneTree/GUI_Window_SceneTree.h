@@ -28,12 +28,14 @@
 #include <PointLightRenameModal.h>
 #include <SpotLightRenameModal.h>
 #include <DirectionalLightRenameModal.h>
+#include <SceneCameraRenameModal.h>
 
 #include <DeleteScene.h>
 #include <DeleteModel.h>
 #include <DeletePointLight.h>
 #include <DeleteDirectionalLight.h>
 #include <DeleteSpotLight.h>
+#include <DeleteSceneCamera.h>
 
 #include <ModelReplaceModal.h>
 
@@ -67,6 +69,7 @@ private:
     std::unique_ptr<Subwindow_PointLightRenameModal> Subwindow_PointLightRenameModal_; /**<PointLight Rename Modal Instance*/
     std::unique_ptr<Subwindow_DirectionalLightRenameModal> Subwindow_DirectionalLightRenameModal_; /**<DirectionalLight Rename Modal Instance*/
     std::unique_ptr<Subwindow_SpotLightRenameModal> Subwindow_SpotLightRenameModal_; /**<SpotLight Rename Modal Instance*/
+    std::unique_ptr<Subwindow_SceneCameraRenameModal> Subwindow_SceneCameraRenameModal_; /**<SceneCamera Rename Modal Instance*/
     
     std::unique_ptr<Subwindow_ModelReplaceModal> Subwindow_ModelReplaceModal_; /**<Window with functions to replace all existing instances of a model with another one*/
 
@@ -75,6 +78,7 @@ private:
     std::unique_ptr<Subwindow_DeletePointLight> Subwindow_DeletePointLight_; /**<PointLight Delete Subwindow*/
     std::unique_ptr<Subwindow_DeleteDirectionalLight> Subwindow_DeleteDirectionalLight_; /**<DirectionalLight Delete Subwindow*/
     std::unique_ptr<Subwindow_DeleteSpotLight> Subwindow_DeleteSpotLight_; /**<SpotLight Delete Subwindow*/
+    std::unique_ptr<Subwindow_DeleteSceneCamera> Subwindow_DeleteSceneCamera_; /**<SceneCamera Delete Subwindow*/
     
 
 

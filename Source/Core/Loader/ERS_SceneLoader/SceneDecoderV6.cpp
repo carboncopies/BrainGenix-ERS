@@ -9,7 +9,7 @@ bool ERS_FUNCTION_DecodeSceneV6(YAML::Node SceneData, ERS_STRUCT_Scene *Scene, E
 
     // Init
     bool Success = true;
-    SystemUtils->Logger_->Log(std::string("Processing Scene '") + Scene->SceneName + "' With Decoder Version 3", 3, LogEnable);
+    SystemUtils->Logger_->Log(std::string("Processing Scene '") + Scene->SceneName + "' With Decoder Version 6", 3, LogEnable);
     BG::Common::Logger::LoggingSystem* Logger = SystemUtils->Logger_.get();
 
     // Grab Metadata

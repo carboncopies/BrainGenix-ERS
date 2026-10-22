@@ -23,6 +23,7 @@
 #include <SceneDecoderV4.h>
 #include <SceneDecoderV5.h>
 #include <SceneDecoderV6.h>
+#include <SceneDecoderV7.h>
 
 
 /**

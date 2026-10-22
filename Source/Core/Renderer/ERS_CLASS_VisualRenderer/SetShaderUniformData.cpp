@@ -68,6 +68,9 @@ void ERS_FUNCTION_SetShaderUniformData(ERS_STRUCT_Shader* Shader, ERS_STRUCT_Sha
         Shader->SetVec3  ((UniformName + std::string(".Color")).c_str(),              Data.PointLights_[i].Color_);
         Shader->SetFloat ((UniformName + std::string(".MaxDistance")).c_str(),        Data.PointLights_[i].MaxDistance_);
         Shader->SetFloat ((UniformName + std::string(".Intensity")).c_str(),          Data.PointLights_[i].Intensity_);
+        Shader->SetFloat ((UniformName + std::string(".RolloffConstant")).c_str(),    Data.PointLights_[i].RolloffConstant_);
+        Shader->SetFloat ((UniformName + std::string(".RolloffLinear")).c_str(),      Data.PointLights_[i].RolloffLinear_);
+        Shader->SetFloat ((UniformName + std::string(".RolloffQuadratic")).c_str(),   Data.PointLights_[i].RolloffQuadratic_);
         Shader->SetInt   ((UniformName + std::string(".DepthCubemapIndex")).c_str(),  Data.PointLights_[i].DepthCubemapIndex_);
         Shader->SetBool  ((UniformName + std::string(".CastsShadows")).c_str(),       Data.PointLights_[i].CastsShadows_);
 

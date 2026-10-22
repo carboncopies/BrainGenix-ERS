@@ -131,6 +131,9 @@ void ERS_CLASS_MeshRenderer::RenderSceneNoTextures(ERS_STRUCT_Scene* Scene, ERS_
         ERS_FUNCTION_DrawMeshNoTextures(TransparentMeshes[i], Shader);
     }
 
-    // ToDO: Make It So That The Transparency Of The Mesh Is Taken Into Account, Rather Than Being completely Bypassed Like It Is Now.
+    // NOTE: This Function Is Only Used By The Depth/Shadow Map Rendering Path (Called Exclusively From DepthMaps.cpp), So Alpha
+    // Blending And Transparency Ordering Are Intentionally Ignored Here; Only Geometry Depth Matters. Alpha-Tested Cutout Surfaces
+    // Would Still Need A Discard In The Depth Shader To Cast Shadows Correctly, Which Is Out Of Scope For This Pass.
+
 
 }

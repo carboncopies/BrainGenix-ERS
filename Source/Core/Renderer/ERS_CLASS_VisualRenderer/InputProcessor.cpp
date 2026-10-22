@@ -27,8 +27,7 @@ ERS_CLASS_InputProcessor::~ERS_CLASS_InputProcessor() {
 void ERS_CLASS_InputProcessor::ProcessMouseScroll(bool CaptureEnabled) {
 
     // Get Mouse Scroll Info
-    float MouseScrollX = ImGui::GetIO().MouseWheel;
-    //float MouseScrollY = ImGui::GetIO().MouseWheelH;
+    float MouseScrollX = ImGui::GetIO().MouseWheel; // Vertical wheel delta for this frame
 
 
     // If Input Processing Enabled
@@ -96,6 +95,11 @@ void ERS_CLASS_InputProcessor::SetControllerInputManager(ERS_CLASS_ControllerInp
 }
 void ERS_CLASS_InputProcessor::UpdateFramebuffer() {
 
+    // No Window To Query In Display-Free Offscreen Mode; The Pipeline Sets glViewport From The Configured Render Dimensions Instead
+    if (Window_ == nullptr) {
+        return;
+    }
+
     // Get Window Size
     int WindowX;
     int WindowY;
@@ -106,6 +110,11 @@ void ERS_CLASS_InputProcessor::UpdateFramebuffer() {
 
 }
 void ERS_CLASS_InputProcessor::UpdateMouse( bool WindowMouseCaptureEnabled) {
+
+    // Offscreen Mode Never Receives Mouse Input
+    if (Window_ == nullptr) {
+        return;
+    }
 
     // Get Mouse Position
     double MouseX;
@@ -186,7 +195,7 @@ void ERS_CLASS_InputProcessor::ProcessKeyboardInput(float DeltaTime, bool Window
 
 
     // Get Keyboard Input
-    if (WindowCaptureEnabled) {
+    if (WindowCaptureEnabled && Window_ != nullptr) {
 
         if (glfwGetKey(Window_, GLFW_KEY_W)          == GLFW_PRESS)
             ProcessKey(FORWARD,  DeltaTime);

@@ -68,6 +68,14 @@ private:
     std::string WindowTitle_;            /**<GLFW Window Title Variable*/
     bool        OffscreenRendering_ = false; /**<Run the main GLFW context as a hidden off-screen window.*/
     bool        UseEGLContext_ = false; /**<Request an EGL OpenGL context for off-screen rendering.*/
+    bool        HeadlessOffscreenMode_ = false; /**<Run the renderer display-free using a standalone EGL context instead of a GLFW window.*/
+
+    // EGL Handles Are Stored As void* So This Header Does Not Need To Include EGL Headers (CLang Format: EGLDisplay/EGLContext/EGLSurface Are All void* Typedefs)
+    void*       EGLOffscreenDisplay_ = nullptr; /**<EGLDisplay Of The Display-Free Offscreen Context (HeadlessOffscreenMode_ Only)*/
+    void*       EGLOffscreenConfig_  = nullptr; /**<EGLConfig Used To Create The Display-Free Offscreen Context (Passed To Worker Threads So Shared Contexts Use The Identical Config)*/
+    void*       EGLOffscreenContext_ = nullptr; /**<EGLContext Of The Display-Free Offscreen Context (HeadlessOffscreenMode_ Only)*/
+    void*       EGLOffscreenSurface_ = nullptr; /**<EGLSurface (Tiny Pbuffer, Or EGL_NO_SURFACE Cast) Of The Display-Free Offscreen Context (HeadlessOffscreenMode_ Only)*/
+    int         OffscreenEGLDeviceIndex_ = -1; /**<Explicitly Requested EGL Device Index ('-EGLDeviceIndex' Argument Or ERS_EGL_DEVICE_INDEX Environment Variable), -1 Means Auto-Select*/
 
 
     /**
@@ -75,6 +83,13 @@ private:
      * 
      */
     void InitializeGLFW();
+
+    /**
+     * @brief Initialize a display-free OpenGL context directly through EGL (no GLFW window). Used by '-Headless offscreen' mode.
+     * Aborts ERS startup (after logging a fatal message) when no usable EGL platform or context can be obtained.
+     * 
+     */
+    void InitializeEGLOffscreen();
 
 
     /**
@@ -130,6 +145,14 @@ public:
      * @return false
      */
     bool IsUsingEGLContext() const { return UseEGLContext_; }
+
+    /**
+     * @brief Return whether the renderer is running display-free with a standalone EGL context ('-Headless offscreen').
+     *
+     * @return true
+     * @return false
+     */
+    bool IsHeadlessOffscreen() const { return HeadlessOffscreenMode_; }
 
     /**
      * @brief Called by the main loop, updates all rendered outputs.

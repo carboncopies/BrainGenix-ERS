@@ -11,6 +11,8 @@
 #include <chrono>
 #include <mutex>
 #include <memory>
+#include <algorithm>
+#include <limits>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 
@@ -40,6 +42,8 @@ private:
     // System Vars
     ERS_STRUCT_Scene* CurrentScene_ = nullptr; /**<Pointer to the current scene*/
     bool HasSceneChanged_ = false; /**<Indicate if the scene has changed since the last frame*/
+    bool RAMPressureActive_ = false; /**<Hysteresis state - true while free RAM has not yet recovered past the margin above the warning threshold*/
+    bool VRAMPressureActive_ = false; /**<Hysteresis state - true while free VRAM budget has not yet recovered past the margin above the warning threshold*/
     std::vector<ERS_STRUCT_Camera*> Cameras_; /**<List of cameras that assets are loaded around*/
     ERS_STRUCT_SystemUtils* SystemUtils_ = nullptr; /**<Struct containing essential services such as logging and Asset IO*/
 
@@ -86,6 +90,18 @@ private:
      * 
      */
     void CheckHardwareLimitations(ERS_STRUCT_Scene* Scene);
+
+    /**
+     * @brief Progressively lowers target texture levels while the system is low on RAM/VRAM.
+     * Models are reduced in ascending importance order (furthest from the cameras first), one level at a time,
+     * down to each model's minimum LOD floor (user/global settings, never below level 0).
+     * Affected models are then enqueued so the async updater's normal downward pass actually unloads the dropped levels.
+     * Uses hysteresis - targets are only ever shrunk here, so once free memory recovers past a margin above the
+     * warning threshold the regular distance-based sizing re-raises the targets naturally without ping-ponging.
+     * 
+     * @param Scene Scene whose models should be considered for texture target reduction
+     */
+    void ReduceTextureTargetsUnderMemoryPressure(ERS_STRUCT_Scene* Scene);
 
     /**
      * @brief Sorts the models in the given scene based on their distance from the camera.
@@ -170,9 +186,11 @@ public:
     /**
      * @brief Call this once there's a valid opengl context setup - only once that has been created can this be called.
      * Calling this earlier will result in a segmentation fault.
+     * In display-free offscreen mode (no GLFW window), pass the EGL handles of the shared offscreen context instead
+     * (EGLDisplay/EGLContext/EGLSurface stored as void* so this header does not need EGL headers).
      * 
      */
-    void SetupTextureStreamer(GLFWwindow* Window);
+    void SetupTextureStreamer(GLFWwindow* Window, void* SharedEGLDisplay = nullptr, void* SharedEGLConfig = nullptr, void* SharedEGLContext = nullptr, void* SharedEGLSurface = nullptr);
 
 
     /**
@@ -185,11 +203,14 @@ public:
     void SetCurrentScene(ERS_STRUCT_Scene* CurrentScene);
 
     /**
-     * @brief Not yet implemented!
+     * @brief Starts loading this scene's textures in the background so our loading time is shorter when we switch scenes.
+     * Schedules every model in the scene to have its baseline (lowest useful, floor-respecting) texture level loaded
+     * into RAM using the normal async load queue. This never touches VRAM staging and should not be called for the
+     * scene currently being rendered - the regular distance-based streaming takes over as soon as the scene becomes active.
+     * Only schedules loads that fit within the RAM budget, and models already at/above their baseline are skipped,
+     * so calling this repeatedly for the same scene is cheap.
      * 
-     * Will start loading this new scene in the background so our loading time is shorter when we switch scenes.
-     * 
-     * @param Scene 
+     * @param Scene Scene whose assets should be preloaded into RAM
      */
     void PreloadScene(ERS_STRUCT_Scene* Scene);
 

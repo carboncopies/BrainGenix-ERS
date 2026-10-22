@@ -21,8 +21,8 @@ ERS_CLASS_AssetStreamingManager::~ERS_CLASS_AssetStreamingManager() {
 
 }
 
-void ERS_CLASS_AssetStreamingManager::SetupTextureStreamer(GLFWwindow* Window) {
-    AsyncTextureUpdater_ = std::make_unique<ERS_CLASS_AsyncTextureUpdater>(SystemUtils_, ResourceMonitor_.get(), Window);
+void ERS_CLASS_AssetStreamingManager::SetupTextureStreamer(GLFWwindow* Window, void* SharedEGLDisplay, void* SharedEGLConfig, void* SharedEGLContext, void* SharedEGLSurface) {
+    AsyncTextureUpdater_ = std::make_unique<ERS_CLASS_AsyncTextureUpdater>(SystemUtils_, ResourceMonitor_.get(), Window, 0, SharedEGLDisplay, SharedEGLConfig, SharedEGLContext, SharedEGLSurface);
 }
 
 void ERS_CLASS_AssetStreamingManager::UpdateSceneStreamingQueue(ERS_STRUCT_Scene* Scene, std::vector<ERS_STRUCT_Camera*> Cameras) {
@@ -226,10 +226,162 @@ void ERS_CLASS_AssetStreamingManager::CheckHardwareLimitations(ERS_STRUCT_Scene*
         AsyncTextureUpdater_->QueuePanic();
     }
 
+    // Progressively Lower Texture Targets (Furthest-From-Camera First) While Under Sustained Memory Pressure
+    ReduceTextureTargetsUnderMemoryPressure(Scene);
+
 
 }
 
-// todo: create function to go through textures with high levels and unload them if under a certain ram/vram threshold
+void ERS_CLASS_AssetStreamingManager::ReduceTextureTargetsUnderMemoryPressure(ERS_STRUCT_Scene* Scene) {
+
+    // Get Current Free RAM/VRAM Values
+    ERS_STRUCT_HardwareInfo HWInfo = SystemUtils_->ERS_HardwareInformation_->GetHWInfo();
+    unsigned long long int FreeRAM = HWInfo.Dynamic_.PhysicalMemoryFree;
+    unsigned long long int FreeVRAM = 0;
+    if (SystemUtils_->RendererSettings_->CurrentVRAMUsage_ < SystemUtils_->RendererSettings_->VRAMBudget_) {
+        FreeVRAM = SystemUtils_->RendererSettings_->VRAMBudget_ - SystemUtils_->RendererSettings_->CurrentVRAMUsage_;
+    }
+
+    // Hysteresis - Pressure Mode Is Entered At The Warning Threshold And Only Exited Once Free Memory
+    // Recovers Past A Margin Above It. Targets Are Only Ever Shrunk Here (Never Raised), So Once The
+    // Pressure Is Gone The Regular Distance-Based Sizing Re-Raises Them Naturally Without Ping-Ponging.
+    const double RecoveryMarginFactor = 1.25;
+    unsigned long long int RAMRecoveryTarget  = (unsigned long long int)(SystemUtils_->RendererSettings_->WarningLowRAMBytes * RecoveryMarginFactor);
+    unsigned long long int VRAMRecoveryTarget = (unsigned long long int)(SystemUtils_->RendererSettings_->WarningLowVRAMBytes * RecoveryMarginFactor);
+
+    if (FreeRAM < SystemUtils_->RendererSettings_->WarningLowRAMBytes) {
+        if (!RAMPressureActive_) {
+            SystemUtils_->Logger_->Log("Free RAM Below Warning Threshold, Entering Texture Streaming Memory Pressure Mode", 3);
+        }
+        RAMPressureActive_ = true;
+    } else if (FreeRAM > RAMRecoveryTarget) {
+        RAMPressureActive_ = false;
+    }
+    if (FreeVRAM < SystemUtils_->RendererSettings_->WarningLowVRAMBytes) {
+        if (!VRAMPressureActive_) {
+            SystemUtils_->Logger_->Log("Free VRAM Budget Below Warning Threshold, Entering Texture Streaming Memory Pressure Mode", 3);
+        }
+        VRAMPressureActive_ = true;
+    } else if (FreeVRAM > VRAMRecoveryTarget) {
+        VRAMPressureActive_ = false;
+    }
+    if (!RAMPressureActive_ && !VRAMPressureActive_) {
+        return;
+    }
+
+    // Estimate How Many Bytes Must Be Reclaimed To Recover Past The Hysteresis Margin
+    long long int RAMBytesToReclaim = 0;
+    long long int VRAMBytesToReclaim = 0;
+    if (RAMPressureActive_ && FreeRAM < RAMRecoveryTarget) {
+        RAMBytesToReclaim = (long long int)(RAMRecoveryTarget - FreeRAM);
+    }
+    if (VRAMPressureActive_ && FreeVRAM < VRAMRecoveryTarget) {
+        VRAMBytesToReclaim = (long long int)(VRAMRecoveryTarget - FreeVRAM);
+    }
+
+    // Sort Models By Ascending Importance - Furthest From The Cameras First (They Matter The Least Visually)
+    std::vector<std::pair<float, unsigned int>> ModelsByDescendingDistance;
+    for (unsigned int i = 0; i < Scene->Models.size(); i++) {
+
+        float ClosestDistance = 0.0f;
+        if (Cameras_.size() > 0) {
+            ClosestDistance = std::numeric_limits<float>::max();
+            for (unsigned int CameraIndex = 0; CameraIndex < Cameras_.size(); CameraIndex++) {
+                if (Cameras_[CameraIndex] != nullptr) {
+                    ClosestDistance = std::min(ClosestDistance, glm::distance(Cameras_[CameraIndex]->GetPosition(), Scene->Models[i]->ModelPosition));
+                }
+            }
+            if (ClosestDistance == std::numeric_limits<float>::max()) {
+                ClosestDistance = 0.0f;
+            }
+        }
+
+        ModelsByDescendingDistance.push_back(std::make_pair(ClosestDistance, i));
+    }
+    std::sort(ModelsByDescendingDistance.begin(), ModelsByDescendingDistance.end(),
+        [](const std::pair<float, unsigned int>& A, const std::pair<float, unsigned int>& B) { return A.first > B.first; });
+
+    // Progressively Lower Texture Targets, One Level At A Time, Until The Budgets Recover Or Nothing More Can Be Lowered
+    int ModelsReduced = 0;
+    long long int EstimatedRAMReclaimedBytes = 0;
+    long long int EstimatedVRAMReclaimedBytes = 0;
+    for (auto ModelEntry = ModelsByDescendingDistance.begin(); ModelEntry != ModelsByDescendingDistance.end(); ++ModelEntry) {
+
+        if (RAMBytesToReclaim <= 0 && VRAMBytesToReclaim <= 0) {
+            break;
+        }
+
+        ERS_STRUCT_Model* Model = Scene->Models[ModelEntry->second].get();
+        if (Model->Textures_.size() == 0 || Model->Textures_[0].TextureLevels.size() == 0) {
+            continue;
+        }
+
+        // Never Lower Targets Below The Model's Floor (User/Global Minimum LOD, And Never Below Level 0)
+        int MinFloor = std::max(0, Model->UserLimitedMinLOD_);
+        if (MinLOD_ > 0) {
+            MinFloor = std::max(MinFloor, MinLOD_);
+        }
+        MinFloor = std::min(MinFloor, Model->MaxTextureLevel_);
+
+        bool ModelReduced = false;
+        bool TargetReduced = true;
+        while (TargetReduced) {
+            TargetReduced = false;
+
+            // Lower RAM Target
+            if (RAMBytesToReclaim > 0 && Model->TargetTextureLevelRAM > MinFloor) {
+                int DroppedLevel = std::min(Model->TextureLevelInRAM_, Model->TargetTextureLevelRAM);
+                Model->TargetTextureLevelRAM--;
+                ModelReduced = true;
+                TargetReduced = true;
+
+                // Estimate Reclaimed Bytes From The Level That Will Actually Be Unloaded
+                if (DroppedLevel > Model->TargetTextureLevelRAM && DroppedLevel >= 0) {
+                    for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
+                        if (DroppedLevel < (int)Model->Textures_[TextureIndex].TextureLevels.size()) {
+                            RAMBytesToReclaim -= Model->Textures_[TextureIndex].TextureLevels[DroppedLevel].LevelMemorySizeBytes;
+                            EstimatedRAMReclaimedBytes += Model->Textures_[TextureIndex].TextureLevels[DroppedLevel].LevelMemorySizeBytes;
+                        }
+                    }
+                }
+            }
+
+            // Lower VRAM Target
+            if (VRAMBytesToReclaim > 0 && Model->TargetTextureLevelVRAM > MinFloor) {
+                int DroppedLevel = std::min(Model->TextureLevelInVRAM_, Model->TargetTextureLevelVRAM);
+                Model->TargetTextureLevelVRAM--;
+                ModelReduced = true;
+                TargetReduced = true;
+
+                // Estimate Reclaimed Bytes From The Level That Will Actually Be Unloaded
+                if (DroppedLevel > Model->TargetTextureLevelVRAM && DroppedLevel >= 0) {
+                    for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
+                        if (DroppedLevel < (int)Model->Textures_[TextureIndex].TextureLevels.size()) {
+                            VRAMBytesToReclaim -= Model->Textures_[TextureIndex].TextureLevels[DroppedLevel].LevelMemorySizeBytes;
+                            EstimatedVRAMReclaimedBytes += Model->Textures_[TextureIndex].TextureLevels[DroppedLevel].LevelMemorySizeBytes;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        if (ModelReduced) {
+            ModelsReduced++;
+        }
+
+    }
+
+    // Enqueue The Affected Models So The Async Updater's Normal Downward Pass Actually Unloads The Dropped Levels
+    if (ModelsReduced > 0) {
+        AsyncTextureUpdater_->SortModels(Scene);
+        SystemUtils_->Logger_->Log(std::string("Memory Pressure Response: Lowered Texture Targets For '")
+            + std::to_string(ModelsReduced) + "' Model(s) (Furthest From Camera First), Estimated Reclaim '"
+            + std::to_string(EstimatedRAMReclaimedBytes / 1048576) + "' MiB RAM, '"
+            + std::to_string(EstimatedVRAMReclaimedBytes / 1048576) + "' MiB VRAM", 4);
+    }
+
+}
 
 std::vector<ERS_STRUCT_Model*> ERS_CLASS_AssetStreamingManager::CreateListOfModelsToLoadNextLevelToVRAM(std::map<unsigned int, int> CameraUpdatesQuota, ERS_STRUCT_Scene* Scene, std::vector<std::map<float, unsigned int>> DistancesFromCamera) {
 
@@ -416,6 +568,66 @@ void ERS_CLASS_AssetStreamingManager::WorkerThread() {
 void ERS_CLASS_AssetStreamingManager::SetCurrentScene(ERS_STRUCT_Scene* Scene) {
     HasSceneChanged_ = CurrentScene_ != Scene;
     CurrentScene_ = Scene;
+}
+
+void ERS_CLASS_AssetStreamingManager::PreloadScene(ERS_STRUCT_Scene* Scene) {
+
+    // Sanity Checks - Don't Preload Invalid Scenes, The Scene We're Already Handling, Or Before The Texture Updater Exists
+    if (Scene == nullptr || Scene == CurrentScene_ || AsyncTextureUpdater_ == nullptr) {
+        return;
+    }
+
+    // Schedule Every Model To Have Its Baseline (Lowest Useful) Texture Level In RAM
+    int ModelsScheduled = 0;
+    for (unsigned int i = 0; i < Scene->Models.size(); i++) {
+        ERS_STRUCT_Model* Model = Scene->Models[i].get();
+
+        // Skip Models Without Any Texture Level Metadata (Nothing Can Be Loaded Yet)
+        if (Model->Textures_.size() == 0 || Model->Textures_[0].TextureLevels.size() == 0) {
+            continue;
+        }
+
+        // Compute Baseline Level - Level 0, Raised By The User/Global Minimum LOD Floors, Capped By What The Asset Has
+        int BaselineLevel = 0;
+        BaselineLevel = std::max(BaselineLevel, Model->UserLimitedMinLOD_);
+        if (MinLOD_ > 0) {
+            BaselineLevel = std::max(BaselineLevel, MinLOD_);
+        }
+        BaselineLevel = std::min(BaselineLevel, Model->UserLimitedMaxLOD_);
+        BaselineLevel = std::min(BaselineLevel, Model->MaxTextureLevel_);
+
+        // Skip Models That Already Have (Or Are Already Scheduled To Have) The Baseline Level Or Better
+        if (Model->TextureLevelInRAM_ >= BaselineLevel || Model->TargetTextureLevelRAM >= BaselineLevel) {
+            continue;
+        }
+
+        // Calculate How Much RAM The New Levels Will Need
+        unsigned long BytesNeeded = 0;
+        int FirstLevelToLoad = std::max(Model->TextureLevelInRAM_, Model->TargetTextureLevelRAM) + 1;
+        for (unsigned int TextureIndex = 0; TextureIndex < Model->Textures_.size(); TextureIndex++) {
+            int NumberTextureLevels = Model->Textures_[TextureIndex].TextureLevels.size();
+            for (int Level = FirstLevelToLoad; Level <= BaselineLevel && Level < NumberTextureLevels; Level++) {
+                BytesNeeded += Model->Textures_[TextureIndex].TextureLevels[Level].LevelMemorySizeBytes;
+            }
+        }
+
+        // Only Schedule While The Resource Monitor Says It Fits - The Loader Re-Checks The Budget Again At Load Time
+        if (!ResourceMonitor_->TextureFitsInRAMBudget(BytesNeeded)) {
+            SystemUtils_->Logger_->Log(std::string("Skipping Preload Of Model '") + Model->Name + "', Will Not Fit In RAM Budget", 4);
+            continue;
+        }
+
+        // Set The RAM Target Only (VRAM Staging Is Left Untouched) And Enqueue The Model For A RAM-Only Load
+        Model->TargetTextureLevelRAM = BaselineLevel;
+        AsyncTextureUpdater_->QueueRAMOnlyUpdate(i, Scene);
+        ModelsScheduled++;
+
+    }
+
+    if (ModelsScheduled > 0) {
+        SystemUtils_->Logger_->Log(std::string("Preloading Scene '") + Scene->SceneName + "', Scheduled Baseline RAM Texture Loads For '" + std::to_string(ModelsScheduled) + "' Model(s)", 4);
+    }
+
 }
 
 void ERS_CLASS_AssetStreamingManager::SetCameraStructs(std::vector<ERS_STRUCT_Camera*> Cameras) {

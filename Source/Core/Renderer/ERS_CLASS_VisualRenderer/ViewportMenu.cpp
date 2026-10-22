@@ -520,7 +520,7 @@ void ERS_CLASS_ViewportMenu::DrawMenu(ERS_STRUCT_Viewport* Viewport, ERS_CLASS_S
                     Viewport->GridSnapAmountTranslate_ = 0.01275f;
                 }
                 if (ImGui::MenuItem("0.025", nullptr, (Viewport->GridSnapAmountTranslate_ == 0.025f))) {
-                    Viewport->GridSnapAmountTranslate_ = 0.205f;
+                    Viewport->GridSnapAmountTranslate_ = 0.025f;
                 }
                 if (ImGui::MenuItem("0.05", nullptr, (Viewport->GridSnapAmountTranslate_ == 0.05f))) {
                     Viewport->GridSnapAmountTranslate_ = 0.05f;

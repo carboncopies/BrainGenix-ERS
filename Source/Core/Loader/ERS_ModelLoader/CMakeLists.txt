@@ -41,6 +41,11 @@ target_link_libraries(ERS_ModelLoader
     ThreadNamingUtils
     )
 
+# Link EGL If Available (Shared Offscreen Pbuffer Contexts For Texture Streaming Threads)
+if (TARGET ERS_EGL)
+    target_link_libraries(ERS_ModelLoader ERS_EGL)
+endif()
+
 # Link Internal Libs
 target_link_libraries(ERS_ModelLoader
     bg-ers-iosubsystem

@@ -13,8 +13,6 @@ def classify_stem(stem: str) -> str:
         return "conforming"
     if stem.startswith("GUI_"):
         return "legacy_gui"
-    if stem.startswith("PyBind11"):
-        return "legacy_pybind"
     return "plain_name"
 
 

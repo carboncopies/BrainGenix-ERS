@@ -143,7 +143,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
     switch (GLSeverity) {
         case GL_DEBUG_SEVERITY_HIGH:
         Severity= "HIGH";
-        LogLevel = 10;
+        LogLevel = 8;
         if (!OpenGLLoggingSystem->LogSeverityHigh_){
             WillLog = false;
         }
@@ -151,7 +151,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
 
         case GL_DEBUG_SEVERITY_MEDIUM:
         Severity= "MEDIUM";
-        LogLevel = 9;
+        LogLevel = 7;
         if (!OpenGLLoggingSystem->LogSeverityMedium_){
             WillLog = false;
         }
@@ -159,7 +159,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
 
         case GL_DEBUG_SEVERITY_LOW:
         Severity= "LOW";
-        LogLevel = 8;
+        LogLevel = 6;
         if (!OpenGLLoggingSystem->LogSeverityLow_){
             WillLog = false;
         }
@@ -167,7 +167,7 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
 
         case GL_DEBUG_SEVERITY_NOTIFICATION:
         Severity= "NOTIFICATION";
-        LogLevel = 5;
+        LogLevel = 4;
         if (!OpenGLLoggingSystem->LogSeverityNotification_){
             WillLog = false;
         }
@@ -186,8 +186,9 @@ void APIENTRY ERS_MessageCallback(GLenum GLSource, GLenum GLType, GLuint GLID, G
     }
 
     // Generate Log Message
+    // Forward Filtered Items Into The Main Log While Collection Is Enabled, Prefixed So They Can Be Identified As OpenGL-Originated
     if (WillLog) {
-        std::string Message = "["+ std::to_string(GLID) + "] ["
+        std::string Message = "GL: ["+ std::to_string(GLID) + "] ["
         + std::string(Source) + "] [" + std::string(Type) + "] ["
         + std::string(Severity) + "] " + std::string(GLMessage);
 

@@ -23,6 +23,10 @@ struct ERS_STRUCT_PointLight {
     float Intensity; /**<Intensity of the light*/
     float MaxDistance; /**<Distance After Which This Light No Longer Affects The Scene*/
 
+    float RolloffConstant = 1.0f; /**<Constant Term Of The Light Attenuation Equation (1/(Kc + Kl*d + Kq*d^2))*/
+    float RolloffLinear = 0.0f; /**<Linear Term Of The Light Attenuation Equation*/
+    float RolloffQuadratic = 0.0f; /**<Quadratic Term Of The Light Attenuation Equation*/
+
     std::vector<long> AttachedScriptIndexes_; /**<Indexes of attached scripts (index in the project struct's list of scripts)*/
 
     glm::vec3 Color; /**<Color of the light*/

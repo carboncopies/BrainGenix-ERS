@@ -2,8 +2,12 @@
 // This file is part of the BrainGenix-ERS Environment Rendering System //
 //======================================================================//
 
-// FIXME: Make template textures added to their own map so they can be reused.
-// FIXME: Make dynamic/static models that can each be rotated/translated (dynamically or statically). Then make updateposition functions, etc.
+// NOTE: Texture deduplication is handled at load time by the model loader, which keeps a
+// map of already-loaded textures and reuses them instead of loading duplicates. Keeping
+// scene-level template textures in their own map for reuse remains a possible future optimization.
+// NOTE: Models already carry runtime-editable position/rotation/scale (driven by the editor's
+// object properties and Lua scripting). A static/dynamic classification to skip transform
+// recompute for unchanging models is a possible future optimization.
 
 #include <SceneLoader.h>
 

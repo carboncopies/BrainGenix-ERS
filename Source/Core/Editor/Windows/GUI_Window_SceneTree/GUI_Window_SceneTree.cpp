@@ -17,6 +17,7 @@ GUI_Window_SceneTree::GUI_Window_SceneTree(ERS_CLASS_SceneManager* SceneManager,
     Subwindow_PointLightRenameModal_ = std::make_unique<Subwindow_PointLightRenameModal>(SceneManager_);
     Subwindow_DirectionalLightRenameModal_ = std::make_unique<Subwindow_DirectionalLightRenameModal>(SceneManager_);
     Subwindow_SpotLightRenameModal_ = std::make_unique<Subwindow_SpotLightRenameModal>(SceneManager_);
+    Subwindow_SceneCameraRenameModal_ = std::make_unique<Subwindow_SceneCameraRenameModal>(SceneManager_);
 
     Subwindow_ModelReplaceModal_ = std::make_unique<Subwindow_ModelReplaceModal>(SceneManager_);
     
@@ -25,6 +26,7 @@ GUI_Window_SceneTree::GUI_Window_SceneTree(ERS_CLASS_SceneManager* SceneManager,
     Subwindow_DeletePointLight_ = std::make_unique<Subwindow_DeletePointLight>(SceneManager_, Cursors3D_);
     Subwindow_DeleteDirectionalLight_ = std::make_unique<Subwindow_DeleteDirectionalLight>(SceneManager_, Cursors3D_);
     Subwindow_DeleteSpotLight_ = std::make_unique<Subwindow_DeleteSpotLight>(SceneManager_, Cursors3D_);
+    Subwindow_DeleteSceneCamera_ = std::make_unique<Subwindow_DeleteSceneCamera>(SceneManager_, Cursors3D_);
 
     SystemUtils_->Logger_->Log("Finished Initializing ERS GUI Window_SceneTree", 5);
 
@@ -63,6 +65,11 @@ void GUI_Window_SceneTree::Draw() {
 
                     // Create Selectable Item
                     ImGui::Selectable(SceneManager_->Scenes_[i]->SceneName.c_str(), &Selector);
+
+                    // Preload Hovered Scene In The Background (Hovering Over A Scene Indicates The User May Switch To It)
+                    if (ImGui::IsItemHovered() && i != SceneManager_->ActiveScene_) {
+                        ProjectUtils_->ModelLoader_->AssetStreamingManager_->PreloadScene(SceneManager_->Scenes_[i].get());
+                    }
 
                     // If Item Selected, Update Scene To Current Index
                     if (Selector) {
@@ -173,11 +180,13 @@ void GUI_Window_SceneTree::Draw() {
     Subwindow_PointLightRenameModal_->Draw();
     Subwindow_DirectionalLightRenameModal_->Draw();
     Subwindow_SpotLightRenameModal_->Draw();
+    Subwindow_SceneCameraRenameModal_->Draw();
     Subwindow_DeleteScene_->Draw();
     Subwindow_DeleteModel_->Draw();
     Subwindow_DeletePointLight_->Draw();
     Subwindow_DeleteDirectionalLight_->Draw();
     Subwindow_DeleteSpotLight_->Draw();
+    Subwindow_DeleteSceneCamera_->Draw();
     Subwindow_ModelReplaceModal_->Draw();
 
 }
@@ -658,19 +667,19 @@ void GUI_Window_SceneTree::DrawScene(ERS_STRUCT_Scene* Scene, int SceneIndex) {
             }
 
 
-            // // Context Menu
-            // if (ImGui::BeginPopupContextItem()) {
+            // Context Menu
+            if (ImGui::BeginPopupContextItem(std::string(std::string("SceneCamera")+std::to_string(i)).c_str())) {
 
-            //     if (ImGui::MenuItem("Rename")) {
-            //         Subwindow_SceneCameraRenameModal_->Activate(SceneIndex, i);
-            //     }
-            //     ImGui::Separator();
-            //     if (ImGui::MenuItem("Delete")) {
-            //         Subwindow_DeleteSceneCamera_->DeleteSceneCamera(SceneIndex, i);
-            //     }
+                if (ImGui::MenuItem("Rename")) {
+                    Subwindow_SceneCameraRenameModal_->Activate(SceneIndex, i);
+                }
+                ImGui::Separator();
+                if (ImGui::MenuItem("Delete")) {
+                    Subwindow_DeleteSceneCamera_->DeleteSceneCamera(SceneIndex, i);
+                }
 
-            // ImGui::EndPopup();
-            // }
+            ImGui::EndPopup();
+            }
 
 
         }

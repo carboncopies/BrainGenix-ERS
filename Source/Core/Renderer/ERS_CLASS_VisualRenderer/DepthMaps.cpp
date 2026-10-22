@@ -66,13 +66,11 @@ bool ERS_CLASS_DepthMaps::RegenerateDepthMapTextureArray2D(int NumberOfTextures,
     glBindTexture(GL_TEXTURE_2D_ARRAY, DepthTextureArrayID_);
     
     
-    // ** THIS CAUSES A SEGFAULT FOR SOME REASON...? NOT SURE WHY, SO USING WORKAROUND BELOW **
-    // glTextureStorage3D(GL_TEXTURE_2D_ARRAY,
-    //     0, // Number OF Mipmaps, Note that we're not using mipmaps so this is set to 1
-    //     GL_DEPTH_COMPONENT16, // Storage Format, Using Depth Format Here As We're Setting Up A Depth Map
-    //     Width, Height, // Width and Height, Pretty Self Explanitory
-    //     NumberOfTextures // Total Number Of Textures In The Array
-    // );
+    // NOTE: glTextureStorage3D is intentionally not used here. The original attempt passed the
+    // GL_TEXTURE_2D_ARRAY *target enum* instead of the texture *name* (and levels=0, which is
+    // invalid), which crashes on drivers where the DSA entry point resolves but the call is
+    // malformed; DSA (glTextureStorage3D) also requires GL 4.5 / ARB_direct_state_access, which
+    // this project does not guarantee. glTexImage3D (mutable storage) is correct and portable.
 
     glTexImage3D(GL_TEXTURE_2D_ARRAY,
         0,                    // Current 'mipmap level', We're not using these so 0 is fine

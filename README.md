@@ -17,9 +17,9 @@ Here's a (mostly) up to date list of the currently implemented features.
 - [Asset Explorer](#asset-explorer) (Shows list of available assets)
 - [Object Properties](#object-properties) (Enables user management of scene object properties)
 - [Script Editor](#script-editor) (Editor for scripts)
-- [Shder Editor](#shader-editor) (Window for editing shader code (GLSL))
+- [Shader Editor](#shader-editor) (Window for editing shader code (GLSL))
 - [Color Theme Selector](#color-theme-selector) (Tool to pick color theme for the editor)
-- [System Fornt Selector](#system-font-selector) (Tool to select the font used by the editor)
+- [System Font Selector](#system-font-selector) (Tool to select the font used by the editor)
 - [Editor Camera Settings](#editor-camera-settings) (Window to select editor camera settings)
 - [Rendering Settings](#rendering-settings) (Window to set rendering parameters)
 - [Asset Streaming Settings](#asset-streaming-settings) (Window to select the asset streaming settings)
@@ -54,7 +54,7 @@ Here's a (mostly) up to date list of the currently implemented features.
 ### Asset Explorer
 - Model tab (shows available models to put in scene tree)
 - Script tab (shows scripts that can be attached to objects in the scene tree)
-- Raw assset IDs tab (shows asset ids in file system)
+- Raw asset IDs tab (shows asset ids in file system)
 - Tools tab
 - Refresh asset index
 - Repair asset index
@@ -65,7 +65,7 @@ Here's a (mostly) up to date list of the currently implemented features.
 Depending on the type of object selected, the window will display different properties:
   #### Model Settings
     - Casts Dynamic Shadows (Enable or disable casting of non-prebaked shadows)
-    - Casts Static Shadows (Enable or disable casting of prebaked shadows (doens't do anything yet; prebaked shadows dont exist yet))
+    - Casts Static Shadows (Enable or disable casting of prebaked shadows (doesn't do anything yet; prebaked shadows dont exist yet))
     - Receive Shadows (Allow or disallow the object to have shadows cast on it)
     - Treat missing textures as transparent (useful for things with glass on them like clocks or windows, will fix broken textures caused on the glass)
     - Render Model (show/hide this model)
@@ -127,7 +127,7 @@ Depending on the type of object selected, the window will display different prop
 - Apply and reload buttons
 
 ### Editor Camera Settings
-- Viewport Selector (all viewports are independent of eachother)
+- Viewport Selector (all viewports are independent of each other)
 - Movement speed controls (min/max/current speed) (Note that using the scroll wheel can adjust movement speed)
 - Mouse Settings (constrain pitch at -90,90, Mouse sensitivity)
 - Location/Rotation Settings (can manually set position and rotation through text input boxes)
@@ -137,7 +137,7 @@ Depending on the type of object selected, the window will display different prop
 - Wireframe mode (only draws outline of polygons)
 - Background color (sets the blank bkg color)
 - Framerate settings (adjust framerate target, unlock, sync to monitor, etc.)
-- Shadow Map settings (resoluton, updates, filter kernel siez, filtering mode, update mode)
+- Shadow Map settings (resoluton, updates, filter kernel size, filtering mode, update mode)
 
 ### Asset Streaming Settings
 - Ram/VRAM cutoff (max distance from camera/viewport after which the textures are at min lod)
@@ -155,7 +155,7 @@ Depending on the type of object selected, the window will display different prop
 - Purge Ram/Vram/All (allow the user to force reload textures to various parts of the system)
 
 ### Game Controller Settings
-- Seems to crash so don't use this for now i guess...
+- Profile list (shows the controller settings profiles stored in the active project; profiles and their joystick mapping values can be viewed, added, and removed — inline editing of settings values is not yet implemented)
 
 ### Viewport Menu
 - Controls menu (enable or disable text overlays for various stats, icons, etc.)
@@ -199,11 +199,11 @@ Depending on the type of object selected, the window will display different prop
   At this time, we're not working on native Windows builds since we are working on cross-compiling for Windows platforms from Linux. This will allow us to simplify our build infrastructure significantly. Therefore, ***the following section is out of date and may not work!***
 
 
-  Since we don't develop on Windows, builds aren't guarenteed to work. With that said, they *should* work most of the time.   
+  Since we don't develop on Windows, builds aren't guaranteed to work. With that said, they *should* work most of the time.   
   
   **Note: Having windows set to a non english language seems to break C++ includes for some reason.** We really wish that this wasn't an issue but it seems to be a problem for whatever reason (thanks Microsoft!). Apologies for the inconvenience.
 
-  - Open Visual Stuido 2019 (Has to be this version)
+  - Open Visual Studio 2019 (Has to be this version)
   - Install python 3.9.5 (needed to link with the interpreter, embeddable version already included in project tree, also restart your machine after installing to avoid issues) (If just installing, make sure to restart after to make it show up in visual studio)
   - Clone the repository but note that you'll probably have to put it into a root level directory on your disk. This is because Microsoft has imposed a 260 character file name limit in their compiler. 
   - Open the CMakeLists.txt file, and generate the configuration
@@ -219,6 +219,18 @@ Depending on the type of object selected, the window will display different prop
     - [Debian](https://www.debian.org/distrib/)
     - [Ubuntu](https://ubuntu.com/download)
   - Follow Linux build instructions
+
+## Running Headless (Hidden Window)
+
+  Run `./ERS -Headless true` (or set the `ERS_HEADLESS=1` environment variable) to start the editor with its window hidden. The OpenGL context and full render pipeline still initialize and run as normal - log output continues to record initialization - so this mode is useful for automated smoke tests of the render pipeline. On Linux, a display (e.g. `DISPLAY=:0`) is still required for GLFW context creation even though no window is shown.
+
+## Running Headless (Display-Free Offscreen Rendering)
+
+  Run `./ERS -Headless offscreen` (or set the `ERS_HEADLESS=offscreen` environment variable) to make the renderer fully display-free: no GLFW window is created and no display connection (`DISPLAY`/`WAYLAND_DISPLAY`) is required at all. Instead, ERS creates an OpenGL 4.1 core context directly through EGL - first by enumerating GPU devices via `EGL_EXT_device_enumeration`/`EGL_EXT_platform_device` (this path works on the NVIDIA proprietary driver), and falling back to `EGL_MESA_platform_surfaceless` on Mesa-based systems. The context renders into a tiny offscreen pbuffer; all viewport rendering continues to go through the regular framebuffer objects, so the full render pipeline (shader loading, FBO/texture creation, texture streaming) runs exactly as in windowed mode. The texture streaming worker threads use shared EGL pbuffer contexts instead of hidden GLFW windows. This mode never receives keyboard/mouse input.
+
+  Requirements: a working EGL installation (on Ubuntu: `libegl1-mesa-dev`; already linked into the build via `ENABLE_EGL`) and either an EGL-capable proprietary GPU driver (e.g. NVIDIA) or a Mesa driver exposing the surfaceless platform extension. If no usable EGL platform or OpenGL context is available, ERS logs a fatal message and exits cleanly instead of crashing.
+
+  When EGL enumerates multiple renderable devices (e.g. a laptop with both an NVIDIA dGPU and an Intel iGPU), a specific device can be selected with `./ERS -Headless offscreen -EGLDeviceIndex <N>` (or the `ERS_EGL_DEVICE_INDEX` environment variable); by default the first enumerated device is used. The chosen device is reported in the log together with its OpenGL version and renderer strings. Note: on some NVIDIA driver versions (e.g. 570.195.03), shaders fail to link on the `EGL_PLATFORM_DEVICE` EGL path with `error C6020` even though the same shaders link fine under GLX contexts on identical hardware - select a Mesa device index in that case.
 
 
 # Development Environment Setup (For Developers)
@@ -268,7 +280,7 @@ Done! You've now successfully setup your build environment. At this point, just 
 
 # Scripting API
 
-  The ERS scripting api uses the Python programming language to provide control over models, lights and more. Scripts can be "attached" to an object to allow for programatic control over it's attributes. Plese see the following API reference for more information.
+  The ERS scripting api uses Lua, executed by an embedded LuaJIT interpreter, to provide control over models, lights and more. Scripts can be "attached" to an object to allow for programatic control over it's attributes. Please see the following API reference for more information.
   
   ## System Variables (provided to all scripts)
     "GameTime" - Number of seconds since the start of the game.
@@ -285,6 +297,13 @@ Done! You've now successfully setup your build environment. At this point, just 
     "ScaleY" - Y Scale of the model
     "ScaleZ" - Z Scale of the model
     "Enabled" - Enable/Disable rendering of the model
+    "TextureLevelInRAM" - Current texture level of detail held in system RAM (int)
+    "TextureLevelInVRAM" - Current texture level of detail held in VRAM (int)
+    "TargetTextureLevelRAM" - Target texture level of detail for system RAM
+    "TargetTextureLevelVRAM" - Target texture level of detail for VRAM
+    "MinTextureLOD" - Minimum allowed texture level of detail for this model
+    "MaxTextureLOD" - Maximum allowed texture level of detail for this model
+    "ModelMaxTextureLOD" - Maximum texture level of detail generated for this model's textures
 
   ## Point Light Variables
     "PosX" - X Position of the light
@@ -300,17 +319,17 @@ Done! You've now successfully setup your build environment. At this point, just 
     "RolloffQuadratic" - Quadratic component of light rolloff (float)
     
   ## Directional Light Variables
-    "DirectionalLightPosX" - X Position of the light
-    "DirectionalLightPosY" - Y Position of the light
-    "DirectionalLightPosZ" - Z Position of the light
-    "DirectionalLightRotX" - X Rotation of the light
-    "DirectionalLightRotY" - Y Rotation of the light
-    "DirectionalLightRotZ" - Z Rotation of the light
-    "DirectionalLightIntensity" - brighness of the light (float)
-    "DirectionalLightMaxDistance" - maximum distance of the light after which the scene will not be affected (float)
-    "DirectionalLightColorR" - Red component of color (from scale of 0 to 1)
-    "DirectionalLightColorG" - Green component of color (from scale of 0 to 1)
-    "DirectionalLightColorB" - Blue component of color (from scale of 0 to 1)
+    "PosX" - X Position of the light
+    "PosY" - Y Position of the light
+    "PosZ" - Z Position of the light
+    "RotX" - X Rotation of the light
+    "RotY" - Y Rotation of the light
+    "RotZ" - Z Rotation of the light
+    "ColorR" - Red component of color (from scale of 0 to 1)
+    "ColorG" - Green component of color (from scale of 0 to 1)
+    "ColorB" - Blue component of color (from scale of 0 to 1)
+    "Intensity" - brighness of the light (float)
+    "MaxDistance" - maximum distance of the light after which the scene will not be affected (float)
 
   ## Spot Light Variables
     "PosX" - X Position of the light
@@ -324,7 +343,7 @@ Done! You've now successfully setup your build environment. At this point, just 
     "ColorB" - Blue component of color (from scale of 0 to 1)
     "Intensity" - brighness of the light (float)
     "MaxDistance" - maximum distance of the light after which the scene will not be affected (float)
-    "Cutoff" - Angle of area affected in degrees (float)
+    "CutOff" - Angle of area affected in degrees (float)
     "Rolloff" - Rolloff angle in degrees (float)
 
   ## Camera Variables
@@ -334,7 +353,6 @@ Done! You've now successfully setup your build environment. At this point, just 
     "RotX" - X Rotation of the camera
     "RotY" - Y Rotation of the camera
     "RotZ" - Z Rotation of the camera
-    "ScaleX" - X Scale of the camera
-    "ScaleY" - Y Scale of the camera
-    "ScaleZ" - Z Scale of the camera
+    "FOV" - Field of view of the camera (float)
+    "Priority" - Asset streaming priority for this camera (int)
     

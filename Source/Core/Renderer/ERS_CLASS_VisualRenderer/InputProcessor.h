@@ -76,9 +76,10 @@ private:
     void MouseCallback(double XPos, double YPos);
 
     /**
-     * @brief Callback for Mouse Scroll (!!!DOESN'T WORK RIGHT NOW, NEED TO BE FIXED!!!)
-     * 
-     * @param YOffset 
+     * @brief Callback for Mouse Scroll. Called once per frame by ProcessMouseScroll
+     * with ImGui's vertical scroll wheel delta; adjusts camera movement speed.
+     *
+     * @param YOffset
      */
     void ScrollCallback(double YOffset);
 

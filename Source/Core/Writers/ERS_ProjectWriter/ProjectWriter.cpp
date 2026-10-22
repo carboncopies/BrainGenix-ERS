@@ -9,11 +9,7 @@ namespace {
 
 unsigned long ERS_FUNCTION_GetControllerSettingsPairCount(ERS_STRUCT_Project* ProjectPointer) {
 
-    if (ProjectPointer->ControllerSettings == nullptr) {
-        return 0;
-    }
-
-    unsigned long ControllerSettingsCount = ProjectPointer->ControllerSettings->size();
+    unsigned long ControllerSettingsCount = ProjectPointer->ControllerSettings.size();
     if (ProjectPointer->GameControllerSettingsIDs.size() < ControllerSettingsCount) {
         ControllerSettingsCount = ProjectPointer->GameControllerSettingsIDs.size();
     }
@@ -62,6 +58,43 @@ void ERS_FUNCTION_EmitControllerSettings(YAML::Emitter* Emitter, ERS_STRUCT_Cont
     (*Emitter)<<YAML::Key<<"DPADDownButtonIndex"<<YAML::Value<<ControllerSettings->DPADDownButtonIndex;
     (*Emitter)<<YAML::Key<<"DPADLeftButtonIndex"<<YAML::Value<<ControllerSettings->DPADLeftButtonIndex;
     (*Emitter)<<YAML::Key<<"DPADRightButtonIndex"<<YAML::Value<<ControllerSettings->DPADRightButtonIndex;
+    (*Emitter)<<YAML::EndMap;
+
+}
+
+void ERS_FUNCTION_EmitRendererSettings(YAML::Emitter* Emitter, ERS_STRUCT_RendererSettings* RendererSettings) {
+
+    (*Emitter)<<YAML::BeginMap;
+
+    (*Emitter)<<YAML::Key<<"ShadowMapX"<<YAML::Value<<RendererSettings->ShadowMapX_;
+    (*Emitter)<<YAML::Key<<"ShadowMapY"<<YAML::Value<<RendererSettings->ShadowMapY_;
+    (*Emitter)<<YAML::Key<<"ShadowMapCubemapX"<<YAML::Value<<RendererSettings->ShadowMapCubemapX_;
+    (*Emitter)<<YAML::Key<<"ShadowMapCubemapY"<<YAML::Value<<RendererSettings->ShadowMapCubemapY_;
+
+    (*Emitter)<<YAML::Key<<"ShadowFilteringType"<<YAML::Value<<(int)RendererSettings->ShadowFilteringType_;
+    (*Emitter)<<YAML::Key<<"ShadowUpdateMode"<<YAML::Value<<(int)RendererSettings->ShadowUpdateMode_;
+    (*Emitter)<<YAML::Key<<"MaxShadowUpdatesPerFrame"<<YAML::Value<<RendererSettings->MaxShadowUpdatesPerFrame_;
+    (*Emitter)<<YAML::Key<<"ShadowFilterKernelSize"<<YAML::Value<<RendererSettings->ShadowFilterKernelSize_;
+    (*Emitter)<<YAML::Key<<"RefreshStaticShadowMaps"<<YAML::Value<<RendererSettings->RefreshStaticShadowMaps_;
+
+    (*Emitter)<<YAML::Key<<"MotionBlurEnabled"<<YAML::Value<<RendererSettings->MotionBlurEnabled_;
+    (*Emitter)<<YAML::Key<<"MotionBlurStrength"<<YAML::Value<<RendererSettings->MotionBlurStrength_;
+    (*Emitter)<<YAML::Key<<"MotionBlurReferenceFrameRate"<<YAML::Value<<RendererSettings->MotionBlurReferenceFrameRate_;
+    (*Emitter)<<YAML::Key<<"MotionBlurMaxBlend"<<YAML::Value<<RendererSettings->MotionBlurMaxBlend_;
+
+    (*Emitter)<<YAML::Key<<"VRAMBudget"<<YAML::Value<<RendererSettings->VRAMBudget_;
+    (*Emitter)<<YAML::Key<<"RAMBudget"<<YAML::Value<<RendererSettings->RAMBudget_;
+
+    (*Emitter)<<YAML::Key<<"WarningLowRAMBytes"<<YAML::Value<<RendererSettings->WarningLowRAMBytes;
+    (*Emitter)<<YAML::Key<<"CriticalLowRAMBytes"<<YAML::Value<<RendererSettings->CriticalLowRAMBytes;
+    (*Emitter)<<YAML::Key<<"FatalLowRAMBytes"<<YAML::Value<<RendererSettings->FatalLowRAMBytes;
+    (*Emitter)<<YAML::Key<<"TerminateLowRAMBytes"<<YAML::Value<<RendererSettings->TerminateLowRAMBytes;
+
+    (*Emitter)<<YAML::Key<<"WarningLowVRAMBytes"<<YAML::Value<<RendererSettings->WarningLowVRAMBytes;
+    (*Emitter)<<YAML::Key<<"CriticalLowVRAMBytes"<<YAML::Value<<RendererSettings->CriticalLowVRAMBytes;
+    (*Emitter)<<YAML::Key<<"FatalLowVRAMBytes"<<YAML::Value<<RendererSettings->FatalLowVRAMBytes;
+    (*Emitter)<<YAML::Key<<"TerminateLowVRAMBytes"<<YAML::Value<<RendererSettings->TerminateLowVRAMBytes;
+
     (*Emitter)<<YAML::EndMap;
 
 }
@@ -174,6 +207,12 @@ bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, lo
     ProjectEmitter<<YAML::EndMap;
 
 
+    SystemUtils_->Logger_->Log("Serializing Renderer Settings", 4);
+    ProjectEmitter<<YAML::Key<<"RendererSettings";
+    ProjectEmitter<<YAML::Value;
+    ERS_FUNCTION_EmitRendererSettings(&ProjectEmitter, &ProjectPointer->RendererSettings);
+
+
     // Convert Emitter To String
     std::string ProjectByteString = ProjectEmitter.c_str();
 
@@ -198,9 +237,9 @@ bool ERS_CLASS_ProjectWriter::SaveProject(ERS_STRUCT_Project* ProjectPointer, lo
     SystemUtils_->Logger_->Log("Writing Controller Settings", 4);
     for (unsigned long i = 0; i < ControllerSettingsCount; i++) {
 
-        SystemUtils_->Logger_->Log(std::string("Writing Controller Settings '") + (*ProjectPointer->ControllerSettings)[i].SettingsProfileName + std::string("'"), 3);
+        SystemUtils_->Logger_->Log(std::string("Writing Controller Settings '") + ProjectPointer->ControllerSettings[i].SettingsProfileName + std::string("'"), 3);
         YAML::Emitter ControllerSettingsEmitter;
-        ERS_FUNCTION_EmitControllerSettings(&ControllerSettingsEmitter, &(*ProjectPointer->ControllerSettings)[i]);
+        ERS_FUNCTION_EmitControllerSettings(&ControllerSettingsEmitter, &ProjectPointer->ControllerSettings[i]);
         std::string ControllerSettingsByteString = ControllerSettingsEmitter.c_str();
 
         std::unique_ptr<BG::ERS::IOSubsystem::IOData> ControllerSettingsData = std::make_unique<BG::ERS::IOSubsystem::IOData>();

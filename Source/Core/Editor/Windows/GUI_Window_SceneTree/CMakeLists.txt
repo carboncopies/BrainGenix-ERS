@@ -15,6 +15,7 @@ add_library(GUI_Window_SceneTree
             "PointLightRenameModal.cpp"
             "DirectionalLightRenameModal.cpp"
             "SpotLightRenameModal.cpp"
+            "SceneCameraRenameModal.cpp"
             "SceneRenameModal.cpp"
             "ModelRenameModal.cpp"
             "DeleteScene.cpp"
@@ -22,6 +23,7 @@ add_library(GUI_Window_SceneTree
             "DeletePointLight.cpp"
             "DeleteDirectionalLight.cpp"
             "DeleteSpotLight.cpp"
+            "DeleteSceneCamera.cpp"
             "ModelReplaceModal.cpp"
 
 
@@ -35,6 +37,7 @@ add_library(GUI_Window_SceneTree
             "PointLightRenameModal.h"
             "DirectionalLightRenameModal.h"
             "SpotLightRenameModal.h"
+            "SceneCameraRenameModal.h"
             "SceneRenameModal.h"
             "ModelRenameModal.h"
             "DeleteScene.h"
@@ -42,6 +45,7 @@ add_library(GUI_Window_SceneTree
             "DeletePointLight.h"
             "DeleteDirectionalLight.h"
             "DeleteSpotLight.h"
+            "DeleteSceneCamera.h"
             "ModelReplaceModal.h"
 
             ${BACKWARD_ENABLE}

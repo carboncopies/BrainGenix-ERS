@@ -23,25 +23,8 @@ ERS_CLASS_LuaJITInterpreterIntegration::ERS_CLASS_LuaJITInterpreterIntegration(B
 ERS_CLASS_LuaJITInterpreterIntegration::~ERS_CLASS_LuaJITInterpreterIntegration() {
 
     lua_close(L);
-    Logger_->Log("Shutting Down JuaJIT Interpreter Subsystem", 6);
+    Logger_->Log("Shutting Down LuaJIT Interpreter Subsystem", 6);
 }
-
-void ERS_CLASS_LuaJITInterpreterIntegration::Test_Script()
-{
-	
-	
-    // Load and run a Lua script
-    int result = luaL_dostring(L, "print('Hello from LuaJIT!')");
-
-    // Check for errors
-    if (result != LUA_OK) {
-        const char* error = lua_tostring(L, -1);
-        std::cerr << "Lua error: " << error << std::endl;
-        lua_pop(L, 1); // Pop the error message off the stack
-    }
-	
-}
-
 
 void ERS_CLASS_LuaJITInterpreterIntegration::ErrorHandle(std::vector<std::string>* Target, unsigned long LineNumber, std::string Error) {
 
@@ -214,6 +197,12 @@ lua_State* L = luaL_newstate();
     lua_setglobal(L, "Intensity");
     lua_pushnumber(L, PointLight->MaxDistance);
     lua_setglobal(L, "MaxDistance");
+    lua_pushnumber(L, PointLight->RolloffConstant);
+    lua_setglobal(L, "RolloffConstant");
+    lua_pushnumber(L, PointLight->RolloffLinear);
+    lua_setglobal(L, "RolloffLinear");
+    lua_pushnumber(L, PointLight->RolloffQuadratic);
+    lua_setglobal(L, "RolloffQuadratic");
 
     // Load the Lua script
     if (luaL_dostring(L, ScriptSource.c_str()) != LUA_OK) {
@@ -242,6 +231,12 @@ lua_State* L = luaL_newstate();
     PointLight->Intensity = (float)lua_tonumber(L, -1);
     lua_getglobal(L, "MaxDistance");
     PointLight->MaxDistance = (float)lua_tonumber(L, -1);
+    lua_getglobal(L, "RolloffConstant");
+    PointLight->RolloffConstant = (float)lua_tonumber(L, -1);
+    lua_getglobal(L, "RolloffLinear");
+    PointLight->RolloffLinear = (float)lua_tonumber(L, -1);
+    lua_getglobal(L, "RolloffQuadratic");
+    PointLight->RolloffQuadratic = (float)lua_tonumber(L, -1);
 
     lua_close(L);
     return true;

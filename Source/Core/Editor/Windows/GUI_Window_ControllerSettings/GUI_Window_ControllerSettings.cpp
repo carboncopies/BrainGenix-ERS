@@ -153,7 +153,10 @@ void GUI_Window_ControllerSettings::Draw() {
 
 
                     // Get Controller Settings Info
-                    std::vector<ERS_STRUCT_ControllerSettings>* ControllerSettings = ProjectUtils_->ProjectManager_->Project_.ControllerSettings;
+                    std::vector<ERS_STRUCT_ControllerSettings>* ControllerSettings = nullptr;
+                    if ((ProjectUtils_ != nullptr) && (ProjectUtils_->ProjectManager_ != nullptr)) {
+                        ControllerSettings = &ProjectUtils_->ProjectManager_->Project_.ControllerSettings;
+                    }
 
                     // ADD DEFAULT CONTROLLER LAYOUTS (IN PROJECT)
                     // ADD CONTROLLER SETTINGS BELOW (THIS FILE)
@@ -162,64 +165,73 @@ void GUI_Window_ControllerSettings::Draw() {
                     // ADD VIEWPORT SELECTION?
                     // ADD SUPPORT TO ACTUALLY USE CONTROLLER SETTINGS
 
+                    if (ControllerSettings == nullptr) {
 
-                    // Update Controller Dropdown List And Index
-                    if (ControllerSettings->size() == 0) {
-                        SelectedControllerProfile_ = 0;
-                    } else if ((long)SelectedControllerProfile_ >= (long)ControllerSettings->size()) {
-                        SelectedControllerProfile_ = (int)ControllerSettings->size() - 1;
-                    } else if (SelectedControllerProfile_ < 0) {
-                        SelectedControllerProfile_ = 0;
-                    }
+                        // No Project Loaded, Cannot Show Controller Settings
+                        ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "No controller settings available in the active project.");
 
-                    for (int i = 0; (long)i < (long)ControllerSettings->size(); i++) {
-                        ControllerProfileNames_[i] = (*ControllerSettings)[i].SettingsProfileName.c_str();
-                    }
-
-                    // Selector Dropdown
-                    if (ControllerSettings->size() > 0) {
-                        if (ImGui::Button("Delete Profile")) {
-                            ProjectUtils_->ProjectManager_->Project_.ControllerSettings->erase(ProjectUtils_->ProjectManager_->Project_.ControllerSettings->begin() + SelectedControllerProfile_);
-                            ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.erase(ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.begin() + SelectedControllerProfile_);
-                            if (SelectedControllerProfile_ > 0) {
-                                SelectedControllerProfile_--;
-                            }
-                        }
-                    }
-                    if (ControllerSettings->size() < 128) {
-                        ImGui::SameLine();
-                        if (ImGui::Button("Add Profile")) {
-                            ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.push_back(SystemUtils_->ERS_IOSubsystem_->AllocateAssetID());
-                            ProjectUtils_->ProjectManager_->Project_.ControllerSettings->push_back(ERS_STRUCT_ControllerSettings());
-                        }
-                    }
-                    ImGui::SameLine();
-                    if (ControllerSettings->size() > 0) {
-                        ImGui::Combo("Selected Controller Profile", &SelectedControllerProfile_, ControllerProfileNames_, ControllerSettings->size(),  ControllerSettings->size());
-                    }
-
-                    ImGui::Separator();
-
-
-
-                    // Child Settings
-                    ImGui::BeginChild("Controller Setttings"); 
-
-
-                    
-                    // Check if there aren't any controller profiles, display no controllers message
-                    if (ControllerSettings->size() == 0) {
-                        ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "No controller profiles found. Try adding a new one.");
                     } else {
 
-                        // Thresholds
+                        // Update Controller Dropdown List And Index
+                        if (ControllerSettings->size() == 0) {
+                            SelectedControllerProfile_ = 0;
+                        } else if ((long)SelectedControllerProfile_ >= (long)ControllerSettings->size()) {
+                            SelectedControllerProfile_ = (int)ControllerSettings->size() - 1;
+                        } else if (SelectedControllerProfile_ < 0) {
+                            SelectedControllerProfile_ = 0;
+                        }
+
+                        for (int i = 0; (long)i < (long)ControllerSettings->size(); i++) {
+                            ControllerProfileNames_[i] = (*ControllerSettings)[i].SettingsProfileName.c_str();
+                        }
+
+                        // Selector Dropdown
+                        if (ControllerSettings->size() > 0) {
+                            if (ImGui::Button("Delete Profile")) {
+                                ControllerSettings->erase(ControllerSettings->begin() + SelectedControllerProfile_);
+                                if ((long)SelectedControllerProfile_ < (long)ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.size()) {
+                                    ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.erase(ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.begin() + SelectedControllerProfile_);
+                                }
+                                if (SelectedControllerProfile_ > 0) {
+                                    SelectedControllerProfile_--;
+                                }
+                            }
+                        }
+                        if (ControllerSettings->size() < 128) {
+                            ImGui::SameLine();
+                            if (ImGui::Button("Add Profile")) {
+                                ProjectUtils_->ProjectManager_->Project_.GameControllerSettingsIDs.push_back(SystemUtils_->ERS_IOSubsystem_->AllocateAssetID());
+                                ControllerSettings->push_back(ERS_STRUCT_ControllerSettings());
+                            }
+                        }
+                        ImGui::SameLine();
+                        if (ControllerSettings->size() > 0) {
+                            ImGui::Combo("Selected Controller Profile", &SelectedControllerProfile_, ControllerProfileNames_, ControllerSettings->size(),  ControllerSettings->size());
+                        }
+
                         ImGui::Separator();
-                        ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Joystick Thresholds");
-                        ImGui::Separator();
+
+
+
+                        // Child Settings
+                        ImGui::BeginChild("Controller Setttings");
+
+
+                        // Check if there aren't any controller profiles, display no controllers message
+                        if (ControllerSettings->size() == 0) {
+                            ImGui::TextColored(ImVec4(1.0f, 0.2f, 0.2f, 1.0f), "No controller profiles found. Try adding a new one.");
+                        } else {
+
+                            // Thresholds
+                            ImGui::Separator();
+                            ImGui::TextColored(ImVec4(0.2f, 1.0f, 0.2f, 1.0f), "Joystick Thresholds");
+                            ImGui::Separator();
+
+                        }
+
+                        ImGui::EndChild();
 
                     }
-
-                    ImGui::EndChild();
 
                 ImGui::EndTabItem();
                 }

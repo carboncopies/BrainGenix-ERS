@@ -4,6 +4,23 @@
 
 #include <AsyncTextureUpdater.h>
 
+#if defined(__unix__) && !defined(__APPLE__)
+// cppcheck-suppress missingIncludeSystem
+#include <cstdio>
+// cppcheck-suppress missingIncludeSystem
+#include <EGL/egl.h>
+// cppcheck-suppress missingIncludeSystem
+#include <EGL/eglext.h>
+#define ERS_ASYNCTEXTUREUPDATER_HAS_EGL 1
+
+// Formats The Current EGL Error Code As A Hexadecimal String (eglGetError Returns Codes In The 0x3000 Range)
+static std::string FormatEGLError() {
+    char ErrorBuffer[16];
+    std::snprintf(ErrorBuffer, sizeof(ErrorBuffer), "0x%04X", (int)eglGetError());
+    return std::string(ErrorBuffer);
+}
+#endif
+
 #ifndef GL_TEXTURE_MAX_ANISOTROPY_EXT
 #define GL_TEXTURE_MAX_ANISOTROPY_EXT 0x84FE
 #endif
@@ -13,12 +30,20 @@
 #endif
 
 
-ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_AssetStreamingSystemResourceMonitor* ResourceMonitor, GLFWwindow* Window, unsigned int Threads) {
+ERS_CLASS_AsyncTextureUpdater::ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_AssetStreamingSystemResourceMonitor* ResourceMonitor, GLFWwindow* Window, unsigned int Threads, void* SharedEGLDisplay, void* SharedEGLConfig, void* SharedEGLContext, void* SharedEGLSurface) {
 
     SystemUtils_ = SystemUtils;
     MainThreadWindowContext_ = Window;
     ResourceMonitor_ = ResourceMonitor;
+    SharedEGLDisplay_ = SharedEGLDisplay;
+    SharedEGLConfig_  = SharedEGLConfig;
+    SharedEGLContext_ = SharedEGLContext;
+    SharedEGLSurface_ = SharedEGLSurface;
+    UsingOffscreenEGLContexts_ = (Window == nullptr) && (SharedEGLDisplay_ != nullptr) && (SharedEGLContext_ != nullptr);
     SystemUtils_->Logger_->Log("Initializing Automatic Texture Loading Subsystem", 5);
+    if (UsingOffscreenEGLContexts_) {
+        SystemUtils_->Logger_->Log("Texture Streaming Will Use Shared EGL Pbuffer Contexts (Display-Free Offscreen Mode)", 5);
+    }
 
     // If Threads Is Left To Autodetect, Use That
     int TargetLoaderThreads = (int)Threads;
@@ -62,12 +87,30 @@ ERS_CLASS_AsyncTextureUpdater::~ERS_CLASS_AsyncTextureUpdater() {
 
 
 // Texture Streaming Helpers
+bool ERS_CLASS_AsyncTextureUpdater::IsExtensionSupported(const char* ExtensionName) {
+
+    if (!UsingOffscreenEGLContexts_) {
+        return glfwExtensionSupported(ExtensionName) == GLFW_TRUE;
+    }
+
+    // Core-Profile-Safe Extension Query (GLFW Is Not Initialized In Display-Free Offscreen Mode)
+    GLint NumExtensions = 0;
+    glGetIntegerv(GL_NUM_EXTENSIONS, &NumExtensions);
+    for (GLint i = 0; i < NumExtensions; i++) {
+        const char* Extension = (const char*)glGetStringi(GL_EXTENSIONS, i);
+        if (Extension != nullptr && strcmp(Extension, ExtensionName) == 0) {
+            return true;
+        }
+    }
+    return false;
+
+}
 void ERS_CLASS_AsyncTextureUpdater::ApplyHighFrequencyTextureFiltering() {
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    if (glfwExtensionSupported("GL_EXT_texture_filter_anisotropic") == GLFW_TRUE) {
+    if (IsExtensionSupported("GL_EXT_texture_filter_anisotropic")) {
         GLfloat MaxAnisotropy = 1.0f;
         glGetFloatv(GL_MAX_TEXTURE_MAX_ANISOTROPY_EXT, &MaxAnisotropy);
         if (MaxAnisotropy > 1.0f) {
@@ -692,6 +735,12 @@ void ERS_CLASS_AsyncTextureUpdater::ProcessRAMUpdate(int Index, ERS_STRUCT_Scene
 
 }
 
+void ERS_CLASS_AsyncTextureUpdater::QueueRAMOnlyUpdate(int Index, ERS_STRUCT_Scene* Scene) {
+
+    ProcessRAMUpdate(Index, Scene);
+
+}
+
 // Streaming Threads
 void ERS_CLASS_AsyncTextureUpdater::SortModels(ERS_STRUCT_Scene* Scene) {
 
@@ -769,13 +818,47 @@ void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
 
     // Setup OpenGL Shared Context
     SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Creating Shared OpenGL Context", 3);
-    glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-    GLFWwindow* ThreadWindow = glfwCreateWindow(1, 1, std::to_string(Index).c_str(), NULL, MainThreadWindowContext_);
-    glfwMakeContextCurrent(ThreadWindow);
+    GLFWwindow* ThreadWindow = nullptr;
+    bool HasValidSharedContext = true;
+#if defined(ERS_ASYNCTEXTUREUPDATER_HAS_EGL)
+    EGLDisplay EGLEDisplay = EGL_NO_DISPLAY;
+#endif
+    if (!UsingOffscreenEGLContexts_) {
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        ThreadWindow = glfwCreateWindow(1, 1, std::to_string(Index).c_str(), NULL, MainThreadWindowContext_);
+        glfwMakeContextCurrent(ThreadWindow);
+    } else {
+#if defined(ERS_ASYNCTEXTUREUPDATER_HAS_EGL)
+        // Activate The Shared EGL Pbuffer Context That Was Prepared On The Main Thread Before This Thread Was Spawned
+        EGLEDisplay = (EGLDisplay)SharedEGLDisplay_;
+        EGLContext ThreadEGLContext = (EGLContext)OffscreenEGLThreadContexts_[Index];
+        EGLSurface ThreadEGLSurface = (EGLSurface)OffscreenEGLThreadSurfaces_[Index];
+        if (ThreadEGLContext != EGL_NO_CONTEXT && ThreadEGLSurface != EGL_NO_SURFACE) {
+            if (eglMakeCurrent(EGLEDisplay, ThreadEGLSurface, ThreadEGLSurface, ThreadEGLContext) == EGL_TRUE) {
+                SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Activated Shared EGL Offscreen Context", 3);
+            } else {
+                SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Failed To Activate Shared EGL Offscreen Context, eglMakeCurrent Returned Error " + FormatEGLError(), 8);
+                HasValidSharedContext = false;
+            }
+        } else {
+            SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Has No Prepared Shared Context - Texture Uploads Disabled On This Thread", 8);
+            HasValidSharedContext = false;
+        }
+#else
+        SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Cannot Create A Shared Context - No EGL Support In This Build", 8);
+        HasValidSharedContext = false;
+#endif
+    }
     SystemUtils_->Logger_->Log(std::string("Texture Streaming Thead '") + std::to_string(Index) + "' Finished Creating OpenGL Context", 2);
     PusherThreadReady_ = true;
 
     while (!StopPusherThreads_) {
+
+        // No Valid Context On This Thread - Idle Instead Of Emittig OpenGL Errors On Every Call
+        if (!HasValidSharedContext) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+            continue;
+        }
 
         // Get Work Item If It Exists
         std::shared_ptr<ERS_STRUCT_Model> WorkItem = nullptr;
@@ -818,8 +901,14 @@ void ERS_CLASS_AsyncTextureUpdater::TexturePusherThread(int Index) {
 
     }
 
-    // Destroy OpenGL Context
-    glfwDestroyWindow(ThreadWindow);
+    // Destroy OpenGL Context (EGL Handles Were Prepared On The Main Thread And Are Destroyed There Too, After The Threads Join)
+    if (ThreadWindow != nullptr) {
+        glfwDestroyWindow(ThreadWindow);
+    } else if (UsingOffscreenEGLContexts_) {
+#if defined(ERS_ASYNCTEXTUREUPDATER_HAS_EGL)
+        eglMakeCurrent(EGLEDisplay, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
+#endif
+    }
 
 }
 void ERS_CLASS_AsyncTextureUpdater::TextureLoaderThread(int Index) {
@@ -886,16 +975,67 @@ void ERS_CLASS_AsyncTextureUpdater::SetupPusherThreads() {
     // For some reason windows cannot handle sharing a context if it's in use by another thread so we have to do this bullshit.
     // thanks, windows! /s
     StopPusherThreads_ = false;
-    glfwMakeContextCurrent(NULL);
+    if (!UsingOffscreenEGLContexts_) {
+        glfwMakeContextCurrent(NULL);
+    } else {
+#if defined(ERS_ASYNCTEXTUREUPDATER_HAS_EGL)
+        eglMakeCurrent((EGLDisplay)SharedEGLDisplay_, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
+#endif
+    }
 
     for (unsigned int i = 0; i < (unsigned int)NumPusherThreads_; i++) {
         PusherThreadReady_ = false;
+
+#if defined(ERS_ASYNCTEXTUREUPDATER_HAS_EGL)
+        // Create The Shared EGL Context For This Thread Here On The Main Thread - The NVIDIA EGL Driver Rejects
+        // Share-Context Creation From Any Thread Other Than The One The Shared-From Context Was Created On (EGL_BAD_ATTRIBUTE)
+        if (UsingOffscreenEGLContexts_) {
+            EGLDisplay EGLEDisplay = (EGLDisplay)SharedEGLDisplay_;
+            EGLContext ThreadEGLContext = EGL_NO_CONTEXT;
+            EGLSurface ThreadEGLSurface = EGL_NO_SURFACE;
+            EGLint EGLPbufferAttributes[] = {
+                EGL_WIDTH, 1,
+                EGL_HEIGHT, 1,
+                EGL_NONE
+            };
+            if (SharedEGLConfig_ != nullptr) {
+                // Match The Main Context Creation Strategy - Try 4.6 Down To 4.1 (The Main Context Negotiated The Highest Version The Driver Offers)
+                for (int MinorVersion = 6; ThreadEGLContext == EGL_NO_CONTEXT && MinorVersion >= 1; MinorVersion--) {
+                    EGLint ThreadContextAttributes[] = {
+                        EGL_CONTEXT_OPENGL_PROFILE_MASK_KHR, EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT_KHR,
+                        EGL_CONTEXT_MAJOR_VERSION_KHR, 4,
+                        EGL_CONTEXT_MINOR_VERSION_KHR, MinorVersion,
+                        EGL_NONE
+                    };
+                    ThreadEGLContext = eglCreateContext(EGLEDisplay, (EGLConfig)SharedEGLConfig_, (EGLContext)SharedEGLContext_, ThreadContextAttributes);
+                }
+                if (ThreadEGLContext == EGL_NO_CONTEXT) {
+                    SystemUtils_->Logger_->Log(std::string("Failed To Prepare Shared EGL Context For Texture Streaming Thread '") + std::to_string(i) + "', eglCreateContext Returned Error " + FormatEGLError(), 8);
+                }
+            }
+            if (ThreadEGLContext != EGL_NO_CONTEXT) {
+                ThreadEGLSurface = eglCreatePbufferSurface(EGLEDisplay, (EGLConfig)SharedEGLConfig_, EGLPbufferAttributes);
+                if (ThreadEGLSurface == EGL_NO_SURFACE) {
+                    SystemUtils_->Logger_->Log(std::string("Failed To Prepare Offscreen Pbuffer Surface For Texture Streaming Thread '") + std::to_string(i) + "', eglCreatePbufferSurface Returned Error " + FormatEGLError(), 8);
+                }
+            }
+            OffscreenEGLThreadContexts_.push_back((void*)ThreadEGLContext);
+            OffscreenEGLThreadSurfaces_.push_back((void*)ThreadEGLSurface);
+        }
+#endif
+
         TexturePusherThreads_.push_back(std::thread(&ERS_CLASS_AsyncTextureUpdater::TexturePusherThread, this, i));
         SystemUtils_->Logger_->Log(std::string("Started GPU Worker Thread '") + std::to_string(i) + "'", 2);
         while (!PusherThreadReady_) {}
     }
 
-    glfwMakeContextCurrent(MainThreadWindowContext_);
+    if (!UsingOffscreenEGLContexts_) {
+        glfwMakeContextCurrent(MainThreadWindowContext_);
+    } else {
+#if defined(ERS_ASYNCTEXTUREUPDATER_HAS_EGL)
+        eglMakeCurrent((EGLDisplay)SharedEGLDisplay_, (EGLSurface)SharedEGLSurface_, (EGLSurface)SharedEGLSurface_, (EGLContext)SharedEGLContext_);
+#endif
+    }
     SystemUtils_->Logger_->Log("Setup GPU Worker Thread Pool", 3);
 
 }
@@ -927,6 +1067,24 @@ void ERS_CLASS_AsyncTextureUpdater::TeardownPusherThreads() {
         TexturePusherThreads_[i].join();
     }
     TexturePusherThreads_.clear();
+
+#if defined(ERS_ASYNCTEXTUREUPDATER_HAS_EGL)
+    // Destroy The Shared EGL Contexts/Surfaces That Were Prepared On This Thread For The Worker Threads
+    if (UsingOffscreenEGLContexts_) {
+        for (unsigned int i = 0; i < OffscreenEGLThreadSurfaces_.size(); i++) {
+            if ((EGLSurface)OffscreenEGLThreadSurfaces_[i] != EGL_NO_SURFACE) {
+                eglDestroySurface((EGLDisplay)SharedEGLDisplay_, (EGLSurface)OffscreenEGLThreadSurfaces_[i]);
+            }
+        }
+        for (unsigned int i = 0; i < OffscreenEGLThreadContexts_.size(); i++) {
+            if ((EGLContext)OffscreenEGLThreadContexts_[i] != EGL_NO_CONTEXT) {
+                eglDestroyContext((EGLDisplay)SharedEGLDisplay_, (EGLContext)OffscreenEGLThreadContexts_[i]);
+            }
+        }
+        OffscreenEGLThreadSurfaces_.clear();
+        OffscreenEGLThreadContexts_.clear();
+    }
+#endif
 
     SystemUtils_->Logger_->Log("Finished Joining Texture Streaming GPU Worker Thread Pool", 4);
 

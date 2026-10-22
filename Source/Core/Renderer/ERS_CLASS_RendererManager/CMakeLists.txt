@@ -24,6 +24,11 @@ target_link_libraries(Renderer
     freeimage::FreeImage
     )
 
+# Link EGL If Available (Required For Display-Free Offscreen Rendering)
+if (TARGET ERS_EGL)
+    target_link_libraries(Renderer ERS_EGL)
+endif()
+
 # Link Internal Libs
 target_link_libraries(Renderer
     bg-common-logger

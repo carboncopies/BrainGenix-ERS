@@ -47,6 +47,13 @@ private:
     ERS_CLASS_AssetStreamingSystemResourceMonitor* ResourceMonitor_; /**<used to keep track of system resource budgets*/
     GLFWwindow* MainThreadWindowContext_; /**<GLFWWindow Object Used To Setup Shared Contexts*/
 
+    // EGL Handles (Stored As void*, EGLDisplay/EGLContext/EGLSurface Are All void* Typedefs) Used To Create Shared Worker Contexts When Running Display-Free (No GLFW Window)
+    void* SharedEGLDisplay_ = nullptr; /**<EGLDisplay Of The Display-Free Offscreen Context, Or nullptr When Using GLFW Contexts*/
+    void* SharedEGLConfig_  = nullptr; /**<EGLConfig Of The Main Offscreen Context - Worker Contexts Must Use The Identical Config To Be Share-Compatible*/
+    void* SharedEGLContext_ = nullptr; /**<EGLContext On The Main Thread To Share Object Lists With Worker Contexts*/
+    void* SharedEGLSurface_ = nullptr; /**<EGLSurface Bound To The Main Thread Context (Tiny Pbuffer)*/
+    bool  UsingOffscreenEGLContexts_ = false; /**<True When Worker Threads Must Create Shared EGL Pbuffer Contexts Instead Of Hidden GLFW Windows*/
+
     int NumPusherThreads_ = 0; /**<Target Number of threads that we should be using*/
     int NumLoaderThreads_ = 0; /**<Target Number of threads that we should be using*/
     int WorkQueueLimit_ = 512; /**<Sets the maxinum number of itesm in the queue - won't add anything else to queue once this limit reached - prevents loading where the player already left*/
@@ -59,6 +66,11 @@ private:
 
     std::vector<std::thread> TextureLoaderThreads_; /**<Vector containing thread objects for the texture loading pool*/
     std::vector<std::thread> TexturePusherThreads_; /**<Vector containing thread objects for the texture pushing pool*/
+
+    // Shared Offscreen EGL Contexts/Surfaces For The Pusher Threads (void* Casts Of EGLContext/EGLSurface; Only Used When UsingOffscreenEGLContexts_ Is True)
+    // These Must Be Created On The Main Thread - The NVIDIA EGL Driver Rejects Share-Context Creation From Other Threads With EGL_BAD_ATTRIBUTE
+    std::vector<void*> OffscreenEGLThreadContexts_; /**<Per-Pusher-Thread Shared EGL Pbuffer Contexts, Created Before The Thread Is Spawned*/
+    std::vector<void*> OffscreenEGLThreadSurfaces_; /**<Per-Pusher-Thread EGL Pbuffer Surfaces, Created Before The Thread Is Spawned*/
     
     std::mutex BlockLoaderThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/
     std::mutex BlockPusherThreads_; /**<Lock this to block all the treads (Usually done to add new items to the work queue)*/
@@ -76,6 +88,17 @@ private:
     void TexturePusherThread(int Index);
     void TextureLoaderThread(int Index);
     void ApplyHighFrequencyTextureFiltering();
+
+    /**
+     * @brief Checks if an OpenGL extension is supported by the current context. Uses GLFW when a GLFW
+     * window exists, otherwise queries the core-profile-safe glGetStringi extension list directly
+     * (required in display-free offscreen mode where GLFW is not initialized).
+     * 
+     * @param ExtensionName
+     * @return true
+     * @return false
+     */
+    bool IsExtensionSupported(const char* ExtensionName);
 
 
     void FreeRAMAllocation(ERS_STRUCT_TextureLevel &Level);
@@ -172,11 +195,13 @@ public:
 
     /**
      * @brief Create instance of the texture updater. The optional threads parameters sets the limit on the number of threads we can use.
+     * In display-free offscreen mode (Window == nullptr), provide the EGL handles of the main offscreen context so the
+     * worker threads can create shared EGL pbuffer contexts instead of hidden GLFW windows.
      * 
      * @param SystemUtils 
      * @param Threads Setting this to 0 will autodetect the number of threads we should use. Otherwise, we'll use whatever is passed in.
      */
-    ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_AssetStreamingSystemResourceMonitor* ResourceMonitor, GLFWwindow* Window, unsigned int Threads = 0);
+    ERS_CLASS_AsyncTextureUpdater(ERS_STRUCT_SystemUtils* SystemUtils, ERS_CLASS_AssetStreamingSystemResourceMonitor* ResourceMonitor, GLFWwindow* Window, unsigned int Threads = 0, void* SharedEGLDisplay = nullptr, void* SharedEGLConfig = nullptr, void* SharedEGLContext = nullptr, void* SharedEGLSurface = nullptr);
 
     /**
      * @brief Destroy the ers class asynctextureupdater object
@@ -200,6 +225,17 @@ public:
      * @param Scene 
      */
     void SortModels(ERS_STRUCT_Scene* Scene);
+
+
+    /**
+     * @brief Enqueues one model for a RAM-only texture update (disk -> system RAM) without queueing any VRAM work.
+     * Used when preloading assets for scenes that are not currently being rendered, where staging anything on the GPU would be wasted work.
+     * Uses the same load work queue, queue limit, duplicate prevention, and low-memory checks as the normal per-frame update path.
+     * 
+     * @param Index Index of the model within the scene's model list
+     * @param Scene Scene containing the model
+     */
+    void QueueRAMOnlyUpdate(int Index, ERS_STRUCT_Scene* Scene);
 
 
     /**

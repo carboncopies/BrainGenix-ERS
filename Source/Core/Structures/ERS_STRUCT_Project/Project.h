@@ -14,6 +14,7 @@
 #include <ControllerSettings.h>
 #include <ShaderProgramAssetIDs.h>
 #include <Script.h>
+#include <RendererSettings.h>
 
 
 /**
@@ -39,14 +40,11 @@ struct ERS_STRUCT_Project {
     std::vector<ERS_STRUCT_ShaderProgramAssetIDs> ShaderPrograms; /**<List of Shader Program Instances*/
     std::vector<ERS_STRUCT_Script> Scripts; /**<List of scripts that are instantiated to models/lights/etc.*/
     long DefaultShaderProgram; /**<Set default index of the shader program*/
-    std::vector<ERS_STRUCT_ControllerSettings>* ControllerSettings; /**<List of game controller settings instances*/
+    std::vector<ERS_STRUCT_ControllerSettings> ControllerSettings; /**<List of game controller settings instances*/
+    ERS_STRUCT_RendererSettings RendererSettings; /**<Renderer settings persisted with the project*/
 
     int DefaultScene = 0; /**<Defualt Scene Index*/
     int DefaultLayout = 0; /**<Default Layout Used*/
     bool StartPlayingOnLoad = false; /**<Indicate if the game should start playing when opened.*/
-
-    ~ERS_STRUCT_Project() {
-        ControllerSettings->~vector();
-    }
 
 };

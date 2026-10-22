@@ -53,14 +53,6 @@ public:
 
 
     /**
-     * @brief Test LuaJIT Scripting System. 
-     * 
-     * 
-     */
-    void Test_Script();
-
-
-     /**
      * @brief Writes to the target error handling string if there's a pointer passed in.
      * 
      * @param Target 

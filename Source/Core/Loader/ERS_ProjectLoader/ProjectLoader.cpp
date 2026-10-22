@@ -34,7 +34,6 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
 
     // Create New Struct
     ERS_STRUCT_Project Project;
-    Project.ControllerSettings = new std::vector<ERS_STRUCT_ControllerSettings>();
 
     // Populate Struct Metadata
     Project.ProjectName = ProjectNode["ProjectName"].as<std::string>();
@@ -134,6 +133,46 @@ ERS_STRUCT_Project ERS_CLASS_ProjectLoader::LoadProject(long AssetID) {
         }
     } else {
         SystemUtils_->Logger_->Log("Project Script Metadata Missing", 7);
+    }
+
+
+    // Populate Renderer Settings
+    if (ProjectNode["RendererSettings"]) {
+
+        YAML::Node RendererSettings = ProjectNode["RendererSettings"];
+        ERS_STRUCT_RendererSettings* Settings = &Project.RendererSettings;
+
+        if (RendererSettings["ShadowMapX"])                  { Settings->ShadowMapX_          = RendererSettings["ShadowMapX"].as<int>();                             }
+        if (RendererSettings["ShadowMapY"])                  { Settings->ShadowMapY_          = RendererSettings["ShadowMapY"].as<int>();                             }
+        if (RendererSettings["ShadowMapCubemapX"])           { Settings->ShadowMapCubemapX_   = RendererSettings["ShadowMapCubemapX"].as<int>();                      }
+        if (RendererSettings["ShadowMapCubemapY"])           { Settings->ShadowMapCubemapY_   = RendererSettings["ShadowMapCubemapY"].as<int>();                      }
+
+        if (RendererSettings["ShadowFilteringType"])         { Settings->ShadowFilteringType_ = (ERS::Renderer::ShadowFilteringType)RendererSettings["ShadowFilteringType"].as<int>(); }
+        if (RendererSettings["ShadowUpdateMode"])            { Settings->ShadowUpdateMode_    = (ERS::Renderer::ShadowUpdateMode)RendererSettings["ShadowUpdateMode"].as<int>();       }
+        if (RendererSettings["MaxShadowUpdatesPerFrame"])    { Settings->MaxShadowUpdatesPerFrame_ = RendererSettings["MaxShadowUpdatesPerFrame"].as<int>();          }
+        if (RendererSettings["ShadowFilterKernelSize"])      { Settings->ShadowFilterKernelSize_   = RendererSettings["ShadowFilterKernelSize"].as<int>();            }
+        if (RendererSettings["RefreshStaticShadowMaps"])     { Settings->RefreshStaticShadowMaps_  = RendererSettings["RefreshStaticShadowMaps"].as<bool>();          }
+
+        if (RendererSettings["MotionBlurEnabled"])           { Settings->MotionBlurEnabled_            = RendererSettings["MotionBlurEnabled"].as<bool>();            }
+        if (RendererSettings["MotionBlurStrength"])          { Settings->MotionBlurStrength_           = RendererSettings["MotionBlurStrength"].as<float>();          }
+        if (RendererSettings["MotionBlurReferenceFrameRate"]) { Settings->MotionBlurReferenceFrameRate_ = RendererSettings["MotionBlurReferenceFrameRate"].as<float>(); }
+        if (RendererSettings["MotionBlurMaxBlend"])          { Settings->MotionBlurMaxBlend_           = RendererSettings["MotionBlurMaxBlend"].as<float>();          }
+
+        if (RendererSettings["VRAMBudget"])                  { Settings->VRAMBudget_ = RendererSettings["VRAMBudget"].as<unsigned long long>();                       }
+        if (RendererSettings["RAMBudget"])                   { Settings->RAMBudget_  = RendererSettings["RAMBudget"].as<unsigned long long>();                        }
+
+        if (RendererSettings["WarningLowRAMBytes"])          { Settings->WarningLowRAMBytes    = RendererSettings["WarningLowRAMBytes"].as<unsigned long long>();     }
+        if (RendererSettings["CriticalLowRAMBytes"])         { Settings->CriticalLowRAMBytes   = RendererSettings["CriticalLowRAMBytes"].as<unsigned long long>();    }
+        if (RendererSettings["FatalLowRAMBytes"])            { Settings->FatalLowRAMBytes      = RendererSettings["FatalLowRAMBytes"].as<unsigned long long>();       }
+        if (RendererSettings["TerminateLowRAMBytes"])        { Settings->TerminateLowRAMBytes  = RendererSettings["TerminateLowRAMBytes"].as<unsigned long long>();   }
+
+        if (RendererSettings["WarningLowVRAMBytes"])         { Settings->WarningLowVRAMBytes   = RendererSettings["WarningLowVRAMBytes"].as<unsigned long long>();    }
+        if (RendererSettings["CriticalLowVRAMBytes"])        { Settings->CriticalLowVRAMBytes  = RendererSettings["CriticalLowVRAMBytes"].as<unsigned long long>();   }
+        if (RendererSettings["FatalLowVRAMBytes"])           { Settings->FatalLowVRAMBytes     = RendererSettings["FatalLowVRAMBytes"].as<unsigned long long>();      }
+        if (RendererSettings["TerminateLowVRAMBytes"])       { Settings->TerminateLowVRAMBytes = RendererSettings["TerminateLowVRAMBytes"].as<unsigned long long>();  }
+
+    } else {
+        SystemUtils_->Logger_->Log("Project Metadata Missing 'RendererSettings' Param, Defaulting To Built-In Renderer Settings", 7);
     }
 
 

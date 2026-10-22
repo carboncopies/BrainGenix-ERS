@@ -4,6 +4,9 @@
 
 #include <GUI.h>
 
+// cppcheck-suppress missingIncludeSystem
+#include <algorithm>
+
 
 GUISystem::GUISystem(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, Cursors3D* Cursors3D, ERS_CLASS_SceneManager* SceneManager, ERS_STRUCT_ProjectUtils* ProjectUtils, ERS_CLASS_VisualRenderer* VisualRendererInstance, ERS_STRUCT_HumanInputDeviceUtils* HIDUtils) {
 
@@ -35,7 +38,12 @@ GUISystem::GUISystem(ERS_STRUCT_SystemUtils* SystemUtils, GLFWwindow* Window, Cu
     FontManager_->SetFontSize(UserProfileManager_->GetUserFontSize());
 
     // Setup Platform/Renderer backends
-    ImGui_ImplGlfw_InitForOpenGL(Window, true);
+    if (Window != nullptr) {
+        ImGui_ImplGlfw_InitForOpenGL(Window, true);
+        GLFWPlatformBackendEnabled_ = true;
+    } else {
+        SystemUtils_->Logger_->Log("No Window Available - Initializing DearImGui Without The GLFW Platform Backend (Display-Free Offscreen Mode)", 4);
+    }
     ImGui_ImplOpenGL3_Init("#version 410 core");
 
     // Setup WindowManager Class
@@ -62,7 +70,9 @@ GUISystem::~GUISystem() {
     SystemUtils_->Logger_->Log("GUISystem Destructor Called", 6);
 
     ImGui_ImplOpenGL3_Shutdown();
-    ImGui_ImplGlfw_Shutdown();
+    if (GLFWPlatformBackendEnabled_) {
+        ImGui_ImplGlfw_Shutdown();
+    }
     ImGui::DestroyContext();
     ImPlot::DestroyContext();
 
@@ -75,16 +85,36 @@ void GUISystem::UpdateGUI() {
     FontManager_->CheckUpdateFont();
 
     // Get Window Width, Height
-    float Width;
-    float Height;
-    glfwGetWindowContentScale(Window_, &Width, &Height);
+    if (Window_ != nullptr) {
+        float Width;
+        float Height;
+        glfwGetWindowContentScale(Window_, &Width, &Height);
+    }
 
     // Enable Docking
     ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
     // Start the Dear ImGui frame
     ImGui_ImplOpenGL3_NewFrame();
-    ImGui_ImplGlfw_NewFrame();
+    if (GLFWPlatformBackendEnabled_) {
+        ImGui_ImplGlfw_NewFrame();
+    } else {
+        // Feed Frame Metrics Manually In Display-Free Offscreen Mode: ImGui Still Needs A Valid Display Size And Positive Delta Time
+        ImGuiIO& IO = ImGui::GetIO();
+        std::chrono::time_point<std::chrono::steady_clock> CurrentFrameTime = std::chrono::steady_clock::now();
+        if (HasLastFrameTime_) {
+            float DeltaSeconds = std::chrono::duration<float>(CurrentFrameTime - LastFrameTime_).count();
+            IO.DeltaTime = DeltaSeconds > 0.0f ? DeltaSeconds : (1.0f / 60.0f);
+        } else {
+            IO.DeltaTime = 1.0f / 60.0f;
+            HasLastFrameTime_ = true;
+        }
+        LastFrameTime_ = CurrentFrameTime;
+        IO.DisplaySize = ImVec2(
+            std::max(1.0f, static_cast<float>(SystemUtils_->RenderWidth_)),
+            std::max(1.0f, static_cast<float>(SystemUtils_->RenderHeight_))
+        );
+    }
     ImGui::NewFrame();
 
     // Setup Dockspace

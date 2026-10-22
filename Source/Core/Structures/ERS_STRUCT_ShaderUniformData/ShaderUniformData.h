@@ -41,6 +41,9 @@ struct ERS_STRUCT_ShaderUniformDataPointLight {
     glm::vec3 Color_;
     float Intensity_;
     float MaxDistance_;
+    float RolloffConstant_;
+    float RolloffLinear_;
+    float RolloffQuadratic_;
     bool CastsShadows_;
     int DepthCubemapIndex_;
 

@@ -5,6 +5,7 @@
 #pragma once
 
 // Standard Libraries (BG convention: use <> instead of "")
+#include <chrono>
 
 // Third-Party Libraries (BG convention: use <> instead of "")
 #include <glad/glad.h>
@@ -63,6 +64,10 @@ private:
     std::string ActiveWarningTitle_   = "ERS Warning"; /**<Title of the popup warning currently displayed.*/
     std::string ActiveWarningMessage_; /**<Body of the popup warning currently displayed.*/
     bool WarningPopupOpen_            = false; /**<Tracks if a warning popup is currently active.*/
+
+    bool GLFWPlatformBackendEnabled_  = false; /**<Tracks whether the ImGui GLFW platform backend was initialized (skipped in display-free offscreen mode).*/
+    std::chrono::time_point<std::chrono::steady_clock> LastFrameTime_; /**<Used to synthesize ImGui frame timings when no GLFW events are available (offscreen mode).*/
+    bool HasLastFrameTime_            = false; /**<Tracks whether LastFrameTime_ holds a usable timestamp.*/
 
     std::unique_ptr<ERS_CLASS_FontManager>        FontManager_;        /**<Pointer To FontManager Instance*/
     std::unique_ptr<ERS_CLASS_UserProfileManager> UserProfileManager_; /**<Pointer To User Profile Manager Instance*/

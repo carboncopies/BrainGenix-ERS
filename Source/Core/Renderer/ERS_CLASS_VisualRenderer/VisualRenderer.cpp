@@ -230,7 +230,7 @@ ERS_CLASS_VisualRenderer::ERS_CLASS_VisualRenderer(ERS_STRUCT_SystemUtils* Syste
 
     ShadowMaps_ = std::make_unique<ERS_CLASS_ShadowMaps>(SystemUtils_, ProjectUtils_, MeshRenderer_.get());
 
-    // DEFAULT MODES, CHANGE THIS LATER! --------------------------------
+    // Start In Editor Mode By Default
     IsEditorMode_ = true;
     
 
@@ -331,8 +331,8 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     }
 
     // Set Depth Shader For Shadow System
-    DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthMap"), &Shaders_)].get();
-    CubemapDepthShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthCubeMap"), &Shaders_)].get();
+    DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthMap"), &Shaders_, SystemUtils_->Logger_.get())].get();
+    CubemapDepthShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_DepthCubeMap"), &Shaders_, SystemUtils_->Logger_.get())].get();
 
     // Close Any Viewports That Aren't All Open
     int ViewportsToClose = -1;
@@ -349,7 +349,6 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
 
     // Generate Shadows
-    //DepthMapShader_ = Shaders_[ERS_FUNCTION_FindShaderByName(std::string("Preview Shader"), &Shaders_)].get();
     if (Viewports_.size() > 0) {
         ShadowMaps_->UpdateShadowMaps(DepthMapShader_, CubemapDepthShader_, Viewports_[0]->Camera->GetPosition());
     }
@@ -365,8 +364,7 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
 
 
     RunTime_ = glfwGetTime() - GameStartTime_;
-   SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->UpdateSystemInfoData(RunTime_);
-   //SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->SetSystemInfoData(lua_State* L);
+    SystemUtils_->ERS_CLASS_LuaJITInterpreterIntegration_->UpdateSystemInfoData(RunTime_);
 
 
 
@@ -377,10 +375,12 @@ void ERS_CLASS_VisualRenderer::UpdateViewports(float DeltaTime, ERS_CLASS_SceneM
     }
 
     // Update Mouse Capture State
-    if (CaptureCursor_) {
-        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    } else {
-        glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    if (Window_ != nullptr) {
+        if (CaptureCursor_) {
+            glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        } else {
+            glfwSetInputMode(Window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        }
     }
 
 
@@ -649,13 +649,13 @@ void ERS_CLASS_VisualRenderer::UpdateViewport(int Index, ERS_CLASS_SceneManager*
 
         // Check If Input Enabled
         bool EnableCameraMovement = !Cursors3D_->IsUsing();
-        if (ImGui::IsKeyDown(341)) { // Bind to left control key
+        if (ImGui::IsKeyDown(340)) { // Bind to left shift key
             EnableCameraMovement = true;
         }
         bool SelectModelWithRay = EnableCameraMovement && ImGui::IsWindowFocused() && MouseInRange && ImGui::IsMouseClicked(0);
 
         bool EnableCursorCapture;
-        if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | Viewport->WasSelected) && (glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
+        if (EnableCameraMovement && ImGui::IsWindowFocused() && (MouseInRange | Viewport->WasSelected) && (Window_ != nullptr && glfwGetMouseButton(Window_, 0) == GLFW_PRESS)) {
 
             if (!IsEditorMode_ && Index == 0) {
                 CaptureCursor_ = false;
@@ -966,9 +966,9 @@ void ERS_CLASS_VisualRenderer::CreateViewport(std::string ViewportName) {
     // Viewport->EditorCamera = std::make_unique<ERS_STRUCT_EditorCamera>();
     // Viewport->EditorCamera->SetupCamera(Viewport->Camera.get());
 
-    Viewport->Grid = std::make_unique<ERS_CLASS_Grid>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_Grid"), &Shaders_)].get());
-    Viewport->IconRenderer = std::make_unique<ERS_CLASS_IconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_LightIcon"), &Shaders_)].get()); //Set TO Shader 19 For Billboard Shader, Temp. Disabled As It Doesn't Work ATM
-    Viewport->BoundingBoxRenderer = std::make_unique<ERS_CLASS_BoundingBoxRenderer>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_BoundingBox"), &Shaders_)].get());
+    Viewport->Grid = std::make_unique<ERS_CLASS_Grid>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_Grid"), &Shaders_, SystemUtils_->Logger_.get())].get());
+    Viewport->IconRenderer = std::make_unique<ERS_CLASS_IconRenderer>(OpenGLDefaults_, SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_LightIcon"), &Shaders_, SystemUtils_->Logger_.get())].get()); // Billboard Shader For Light/Camera Icons; Draw Call Is Gated By Viewport->LightIcons And Is Currently Active
+    Viewport->BoundingBoxRenderer = std::make_unique<ERS_CLASS_BoundingBoxRenderer>(SystemUtils_, Shaders_[ERS_FUNCTION_FindShaderByName(std::string("_BoundingBox"), &Shaders_, SystemUtils_->Logger_.get())].get());
     Viewport->Name = ViewportName;
     
     Viewport->Width = 1;
@@ -1130,6 +1130,9 @@ ERS_STRUCT_Viewport* Viewport) {
         ShaderUniformData_->PointLights_[i].Intensity_          = ActiveScene->PointLights[LightIndex]->Intensity;
         ShaderUniformData_->PointLights_[i].Color_              = ActiveScene->PointLights[LightIndex]->Color;
         ShaderUniformData_->PointLights_[i].MaxDistance_        = ActiveScene->PointLights[LightIndex]->MaxDistance;
+        ShaderUniformData_->PointLights_[i].RolloffConstant_    = ActiveScene->PointLights[LightIndex]->RolloffConstant;
+        ShaderUniformData_->PointLights_[i].RolloffLinear_      = ActiveScene->PointLights[LightIndex]->RolloffLinear;
+        ShaderUniformData_->PointLights_[i].RolloffQuadratic_   = ActiveScene->PointLights[LightIndex]->RolloffQuadratic;
         ShaderUniformData_->PointLights_[i].CastsShadows_       = ActiveScene->PointLights[LightIndex]->CastsShadows_;
         ShaderUniformData_->PointLights_[i].DepthCubemapIndex_  = ActiveScene->PointLights[LightIndex]->DepthMap.DepthMapTextureIndex;
     }

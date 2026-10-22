@@ -34,6 +34,40 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Project With ID ") + std::to_string(AssetID)).c_str(), 5);
     Project_ = ProjectLoader_->LoadProject(AssetID);
 
+    // Apply Saved Renderer Settings
+    // Budgets Of 0 Indicate The Hardware-Detected Budgets Already Set By The Resource Monitor Should Be Kept
+    SystemUtils_->Logger_->Log("Applying Project Renderer Settings", 4);
+    ERS_STRUCT_RendererSettings* SavedSettings = &Project_.RendererSettings;
+    ERS_STRUCT_RendererSettings* LiveSettings = SystemUtils_->RendererSettings_.get();
+
+    LiveSettings->ShadowMapX_ = SavedSettings->ShadowMapX_;
+    LiveSettings->ShadowMapY_ = SavedSettings->ShadowMapY_;
+    LiveSettings->ShadowMapCubemapX_ = SavedSettings->ShadowMapCubemapX_;
+    LiveSettings->ShadowMapCubemapY_ = SavedSettings->ShadowMapCubemapY_;
+    LiveSettings->ShadowFilteringType_ = SavedSettings->ShadowFilteringType_;
+    LiveSettings->ShadowUpdateMode_ = SavedSettings->ShadowUpdateMode_;
+    LiveSettings->MaxShadowUpdatesPerFrame_ = SavedSettings->MaxShadowUpdatesPerFrame_;
+    LiveSettings->ShadowFilterKernelSize_ = SavedSettings->ShadowFilterKernelSize_;
+    LiveSettings->RefreshStaticShadowMaps_ = SavedSettings->RefreshStaticShadowMaps_;
+    LiveSettings->MotionBlurEnabled_ = SavedSettings->MotionBlurEnabled_;
+    LiveSettings->MotionBlurStrength_ = SavedSettings->MotionBlurStrength_;
+    LiveSettings->MotionBlurReferenceFrameRate_ = SavedSettings->MotionBlurReferenceFrameRate_;
+    LiveSettings->MotionBlurMaxBlend_ = SavedSettings->MotionBlurMaxBlend_;
+    if (SavedSettings->VRAMBudget_ != 0) {
+        LiveSettings->VRAMBudget_ = SavedSettings->VRAMBudget_;
+    }
+    if (SavedSettings->RAMBudget_ != 0) {
+        LiveSettings->RAMBudget_ = SavedSettings->RAMBudget_;
+    }
+    LiveSettings->WarningLowRAMBytes = SavedSettings->WarningLowRAMBytes;
+    LiveSettings->CriticalLowRAMBytes = SavedSettings->CriticalLowRAMBytes;
+    LiveSettings->FatalLowRAMBytes = SavedSettings->FatalLowRAMBytes;
+    LiveSettings->TerminateLowRAMBytes = SavedSettings->TerminateLowRAMBytes;
+    LiveSettings->WarningLowVRAMBytes = SavedSettings->WarningLowVRAMBytes;
+    LiveSettings->CriticalLowVRAMBytes = SavedSettings->CriticalLowVRAMBytes;
+    LiveSettings->FatalLowVRAMBytes = SavedSettings->FatalLowVRAMBytes;
+    LiveSettings->TerminateLowVRAMBytes = SavedSettings->TerminateLowVRAMBytes;
+
     // Load Controller Settings
     SystemUtils_->Logger_->Log(std::string(std::string("Loading Project Game Controller Settings")).c_str(), 5);
     for (int i = 0; (long)i < (long)Project_.GameControllerSettingsIDs.size(); i++) {
@@ -47,7 +81,7 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
         ControllerSettingsLoader_->LoadControllerSettings(&Settings, ID);
 
         // Add To Settings List
-        Project_.ControllerSettings->push_back(Settings);
+        Project_.ControllerSettings.push_back(Settings);
     }
 
     // Handle The Defaut Scene
@@ -78,6 +112,9 @@ void ERS_CLASS_ProjectManager::LoadProject(long AssetID) {
 
 
 void ERS_CLASS_ProjectManager::WriteProject(long AssetID) {
+
+    // Sync Live Renderer Settings Into Project Struct
+    Project_.RendererSettings = *SystemUtils_->RendererSettings_;
 
     // Get Project Pointer. Write Project
     ERS_STRUCT_Project* ProjectPtr = &Project_;
